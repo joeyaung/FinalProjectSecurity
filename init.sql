@@ -1,0 +1,1 @@
+insert into client (city, email, full_address, full_name, phone, sales_stage, town, zip_code) values ('台北市','test@temf.com','松山區寶清街105巷15號','Andy Chen','0917855499','NEW','松山區','105');
