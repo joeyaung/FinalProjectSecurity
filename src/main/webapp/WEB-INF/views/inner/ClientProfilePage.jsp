@@ -601,17 +601,26 @@ pageEncoding="UTF-8"%>
                               <span>負責業務</span>
                             </td>
                             <td class="data-info-custom">
-                              <span v-if="!clientForm.showEmployeeName">{{
-                                client.inchargeEmployeeName
-                              }}</span>
-                              <input
-                                type="text"
-                                name="employeeName"
-                                id=""
-                                v-model="client.inchargeEmployeeName"
-                                v-if="clientForm.showEmployeeName"
-                                class="border-bottom-secondary"
-                              />
+                              <span
+                                v-if="!clientForm.showEmployeeName"
+                                :style="clientForm.showError ? 'color:rgba(255, 71, 87,1.0)':''"
+                                >{{ client.inchargeEmployeeName }}</span
+                              >
+                              <div
+                                class="inputEmployeeSearch-container"
+                                v-show="clientForm.showEmployeeName"
+                              >
+                                <div class="autocomplete">
+                                  <input
+                                    id="myInput"
+                                    type="text"
+                                    name="employeeName"
+                                    v-model="client.inchargeEmployeeName"
+                                    class="border-bottom-secondary"
+                                    placeholder="Employee Name ..."
+                                  />
+                                </div>
+                              </div>
                             </td>
                             <td
                               class="data-toggle-custom"
@@ -621,11 +630,20 @@ pageEncoding="UTF-8"%>
                             </td>
                           </tr>
                         </table>
+                        <div
+                          class="container text-center"
+                          v-if="clientForm.showError"
+                        >
+                          <div class="row">
+                            <div class="col-12 err-msg">錯誤! 沒有此員工</div>
+                          </div>
+                        </div>
                         <hr class="sidebar-dividor" />
                         <button
                           class="btn btn-secondary"
                           style="width: 100%"
                           @click="submitInfoForm"
+                          :disabled="clientForm.showError"
                         >
                           送出修改資料
                         </button>
@@ -675,12 +693,12 @@ pageEncoding="UTF-8"%>
                                         aria-label="Floating label select example"
                                         v-model="tabArea.activityForm.type"
                                       >
-                                        <option value="walkIn">Walk in</option>
-                                        <option value="testDrive">
+                                        <option value="WALK_IN">Walk in</option>
+                                        <option value="TEST_DRIVE">
                                           Test Drive
                                         </option>
-                                        <option value="call">Call</option>
-                                        <option value="note">Notes</option>
+                                        <option value="CALL">Call</option>
+                                        <option value="NOTES">Notes</option>
                                       </select>
                                       <label for="type">類別</label>
                                     </div>
@@ -738,7 +756,7 @@ pageEncoding="UTF-8"%>
                                     </div>
                                     <div class="col-6">
                                       <div class="type-custom">
-                                        類別: {{ formated(record.type) }}
+                                        類別: {{ record.type }}
                                       </div>
                                     </div>
                                   </div>
@@ -861,7 +879,6 @@ pageEncoding="UTF-8"%>
     <!-- <script src="/FinalProject/vendor/chart.js/Chart.min.js"></script> -->
 
     <!-- Page level custom scripts -->
-    <script src="/FinalProject/js/inner/adminTemplate.js"></script>
     <script src="/FinalProject/js/ProgressBar.js"></script>
     <script src="/FinalProject/js/inner/ClientProfileVue.js"></script>
   </body>

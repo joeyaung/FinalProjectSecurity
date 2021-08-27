@@ -10,11 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import tw.com.finalproject.yumyu.Enums.SalesStages;
+import lombok.NoArgsConstructor;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
 
 @Entity
@@ -38,7 +37,7 @@ public class Client {
 	private String town;
 	private String fullAddress;
 	private String zipCode;
-	private SalesStages salesStage;
+	private String salesStage;
 	//TODO Employee and MEMBER connection
 	
 	@OneToOne(cascade = CascadeType.ALL)

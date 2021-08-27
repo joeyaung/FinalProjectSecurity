@@ -1,6 +1,7 @@
 package tw.com.finalproject.yumyu.InternalUse.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -39,5 +40,14 @@ public class ClientService {
 	public List<Client> findByEmployee(Employee employee) {
 		List<Client> result = clientRepository.findByInchargedEmployee(employee);
 		return result;
+	}
+
+
+	public Client findById(Long id) {
+		Optional<Client> result = clientRepository.findById(id);
+		if (result.isEmpty()) {
+			return null;
+		}
+		return result.get();
 	}
 }

@@ -1,6 +1,6 @@
 $(document).ready(function () {
   var table = $("#allClients").DataTable({
-    ajax: "/FinalProject/inner/api/v1/QueryClient?stage=test drive",
+    ajax: "/FinalProject/inner/api/v1/QueryClient?stage=TEST_DRIVE",
     colReorder: false,
     columnDefs: [
       {

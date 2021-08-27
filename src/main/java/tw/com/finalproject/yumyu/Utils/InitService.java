@@ -11,10 +11,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
+import tw.com.finalproject.yumyu.Enums.ClientActivityType;
 import tw.com.finalproject.yumyu.Enums.OfficeLocations;
 import tw.com.finalproject.yumyu.Enums.SalesStages;
 import tw.com.finalproject.yumyu.InternalUse.Client;
+import tw.com.finalproject.yumyu.InternalUse.ClientActivity;
 import tw.com.finalproject.yumyu.InternalUse.Employee;
+import tw.com.finalproject.yumyu.InternalUse.Service.ClientActivityService;
 import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
 import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
@@ -32,6 +35,9 @@ public class InitService {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private ClientActivityService clientActivityService;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -49,17 +55,21 @@ public class InitService {
 //		Create an default Sales Employee
 		Client defaultClient = Client.builder().fullName("王小明").email("wongmin@gmail.com").phone("0985466955")
 				.city("台北市").town("松山區").fullAddress("寶清街105巷13號").zipCode("105").member(defaultApplicationUser)
-				.salesStage(SalesStages.NEW).build();
+				.salesStage(SalesStages.NEW.name()).build();
 		Employee defaultAdmin = Employee.builder().username("admin@demo.com").password(passwordEncoder.encode("asd"))
 				.roles(ApplicationRoles.ADMIN.name()).fullName("Joe Yu").phone("09179220177").title("CEO")
-				.department("Admin Office").location(OfficeLocations.TAIPEI).salary(1).build();
+				.department("Admin Office").location(OfficeLocations.TAIPEI.name()).salary(1).build();
 		Employee defaultSales = Employee.builder().username("sales@demo.com").password(passwordEncoder.encode("asd"))
 				.roles(ApplicationRoles.SALES.name()).fullName("Andy Chen").phone("0987987987").title("CES")
-				.department("Sales").location(OfficeLocations.TAICHUNG).salary(50000)
+				.department("Sales").location(OfficeLocations.TAICHUNG.name()).salary(50000)
 				.manager(defaultAdmin).build();
 		defaultClient.setInchargedEmployee(defaultSales);
 		clientService.save(defaultClient);
 		employeeService.save(defaultSales);
+		
+		ClientActivity defaultClientActivity = ClientActivity.builder().client(defaultClient).employee(defaultSales).title("First time walk in Taipsi showroom").activityType(ClientActivityType.WALK_IN.name()).content("Walk in with his family. driving BMW x5, interested in Q5, would prefer discount. might be chossing rental financial method.").build();
+		clientActivityService.save(defaultClientActivity);
+		
 		System.out.println("Init Completed!");
 		
 	}

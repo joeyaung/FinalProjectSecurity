@@ -1,6 +1,6 @@
 $(document).ready(function () {
   var table = $("#allClients").DataTable({
-    ajax: "/FinalProject/inner/api/v1/QueryClient?stage=long term",
+    ajax: "/FinalProject/inner/api/v1/QueryClient?stage=LONG_TERM",
     colReorder: false,
     columnDefs: [
       {

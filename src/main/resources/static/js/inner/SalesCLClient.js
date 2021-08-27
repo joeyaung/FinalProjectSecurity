@@ -1,6 +1,6 @@
 $(document).ready(function () {
   var table = $("#allClients").DataTable({
-    ajax: "/FinalProject/inner/api/v1/QueryClient?stage=closed",
+    ajax: "/FinalProject/inner/sales/api/v1/clients/query?stage=CLOSED_LOST",
     colReorder: false,
     columnDefs: [
       {

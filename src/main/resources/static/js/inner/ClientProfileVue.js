@@ -4,6 +4,121 @@ let getCookie = function (name) {
   if (parts.length === 2) return parts.pop().split(";").shift();
 };
 
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function (e) {
+    var a,
+      b,
+      i,
+      val = this.value;
+    /*close any already open lists of autocompleted values*/
+    closeAllLists();
+    if (!val) {
+      return false;
+    }
+    currentFocus = -1;
+    /*create a DIV element that will contain the items (values):*/
+    a = document.createElement("DIV");
+    a.setAttribute("id", this.id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
+    /*append the DIV element as a child of the autocomplete container:*/
+    this.parentNode.appendChild(a);
+    /*for each item in the array...*/
+    for (i = 0; i < arr.length; i++) {
+      /*check if the item starts with the same letters as the text field value:*/
+      if (
+        arr[i].fullName.substr(0, val.length).toUpperCase() == val.toUpperCase()
+      ) {
+        /*create a DIV element for each matching element:*/
+        b = document.createElement("DIV");
+        /*make the matching letters bold:*/
+        b.innerHTML =
+          "<strong>" + arr[i].fullName.substr(0, val.length) + "</strong>";
+        b.innerHTML += arr[i].fullName.substr(val.length);
+        /*insert a input field that will hold the current array item's value:*/
+        b.innerHTML +=
+          "<input type='hidden' name='" +
+          arr[i].id +
+          "' value='" +
+          arr[i].fullName +
+          "'>";
+        /*execute a function when someone clicks on the item value (DIV element):*/
+        b.addEventListener("click", function (e) {
+          /*insert the value for the autocomplete text field:*/
+          inp.value = this.getElementsByTagName("input")[0].value;
+          profileVM.$data.client.inchargeEmployeeName = inp.value;
+          profileVM.$data.client.inchargeEmployeeID =
+            this.getElementsByTagName("input")[0].name;
+          /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+          closeAllLists();
+        });
+        b.setAttribute("v-model", "client.inchargeEmployeeName");
+        a.appendChild(b);
+      }
+    }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function (e) {
+    var x = document.getElementById(this.id + "autocomplete-list");
+    if (x) x = x.getElementsByTagName("div");
+    if (e.keyCode == 40) {
+      /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+      currentFocus++;
+      /*and and make the current item more visible:*/
+      addActive(x);
+    } else if (e.keyCode == 38) {
+      //up
+      /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+      currentFocus--;
+      /*and and make the current item more visible:*/
+      addActive(x);
+    } else if (e.keyCode == 13) {
+      /*If the ENTER key is pressed, prevent the form from being submitted,*/
+      e.preventDefault();
+      if (currentFocus > -1) {
+        /*and simulate a click on the "active" item:*/
+        if (x) x[currentFocus].click();
+      }
+    }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = x.length - 1;
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+  });
+}
+
 let profileVM = new Vue({
   el: "#page",
   data: {
@@ -53,14 +168,14 @@ let profileVM = new Vue({
       ],
     },
     stageList: [
-      "New",
-      "Attempt To Engaged",
-      "Engaged",
-      "Test Drive",
-      "Follow Up",
-      "Long Term",
-      "Ordered",
-      "Closed",
+      "NEW",
+      "ATTEMPT_TO_ENGAGE",
+      "ENGAGED",
+      "TEST_DRIVE",
+      "FOLLOW_UP",
+      "LONG_TERM",
+      "ORDERED",
+      "CLOSED_LOST",
     ],
     clientForm: {
       showName: false,
@@ -69,6 +184,7 @@ let profileVM = new Vue({
       showTown: false,
       showAddress: false,
       showEmployeeName: false,
+      showError: false,
     },
     tabArea: {
       showActivity: true,
@@ -78,6 +194,27 @@ let profileVM = new Vue({
         type: "note",
         content: "",
       },
+    },
+    inputSearch: {
+      employeeAllSales: [
+        {
+          id: "1",
+          fullName: "Andy Chen",
+        },
+      ],
+    },
+  },
+  computed: {
+    inputOptions() {
+      let options = [];
+      let curQuery = this.client.inchargeEmployeeName.toLowerCase();
+      let salesList = this.inputSearch.employeeAllSales;
+      for (let i = 0; i < salesList.length; i++) {
+        if (salesList[i].fullName.toLowerCase().includes(curQuery)) {
+          options.push(salesList[i]);
+        }
+      }
+      return options;
     },
   },
   watch: {
@@ -135,16 +272,22 @@ let profileVM = new Vue({
       let self = this;
       if (yes) {
         let clientID = getCookie("cliID");
+        let newStage = this.stageList[index];
+        let formData = {
+          stage: newStage,
+        };
+
         $.ajax({
           type: "POST",
-          url: `/FinalProject/api/v1/sales/updateClientStage?cid=${clientID}&newStage=${this.stageList[index]}`,
+          url: `/FinalProject/inner/sales/api/v1/client/update/${clientID}`,
           contentType: "application/json",
-          dataType: "json",
+          dataType: "text",
+          data: JSON.stringify(formData),
           success: function (res) {
             if (res == "fail") {
               return false;
             }
-            let selectedStage = res;
+            let selectedStage = newStage;
             self.progress(index);
             self.client.stage = selectedStage;
           },
@@ -183,42 +326,30 @@ let profileVM = new Vue({
         this.tabArea.showActivity = true;
       }
     },
-    formated(type) {
-      if (type == "walkIn") {
-        return "Walk In";
-      }
-      if (type == "testDrive") {
-        return "Test Drive";
-      }
-      if (type == "call") {
-        return "Call";
-      }
-      if (type == "note") {
-        return "Notes";
-      }
-      return "";
-    },
     submitInfoForm() {
       let clientID = getCookie("cliID");
       let formData = {
-        name: this.client.name,
-        address: this.client.address,
+        fullName: this.client.name,
+        fullAddress: this.client.address,
         city: this.client.city,
-        email: this.client.email,
         phone: this.client.phone,
         town: this.client.towns,
         inchargeEmployeeID: this.client.inchargeEmployeeID,
       };
-      $.ajax(`/FinalProject/api/v1/sales/updateClientInfo?cid=${clientID}`, {
+      $.ajax({
+        url: `/FinalProject/inner/sales/api/v1/client/update/${clientID}`,
         type: "POST",
         contentType: "application/json",
-        dataType: "json",
+        dataType: "text",
         data: JSON.stringify(formData),
         success: function (res) {
-          console.log(res);
+          if (res == "ok") {
+            alert("ok");
+          }
+          window.location.reload();
         },
-        error: function () {
-          console.log("failure");
+        error: function (err) {
+          window.location.reload();
         },
       });
     },
@@ -226,27 +357,28 @@ let profileVM = new Vue({
       let self = this;
       let clientID = getCookie("cliID");
       let formData = {
-        cid: clientID,
-        eid: self.client.inchargeEmployeeID,
+        id: clientID,
         title: self.tabArea.activityForm.title,
         type: self.tabArea.activityForm.type,
-        comment: self.tabArea.activityForm.content,
+        content: self.tabArea.activityForm.content,
       };
-      $.ajax("/FinalProject/api/v1/saveClientActivity", {
+      $.ajax({
+        url: "/FinalProject/inner/sales/api/v1/clientActivity/insert",
         type: "POST",
         contentType: "application/json",
-        dataType: "json",
+        dataType: "text",
         data: JSON.stringify(formData),
         success: function (res) {
-          if (res == "OK") {
+          if (res == "ok") {
             self.tabArea.activityForm.title = "";
             self.tabArea.activityForm.type = "";
             self.tabArea.activityForm.content = "";
             alert("ok");
+            window.location.reload();
           }
         },
         error: function () {
-          console.log("failure");
+          alert("failure");
         },
       });
     },
@@ -259,20 +391,24 @@ let profileVM = new Vue({
         for (let i = 0; i < data.length; i++) {
           let curActivity = {
             title: data[i].title,
-            type: data[i].actType,
-            content: data[i].comment,
+            type: data[i].activityType,
+            content: data[i].content,
             emp: data[i].employee.fullName,
-            date: data[i].curDate,
+            date: data[i].createdDate,
           };
           newActivities.push(curActivity);
         }
         self.historyActivity = newActivities;
       };
+      let data = {
+        id: clientID,
+      };
       $.ajax({
-        type: "get",
-        url: `/FinalProject/api/v1/sales/queryActivity?cid=${clientID}`,
-        contentType: "application/json",
+        type: "POST",
+        url: "/FinalProject/inner/sales/api/v1/clientActivity/query",
+        contentType: "application/json; charset=UTF-8",
         dataType: "json",
+        data: JSON.stringify(data),
         success: function (res) {
           processDefaultClientActivity(res);
         },
@@ -280,6 +416,17 @@ let profileVM = new Vue({
           console.log("failure");
         },
       });
+    },
+    toShowEmployeeError() {
+      let curInput = this.client.inchargeEmployeeName;
+      let options = this.inputOptions;
+      let result = true;
+      for (let i = 0; i < options.length; i++) {
+        if (curInput.includes(options[i].fullName)) {
+          result = false;
+        }
+      }
+      return result;
     },
   },
   watch: {
@@ -290,42 +437,25 @@ let profileVM = new Vue({
     },
   },
   beforeMount: function () {
-    let self = this.client;
+    let self = this;
     this.loadNewActivities();
 
     let processDefaultCLientData = function (data) {
-      self.address = data.fullAddress;
-      self.city = data.city;
-      self.email = data.clientEmail;
-      self.inchargeEmployeeID = data.inchargeEmployee.id;
-      self.inchargeEmployeeName = data.inchargeEmployee.fullName;
-      self.name = data.fullName;
-      self.phone = data.phone;
-      self.stage = data.saleStage;
-      self.town = data.town;
+      self.client.address = data.fullAddress;
+      self.client.city = data.city;
+      self.client.email = data.email;
+      self.client.inchargeEmployeeID = data.inchargedEmployee.id;
+      self.client.inchargeEmployeeName = data.inchargedEmployee.fullName;
+      self.client.name = data.fullName;
+      self.client.phone = data.phone;
+      self.client.stage = data.salesStage;
+      self.client.town = data.town;
     };
-
-    // let processDefaultClientActivity = function (data) {
-    //   console.log(data);
-    //   let newActivities = [];
-    //   for (let i = 0; i < data.length; i++) {
-    //     let curActivity = {
-    //       title: data[i].title,
-    //       type: data[i].actType,
-    //       content: data[i].comment,
-    //       emp: data[i].employee.fullName,
-    //       date: data[i].curDate,
-    //     };
-    //     newActivities.push(curActivity);
-    //   }
-
-    //   self.historyActivity = newActivities;
-    // };
 
     let clientID = getCookie("cliID");
     $.ajax({
       type: "get",
-      url: `/FinalProject/api/v1/sales/getClientInfo?cid=${clientID}`,
+      url: `/FinalProject/inner/sales/api/v1/client/${clientID}`,
       contentType: "application/json",
       dataType: "json",
       success: function (res) {
@@ -335,17 +465,38 @@ let profileVM = new Vue({
         console.log("failure");
       },
     });
-    // $.ajax({
-    //   type: "get",
-    //   url: `/FinalProject/api/v1/sales/queryActivity?cid=${clientID}`,
-    //   contentType: "application/json",
-    //   dataType: "json",
-    //   success: function (res) {
-    //     processDefaultClientActivity(res);
-    //   },
-    //   error: function () {
-    //     console.log("failure");
-    //   },
-    // });
+    $.ajax({
+      url: "/FinalProject/inner/sales/api/v1/employee/query/SALES",
+      type: "GET",
+      dataType: "json",
+      success: function (response) {
+        self.inputSearch.employeeAllSales = response;
+      },
+    });
+  },
+  beforeUpdate: function () {
+    if (this.clientForm.showEmployeeName) {
+      autocomplete(
+        document.getElementById("myInput"),
+        this.inputSearch.employeeAllSales
+      );
+    } else {
+      let salesList = this.inputSearch.employeeAllSales;
+      let result = "fail";
+      for (let i = 0; i < salesList.length; i++) {
+        if (
+          this.client.inchargeEmployeeName.toLowerCase() ==
+          salesList[i].fullName.toLowerCase()
+        ) {
+          result = "ok";
+        }
+      }
+
+      if (result == "fail") {
+        this.clientForm.showError = true;
+      } else {
+        this.clientForm.showError = false;
+      }
+    }
   },
 });

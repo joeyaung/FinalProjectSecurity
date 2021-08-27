@@ -13,11 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import tw.com.finalproject.yumyu.Enums.OfficeLocations;
 
 @Entity
 @Data
@@ -51,19 +52,18 @@ public class Employee {
 	private String department;
 	
 	@Column(nullable = false)
-	private OfficeLocations location;
+	private String location;
 	
 	@Column(nullable = false)
 	private int salary;
 	
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "manager_id")
+	@JsonIgnore
 	private Employee manager;
 	
-	@OneToMany(mappedBy = "manager")
-	private Set<Employee> subordinates;
-	
 	@OneToMany(targetEntity = Client.class, mappedBy = "id")
+	@JsonIgnore
 	private Set<Client> clients;
 
 }

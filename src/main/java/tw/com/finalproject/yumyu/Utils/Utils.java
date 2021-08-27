@@ -1,5 +1,6 @@
 package tw.com.finalproject.yumyu.Utils;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,6 +33,15 @@ public class Utils {
 		postCode = addressComponents.get(addressComponents.size() - 1).getAsJsonObject().get("long_name").getAsString();
 
 		return postCode;
+	}
+	
+	public String generateRandomString(int length) {
+		boolean useLetters = true;
+		boolean useNumbers = true;
+		String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
+		System.out.println("Generated Password: " + generatedString);
+
+		return generatedString;
 	}
 
 }

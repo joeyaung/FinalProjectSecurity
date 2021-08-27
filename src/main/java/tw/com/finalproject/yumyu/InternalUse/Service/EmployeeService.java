@@ -1,5 +1,6 @@
 package tw.com.finalproject.yumyu.InternalUse.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -42,7 +43,7 @@ public class EmployeeService implements UserDetailsService {
 			return false;
 		}
 	}
-	
+
 	public Employee findById(long id) {
 		Optional<Employee> findById = employeeRepository.findById(id);
 		if (findById.isEmpty()) {
@@ -57,6 +58,24 @@ public class EmployeeService implements UserDetailsService {
 			return null;
 		}
 		return result.get();
+	}
+
+	public boolean isUsernameExits(String username) {
+		Optional<Employee> result = employeeRepository.findByUsername(username);
+		if (result.isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+
+	public List<Employee> getQueryEmpName(String queryString) {
+		List<Employee> resultList = employeeRepository.findByFullNameContains(queryString);
+		return resultList;
+	}
+
+	public List<Employee> findbyRole(String name) {
+		List<Employee> result = employeeRepository.findByRoles(name);
+		return result;
 	}
 
 }
