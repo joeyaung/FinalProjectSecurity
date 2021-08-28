@@ -9,13 +9,11 @@ response.setHeader("Cache-Control", "no-cache"); // HTTP 1.1
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0
 response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 %>
+
 <html lang="zh-TW">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>預約試駕</title>
@@ -42,17 +40,17 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
       crossorigin="anonymous"
     ></script>
+    
+	<!-- date picker -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"
       integrity="sha512-D7wym1iXOnyjJbX5hKh84TRFqnXTd7Qc0biqMOmoKgTRRZjUznfgM4Fk8Ta7x8Wp3o8HyKLb3A2kgxq1S6/4fA=="
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
       integrity="sha512-Fppbdpv9QhevzDE+UHmdxL4HoW8HantO+rC8oQB2hCofV+dWV2hePnP5SgiWR1Y1vbJeYONZfzQc5iII6sID2Q=="
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous"/>
   </head>
 
   <body id="page-top">
@@ -110,20 +108,32 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
     <section class="about-section text-center bg-gray-custom pd-2rem">
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
+        
+          <div class="col-lg-10 image-holder-custom">
+            <img src="images/17.jpg" alt="">
+            <h3>BOOK A TEST DRIVE</h3>
+          </div>
+        
+        
           <div class="col-lg-10 po-re">
+          
             <div class="row">
               <div class="col-12 po-re">
                 <div>
-                  <form action="findByIdTestdrive" method="post" id="queryOneForm" class="search-book-form-custom">
+                  <form
+                    action="findByIdTestdrive"
+                    method="post" id="search"
+                    class="search-book-form-custom"
+                  >
                     <input
                       class="form-control form-control-sm search-input-custom"
-                      type="text"
+                      type="text" id="search-input"
                       name="findById"
                       placeholder="請輸入表單編號"
                       maxlength="15"
                       aria-label=".form-control-sm example"
                     />
-                    <button type="submit" class="btn btn-primary search-icon-btn-custom">
+                    <button  class="btn btn-primary search-icon-btn-custom">
                       <i class="fas fa-search"></i>
                     </button>
                     <!-- <input type="submit" name="todo" value="查詢" /> -->
@@ -131,26 +141,23 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                 </div>
               </div>
             </div>
+            
             <h2 class="h_bookf">預約賞車/試駕</h2>
             <!-- 	<form action="ControllerServlet" method="post" id="idfSub"> -->
-            <form action="addForm" method="post" id="idfSub">
+            <form action="addForm" method="post" id="addForm">
               <table class="table_bookf">
                 <tbody>
                   <tr>
                     <td><label for="date">賞車日期:</label></td>
                     <td>
                       <div class="form-group">
-                      
-                      <input type="date" name="driveDate" id="date" autofocus
-					required><span id="dateCheck"></span>
-<!--                         <div class="input-group date" id="datetimepicker1"> -->
-<!--                           <input type="text" class="form-control" /> -->
-<!--                           <span class="input-group-addon color-blue"> -->
-<!--                             <span class="glyphicon glyphicon-calendar" -->
-<!--                               ><i class="fas fa-calendar-minus"></i -->
-<!--                             ></span> -->
-<!--                           </span> -->
-<!--                         </div> -->
+                        <div class="input-group date" id="datetimepicker1">
+                          <input type="text" class="form-control" name="driveDate" id="date"/>
+                          <span class="input-group-addon color-blue">
+                            <span class="glyphicon glyphicon-calendar">
+                              <i class="fas fa-calendar-minus"></i></span>
+                          </span>
+                        </div>
                       </div>
                       <span id="dateCheck"></span>
                     </td>
@@ -165,7 +172,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                         id="carmod"
                         required
                       >
-                        <option selected>Open this select menu</option>
+                        
                         <option id="carmoddef" selected disabled>
                           請選擇您想試駕的汽車型號
                         </option>
@@ -257,43 +264,41 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                   </tr>
 
                   <tr>
-                    <td><label for="gend">性別:</label></td>
+                    <td><label>稱謂:</label></td>
                     <td>
                       <div class="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          class="form-check-input pointer-custom"
                           type="radio"
                           name="gendCli"
-                          id="flexRadioDefault1"
+                          id="flexRadio1"
                           value="先生"
                         />
-                        <label class="form-check-label" for="flexRadioDefault1"></label>
+                        <label class="form-check-label pointer-custom" for="flexRadio1">
                           先生
                         </label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          class="form-check-input pointer-customm"
                           type="radio"
                           name="gendCli"
-                          id="flexRadioDefault2"
+                          id="flexRadio2"
                           value="小姐"
-                          checked
                         />
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label pointer-custom" for="flexRadio2">
                           小姐
                         </label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          class="form-check-input pointer-custom"
                           type="radio"
                           name="gendCli"
-                          id="flexRadioDefault3"
+                          id="flexRadio3"
                           value="其他"
-                          checked
                         />
-                        <label class="form-check-label" for="flexRadioDefault3">
+                        <label class="form-check-label pointer-custom" for="flexRadio3">
                           其他
                         </label>
                       </div>
@@ -307,37 +312,37 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                     <td>
                       <div class="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          class="form-check-input pointer-custom"
                           type="checkbox"
                           id="inlineCheckbox1"
                           value="早"
                           name="timCli"
                         />
-                        <label class="form-check-label" for="inlineCheckbox1"
+                        <label class="form-check-label pointer-custom" for="inlineCheckbox1"
                           >早上(8:00-12:00)</label
                         >
                       </div>
                       <div class="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          class="form-check-input pointer-custom"
                           type="checkbox"
                           id="inlineCheckbox2"
                           value="午"
                           name="timCli"
                         />
-                        <label class="form-check-label" for="inlineCheckbox2"
+                        <label class="form-check-label pointer-custom" for="inlineCheckbox2"
                           >下午(13:00-17:00)</label
                         >
                       </div>
                       <div class="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          class="form-check-input pointer-custom"
                           type="checkbox"
                           id="inlineCheckbox3"
                           value="晚"
                           name="timCli"
                         />
-                        <label class="form-check-label" for="inlineCheckbox3"
+                        <label class="form-check-label pointer-custom" for="inlineCheckbox3"
                           >晚上(18:00-22:00)</label
                         >
                       </div>
@@ -348,18 +353,20 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 
                   <tr>
                     <td><label for="mail">E-mail:</label></td>
-                    <td>
+                    <td id="vmmail">
                       <input
                         class="form-control"
                         type="email"
                         aria-label="default input example"
                         name="mailCli"
                         maxlength="35"
-                        id="mail"
-                        placeholder="請輸入電子信箱"
+                        id="mail" 
+                        placeholder="請輸入電子信箱" v-model="vuemail"
                         required
                       />
-                      <span id="mailCheck"></span>
+					  <span id="mailCheck"></span>
+<!--                       <span v-if="vuemail.trim().length==0">please enter email</span> -->
+<!--                       <span v-if="vuemail.trim().length!=0  &&  !vuemail.includes('@')">please enter valid email</span> -->
                     </td>
                   </tr>
 
@@ -386,6 +393,8 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                     <td>
                       <textarea
                         class="form-control"
+                        style="resize: none"
+                        maxlength="200"
                         id="comm"
                         rows="5"
                         cols="30"
@@ -398,12 +407,12 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                   <tr>
                     <td colspan="2">
                       <div class="disclaimer_bookf">
-                        <input type="checkbox" name="ToS" id="ToS" class="ToS" required>
-                        當您點擊"送出"表示您已閱讀、瞭解並同意接受<a href="./PrivacyPolicy" target="_blank" rel="noopener noreferrer">本公司服務條款</a>
-                        之所有內容。您將經由此表單提供您的個人資料給網站，並同意
-                        OO汽車 在遵守本公司<a id="btn_bookf" class="btn_bookf"
-                          >隱私權政策</a
-                        >下，透過您提供的資訊與您聯絡。
+                        <label><input type="checkbox" name="ToS" id="ToS" 
+                        class="form-check-input pointer-custom" required >
+                        當您點擊"送出"表示您已閱讀</label>、瞭解並同意接受<a href="./PrivacyPolicy" target="_blank" 
+                        rel="noopener noreferrer">本公司服務條款</a>
+                        之所有內容。您將經由此表單提供您的個人資料給網站，並同意OO汽車 在遵守本公司<a id="btn_bookf" class="btn_bookf">
+                        隱私權政策</a>下，透過您提供的資訊與您聯絡。
                       </div>
                     </td>
                   </tr>
@@ -413,7 +422,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                 <span class="errmes_bookf" id="subchk"></span>
               </div>
               <div class="div">
-                <button type="submit" class="btn btn-primary wh-40" id="idsubmit">送出</button>
+                <button class="btn btn-primary wh-40" id="submit-btn">送出</button>
                 <input type="button" id="onekey" class="btn btn-secondary wh-40 onekey" value="一鍵輸入">
               </div>
             </form>
@@ -422,12 +431,13 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
         </div>
       </div>
     </section>
+	
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- 	<script src="./js/addTestdriveValidation.js"></script> -->
-	<script src="/FinalProject/js/addTestdriveValidation.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<!--     <script src="./js/addTestdriveValidation.js"></script> -->
+    <script src="/FinalProject/js/addTestdriveValidation.js"></script>
     <!-- 以下不要動 -->
     <!-- Footer-->
     <footer class="footer bg-black small text-center text-white-50">
@@ -439,7 +449,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="./js/template.js"></script>
+    <script src="js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <script src="./js/bookForm.js"></script>
   </body>

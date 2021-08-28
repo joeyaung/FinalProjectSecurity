@@ -68,7 +68,7 @@
               <a class="nav-link" href="#signup">活動</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">精品商城</a>
+              <a class="nav-link" href="/FinalProject/products">精品商城</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#signup">展示中心</a>

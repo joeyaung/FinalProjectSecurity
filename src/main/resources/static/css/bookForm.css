@@ -24,6 +24,36 @@
   right: 0px;
 }
 
+.image-holder-custom{
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.image-holder-custom img{
+	max-width: 100%;
+}
+
+.image-holder-custom h3 {
+/* 	置中 */
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+/*     文字樣式 */
+	font-family: "Bitter-Regular";
+    font-size: 40px;
+    color: #fff;
+    padding: 9px 23px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+
+
+
 .po-re {
   position: relative;
   /* border: 1px solid blue; */
@@ -50,24 +80,42 @@
 }
 
 .color-blue {
-  background-color: #2f3542;
+  background-color: #64A19D;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-}
-
-.color-blue:hover {
   cursor: pointer;
 }
 
+.color-blue:hover {
+  background-color: #558985;
+}
+
+.color-blue:active {
+  background-color: #3c605e;
+}
+/*   background-color: #50817e;
+  blacker: #46706d #3c605e #32504e #28403e*/
+
+
+.pointer-custom{
+  cursor: pointer;
+}
 
 .onekey{
   position: absolute;
   margin-left: 20px;
   width: 20%;
 }
+
+
+.valid-false{
+  border-color: #f9b8b9;
+  box-shadow: 0 0 0 0.25rem rgb(247 149 152 / 25%);	
+}
+/* #f57f81 #f68d8f #f79b9d #f8a9ab #f9b8b9 #fac6c7 */
 
 
 .mgl-0{
@@ -88,7 +136,7 @@
 
 .back {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0px;
   width: 20%;
 }
@@ -99,13 +147,17 @@
 
 .copy-custom{
   display: inline;
-  background-color: #BEBEBE;
   margin-left: 10px;
-  padding: 6px 10px 4px 10px;
+/*   padding: 6px 10px 4px 10px; */
+  padding: 7px 11px 5px 11px;
   border-radius: 8px;
   cursor: pointer;
 }
 
+.copy-custom:active{
+  margin-left: 14px;
+  padding: 5px 9px 3px 9px;
+}
 
 .table_booku thead tr th{
   padding: 0rem 0.5rem;
@@ -113,6 +165,10 @@
 
 .table_bookf tbody tr td{
   padding: 0.4rem 0;
+}
+
+#changedForm > div.row > div > table > tbody > tr {
+	width: 100%;
 }
 
 /* .bor-lef-custom{ */

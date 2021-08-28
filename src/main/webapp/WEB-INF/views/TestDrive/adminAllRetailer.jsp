@@ -1,17 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*, tw.com.finalproject.Testdrive.*"%> --%>
-<%-- <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%> --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
 
+<html>
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-
-  <title>試駕表單總覽</title>
+  
+  <title>服務據點</title>
   
   		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
@@ -79,18 +78,7 @@
 		<!--buttons css-->
 		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 			
-		<!-- date picker -->
-		<script
-      		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"
-      		integrity="sha512-D7wym1iXOnyjJbX5hKh84TRFqnXTd7Qc0biqMOmoKgTRRZjUznfgM4Fk8Ta7x8Wp3o8HyKLb3A2kgxq1S6/4fA=="
-      		crossorigin="anonymous"></script>
-    	<link
-     		rel="stylesheet"
-      		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
-      		integrity="sha512-Fppbdpv9QhevzDE+UHmdxL4HoW8HantO+rC8oQB2hCofV+dWV2hePnP5SgiWR1Y1vbJeYONZfzQc5iII6sID2Q=="
-      		crossorigin="anonymous"/>
-		
-	</head>
+</head>
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -450,41 +438,30 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">試駕表單總覽</h1>
-          <p class="mb-4">試駕表單一覽表</p>
+          <h1 class="h3 mb-2 text-gray-800">服務據點總覽</h1>
+          <p class="mb-4">服務據點一覽表</p>
 
           <!-- Content Row -->
           <div class="row">
             <!-- 以下開始替換成你們的內容
                     可放表格, 圖表, 要填的 form 之類的~ -->
             	<!-- "新增"按鈕 -->
-				<button id="addTestdriveButton" type="submit" class="btn btn-primary">新增試駕表單</button> 
+				<button id="addRetailerButton" type="submit" class="btn btn-primary">新增服務據點</button> 
 				
-<!--[暫時][測試] 	此行刪除(包含) -->
-				    <a class="nav-link" href="/FinalProject/admin/edit/tempRetailer">
-            		<i class="fas fa-car"></i><span>服務據點總覽</span></a>
-<!--[暫時][測試] 	此行刪除(包含) -->
 				<!--Data Table -->
-            	<table id="TestdriveList" class="table table-striped table-bordered nowrap" style="width: 100%">
+            	<table id="RetailerList" class="table table-striped table-bordered nowrap" style="width: 100%">
                     <thead>
                       <tr>
-                        <th>表單編號</th>
-                        <th>試駕日期</th>
-                        <th>試駕車種</th>
-                        <th>試駕地區</th>
-                        <th>試駕據點</th>
-                        <th>業務人員</th>
-                        <th>填表時間</th>
-                        <th>顧客姓名</th>
-                        <th>顧客性別</th>
-                        <th>聯絡時間</th>
+                        <th>據點名稱</th>
                         <th>Email</th>
                         <th>聯絡電話</th>
-                        <th>備註</th>
+                        <th>地址</th>
+                        <th>平日服務時間</th>
+                        <th>假日服務時間</th>
                         <th>操作</th>
                       </tr>
                     </thead>
-                    <tbody id="tbody_showform">
+                    <tbody>
                       
                     </tbody>
                   </table>
@@ -493,140 +470,54 @@
           
           
           
+          
+          
           <!-- "新增表單"的互動視窗 Modal -->
-						<div class="modal fade" tabindex="-1" role="dialog" id="addTestdriveModal">
+						<div class="modal fade" tabindex="-1" role="dialog" id="editRetailerModal">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
-										<h4 class="modal-title">新增試駕表單</h4>
+										<h4 class="modal-title">新增服務據點</h4>
 									</div>
 									<div class="modal-body">
 
 										<form id="form1">
 
 											<table class="box">
-												<tr><td><label for="1date">賞車日期</label></td></tr>
-												<tr>
-													<td><div class="input-group date" id="1datetimepicker">
-                          							  <input type="text" class="form-control" name="driveDate" id="1date"/>
-                          							  <span class="input-group-addon color-blue">
-                            							<span class="glyphicon glyphicon-calendar">
-                              							  <i class="fas fa-calendar-minus"></i></span>
-                          								</span></div><span id="1dateCheck"></span></td></tr>
-												<tr><td><label for="1carmod">試駕車種</label></td></tr>
-												<tr>
-													<td><select
-                        								 class="form-select"
-                        								 aria-label="Default select example"
-                       									 name="carMod" id="1carmod" required>
-                        							 	<option id="1carmoddef" selected disabled>請選擇您想試駕的汽車型號</option>
-                        								<optgroup label="A series">
-                         								 <option>A1</option>
-                         								 <option>A2</option>
-                         								 <option>A3</option>
-                         								 <option>A4</option>
-                         								 <option>A5</option>
-                         								 <option>A6</option>
-                         								 <option>A7</option>
-                         								 <option>A8</option>
-                        							    </optgroup>
-                        							    <optgroup label="Q series">
-                         								 <option>Q2</option>
-                         								 <option>Q3</option>
-                         								 <option>Q5</option>
-                         								 <option>Q7</option>
-                         								 <option>Q8</option>
-                        								</optgroup>
-                      								</select><span id="1carmodCheck"></span></td></tr>
-												<tr><td><label for="1loc">試駕地區</label></td></tr>
-												<tr>
-													<td><select
-													  class="form-select"
-													  aria-label="Default select example"
-													  name="driveLoc" id="1loc" required>
-													  <option id="1locdef" selected disabled>請選擇地區</option>
-													  <option value="台北" id="1opt1">台北</option>
-													  <option value="桃園" id="1opt2">桃園</option>
-													  <option value="台中" id="1opt3">台中</option>
-													  <option value="高雄" id="1opt4">高雄</option>
-													</select><span id="1locCheck"></span></td></tr>
-												<tr><td><label for="1locsit">試駕據點</label></td></tr>
-												<tr>
-													<td><select
-													  class="form-select"
-													  aria-label="Default select example"
-													  name="driveLocSit" id="1locsit">
-													  <option id="1locsitdef" selected disabled>請選擇據點</option>
-													  <option value="內湖" id="1opt11">內湖服務站</option>
-													  <option value="大安" id="1opt12">大安服務站</option>
-													  <option value="中壢" id="1opt21">中壢服務站</option>
-													  <option value="八德" id="1opt22">八德服務站</option>
-													  <option value="大里" id="1opt31">大里服務站</option>
-													  <option value="七期" id="1opt32">七期服務站</option>
-													  <option value="鼓山" id="1opt41">鼓山服務站</option>
-													  <option value="左營" id="1opt42">左營服務站</option>
-													</select><span id="1locsitCheck"></span></td></tr>
-                  
-
-												<tr><td><label for="1name">姓名</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="text" aria-label="default input example"
-                        							  name="nameCli" maxlength="10" id="1name"
-                        							  placeholder="請輸入姓名" required/><span id="1nameCheck"></span></td></tr>
-												<tr><td><label>稱謂</label></tr>
-												<tr>
-													<td><div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio" name="gendCli"
-													  id="1flexRadio1" value="先生"/>
-													  <label class="form-check-label" for="1flexRadio1">先生</label></div>
-													<div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio"name="gendCli" 
-													  id="1flexRadio2" value="小姐"/>
-													  <label class="form-check-label" for="1flexRadio2">小姐</label></div>
-													<div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio" name="gendCli"
-													  id="1flexRadio3" value="其他"/>
-													  <label class="form-check-label" for="1flexRadio3">其他</label></div>
-													  <span id="1gendCheck"></span></td></tr>
-													  
-												<tr><td><label>客戶方便的聯絡時間</label></tr>
-												<tr>
-													<td><div class="form-check form-check-inline">
-                        							  <input class="form-check-input" type="checkbox"
-                          							  id="1inlineCheckbox1" value="早" name="timCli"/>
-                        							  <label class="form-check-label" for="1inlineCheckbox1">
-                      								  早上(8:00-12:00)</label></div>
-                      								  <div class="form-check form-check-inline">
-                      								<input class="form-check-input" type="checkbox"
-                      								  id="1inlineCheckbox2" value="午" name="timCli"/>
-                      								  <label class="form-check-label" for="1inlineCheckbox2">
-                      								  下午(13:00-17:00)</label></div>
-                    								  <div class="form-check form-check-inline">
-                      								<input class="form-check-input" type="checkbox"
-                        							  id="1inlineCheckbox3" value="晚" name="timCli"/>
-                      								  <label class="form-check-label" for="1inlineCheckbox3">
-                      								  晚上(18:00-22:00)</label></div><span id="1contimCheck"></span></td></tr>
-                      							<tr><td><label for="1mail">E-mail</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="email" aria-label="default input example"
-													  name="mailCli" maxlength="35" id="1mail" placeholder="請輸入電子信箱"
-													  required/><span id="1mailCheck"></span></td></tr>
-												<tr><td><label for="1tel">聯絡電話</label></td></tr>
+												<tr><td><label for="1name">據點名稱</label></td></tr>
+												<tr><td><input class="form-control"
+													type="text" aria-label="default input example"
+                        							name="retailerName" maxlength="20" id="1name" size="70"
+                        							placeholder="e.g. 內湖展示中心" required/><span id="1nameCheck"></span></td></tr>
+                        						<tr><td><label for="1tel">聯絡電話</label></td></tr>
 												<tr>
 													<td><input class="form-control" 
 													type="text" aria-label="default input example"
-													name="telCli" maxlength="13" id="1tel"
-													placeholder="請輸入連絡電話" required/><span id="1telCheck"></span></td></tr>
-												<tr><td><label for="1comm">備註</label></td></tr>
-												<tr>
-													<td><textarea class="form-control" style="resize: none" maxlength="200"
-													id="1comm" rows="5" cols="30" name="remark" placeholder="備註200字以內">
-													</textarea><span style="left: auto" id="1submitcheck"></span></td></tr>
+													name="tel" maxlength="20" id="1tel"
+													placeholder="e.g. 02-27939191" required/><span id="1telCheck"></span></td></tr>
+                        						<tr><td><label for="1mail">E-mail</label></td></tr>
+												<tr><td><input class="form-control"
+													  type="email" aria-label="default input example"
+													  name="email" maxlength="40" id="1mail" 
+													  placeholder="e.g. eeit2905@gmail.com" required/><span id="1mailCheck"></span></td></tr>
+                        						<tr><td><label for="1loc">地址</label></td></tr>
+                        						<tr><td><input class="form-control"
+													type="text" aria-label="default input example"
+                        							name="location" maxlength="80" id="1loc"
+                        							placeholder="e.g. 台北市內湖區新湖三路 288 號" required/><span id="1locCheck"></span></td></tr>
+												<tr><td><label for="1workday">平日服務時間</label></td></tr>
+												<tr><td><input class="form-control"
+													type="text" aria-label="default input example"
+                        							name="workday" maxlength="20" id="1workday"
+                        							placeholder="e.g. 09:00 - 21:00" required/><span id="1workdayCheck"></span></td></tr>
+												<tr><td><label for="1weekend">假日服務時間</label></td></tr>
+												<tr><td><input class="form-control"
+													type="text" aria-label="default input example"
+                        							name="weekend" maxlength="20" id="1weekend"
+                        							placeholder="e.g. 10:00 - 20:00" required/><span id="1weekendCheck"></span></td></tr>
 											</table>
 										</form>
 									</div>
@@ -643,150 +534,56 @@
 							<!-- /.modal-dialog -->
 						</div>
 						<!-- /.modal -->
-            
-
-          <!-- "修改表單"的互動視窗 Modal -->
-						<div class="modal fade" tabindex="-1" role="dialog" id="editTestdriveModal">
+          
+          
+          
+                    <!-- "修改表單"的互動視窗 Modal -->
+						<div class="modal fade" tabindex="-1" role="dialog" id="addRetailerModal">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
-										<h4 class="modal-title">修改試駕表單</h4>
+										<h4 class="modal-title">修改服務據點</h4>
 									</div>
 									<div class="modal-body">
 
 										<form id="form2">
 
 											<table class="box">
-												<input type="hidden" id="2formId" name="formId">
-												<input type="hidden" id="2formTime" name="formTime">
-												<tr><td><label id="2showId"></label></td></tr>
-												<tr><td><label for="2date">賞車日期</label></td></tr>
-												<tr>
-													<td><div class="input-group date" id="2datetimepicker">
-                          							  <input type="text" class="form-control" name="driveDate" id="2date"/>
-                          								<span class="input-group-addon color-blue">
-                            							  <span class="glyphicon glyphicon-calendar">
-                              							    <i class="fas fa-calendar-minus"></i></span>
-                          								</span></div><span id="2dateCheck"></span></td></tr>
-												<tr><td><label for="2carmod">試駕車種</label></td></tr>
-												<tr>
-													<td><select
-                        								 class="form-select"
-                        								 aria-label="Default select example"
-                       									 name="carMod" id="2carmod" required>
-                        							 	<option id="2carmoddef" selected disabled>請選擇您想試駕的汽車型號</option>
-                        								<optgroup label="A series">
-                         								 <option>A1</option>
-                         								 <option>A2</option>
-                         								 <option>A3</option>
-                         								 <option>A4</option>
-                         								 <option>A5</option>
-                         								 <option>A6</option>
-                         								 <option>A7</option>
-                         								 <option>A8</option>
-                        							    </optgroup>
-                        							    <optgroup label="Q series">
-                         								 <option>Q2</option>
-                         								 <option>Q3</option>
-                         								 <option>Q5</option>
-                         								 <option>Q7</option>
-                         								 <option>Q8</option>
-                        								</optgroup>
-                      								</select><span id="2carmodCheck"></span></td></tr>
-												<tr><td><label for="2loc">試駕地區</label></td></tr>
-												<tr>
-													<td><select
-													  class="form-select"
-													  aria-label="Default select example"
-													  name="driveLoc" id="2loc" required>
-													  <option id="2locdef" selected disabled>請選擇地區</option>
-													  <option value="台北" id="2opt1">台北</option>
-													  <option value="桃園" id="2opt2">桃園</option>
-													  <option value="台中" id="2opt3">台中</option>
-													  <option value="高雄" id="2opt4">高雄</option>
-													</select><span id="2locCheck"></span></td></tr>
-												<tr><td><label for="2locsit">試駕據點</label></td></tr>
-												<tr>
-													<td><select
-													  class="form-select"
-													  aria-label="Default select example"
-													  name="driveLocSit" id="2locsit">
-													  <option id="2locsitdef" selected disabled>請選擇據點</option>
-													  <option value="內湖" id="2opt11">內湖服務站</option>
-													  <option value="大安" id="2opt12">大安服務站</option>
-													  <option value="中壢" id="2opt21">中壢服務站</option>
-													  <option value="八德" id="2opt22">八德服務站</option>
-													  <option value="大里" id="2opt31">大里服務站</option>
-													  <option value="七期" id="2opt32">七期服務站</option>
-													  <option value="鼓山" id="2opt41">鼓山服務站</option>
-													  <option value="左營" id="2opt42">左營服務站</option>
-													</select><span id="2locsitCheck"></span></td></tr>
-                  
-												<tr><td><label for="2sale">業務人員</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="text" aria-label="default input example"
-													  name="sales" maxlength="10" id="2sale"
-													  required /><span id="2saleCheck"></span></td></tr>
-												<tr><td><label for="2name">姓名</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="text" aria-label="default input example"
-                        							  name="nameCli" maxlength="10" id="2name"
-                        							  placeholder="請輸入姓名" required /><span id="2nameCheck"></span></td></tr>
-												<tr><td><label>稱謂</label></tr>
-												<tr>
-													<td><div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio" name="gendCli"
-													  id="2flexRadio1" value="先生"/>
-													  <label class="form-check-label" for="2flexRadio1">先生</label></div>
-													<div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio"
-													  name="gendCli" id="2flexRadio2" value="小姐" />
-													  <label class="form-check-label" for="2flexRadio2">小姐</label></div>
-													<div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio" name="gendCli"
-													  id="2flexRadio3" value="其他" />
-													  <label class="form-check-label" for="2flexRadio3">其他</label></div>
-													  <span id="2gendCheck"></span></td></tr>
-													  
-												<tr><td><label>客戶方便的聯絡時間</label></tr>
-												<tr>
-													<td id="tdcheckbox"><div class="form-check form-check-inline">
-                        							  <input class="form-check-input" type="checkbox"
-                          							  id="2inlineCheckbox1" value="早" name="timCli"/>
-                        							  <label class="form-check-label" for="2inlineCheckbox1">
-                      								  早上(8:00-12:00)</label></div>
-                      								  <div class="form-check form-check-inline">
-                      								<input class="form-check-input" type="checkbox"
-                      								  id="2inlineCheckbox2" value="午" name="timCli"/>
-                      								  <label class="form-check-label" for="2inlineCheckbox2">
-                      								  下午(13:00-17:00)</label></div>
-                    								  <div class="form-check form-check-inline">
-                      								<input class="form-check-input" type="checkbox"
-                        							  id="2inlineCheckbox3" value="晚" name="timCli"/>
-                      								  <label class="form-check-label" for="2inlineCheckbox3">
-                      								  晚上(18:00-22:00)</label></div><span id="2contimCheck"></span></td></tr>
-                      							<tr><td><label for="2mail">E-mail</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="email" aria-label="default input example"
-													  name="mailCli" maxlength="35" id="2mail" placeholder="請輸入電子信箱"
-													  required/><span id="2mailCheck"></span></td></tr>
-												<tr><td><label for="2tel">聯絡電話</label></td></tr>
-												<tr>
-													<td><input class="form-control"
+											<input type="hidden" id="2retailerId" name="retailerId">
+												<tr><td><label for="2name">據點名稱</label></td></tr>
+												<tr><td><input class="form-control"
 													type="text" aria-label="default input example"
-													name="telCli" maxlength="13" id="2tel"
-													placeholder="請輸入連絡電話" required/><span id="2telCheck"></span></td></tr>
-												<tr><td><label for="2comm">備註</label></td></tr>
+                        							name="retailerName" maxlength="20" size="70"
+                        							placeholder="e.g. 內湖展示中心" id="2name" required/><span id="2nameCheck"></span></td></tr>
+                        						<tr><td><label for="1tel">聯絡電話</label></td></tr>
 												<tr>
-													<td><textarea class="form-control" style="resize: none" maxlength="200"
-													id="2comm" rows="5" cols="30" name="remark" placeholder="備註200字以內">
-													</textarea><span style="left: auto" id="2submitcheck"></td></tr>
+													<td><input class="form-control" 
+													type="text" aria-label="default input example"
+													name="tel" maxlength="20" id="2tel"
+													placeholder="e.g. 02-27939191" required/><span id="2telCheck"></span></td></tr>
+                        						<tr><td><label for="1mail">E-mail</label></td></tr>
+												<tr><td><input class="form-control"
+													  type="email" aria-label="default input example"
+													  name="email" maxlength="40" id="2mail" 
+													  placeholder="e.g. eeit2905@gmail.com" required/><span id="2mailCheck"></span></td></tr>
+                        						<tr><td><label for="1loc">地址</label></td></tr>
+                        						<tr><td><input class="form-control"
+													type="text" aria-label="default input example"
+                        							name="location" maxlength="80" id="2loc"
+                        							placeholder="e.g. 台北市內湖區新湖三路 288 號" required/><span id="2locCheck"></span></td></tr>
+												<tr><td><label for="1workday">平日服務時間</label></td></tr>
+												<tr><td><input class="form-control"
+													type="text" aria-label="default input example"
+                        							name="workday" maxlength="20" id="2workday"
+                        							placeholder="e.g. 09:00 - 21:00" required/><span id="2workdayCheck"></span></td></tr>
+												<tr><td><label for="1weekend">假日服務時間</label></td></tr>
+												<tr><td><input class="form-control"
+													type="text" aria-label="default input example"
+                        							name="weekend" maxlength="20" id="2weekend"
+                        							placeholder="e.g. 10:00 - 20:00" required/><span id="2weekendCheck"></span></td></tr>
 											</table>
 										</form>
 									</div>
@@ -803,13 +600,12 @@
 							<!-- /.modal-dialog -->
 						</div>
 						<!-- /.modal -->
-
-       
-       
-       
-       
-       
-        </div>
+          
+          
+          
+          
+          
+ 		</div>
         <!-- /.container-fluid -->
         <!-- 結束內容 -->
       
@@ -870,53 +666,35 @@
 		});
 		//datatable 
 		function createdatatable() {
-			table = $("#TestdriveList").DataTable({
+			table = $("#RetailerList").DataTable({
 				responsive: true,
 				
 				ajax:{
-					url: "/FinalProject/getAllTestdrive",
+					url: "/FinalProject/getAllRetailer",
 					dataSrc: ""
 				},
 
-				rowId: "formId",
+				rowId: "tel",
 				
 				columns:[					
-					{data: "formId"},
-// 					{
-//                         //這裡的data變數值為sysid，相等於row.sysid
-//                         data: "formId",//資料行繫結屬性
-//                         orderable: false, // 禁用排序
-//                         render: function (data) { 
-//                            //row指的是資料列物件 data變數相等於row.sysid
-//                             return "<input type='button' onclick='editModal(" + data + ")'  value='Edit' />"
-//                                 + "<input type='button' onclick='deleteModal(" + data + ")'  value='Delete' />";
-//                         }
-//                  },
-					{data: "driveDate"},
-					{data: "carMod"},
-					{data: "driveLoc"},
-					{data: "driveLocSit"},
-					{data: "sales"},
-					{data: "formTime"},
-					{data: "nameCli"},
-					{data: "gendCli"},
-					{data: "timCli"},
-					{data: "mailCli"},
-					{data: "telCli"},
-					{data: "remark"},
-					{data: "formId"}
+					{data: "retailerName"},
+					{data: "tel"},
+					{data: "email"},
+					{data: "location"},
+					{data: "workday"},
+					{data: "weekend"},
+					{data: "retailerId"}
 				],
 				
 				
 				columnDefs:[{
-// 					targets: 9,
-					targets: 13,
+					targets: 6,
 					orderable: false, // 禁用排序
 					defaultContent: "",
 					width: "10%",
 					render: function (data) {
 						return '<button id="' + data + '" onclick="editModal(this.id)"  data-dismiss="modal" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>Edit</button>'
-						+ '<button id="' + data + '" onclick="deleteModal(this.id)"  data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>Delete</button>';
+						+ '<button id="' + data + '" onclick="deleteRetailer(this.id)"  data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>Delete</button>';
 					}
 				}],
 
@@ -936,7 +714,7 @@
 						display: $.fn.dataTable.Responsive.display.modal({
 								header: function (row) {
 									var data = row.data();
-									return 'Details for test drive form';
+									return 'Details for Retailer';
 								}
 						}),
 						renderer: $.fn.dataTable.Responsive.renderer.tableAll({
@@ -950,72 +728,100 @@
 				
 			})
 		}
-				
-				
+
+        
 		// "新增"按鈕叫出 Modal
-		$('#addTestdriveButton').click(function (e) {
+		$('#addRetailerButton').click(function (e) {
 			e.preventDefault();
-			$('#addTestdriveModal').modal('show');
+			$('#addRetailerModal').modal('show');
+			$('#addRetailerModal').css('overflow-y', 'auto');
 		})		
 		
-		// 1送出前總檢查 2一鍵輸入  3送出  寫在 adminTestdrive.js裡
 		
-		
-		// "修改"按鈕抓出資料，叫出 Modal
-		function editModal(formId) {
-			$('#form2')[0].reset(); // 修改的model清空
-
-			let fillWithOrigin = function (res) {
-				$("#2showId").html("表單編號    " + res.formId);
-				$("#2formId").val(res.formId);
-				$("#2formTime").val(res.formTime);
-				$("#2date").val(res.driveDate);
-				$("#2carmod").val(res.carMod);
-				$("#2loc").val(res.driveLoc);
-				toLocsit2();
-// 				$("#2loc").val(res.driveLoc).change();
-				$("#2locsit").val(res.driveLocSit);
-				$("#2sale").val(res.sales);
-				$("#2name").val(res.nameCli);
-				$("[name=gendCli]").val([res.gendCli]);
-				$("#tdcheckbox > div > input").each(function() {
-					if(res.timCli.includes(this.value)){
-						$(this).prop("checked",true);
-					}
-				});
-				$("#2mail").val(res.mailCli);
-				$("#2tel").val(res.telCli);
-				$("#2comm").val(res.remark);
+		// 1送出前總檢查 2一鍵輸入  3送出
+// 總檢查!!!!!有問題!!!!!
+		function checkbeforeAdd(){
+			let name1 = $("#1name").val().trim();
+			let tel1 = $("#1tel").val().trim();
+			let mail1 = $("#1mail").val().trim();
+			let loc1 = $("#1loc").val().trim();
+			let workday1 = $("#1workday").val().trim();
+			let weekend1 = $("#1weekend").val().trim();
+			console.log(name1)
+			if (name1 == "" || tel1 == "" || mail1 == "" || loc1 == "" || workday1 == "" || weekend1 == "") {
+				if (name1 == "") {
+					console.log(name1)
+					$("#1nameCheck").html(warning).css('color', 'red');
+					$("#1nameCheck").next().attr("src", "../images/error.png");
+				}
+				if (tel1 == "") {
+					$("#1telCheck").html(warning).css('color', 'red');
+					$("#1telCheck").next().attr("src", "../images/error.png");
+				}
+				if (mail1 == "") {
+					$("#1mailCheck").html(warning).css('color', 'red');
+					$("#1mailCheck").next().attr("src", "../images/error.png");
+				}
+				if (loc1 == "") {
+					$("#1locCheck").html(warning).css('color', 'red');
+					$("#1locCheck").next().attr("src", "../images/error.png");
+				}
+				if (workday1 == "") {
+					$("#1workdayCheck").html(warning).css('color', 'red');
+					$("#1workdayCheck").next().attr("src", "../images/error.png");
+				}
+				if (weekend1 == "") {
+					$("#1weekendCheck").html(warning).css('color', 'red');
+					$("#1weekendCheck").next().attr("src", "../images/error.png");
+				}
+				return false;
+			}else {
+				return true;
 			}
-
-			findById(formId, fillWithOrigin)
-			$('#editTestdriveModal').modal('show');
-			$('#editTestdriveModal').css('overflow-y', 'auto');
-		}			
+		}
 		
-		// 啟用"修改"按鈕前置準備，尋找單筆
-		function findById(formId, fillWithOrigin) {
-			console.log("findbyid:  "+formId)
+		// execute add retailer
+		function addretailer(formData) {
 			$.ajax({
-				url: "/FinalProject/findByIdTestdriveAPI/" + formId,
-				method: "GET",
-				dataType: "json",
-				success: function (res) {
-					console.log("findbyid success")	
-					fillWithOrigin(res)
+				url: "/FinalProject/addRetailer",
+				method: "POST",
+				data: formData,
+				contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+				processData: false, // NEEDED, DON'T OMIT THIS
+				"mimeType": "JSON/form-data",
+				success: function (response) {
+					$("#form1")[0].reset();
+					table.ajax.reload();
 				},
 				error: function (err) {
-					alert(err)
+					console.log(err);
+					alert('insert failed:' + err);
 				}
 			});
-		}		
-				
-		// 1送出前總檢查  2一鍵輸入  3確認修改  寫在 adminTestdrive.js裡
-		
 
-		// "刪除"按鈕按下後執行
-		function deleteModal(formId) {
-			console.log('delete id=' + formId);
+		}
+		
+		$('#1submit').click(function(e){
+			var formData = new FormData(document.getElementById("form1"));
+
+			if (checkbeforeAdd() == true) {
+				addretailer(formData);
+// 				$(".add_span").html('');
+			} else{
+				e.stopPropagation();
+			}
+		});
+
+		
+		
+		
+		
+		
+		
+		
+		//Delete Retailer
+		function deleteRetailer (retailerId) {
+			console.log('delete id=' + retailerId);
 			Swal.fire({
 				title: 'Are you sure?',
 				text: "You won't be able to revert this!",
@@ -1027,33 +833,109 @@
 			}).then((result) => {
 				if (result.isConfirmed) {
 					$.ajax({
-						url: "/FinalProject/deleteByIdTestdriveAPI/" + formId,
+						url: "/FinalProject/deleteByIdRetailerAPI/" + retailerId,
 						method: "POST",
 						dataType: "json",
 						success: function (res) {
-							console.log('delete success');
 							table.ajax.reload();
 						},
 						error: function (err) {
-							alert('delete failed' +err)
+							alert(err)
 						}
 					});
 					Swal.fire(
 						'Deleted!',
-						'The form has been deleted.',
+						'Your file has been deleted.',
 						'success'
 					)
 				}
 			})
 		}
+		
+		
+		
+		
+		// 修改
+		function editModal(retailerId) {
+			$('#form2')[0].reset();
+	console.log(jQuery.type(retailerId))
 
+			let fillWithOrigin = function (res) {
+		console.log(res.retailerId + res.retailerName)
+				$("#2retailerId").val(res.retailerId);
+		console.log(2)
+				$("#2name").val(res.retailerName);
+		console.log(3)
+				$("#2tel").val(res.tel);
+		console.log(4)
+				$("#2mail").val(res.email);
+				$("#2loc").val(res.location);
+				$("#2workday").val(res.workday);
+				$("#2weekend").val(res.weekend);
+			}
+	
+			findById(retailerId, fillWithOrigin)
+			$('#editRetailerModal').modal('show');
+			$('#editRetailerModal').css('overflow-y', 'auto');
+		}
 
+		
+		// 啟用"修改"按鈕前置準備，尋找單筆
+		function findById(retailerId, fillWithOrigin) {
+			console.log("findbyid:  "+retailerId)
+			$.ajax({
+				url: "/FinalProject/findByIdRetailerAPI/" + retailerId,
+				method: "GET",
+				dataType: "json",
+				success: function (res) {
+					console.log("findbyid success")	
+					fillWithOrigin(res)
+				},
+				error: function (err) {
+					alert(err)
+				}
+			});
+		}	
+		
+		// 總檢查
+		function checkAll2(){
+			return true;
+		}
+		
+		// 點"確認修改"前先執行總檢查，再執行送出的Ajax
+		$("#2submit").click(function (e) {			
+//    var formData = new FormData(document.getElementById("form2"));
+    		if (checkAll2() == true) {
+    			editRetailer();
+    		} else
+        		e.stopPropagation();
+		});
 
-			
+		// 確認修改送出
+// 		測試
+		function editRetailer () {
+			var editRetailerFormData = new FormData($('#form2')[0]);
+			console.log('確認修改click')				
+			$.ajax({
+				url: "/FinalProject/updateRetailerAPI",
+				method: "POST",
+				data: editRetailerFormData,
+				contentType: false,
+				processData: false,
+				success: function (res) {
+					console.log('edit success');
+					$("#form2")[0].reset();   // 修改的model清空
+					table.ajax.reload();     // data table刷新
+				},
+				error: function (err) {
+					alert('update failed' + err);
+				}
+			});
+		}
+		
+		
+		
+          
+
 </script>
-<!-- <script src="./js/adminTestdrive.js"></script> -->
-<script src="/FinalProject/js/adminTestdrive.js"></script>
-
-
-
 </html>

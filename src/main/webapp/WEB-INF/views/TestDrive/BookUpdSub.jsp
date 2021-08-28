@@ -11,35 +11,47 @@ response.setHeader("Pragma", "no-cache"); // HTTP 1.0
 response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 %>
 <html lang="zh-TW">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>試駕表單修改</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-  <!-- Font Awesome icons (free version)-->
-  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="css/index.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/bookForm.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"
-    integrity="sha512-D7wym1iXOnyjJbX5hKh84TRFqnXTd7Qc0biqMOmoKgTRRZjUznfgM4Fk8Ta7x8Wp3o8HyKLb3A2kgxq1S6/4fA=="
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
-    integrity="sha512-Fppbdpv9QhevzDE+UHmdxL4HoW8HantO+rC8oQB2hCofV+dWV2hePnP5SgiWR1Y1vbJeYONZfzQc5iII6sID2Q=="
-    crossorigin="anonymous" />
-</head>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Varela+Round"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/bookForm.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"
+      integrity="sha512-D7wym1iXOnyjJbX5hKh84TRFqnXTd7Qc0biqMOmoKgTRRZjUznfgM4Fk8Ta7x8Wp3o8HyKLb3A2kgxq1S6/4fA=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
+      integrity="sha512-Fppbdpv9QhevzDE+UHmdxL4HoW8HantO+rC8oQB2hCofV+dWV2hePnP5SgiWR1Y1vbJeYONZfzQc5iII6sID2Q=="
+      crossorigin="anonymous"
+    />
+  </head>
 
 <body id="page-top">
   <!-- Navigation-->
@@ -84,7 +96,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
   <!-- About -->
 
   <section class="about-section text-center bg-gray-custom pd-2rem">
-    <div class="container px-4 px-lg-5 po-re">
+    <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-lg-10 po-re">
 
@@ -92,8 +104,8 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
           <!-- 	<form action="ControllerServlet" method="post" id="idfSub"> -->
           <form action="updateCarFormConfirm" method="post" id="changedForm">
 
-            <jsp:useBean id="oneTestdrive" class="tw.com.finalproject.Testdrive.Object.Testdrive" scope="session" />
-
+            <jsp:useBean id="oneTestdrive" class="tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment" scope="session" />
+			
             <table class="table_bookf">
               <tbody>
                 <tr>
@@ -101,12 +113,14 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                   <td>
                     <div class="form-group">
                       <div class="input-group date" id="datetimepicker1">
-                        <input type="text" class="form-control" name="driveDate" autofocus
-                          value="${oneTestdrive.driveDate}" id="date" required>
+                        <input type="text" class="form-control" name="driveDate" id="date" autofocus
+                          value="${oneTestdrive.driveDate}" required>
                         <span class="input-group-addon color-blue">
-                          <span class="glyphicon glyphicon-calendar"><i class="fas fa-calendar-minus"></i></span>
-                        </span>
-                      </div>
+                            <span class="glyphicon glyphicon-calendar"
+                              ><i class="fas fa-calendar-minus"></i
+                            ></span>
+                          </span>
+                        </div>
                     </div>
                     <span id="dateCheck"></span>
                   </td>
@@ -290,24 +304,22 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
     </div>
     </div>
   </section>
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./js/editTestdriveValidation.js"></script>
+    <!-- 以下不要動 -->
+    <!-- Footer-->
+    <footer class="footer bg-black small text-center text-white-50">
+      <div class="container px-4 px-lg-5">
+        Copyright &copy; 資策會第五組專題報告 2021
+      </div>
+    </footer>
 
-
-  <!-- 以下不要動 -->
-  <!-- Footer-->
-  <footer class="footer bg-black small text-center text-white-50">
-    <div class="container px-4 px-lg-5">
-      Copyright &copy; 資策會第五組專題報告 2021
-    </div>
-  </footer>
-
-  <!-- Bootstrap core JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Core theme JS-->
-  <script src="js/template.js"></script>
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
-
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/template.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="./js/bookForm.js"></script>
+  </body>
 </html>

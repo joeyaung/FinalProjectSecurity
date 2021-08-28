@@ -93,7 +93,10 @@ response.setContentType("text/html;charset=UTF-8");
             <h1 class="h_bookc">預約成功</h1><br>
             <div class="po-re">
             <h3 class="h_bookc dis-ib-custom">您的試駕表單編號為:<strong id="copied">${formId}</strong></h3>
-            <span class="copy-custom" id="copy" onclick="copyEvent('copied')"><i class="fas fa-clone"></i></span>
+              <span class="input-group-addon color-blue copy-custom" id="copy" onclick="copyEvent('copied')">
+<!--                 <span class="copy-custom" > -->
+                <i class="fas fa-clone"></i></span>
+              </span>
             <h3 class="h_bookc">試駕表單資訊已寄送至您的E-mail信箱，請於信箱中確認</h3>
             <%session.invalidate();%>
             <form action="TestDrive" method="post">

@@ -27,6 +27,9 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/index.css" rel="stylesheet" />
   <link rel="stylesheet" href="./css/bookForm.css" />
+  
+<!-- reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body id="page-top">
@@ -75,7 +78,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-lg-10 po-re">
 
-          <!-- <jsp:useBean id="newTestdrive" class="tw.com.finalproject.Testdrive.Object.Testdrive" scope="session" /> -->
+          <!-- <jsp:useBean id="newTestdrive" class="tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment" scope="session" /> -->
           <h2 class="h_bookd">預約資料如下請確認</h2>
           <table class="table_bookd mgl-0">
 
@@ -139,7 +142,15 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
           <h3 class="h_bookd">請記住此表單編號，以方便您線上查詢或修改</h3>
 
           <div class="div_bookd po-re">
-            <form action=addFormConfirm method="post">
+          <!--    reCAP -->
+            <form action=addFormConfirm method="post" onsubmit="return validateForm();">
+                
+                <!-- reCAP -->
+                
+                <div class="g-recaptcha m-3 row justify-content-center" 
+						data-sitekey="6LcS8eQbAAAAALo4AwumLe4YPm-TdMKHsgTqZiXi"></div>
+				<!-- reCAP -->
+                
                 <input type="hidden" name="formId" value="${newTestdrive.formId}">
                 <input type="hidden" name="driveDate" value="${newTestdrive.driveDate}">
                 <input type="hidden" name="carMod" value="${newTestdrive.carMod}">
@@ -166,6 +177,19 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
       </div>
     </div>
   </section>
+  
+<!-- reCAP -->
+  <script type="text/javascript"> 
+                function validateForm(){
+                	if(grecaptcha.getResponse()){
+                		return true;
+                	} else{
+                		alert("請點擊[我不是機器人]再點擊確認"")
+                		return false;
+                	}
+                }</script>
+<!-- reCAP --> 
+  
 
   <!-- 以下不要動 -->
   <!-- Footer-->

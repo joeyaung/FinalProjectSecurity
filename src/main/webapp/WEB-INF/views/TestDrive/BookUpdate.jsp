@@ -71,7 +71,7 @@
         <div class="col-lg-10 h-max-custom">
           <h2 class="h_booku">試駕表單查詢</h2>
           <div class="bor-lef-custom">
-            <form action="updateCarForm" method="post">
+            <form action="updateTestdrive" method="post">
               <table class="table_booku">
                 <thead>
                   <tr>
@@ -91,7 +91,7 @@
                   </tr>
                 </thead>
                 <tbody id="tbody_showform">
-                  <jsp:useBean id="oneTestdrive" class="tw.com.finalproject.Testdrive.Object.Testdrive"
+                  <jsp:useBean id="oneTestdrive" class="tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment"
                     scope="session" />
                   <c:if test="${empty oneTestdrive.formId}">
                     <tr>

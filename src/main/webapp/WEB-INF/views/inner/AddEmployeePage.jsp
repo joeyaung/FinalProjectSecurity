@@ -110,6 +110,11 @@
 			<li class="nav-item"><a class="nav-link"
 				href="/FinalProject/inner/admin/AllNewsPage"> <i
 					class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
+			
+			<!-- Nav Item - 編輯商品 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/edit/products"> <i
+					class="fas fa-rss-square"></i> <span>編輯商品</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block" />
