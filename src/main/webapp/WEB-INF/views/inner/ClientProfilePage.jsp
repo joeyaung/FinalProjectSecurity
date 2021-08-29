@@ -743,7 +743,35 @@ pageEncoding="UTF-8"%>
                           <div class="row">
                             <div class="col-12">
                               <!-- 紀錄卡片 -->
+                              <!-- Approach -->
                               <div
+                                class="card shadow mb-4"
+                                v-for="(record, index) in client.historyActivity"
+                              >
+                                <div class="card-header py-3">
+                                  <h6 class="m-0 font-weight-bold text-dark">
+                                    {{ record.title }}
+                                  </h6>
+                                </div>
+                                <div class="card-body">
+                                  <p class="text-secondary">
+                                    類別: {{ record.type }}
+                                  </p>
+                                  <p>{{ record.content }}</p>
+
+                                  <div class="col-2 fl-right">
+                                    <div class="content-body text-gray-800">
+                                      {{ record.emp }}
+                                    </div>
+                                  </div>
+                                  <div class="col-4 fl-right">
+                                    <div class="content-body text-gray-800">
+                                      {{ record.date }}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div
                                 class="card mg-2"
                                 v-for="(record, index) in client.historyActivity"
                               >
@@ -786,7 +814,7 @@ pageEncoding="UTF-8"%>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              </div> -->
                               <!-- End 記錄卡片 -->
                             </div>
                           </div>
