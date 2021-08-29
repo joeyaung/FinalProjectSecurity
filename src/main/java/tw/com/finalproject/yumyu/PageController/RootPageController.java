@@ -31,19 +31,19 @@ public class RootPageController {
 	}
 	
 	
-//	TODO
+
 //	Test Drive Page
 	@GetMapping("/TestDrive")
 	public String testDriveViewController() {
 		return "TestDrive/BookForm";
 	}
-	
-//	TODO
-//	News Page
-	@GetMapping("/News")
-	public String newsViewController() {
-		return null;
-	}
-	
+//	
+////	TODO
+////	News Page
+//	@GetMapping("/News")
+//	public String newsViewController() {
+//		return null;
+//	}
+//	
 	
 }

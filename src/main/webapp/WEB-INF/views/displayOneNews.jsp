@@ -17,6 +17,12 @@
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+
+    <!-- Bootstrap 4 message board js-->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -26,6 +32,11 @@
       rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/index.css" rel="stylesheet" />
+
+    <!-- Bootstrap 4 message board css-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <style>
       .news_li {
         color: white;
@@ -46,10 +57,24 @@
       .msg_title {
         color: white;
       }
+
+      nav input {
+				border: 0;
+				background-color: #003C9D;
+				color: #fff;
+				border-radius: 10px;
+				cursor: pointer;
+			}
+
+			nav input:hover {
+				color: #003C9D;
+				background-color: #fff;
+				border: 2px #003C9D solid;
+			}
     </style>
   </head>
 
- <body id="page-top">
+  <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
       <div class="container px-4 px-lg-5">
@@ -72,7 +97,7 @@
               <a class="nav-link" href="#signup">了解車型</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">活動</a>
+              <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#signup">精品商城</a>
@@ -98,23 +123,63 @@
             <p class="text-white-50">
 
             <div id="container">
-              <nav style="margin-top:100px">
-                <button id="secondHalfYear" class="2021070120211231">2021年07-12月</button>
-                <button id="firstHalfYear" class="2021010120210630">2021年01-06月</button>
-                <button id="secondHalfYear2020" class="2020070120201231">2020年07-12月</button>
+              <nav style="margin-top: 100px">
+                <input type="button" id="secondHalfYear" class="2021070120211231"
+                  value="2021年07-12月" style="width: 150px; height: 50px;"> <input type="button"
+                  id="firstHalfYear" class="2021010120210630" value="2021年01-06月"
+                  style="width: 150px; height: 50px;">
+                <input type="button" id="secondHalfYear2020" class="2020070120201231"
+                  value="2020年07-12月" style="width: 150px; height: 50px;">
               </nav>
+
+              </br> </br>
 
               <ul id="user_newslist">
 
               </ul>
+              <!-- message board 留言板功能尚待完成 -->
+              <!-- create message -->
+              <!-- <h3 style="color: white;">發佈留言</h3>
+              <form action="#">
+                <div class="row form-group">
+                  <input type="text" class="form-control" placeholder="標題" />
+                </div>
+                <div class="row form-group">
+                  <textarea rows="3" class="form-control" style="resize: vertical" placeholder="正文"></textarea>
+                </div>
+                <input class="btn btn-primary text-right pull-right" type="submit" value="送出" />
+              </form> -->
 
-              <div class='msg_content'>
-                <div class='msg_title'>使用者留言</div>
-                <div class='message_box' id='messageBox'></div>
-                <div><input id='msg_input' type='text' placeholder='請輸入留言內容'><button id='submit_msg_btn'
-                    onclick='msgBoard()'>提交</button></div>
 
-              </div>
+              <!-- list of messages -->
+              <!-- <h3 style="color: white;">留言列表</h3>
+              <ul class="list-group">
+                <li class="list-group-item">
+
+                  <div class="media">
+
+                    <div class="media-heading">
+                      <h3>title</h3>
+                      <h5>content</h5>
+                    </div>
+
+                    <span>creation time:xxx</span>
+                    <!-- delete message button-->
+                    <!-- <div class="media-right media-middle pull-right">
+                      <form action="#">
+                        <button class="btn btn-danger" type="submit">刪除</button>
+                      </form>
+                    </div> -->
+                        <!-- modify message button-->
+                    <!-- <div class="media-right media-middle pull-right">
+                      <button type="button" class="btn btn-primary editButton" data-toggle="modal">編輯</button>
+                    </div>
+
+                  </div>
+
+                </li>
+              </ul> -->
+
 
             </div>
 
@@ -134,16 +199,11 @@
 
   </body>
   <script>
-
-
     //display details of the selected news
-
     $(document).ready(function () {
-
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const newsId = urlParams.get('newsId');
-
       $.ajax({
         url: "/FinalProject/findNewsById/" + newsId,
         method: "GET",
@@ -163,14 +223,80 @@
         }
       });
 
+//      $.ajax({
+//       url: "/FinalProject/getAllMessage",
+//        method: "GET",
+//        dataType: "json",
+//        success: function(data){
+//          var list = "";
+//          $.each(data, function(index,item){
+//            console.log(item.msg_title);
+//            list += "<li class='list-group-item'><div class='media'><div class='media-heading'><h3>" 
+//              + item.msg_title + "</h3><h5>"
+//                +item.msg_content +
+//                "</h5></div><span>creation time:"
+//                  +item.creation_date+
+//                  "</span> <div class='media-right media-middle pull-right'><form action='#'><button class='btn btn-danger' type='submit'>刪除</button></form></div><div class='media-right media-middle pull-right'><button type='button' class='btn btn-primary editButton' data-toggle='modal'>編輯</button></div></div></li>";
+//          
+//          })
+//           
+//          $(".list-group").html(list);
+//        },
+//          error: function (err) {
+//          alert(err)
+//        }
+//      });
 
+
+      $("#secondHalfYear,#firstHalfYear,#secondHalfYear2020")
+						.click(
+							function () {
+								var res = $(this).attr("class")
+								var start;
+								var end;
+								start = res.substring(0, 8);
+								end = res.substring(8);
+								$
+									.ajax({
+										url: "/FinalProject/sortByUploadDate/"
+											+ start
+											+ "/"
+											+ end,
+										method: "GET",
+										dataType: "json",
+										success: function (data) {
+											var list = "";
+											$
+												.each(
+													data,
+													function (
+														index,
+														item) {
+														list += "<li class='news_li'><img src='data:image/png;base64,"
+															+ item.image + "' width='563' height='350' alt='pic cannot be displayed'/></li><li class='news_li' id='title_li'><strong>"
+															+ item.title
+															+ "</strong></li>"
+															+ "<li class='news_li'>"
+															+ item.subtitle
+															+ "...<a href='News/OneNews?newsId="
+															+ item.newsId
+															+ "'>更多資訊<input id='newsId' type='hidden' value=" + item.newsId + "><i class=‘fas fa-angle-right’></i></a></li></br></br>";
+													});
+											$("#user_newslist")
+												.html(list);
+										},
+										error: function (err) {
+											alert('Cannot find any news uploaded during the period');
+										}
+
+									});
+                });
+
+      
     });
 
-    msgBoard = function () {
-      console.log($("#msg_input").val());
-    }
-
-
   </script>
+
+  </html>
 
   </html>
