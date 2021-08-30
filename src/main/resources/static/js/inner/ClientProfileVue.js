@@ -123,15 +123,15 @@ let profileVM = new Vue({
   el: "#page",
   data: {
     client: {
-      name: "郭台銘",
-      stage: "Test Drive",
-      email: "yumyu@tesla.com",
-      phone: "0954877511",
-      city: "台中市",
-      town: "北區",
-      address: "和平路45號",
-      inchargeEmployeeName: "游聿民",
-      inchargeEmployeeID: "2IOuE2cP",
+      name: "",
+      stage: "",
+      email: "",
+      phone: "",
+      city: "",
+      town: "",
+      address: "",
+      inchargeEmployeeName: "",
+      inchargeEmployeeID: "",
       historyActivity: [
         {
           title: "第一次打給他",

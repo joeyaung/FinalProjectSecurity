@@ -69,9 +69,9 @@ public class InitService {
 		System.out.println("Init Start!");
 
 //		Create default Member		
-		ApplicationUser defaultApplicationUser = ApplicationUser.builder().username("joe120106@gmail.com")
-				.password(passwordEncoder.encode("asd")).roles(MEMBER.name()).city("桃園市").town("大園區")
-				.fullAddress("中正東路438巷15號").zipCode("337").fullName("游聿民").phone("0917922177").build();
+		ApplicationUser defaultApplicationUser = ApplicationUser.builder().username("123@123.com")
+				.password(passwordEncoder.encode("asd")).roles(MEMBER.name()).city("台北市").town("松山區")
+				.fullAddress("寶清街105巷13號").zipCode("105").fullName("王小明").phone("0917922177").build();
 
 		applicationuserService.save(defaultApplicationUser);
 
@@ -94,7 +94,7 @@ public class InitService {
 //		Create default Client Activity
 
 		ClientActivity defaultClientActivity = ClientActivity.builder().client(defaultClient).employee(defaultSales)
-				.title("First time walk in Taipsi showroom").activityType(ClientActivityType.WALK_IN.name())
+				.title("First time walk in Taipei showroom").activityType(ClientActivityType.WALK_IN.name())
 				.content(
 						"Walk in with his family. driving BMW x5, interested in Q5, would prefer discount. might be chossing rental financial method.")
 				.build();
@@ -333,5 +333,10 @@ public class InitService {
 
 		eventService.saveAll(Arrays.asList(defaultEvent1, defaultEvent2, defaultEvent3, defaultEvent4, defaultEvent5));
 
+	}
+
+//	Default Client Data
+	private void createDefaultClientData(int clientNumber, Employee employee) {
+		
 	}
 }
