@@ -65,7 +65,7 @@ public class InternalPageController {
 					OfficeLocations.KAOSHIUNG.name()
 				);
 		request.setAttribute("locations", locations);
-		return "inner/AddEmployeePage";
+		return "inner/admin";
 	}
 
 	@GetMapping("/inner/sales")
@@ -125,6 +125,14 @@ public class InternalPageController {
 		request.setAttribute("empName", employee.getFullName());
 
 		return "inner/SalesAllClientTemplate";
+	}
+	
+	@GetMapping(path = "/inner/admin/addEmployee")
+	public String adminAddEmployeePageController(HttpServletRequest request, Principal principal) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		return "inner/AddEmployeePage";
 	}
 
 }

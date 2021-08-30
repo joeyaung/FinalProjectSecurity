@@ -25,166 +25,140 @@
       rel="stylesheet"
     />
 
+    <!-- Vue.js 2.6.7 -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
+      integrity="sha512-y/+zR8ZRJXvRWVRuhPbjSpGNIv2yG9hePHeWYEb5RPcciLwlyG0ZGd6JsiT9+sFtTON9FrDs+07ZzepwatYX1Q=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Vue-chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
     <!-- Custom styles for this template-->
     <link href="/FinalProject/css/sb-admin-2.min.css" rel="stylesheet" />
-    
+    <link rel="stylesheet" href="/FinalProject/css/adminDashboard.css" />
   </head>
 
   <body id="page-top">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-      <!-- Sidebar -->
-      <ul
-        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
-        <!-- Sidebar - Brand -->
-        <a
-          class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="/FinalProject/inner/admin"
-        >
-          <div class="sidebar-brand-icon">
-            <img src="/FinalProject/images/audi-logo.png" alt="" />
-          </div>
-        </a>
+   <!-- Page Wrapper -->
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="/FinalProject/inner">
+				<div class="sidebar-brand-icon">
+					<img src="/FinalProject/images/audi-logo.png" alt="" />
+				</div>
+			</a>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0" />
 
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="/FinalProject/inner/admin">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a
-          >
-        </li>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link"
+				href="/FinalProject/inner"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider" />
+			<!-- Divider -->
+			<hr class="sidebar-divider" />
 
-        <!-- Heading -->
-        <div class="sidebar-heading">Analytics</div>
+			<!-- Heading -->
+			<div class="sidebar-heading">Analytics</div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
-          >
-            <i class="fas fa-users"></i>
-            <span>Client</span>
-          </a>
-          <div
-            id="collapseTwo"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Clients:</h6>
-              <a class="collapse-item" href="buttons.html">Overview</a>
-              <a class="collapse-item" href="cards.html">Curent Stage</a>
-            </div>
-          </div>
-        </li>
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> <i
+					class="fas fa-users"></i> <span>Client</span>
+			</a>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Clients:</h6>
+						<a class="collapse-item" href="buttons.html">Overview</a> <a
+							class="collapse-item" href="cards.html">Curent Stage</a>
+					</div>
+				</div></li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseUtilities"
-            aria-expanded="true"
-            aria-controls="collapseUtilities"
-          >
-            <i class="fas fa-id-card-alt"></i>
-            <span>Employee</span>
-          </a>
-          <div
-            id="collapseUtilities"
-            class="collapse"
-            aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar"
-          >
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Employee:</h6>
-              <a class="collapse-item" href="utilities-color.html">Overview</a>
-              <a class="collapse-item" href="utilities-border.html">Sales</a>
-            </div>
-          </div>
-        </li>
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities"
+				aria-expanded="true" aria-controls="collapseUtilities">
+					<i class="fas fa-id-card-alt"></i> <span>Employee</span>
+			</a>
+				<div id="collapseUtilities" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Employee:</h6>
+						<a class="collapse-item" href="utilities-color.html">Overview</a>
+						<a class="collapse-item" href="utilities-border.html">Sales</a>
+					</div>
+				</div></li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider" />
+			<!-- Divider -->
+			<hr class="sidebar-divider" />
 
-        <!-- Heading -->
-        <div class="sidebar-heading">FUNCTIONS</div>
+			<!-- Heading -->
+			<div class="sidebar-heading">FUNCTIONS</div>
 
-        <!-- Nav Item - 新增員工 -->
-        <li class="nav-item">
-          <a class="nav-link" href="/FinalProject/inner/admin/addEmployee">
-            <i class="fas fa-user-plus"></i>
-            <span>新增員工</span></a
-          >
-        </li>
+			<!-- Nav Item - 新增員工 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/addEmployee"> <i
+					class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
 
-        <!-- Nav Item - 試駕總覽 -->
-        <li class="nav-item">
-          <a class="nav-link" href="tables.html">
-            <i class="fas fa-car"></i>
-            <span>試駕總覽</span></a
-          >
-        </li>
+			<!-- Nav Item - 試駕總覽 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/admin/edit/testdrive"> <i class="fas fa-car"></i>
+					<span>試駕總覽</span></a></li>
 
-        <!-- Nav Item - 編輯消息 -->
-        <li class="nav-item">
-          <a class="nav-link" href="tables.html">
-            <i class="fas fa-rss-square"></i>
-            <span>編輯消息</span></a
-          >
-        </li>
+			<!-- Nav Item - 編輯消息 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/AllNewsPage"> <i
+					class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
+			
+			<!-- Nav Item - 編輯商品 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/edit/products"> <i
+					class="fas fa-rss-square"></i> <span>編輯商品</span></a></li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block" />
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block" />
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-          <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-      </ul>
-      <!-- End of Sidebar -->
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
+		</ul>
+		<!-- End of Sidebar -->
 
-      <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div id="content">
-          <!-- Topbar -->
-          <nav
-            class="
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Main Content -->
+			<div id="content">
+				<!-- Topbar -->
+				<nav
+					class="
               navbar navbar-expand navbar-light
               bg-white
               topbar
               mb-4
               static-top
               shadow
-            "
-          >
-            <!-- Sidebar Toggle (Topbar) -->
-            <button
-              id="sidebarToggleTop"
-              class="btn btn-link d-md-none rounded-circle mr-3"
-            >
-              <i class="fa fa-bars"></i>
-            </button>
+            ">
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop"
+						class="btn btn-link d-md-none rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
 
-            <!-- Topbar Search -->
-            <form
-              class="
+					<!-- Topbar Search -->
+					<form
+						class="
                 d-none d-sm-inline-block
                 form-inline
                 mr-auto
@@ -192,253 +166,512 @@
                 my-2 my-md-0
                 mw-100
                 navbar-search
-              "
-            >
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control bg-light border-0 small"
-                  placeholder="Search for..."
-                  aria-label="Search"
-                  aria-describedby="basic-addon2"
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+              ">
+						<div class="input-group">
+							<input type="text" class="form-control bg-light border-0 small"
+								placeholder="Search for..." aria-label="Search"
+								aria-describedby="basic-addon2" />
+							<div class="input-group-append">
+								<button class="btn btn-primary" type="button">
+									<i class="fas fa-search fa-sm"></i>
+								</button>
+							</div>
+						</div>
+					</form>
 
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-              <li class="nav-item dropdown no-arrow d-sm-none">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="searchDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="fas fa-search fa-fw"></i>
-                </a>
-                <!-- Dropdown - Messages -->
-                <div
-                  class="
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+						<li class="nav-item dropdown no-arrow d-sm-none"><a
+							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i
+								class="fas fa-search fa-fw"></i>
+						</a> <!-- Dropdown - Messages -->
+							<div
+								class="
                     dropdown-menu dropdown-menu-right
                     p-3
                     shadow
                     animated--grow-in
                   "
-                  aria-labelledby="searchDropdown"
-                >
-                  <form class="form-inline mr-auto w-100 navbar-search">
-                    <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control bg-light border-0 small"
-                        placeholder="Search for..."
-                        aria-label="Search"
-                        aria-describedby="basic-addon2"
-                      />
-                      <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                          <i class="fas fa-search fa-sm"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </li>
+								aria-labelledby="searchDropdown">
+								<form class="form-inline mr-auto w-100 navbar-search">
+									<div class="input-group">
+										<input type="text"
+											class="form-control bg-light border-0 small"
+											placeholder="Search for..." aria-label="Search"
+											aria-describedby="basic-addon2" />
+										<div class="input-group-append">
+											<button class="btn btn-primary" type="button">
+												<i class="fas fa-search fa-sm"></i>
+											</button>
+										</div>
+									</div>
+								</form>
+							</div></li>
 
-              <!-- Nav Item - Alerts -->
-              <li class="nav-item dropdown no-arrow mx-1">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="alertsDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="fas fa-bell fa-fw"></i>
-                  <!-- Counter - Alerts -->
-                  <span class="badge badge-danger badge-counter">3+</span>
-                </a>
-                <!-- Dropdown - Alerts -->
-                <div
-                  class="
+						<!-- Nav Item - Alerts -->
+						<li class="nav-item dropdown no-arrow mx-1"><a
+							class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i
+								class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts --> <span
+								class="badge badge-danger badge-counter">3+</span>
+						</a> <!-- Dropdown - Alerts -->
+							<div
+								class="
                     dropdown-list dropdown-menu dropdown-menu-right
                     shadow
                     animated--grow-in
                   "
-                  aria-labelledby="alertsDropdown"
-                >
-                  <h6 class="dropdown-header">Alerts Center</h6>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle bg-primary">
-                        <i class="fas fa-file-alt text-white"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="small text-gray-500">December 12, 2019</div>
-                      <span class="font-weight-bold"
-                        >A new monthly report is ready to download!</span
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle bg-success">
-                        <i class="fas fa-donate text-white"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="small text-gray-500">December 7, 2019</div>
-                      $290.29 has been deposited into your account!
-                    </div>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle bg-warning">
-                        <i class="fas fa-exclamation-triangle text-white"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="small text-gray-500">December 2, 2019</div>
-                      Spending Alert: We've noticed unusually high spending for
-                      your account.
-                    </div>
-                  </a>
-                  <a
-                    class="dropdown-item text-center small text-gray-500"
-                    href="#"
-                    >Show All Alerts</a
-                  >
-                </div>
-              </li>
+								aria-labelledby="alertsDropdown">
+								<h6 class="dropdown-header">Alerts Center</h6>
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-primary">
+											<i class="fas fa-file-alt text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">December 12, 2019</div>
+										<span class="font-weight-bold">A
+											new monthly report is ready to download!</span>
+									</div>
+								</a> <a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-success">
+											<i class="fas fa-donate text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">December 7, 2019</div>
+										$290.29 has been deposited into your account!
+									</div>
+								</a> <a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-warning">
+											<i class="fas fa-exclamation-triangle text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">December 2, 2019</div>
+										Spending Alert: We've noticed unusually high spending for your
+										account.
+									</div>
+								</a> <a class="dropdown-item text-center small text-gray-500"
+									href="#">Show All Alerts</a>
+							</div></li>
 
-              
-              </li>
+						<div class="topbar-divider d-none d-sm-block"></div>
 
-              <div class="topbar-divider d-none d-sm-block"></div>
-
-              <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="userDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                    >Douglas McGee</span
-                  >
-                  <img
-                    class="img-profile rounded-circle"
-                    src="/FinalProject/images/svg/undraw_profile.svg"
-                  />
-                </a>
-                <!-- Dropdown - User Information -->
-                <div
-                  class="
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <span
+								class="mr-2 d-none d-lg-inline text-gray-600 small">${ empName }</span>
+								<img class="img-profile rounded-circle"
+								src="/FinalProject/images/svg/undraw_profile.svg" />
+						</a> <!-- Dropdown - User Information -->
+							<div
+								class="
                     dropdown-menu dropdown-menu-right
                     shadow
                     animated--grow-in
                   "
-                  aria-labelledby="userDropdown"
-                >
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#logoutModal"
-                  >
-                    <i
-                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
-                    ></i>
-                    Logout
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </nav>
-          <!-- End of Topbar -->
-
+								aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="#"> <i
+									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="#"> <i
+									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Settings
+								</a> <a class="dropdown-item" href="#"> <i
+									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+									Activity Log
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#" data-toggle="modal"
+									data-target="#logoutModal"> <i
+									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Logout
+								</a>
+							</div></li>
+					</ul>
+				</nav>
+				<!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <div class="container-fluid">
+          <div class="container-fluid" id="app">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">這裡放你們的標題~</h1>
-            <p class="mb-4">副標題~</p>
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Admin - Dashboard</h1>
+              <a
+                href="#"
+                class="
+                  d-none d-sm-inline-block
+                  btn btn-sm btn-primary
+                  shadow-sm
+                "
+                ><i class="fas fa-download fa-sm text-white-50"></i> 下載報表</a
+              >
+            </div>
 
             <!-- Content Row -->
             <div class="row">
-              <!-- 以下開始替換成你們的內容
-                    可放表格, 圖表, 要填的 form 之類的~ -->
-              <div class="col-xl-8 col-lg-7">
-                <!-- Area Chart -->
-                <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      Area Chart
-                    </h6>
-                  </div>
+              <!-- 員工數量 Card-->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-secondary shadow h-100 py-2">
                   <div class="card-body">
-                    <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-secondary text-uppercase
+                            mb-1
+                          "
+                        >
+                          員工數量 (總)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                          {{ topCard.totalEmployee }}
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-id-card-alt fa-2x text-gray-300"></i>
+                      </div>
                     </div>
-                    <hr />
-                    Styling for the area chart can be found in the
-                    <code>/js/demo/chart-area-demo.js</code> file.
                   </div>
                 </div>
+              </div>
 
+              <!-- 顧客數量 (總) Card -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-success text-uppercase
+                            mb-1
+                          "
+                        >
+                          顧客數量 (總)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                          {{ topCard.totalClients }}
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <!-- Donut Chart -->
-              <div class="col-xl-4 col-lg-5">
+              <!-- 銷售業績 (商品) Card -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-primary text-uppercase
+                            mb-1
+                          "
+                        >
+                          銷售業績 (商城商品)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                          {{ totalProfitsFormated }}
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 有效顧客數 Card -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-warning text-uppercase
+                            mb-1
+                          "
+                        >
+                          有效顧客數
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                          {{ topCard.efficientClient }}
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-coins fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Row -->
+
+            <div class="row">
+              <!-- Area Chart -->
+              <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3">
+                  <div
+                    class="
+                      card-header
+                      py-3
+                      d-flex
+                      flex-row
+                      align-items-center
+                      justify-content-between
+                    "
+                  >
                     <h6 class="m-0 font-weight-bold text-primary">
-                      Donut Chart
+                      銷售業績(商城)
                     </h6>
                   </div>
                   <!-- Card Body -->
                   <div class="card-body">
-                    <div class="chart-pie pt-4">
-                      <canvas id="myPieChart"></canvas>
+                    <div class="chart-area" id="totalProfitsChartContainer">
+                      <totalProfitChart
+                        :dataFromRoot="totalProfitsChartRowData.data"
+                      >
                     </div>
-                    <hr />
-                    Styling for the donut chart can be found in the
-                    <code>/js/demo/chart-pie-demo.js</code> file.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pie Chart -->
+              <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+                  <div
+                    class="
+                      card-header
+                      py-3
+                      d-flex
+                      flex-row
+                      align-items-center
+                      justify-content-between
+                    "
+                  >
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      顧客階段分布
+                    </h6>
+                    
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                      <clientStageChart
+                        :dataFromRoot="clientStageChartRawData.data"
+                      >
+                    </div>
+                    <div class="mt-4 text-center small">
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-new"></i> New
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-ate"></i> ATE
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-engaged"></i> Engaged
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-test-drive"></i> Test drive
+                      </span>
+                      <br>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-follow-up"></i> Follow up
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-long-term"></i> Long term
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-ordered"></i> Ordered
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-closed-lost"></i> Cloesd lost
+                      </span>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row">
+              <!-- Content Column -->
+              <div class="col-12">
+                <!-- 員工銷售排行 -->
+                <!-- Bar Chart -->
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">車輛銷售</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-bar">
+                      <carsalechart :dataFromRoot="carSalesChartRawData.data">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row">
+              <!-- Content Column -->
+              <div class="col-lg-6 mb-4">
+                <!-- Project Card Example -->
+                <div class="card shadow mb-4">
+                  <div
+                    class="
+                      card-header
+                      py-3
+                      d-flex
+                      flex-row
+                      align-items-center
+                      justify-content-between
+                    "
+                  >
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      業務業績目標 ( 30 /月)
+                    </h6>
+                    <div class="dropdown no-arrow">
+                      <a
+                        class="dropdown-toggle"
+                        href="#"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i
+                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
+                        ></i>
+                      </a>
+                      <div
+                        class="
+                          dropdown-menu dropdown-menu-right
+                          shadow
+                          animated--fade-in
+                        "
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        <div class="dropdown-header">分類:</div>
+                        <a class="dropdown-item" href="#">Top 5</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">TAIPEI</a>
+                        <a class="dropdown-item" href="#">TAOYUAN</a>
+                        <a class="dropdown-item" href="#">TAICHUNG</a>
+                        <a class="dropdown-item" href="#">TAINAN</a>
+                        <a class="dropdown-item" href="#">KAOHSIUNG</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <!-- 業務: 王曉明 -->
+                    <h4 class="small font-weight-bold">
+                      王曉明 <span class="float-right">20%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                      <div
+                        class="progress-bar bg-danger"
+                        role="progressbar"
+                        style="width: 20%"
+                        aria-valuenow="20"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <!-- 業務: 黃大千 -->
+                    <h4 class="small font-weight-bold">
+                      黃大千 <span class="float-right">40%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                      <div
+                        class="progress-bar bg-warning"
+                        role="progressbar"
+                        style="width: 40%"
+                        aria-valuenow="40"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <!-- 業務: 張學友 -->
+                    <h4 class="small font-weight-bold">
+                      張學友 <span class="float-right">60%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                      <div
+                        class="progress-bar bg-info"
+                        role="progressbar"
+                        style="width: 60%"
+                        aria-valuenow="60"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <!-- 業務: 孫中山 -->
+                    <h4 class="small font-weight-bold">
+                      孫中山 <span class="float-right">80%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 80%"
+                        aria-valuenow="80"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <!-- 業務: 劉德華 -->
+                    <h4 class="small font-weight-bold">
+                      劉德華 <span class="float-right">100%</span>
+                    </h4>
+                    <div class="progress mb-4">
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        style="width: 100%"
+                        aria-valuenow="100"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <!-- /.container-fluid -->
-          <!-- 結束內容 -->
         </div>
         <!-- End of Main Content -->
 
@@ -494,7 +727,7 @@
             >
               Cancel
             </button>
-            <a class="btn btn-primary" href="/FinalProject/logout">Logout</a>
+            <a class="btn btn-primary" href="./logout">Logout</a>
           </div>
         </div>
       </div>
@@ -510,12 +743,14 @@
     <!-- Custom scripts for all pages-->
     <script src="/FinalProject/js/sb-admin-2.js"></script>
 
+    <!-- Page level custom scripts -->
     <!-- Page level plugins -->
     <script src="/FinalProject/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
+    <!-- <script src="./js/chart-area-demo.js"></script> -->
+    
     <script src="/FinalProject/js/inner/chart-area-demo.js"></script>
-    <script src="/FinalProject/js/inner/chart-pie-demo.js"></script>
-    <script src="/FinalProject/js/inner/adminTemplate.js"></script>
+    <script src="/FinalProject/js/inner/adminDashboard.js"></script>
   </body>
 </html>
