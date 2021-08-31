@@ -360,22 +360,10 @@
                         可放表格, 圖表, 要填的 form 之類的~ -->
                         
                             <!-- this is datables -->
-                            <table id="eventlist" class="table table-striped table-bordered nowrap" style="width: 100%">
+                            <table id="eventFormList" class="table table-striped table-bordered nowrap" style="width: 100%">
                                 <thead>
                                     <tr>
-                                        <th>表單編號</th>
-                                        <th>表單送出時間</th>
-                                        <th>會員ID</th>
-                                        <th>姓名</th>
-                                        <th>性別</th>
-                                        <th>身分證字號</th>
-                                        <th>聯絡電話</th>
-                                        <th>電子郵件</th>
-                                        <th>地址</th>
-                                        <th>活動編號</th>
-                                        <th>審核狀態</th>                          
                                         <th></th>
-
                                     </tr>
 
                                 </thead>
@@ -386,266 +374,7 @@
 
                         </div>
 
-                        <!-- this is addEvent modal -->
-                        <div class="modal fade" tabindex="-1" role="dialog" id="addEventModal">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title">Add Event</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <form id="form1">
-
-                                            <table class="box">
-                                                <tr>
-                                                    <td>Event Title
-                                                <tr>
-                                                    <td><input class="myitem" id="event_title" type="text"
-                                                            name="event_title" style="width: 500px" maxlength="23">
-                                                        <span id="sp1" style="width: 10px" class="add_span"></span> <img
-                                                            src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>Event Subtitle
-                                                <tr>
-                                                    <td><input class="myitem" id="event_subtitle" type="text"
-                                                            name="event_subtitle" style="width: 500px"><span id="sp2"
-                                                            style="width: 10px" class="add_span"></span> <img src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>Upload Date
-                                                <tr>
-                                                    <td><input class="myitem" id="event_uploaddate" type="date"
-                                                            name="event_uploaddate" /> <span id="sp3"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>Reservation starts from
-                                                <tr>
-                                                    <td><input class="myitem" type="date" id="reserve_start_date"
-                                                            name="reserve_start_date" rows="30" cols="70" />
-                                                        <span id="sp4" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">to
-                                                        <input class="myitem" type="date" id="reserve_end_date"
-                                                            name="reserve_end_date" rows="30" cols="70" />
-                                                        <span id="sp5" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Event date
-                                                <tr>
-                                                    <td><input id="event_date" class="myitem" type="date"
-                                                            name="event_date" /><span id="sp6" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Location
-                                                <tr>
-                                                    <td><input id="location" class="myitem" type="text"
-                                                            name="location" /><span id="sp7" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Attendance limit
-                                                <tr>
-                                                    <td><input id="attend_limit" class="myitem" type="text"
-                                                            name="attend_limit" /><span id="sp8" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Reservation Tally
-                                                <tr>
-                                                    <td><input id="reserved_people" class="myitem" type="text"
-                                                            name="reserved_people" /><span id="sp9" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
-
-
-                                                <tr>
-                                                    <td>Content
-
-                                                <tr>
-                                                    <td><textarea id="event_content" class="myitem" name="event_content"
-                                                            rows="30" cols="70"></textarea><span class="add_span"
-                                                            id="sp10" style="width: 10px;"></span> <img src=""></td>
-
-                                                <tr>
-                                                    <td>Image
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="image">
-                                                            <img id="preview_img" width="200" height="200" />
-
-                                                        </div> <input id="file" type="file" class="myitem"
-                                                            name="file" /> <span class="add_span" id="sp11"
-                                                            style="width: 10px;"></span> <img src="">
-                                                    </td>
-
-
-                                            </table>
-
-                                        </form>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">Close</button>
-                                        <button id="submit" type="button" data-dismiss="modal"
-                                            class="btn btn-primary">Submit</button>
-                                        <button id="shortcut" type="button" class="btn btn-primary">ShortCut</button>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-
-
-
-                        <!-- this is editEvent modal -->
-                        <div class="modal fade" tabindex="-1" role="dialog" id="editEventModal">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title">Edit News</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <form id="edit_form">
-
-                                            <table class="box">
-
-                                                <input type="hidden" id="edit_event_id" name="event_id">
-
-                                                <tr>
-                                                    <td>Event Title
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_title" type="text"
-                                                            name="event_title" style="width: 500px"
-                                                            maxlength="23"><br />
-                                                        <span id="sp1" style="width: 10px" class="add_span"></span> <img
-                                                            src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>Event Subtitle
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_subtitle" type="text"
-                                                            name="event_subtitle" style="width: 500px"><br /> <span
-                                                            id="sp2" style="width: 10px" class="add_span"></span> <img
-                                                            src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>Upload Date
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_uploaddate"
-                                                            type="date" name="event_uploaddate" /> <br /> <span id="sp3"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>Reservation starts from
-                                                <tr>
-                                                    <td><input type="date" class="edit_myitem"
-                                                            id="edit_reserve_start_date" name="reserve_start_date"
-                                                            rows="30" cols="70" />
-                                                        <span id="sp4" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">to
-                                                        <input type="date" class="edit_myitem"
-                                                            id="edit_reserve_end_date" name="reserve_end_date" rows="30"
-                                                            cols="70" /><br />
-                                                        <span id="sp5" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Event date
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_date" type="date"
-                                                            name="event_date" /> <br /> <span id="sp6"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Location
-                                                <tr>
-                                                    <td><input id="edit_location" class="edit_myitem" type="text"
-                                                            name="location" /><br /><span id="sp7" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Attendance limit
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_attend_limit" type="text"
-                                                            name="attend_limit" /> <br /> <span id="sp8"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Reservation Tally
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_reserved_people" type="text"
-                                                            name="reserved_people" /> <br /> <span id="sp9"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-
-
-                                                <tr>
-                                                    <td>Content
-
-                                                <tr>
-                                                    <td><textarea class="edit_myitem" id="edit_event_content"
-                                                            name="event_content" rows="30" cols="70"></textarea> <br />
-                                                        <span id="sp10" style="width: 10px;"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>Image
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="image">
-                                                            <img class="edit_myitem" id="edit_preview_img" width="200"
-                                                                height="200" /><img class="edit_myitem" id="edit_img"
-                                                                width="200" height="200" />
-
-                                                        </div> <input class="edit_myitem" id="edit_file" type="file"
-                                                            name="file" /> <br /><span class="add_span" id="sp11"
-                                                            style="width: 10px;"></span> <img src="">
-                                                    </td>
-
-
-                                            </table>
-                                        </form>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">Close</button>
-                                        <button id="edit_submit" data-dismiss="modal" type="button"
-                                            class="btn btn-primary">Submit</button>
-                                        <button id="shortcut" type="button" class="btn btn-primary">ShortCut</button>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
+                      
                         <!-- /.container-fluid -->
                         <!-- 結束內容 -->
 
@@ -707,66 +436,54 @@
         //datatable 
         function createdatatable() {
 
-            table = $("#eventlist")
+            if (table !== null ) {      
+        $('#eventFormList').DataTable().destroy();
+        mytable = null;
+        $('#eventFormList').empty();
+    }  
+
+            table = $("#eventFormList")
                 .DataTable(
                     {
-                        "responsive": true,
-
                         "ajax": {
                             "dataSrc": "",
-                            "url": "/FinalProject/getAllEvents"
+                            "url": "/FinalProject/getAllEventForm"
                         },
-                        "rowId": "event_id",
-                        "columnDefs": [
-                            {
-                                targets: 11,
-                                render: function (data) {
-                                    if(data==null){
-										return "<img src='../../images/default.jpg' width='400' height='300' alt='pic cannot be displayed'/>"
-									}else
-                                    return "<img src='data:image/png;base64," + data + "' width='400' height='300' alt='pic cannot be displayed'/>"
-                                }
-                            },
-                            {
-                                targets: 12,
-                                data: "event_id",
-                                orderable: false, // 禁用排序
-                                defaultContent: "",
-                                width: "10%",
-                                render: function (data) {
-                                    return '<button id="edit_btn" onclick="editMode('
-                                        + data
-                                        + ')" data-dismiss="modal" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>Edit</button>'
-                                        + '<button id="delete_btn" onclick="deleteEvent(' + data + ')" data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>Delete</button>';
-
-                                }
-                            }],
+                        "rowId": "form_id",
                         "columns": [{
-                            data: "event_id"
+                            data: "form_id",
+                            title: "表單編號"
                         }, {
-                            data: "event_title"
+                            data: "event.event_id",
+                            title: "活動編號"
+
                         }, {
-                            data: "event_subtitle"
+                            data: "applicationUser.id",
+                            title: "會員ID"
                         }, {
-                            data: "event_uploaddate"
+                            data: "creation_time",
+                            title: "表單建立時間"
                         }, {
-                            data: "reserve_start_date"
+                            data: "applicationUser.fullName",
+                            title: "姓名"
                         }, {
-                            data: "reserve_end_date"
+                            data: "gender",
+                            title: "性別"
                         }, {
-                            data: "event_date"
+                            data: "id_number",
+                            title: "身分證字號"
                         }, {
-                            data: "location"
+                            data: "applicationUser.phone",
+                            title: "聯絡電話"
                         }, {
-                            data: "attend_limit"
+                            data: "applicationUser.username",
+                            title:"電子郵件"
                         }, {
-                            data: "reserved_people"
+                            data: "applicationUser.fullAddress",
+                            title:"地址"
                         }, {
-                            data: "event_content"
-                        }, {
-                            data: "event_img"
-                        }, {
-                            data: "event_id"
+                            data: "status",
+                            title:"審核"
                         }
                         ],
 
@@ -776,7 +493,7 @@
                                     .modal({
                                         "header": function (row) {
                                             var data = row.data();
-                                            return 'Details for the event';
+                                            return '表單報名詳細資訊';
                                         }
                                     }),
                                 "renderer": $.fn.dataTable.Responsive.renderer
@@ -789,268 +506,6 @@
                         },
                     })
 
-
-        }
-
-        $("#addEventBtn").click(function (e) {
-
-            previewimg();
-            $('#preview_img').attr('src', '../../images/default.jpg');
-            $("#addEventModal").modal('show');
-
-        })
-
-        //Add Event Autofill 
-        $("#shortcut")
-            .click(
-                function () {
-
-                    var text1 = "永續思維邀您一同落實友善地球理念";
-                    text1 = $("#event_title").val(text1);
-                    var text2 = "展現無比遠見 落實友善地球理念";
-                    text2 = $("#event_subtitle").val(text2);
-                    var text3 = "2021-08-20";
-                    text3 = $("#event_uploaddate").val(text3);
-                    var text4 = "2021-09-01";
-                    text4 = $("#reserve_start_date").val(text4);
-
-                    var text5 = "2021-09-24";
-                    text5 = $("#reserve_end_date").val(text5);
-
-                    var text6 = "2021-10-02";
-                    text6 = $("#event_date").val(text6);
-
-                    var text7 = "高美濕地";
-                    text7 = $("#location").val(text7);
-
-                    var text8 = 70;
-                    text8 = $("#attend_limit").val(text8);
-
-                    var text9 = 65;
-                    text8 = $("#reserved_people").val(text9);
-
-                    var text10 = "Audi集團總裁在一次公開發表中提到：「我堅信快速地應對氣候變遷以及如何妥善利用資源將決定全球環境的未來。這就是身為地球其中一員的BMW在此時此地需要承擔起的責任，並將這些議題做為我們未來經營策略的核心。這個全新經營理念將落實於每一個環節中，從管理、採購到開發和生產，進而延伸到銷售。Audi正將永續經營提升到更高的層次。」正因如此，Audi秉持對於環境永續的思量，將永續發展的理念深植於品牌核心價值，透過全盤性的思考與決策，無時無刻搶先一步思考對於整體環境及社會的影響。";
-                     text10 = $("#event_content").val(text10);
-
-
-                })
-
-        //Add Event function
-        $("#submit").click(function (e) {
-
-            var formData = new FormData(document.getElementById("form1"));
-
-            if (checkinputblank() == true) {
-                addevent(formData);
-
-                $(".add_span").html('');
-                $(".add_span").next().attr("src", "");
-
-            } else {
-                e.stopPropagation();
-            }
-
-        });
-
-        // execute add event
-        function addevent(formData) {
-            $.ajax({
-                url: "/FinalProject/addEvent",
-                method: "POST",
-                data: formData,
-                contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-                processData: false, // NEEDED, DON'T OMIT THIS
-                "mimeType": "multipart/form-data",
-                success: function (response) {
-                    $("#form1")[0].reset();
-                    $('#preview_img').attr('src', '../../images/default.jpg');
-                    table.ajax.reload();
-                },
-                error: function (err) {
-                    console.log(err);
-                    alert('insert failed:' + err);
-                }
-            });
-
-        }
-
-
-        //check if add event form has blank field
-        function checkinputblank() {
-            var warning = "This field is required."
-            var blank_field = 0
-            $(".myitem").each(function () {
-                if ($(this).val() == '') {
-                    $(this).next("span").html(warning).css('color', 'red');
-                    $(this).next().next().attr('src', '../../images/error.png');
-                    blank_field += 1;
-
-                } else {
-                    $(this).next("span").html('');
-                    $(this).next().next().attr('src', '');
-                    $(this).next().next().attr('src', '../../images/greencheck.jpg');
-                }
-            });
-
-            if (blank_field > 0) {
-                console.log(blank_field);
-                return false
-            } else
-            console.log(blank_field + 'true');
-                return true;
-        }
-
-
-
-        //call edit news modal and fill in the blank
-        function editMode(event_id) {
-            edit_previewimg();
-
-            let aftersuccess = function (res) {
-                $("#edit_event_id").val(res.event_id);
-                $("#edit_event_title").val(res.event_title);
-                $("#edit_event_subtitle").val(res.event_subtitle);
-                $("#edit_event_uploaddate").val(res.event_uploaddate);
-                $("#edit_reserve_start_date").val(res.reserve_start_date);
-                $("#edit_reserve_end_date").val(res.reserve_end_date);
-                $("#edit_event_date").val(res.event_date);
-                $("#edit_location").val(res.location);
-                $("#edit_attend_limit").val(res.attend_limit);
-                $("#edit_reserved_people").val(res.reserved_people);
-                $("#edit_event_content").val(res.event_content);
-
-                if(res.base64Image ==''){
-					$("#edit_preview_img").attr("src",
-					'../../images/default.jpg');
-					$("#edit_img").attr("src",
-					'../../images/default.jpg');
-				}else{
-
-                    $("#edit_preview_img").attr("src",
-                        'data:image/png;base64,' + res.base64Image);
-                    $("#edit_img").attr("src",
-                        'data:image/png;base64,' + res.base64Image);
-                }
-                $("#edit_file").val(res.file);
-            }
-
-            findById(event_id, aftersuccess)
-            $('#editEventModal').modal('show');
-            $('#editEventModal').css('overflow-y', 'auto');
-
-        }
-
-        // Update Event Function
-        $("#edit_submit").click(
-            function () {
-
-                var editEventFormData = new FormData(document
-                    .getElementById("edit_form"));
-
-                editEvent(editEventFormData)
-
-            })
-
-        // Execute update event
-        function editEvent(editEventFormData) {
-
-            $.ajax({
-                url: "/FinalProject/updateEvent",
-                method: "POST",
-                data: editEventFormData,
-                contentType: false,
-                processData: false,
-                success: function (res) {
-                    $("#edit_form")[0].reset();
-                    $('#edit_img').attr('src', '');
-                    table.ajax.reload();
-                },
-                error: function (err) {
-                    alert('update failed' + err);
-                }
-            });
-
-        }
-
-        //preview image for edit news modal
-        function edit_previewimg(event) {
-
-            $("#edit_file").change(function () {
-                if (this.files && this.files[0]) {
-                    let reader = new FileReader();
-                    reader.readAsDataURL(this.files[0]);
-                    reader.onload = function (e) {
-                        $('#edit_img').attr('src', e.target.result);
-                    }
-                }
-            });
-
-        }
-
-        function findById(event_id, aftersuccess) {
-
-            $.ajax({
-                url: "/FinalProject/findEventById/" + event_id,
-                method: "GET",
-                dataType: "json",
-                success: function (res) {
-                    aftersuccess(res)
-
-                },
-                error: function (err) {
-                    alert(err)
-                }
-            });
-
-        }
-
-
-        //Delete Event
-        function deleteEvent(event_id) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "/FinalProject/deleteEventById/" + event_id,
-                        method: "POST",
-                        dataType: "json",
-                        success: function (res) {
-
-                            table.ajax.reload();
-                        },
-                        error: function (err) {
-                            alert(err)
-                        }
-                    });
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                }
-            })
-        }
-
-        //Preview image for add event function
-
-        function previewimg() {
-
-            $("#file").change(function () {
-                if (this.files && this.files[0]) {
-                    let reader = new FileReader();
-                    reader.readAsDataURL(this.files[0]);
-                    reader.onload = function (e) {
-                        $('#preview_img').attr('src', e.target.result);
-                    }
-                }
-            });
 
         }
 

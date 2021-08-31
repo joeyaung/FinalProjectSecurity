@@ -1,4 +1,4 @@
-package tw.com.finalproject.shellyYang.Event.Repositoty;
+package tw.com.finalproject.shellyYang.Event.Repository;
 
 import java.util.List;
 

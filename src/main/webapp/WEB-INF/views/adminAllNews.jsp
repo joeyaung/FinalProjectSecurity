@@ -154,6 +154,10 @@
 				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i
 							class="fas fa-rss-square"></i> <span>編輯活動</span></a></li>
 
+				<!-- Nav Item - 活動表單 -->
+				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
+					class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
+
 				<!-- Divider -->
 				<hr class="sidebar-divider d-none d-md-block" />
 

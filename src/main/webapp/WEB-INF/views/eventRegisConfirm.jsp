@@ -100,7 +100,7 @@
           </div>
           
           
-            <input class="btn btn-primary" type="button" value="確認送出">
+            <input class="btn btn-primary" id='submitId' type="button" value="確認送出">
             <button type="button" id='edit_btn' class="btn btn-secondary">編輯資料</button>
          
   
@@ -157,8 +157,6 @@
                         + "<td><textarea class='form-control' id='message' rows='5' cols='30' name='message' placeholder='備註200字以內' style='height: 88px;'>" + formData.message + "</textarea></td></tr></tbody></table>";
                         
                         $('#container').empty().append(content);
-
-                        // $('#container').css('margin','auto').css('text-align','center')
                          $('#tbody').css('margin','auto').css('text-align','center');
                         
                         $("td").css('padding-bottom', '1em');
@@ -176,6 +174,24 @@
         });
        
       }
+
+      $("#submitId").click(function(){
+        $.ajax({
+          url:"/FinalProject/addEventForm",
+          method:"POST",
+          success: function(data){
+            if(data != undefined){
+              alert(data);
+            }
+
+
+        },
+        error: function(err){
+          alert(err);
+        }
+      });
+      });
+
 
      
     });
