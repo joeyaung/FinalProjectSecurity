@@ -168,7 +168,7 @@
           </tr>
 
           <tr>
-            <td><label for="email">Email:</label></td>
+            <td><label for="email">電子信箱:</label></td>
             <td>
               <input class="form-control" type="email" aria-label="default input example" name="email" maxlength="35"
                 id="email" placeholder="請輸入電子信箱" required />
@@ -248,8 +248,6 @@
           object[key] = value;
         });
         var json = JSON.stringify(object);
-
-        // console.log(formData)
         localStorage.setItem('formData', json);
         window.location.href = "BookEventConfirmation";
 
@@ -360,17 +358,15 @@
         .click(
           function () {
 
-            var text1 = "王美麗";
+            var text1 = "王小明";
             text1 = $("#name").val(text1);
-            $('input[name="gender"]')[1].checked = true;
+            $('input[name="gender"]')[0].checked = true;
             var text3 = "B223789765";
             text3 = $("#idnumber").val(text3);
-            var text4 = "0989876567";
+            var text4 = "0917922177";
             text4 = $("#phone").val(text4);
-
-            var text5 = "Prettywang@yahoo.com";
+            var text5 = "eeit2905@gmail.com";
             text5 = $("#email").val(text5);
-
             var text6 = "我會帶小孩一起去";
             text6 = $("#message").val(text6);
           })

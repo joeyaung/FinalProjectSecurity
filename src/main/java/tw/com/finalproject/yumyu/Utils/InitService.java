@@ -69,7 +69,7 @@ public class InitService {
 		System.out.println("Init Start!");
 
 //		Create default Member		
-		ApplicationUser defaultApplicationUser = ApplicationUser.builder().username("123@123.com")
+		ApplicationUser defaultApplicationUser = ApplicationUser.builder().username("eeit2905@gmail.com")
 				.password(passwordEncoder.encode("asd")).roles(MEMBER.name()).city("台北市").town("松山區")
 				.fullAddress("寶清街105巷13號").zipCode("105").fullName("王小明").phone("0917922177").build();
 

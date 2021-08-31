@@ -9,7 +9,7 @@
 		<meta name="description" content="" />
 		<meta name="author" content="" />
 
-		<title>編輯最新消息 Latest News Dashboard</title>
+		<title>編輯最新消息</title>
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
@@ -318,8 +318,8 @@
 					<!-- Begin Page Content -->
 					<div class="container-fluid">
 						<!-- Page Heading -->
-						<h1 class="h3 mb-2 text-gray-800">編輯最新消息 Latest News Dashboard</h1>
-						<p class="mb-4">最新消息編輯 Modify Latest News</p>
+						<h1 class="h3 mb-2 text-gray-800">編輯最新消息</h1>
+						<p class="mb-4">最新消息編輯</p>
 
 						<!-- Content Row -->
 						<div class="row">
@@ -332,13 +332,13 @@
 							<table id="newslist" class="table table-striped table-bordered nowrap" style="width: 100%">
 								<thead>
 									<tr>
-										<th>NewsId</th>
-										<th>Title</th>
-										<th>Subtitle</th>
-										<th>UploadDate</th>
-										<th>Content</th>
-										<th>Remarks</th>
-										<th>Image</th>
+										<th>新聞編號</th>
+										<th>標題</th>
+										<th>副標題</th>
+										<th>上傳日期</th>
+										<th>內文</th>
+										<th>備註</th>
+										<th>圖片</th>
 										<th></th>
 
 									</tr>
@@ -359,7 +359,7 @@
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
-										<h4 class="modal-title">Add News</h4>
+										<h4 class="modal-title">新增消息</h4>
 									</div>
 									<div class="modal-body">
 
@@ -367,7 +367,7 @@
 
 											<table class="box">
 												<tr>
-													<td>Title
+													<td>標題
 												<tr>
 													<td><input class="myitem" id="title" type="text" name="title"
 															value="${news.title}" style="width: 500px"><br />
@@ -375,28 +375,28 @@
 														<img src="">
 													</td>
 												<tr>
-													<td>Subtitle
+													<td>副標題
 												<tr>
 													<td><input class="myitem" id="subtitle" type="text" name="subtitle"
 															value="${news.subtitle}" style="width: 500px"><br /> <span
 															id="sp2" style="width: 10px" class="add_span"></span> <img
 															src=""></td>
 												<tr>
-													<td>Upload Date
+													<td>
 												<tr>
 													<td><input class="myitem" id="uploaddate" type="date"
 															name="uploadDate" value="${news.uploadDate}" /> <br /> <span
 															id="sp3" style="width: 10px;" class="add_span"></span> <img
 															src=""></td>
 												<tr>
-													<td>Content
+													<td>內文
 												<tr>
 													<td><textarea class="myitem" id="add_content" rows="30"
 															cols="70"></textarea> <br /> <span id="sp4"
 															style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												<tr>
-													<td>Image
+													<td>圖片
 												<tr>
 													<td>
 														<div class="image">
@@ -408,7 +408,7 @@
 															src="">
 													</td>
 												<tr>
-													<td>Remarks
+													<td>備註
 												<tr>
 													<td><input id="remarks" name="remarks" value="${news.remarks}"
 															style="width: 500px"></td>
@@ -420,10 +420,10 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
+											data-dismiss="modal">關閉</button>
 										<button id="submit" type="button" data-dismiss="modal"
-											class="btn btn-primary">Submit</button>
-										<button id="shortcut" type="button" class="btn btn-primary">ShortCut</button>
+											class="btn btn-primary">送出</button>
+										<button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
 									</div>
 
 								</div>
@@ -443,7 +443,7 @@
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
-										<h4 class="modal-title">Edit News</h4>
+										<h4 class="modal-title">編輯消息</h4>
 									</div>
 									<div class="modal-body">
 
@@ -454,33 +454,33 @@
 												<input type="hidden" id="edit_newsId" name="newsId">
 
 												<tr>
-													<td>Title
+													<td>標題
 												<tr>
 
 													<td><input class="myitem" id="edit_title" type="text" name="title"
 															style="width: 500px"><br /> <span id="sp1"
 															style="width: 10px"></span> <img src=""></td>
 												<tr>
-													<td>Subtitle
+													<td>副標題
 												<tr>
 													<td><input class="myitem" id="edit_subtitle" type="text"
 															name="subtitle" style="width: 500px"><br />
 														<span id="sp2" style="width: 10px"></span> <img src="">
 													</td>
 												<tr>
-													<td>Upload Date
+													<td>上傳日期
 												<tr>
 													<td><input class="myitem" id="edit_uploaddate" type="date"
 															name="uploadDate" /> <br /> <span id="sp3"
 															style="width: 10px;"></span> <img src=""></td>
 												<tr>
-													<td>Content
+													<td>內文
 												<tr>
 													<td><textarea class="myitem" id="edit_content"
 															rows="30" cols="70"></textarea> <br /> <span id="sp4"
 															style="width: 10px;"></span> <img src=""></td>
 												<tr>
-													<td>Image
+													<td>圖片
 												<tr>
 													<td>
 														<div class="image">
@@ -492,7 +492,7 @@
 															id="sp5" style="width: 10px;"></span> <img src="">
 													</td>
 												<tr>
-													<td>Remarks
+													<td>
 												<tr>
 													<td><input id="edit_remarks" name="remarks" value="${news.remarks}"
 															style="width: 500px"></td>
@@ -503,10 +503,10 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
+											data-dismiss="modal">關閉</button>
 										<button id="edit_submit" data-dismiss="modal" type="button"
-											class="btn btn-primary">Submit</button>
-										<button id="shortcut" type="button" class="btn btn-primary">ShortCut</button>
+											class="btn btn-primary">送出</button>
+										<button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
 									</div>
 
 								</div>
@@ -632,7 +632,7 @@
 									.modal({
 										"header": function (row) {
 											var data = row.data();
-											return 'Details for the news';
+											return '最新消息詳細資訊';
 										}
 									}),
 								"renderer": $.fn.dataTable.Responsive.renderer
@@ -772,7 +772,7 @@
 					text1 = $("#title").val(text1);
 					var text2 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定";
 					text2 = $("#subtitle").val(text2);
-					var text3 = "2021-03-09";
+					var text3 = "2021-08-09";
 					text3 = $("#uploaddate").val(text3);
 					var text4 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定。凡於活動期間內預約回廠健檢，即可享有免費全車系安全檢查，包括引擎、輪胎、底盤、煞車系統、燈光系統等檢測項目，車輛相關維修及保養另可享 Audi 原廠零件 88 折、輪胎兩條 85 折四條 8 折、風箱清洗優惠價 NT$ 2,288 元 、電瓶以及雨刷片 7 折、原廠配件與精品 85 折等專屬優惠。單次消費金額滿 NT$ 11,888 以上即贈送好禮一份 (數量有限，送完為止)。此外，凡於活動期間加入 Audi 點點入心禮活動並完成「免費行車安全檢查」之所有車主，將可獲得 2021 精緻筆記本。";
 					
@@ -929,15 +929,14 @@
 		}
 		//Delete News
 		function deleteNews(newsId) {
-			console.log('delete id=' + newsId);
 			Swal.fire({
-				title: 'Are you sure?',
-				text: "You won't be able to revert this!",
+				title: '確定刪除此筆資料?',
+				text: "刪除後將無法復原！",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes, delete it!'
+				confirmButtonText: '確認，刪除此筆資料！'
 			}).then((result) => {
 				if (result.isConfirmed) {
 					$.ajax({
@@ -953,9 +952,9 @@
 						}
 					});
 					Swal.fire(
-						'Deleted!',
-						'Your file has been deleted.',
-						'success'
+							 '刪除成功!',
+		                        '此筆資料已成功刪除',
+		                        '成功'
 					)
 				}
 			})

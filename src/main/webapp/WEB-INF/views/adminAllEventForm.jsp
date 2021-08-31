@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <!DOCTYPE html>
-    <html lang="zh-TW">
-
-    <head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="zh-TW">
+ <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
 
-        <title>編輯活動列表</title>
+        <title>活動報名列表</title>
 
         <!-- Bootstrap core JavaScript-->
         <script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
@@ -351,31 +351,29 @@
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">編輯活動</h1>
-                        <p class="mb-4">活動編輯</p>
+                        <h1 class="h3 mb-2 text-gray-800">活動報名表單管理</h1>
+                        <p class="mb-4">活動表單編輯</p>
 
                         <!-- Content Row -->
                         <div class="row">
                             <!-- 以下開始替換成你們的內容
                         可放表格, 圖表, 要填的 form 之類的~ -->
-                            <!-- this is button -->
-                            <button id="addEventBtn" type="submit" class="btn btn-primary">新增活動</button>
+                        
                             <!-- this is datables -->
                             <table id="eventlist" class="table table-striped table-bordered nowrap" style="width: 100%">
                                 <thead>
                                     <tr>
-                                        <th>編號</th>
-                                        <th>標題</th>
-                                        <th>副標題</th>
-                                        <th>上傳日期</th>
-                                        <th>報名開始</th>
-                                        <th>報名截止</th>
-                                        <th>活動日期</th>
-                                        <th>地點</th>
-                                        <th>人數上限</th>
-                                        <th>已報名人數</th>
-                                        <th>內容</th>
-                                        <th>圖片</th>
+                                        <th>表單編號</th>
+                                        <th>表單送出時間</th>
+                                        <th>會員ID</th>
+                                        <th>姓名</th>
+                                        <th>性別</th>
+                                        <th>身分證字號</th>
+                                        <th>聯絡電話</th>
+                                        <th>電子郵件</th>
+                                        <th>地址</th>
+                                        <th>活動編號</th>
+                                        <th>審核狀態</th>                          
                                         <th></th>
 
                                     </tr>
@@ -396,7 +394,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <h4 class="modal-title">新增活動</h4>
+                                        <h4 class="modal-title">Add Event</h4>
                                     </div>
                                     <div class="modal-body">
 
@@ -404,7 +402,7 @@
 
                                             <table class="box">
                                                 <tr>
-                                                    <td>標題
+                                                    <td>Event Title
                                                 <tr>
                                                     <td><input class="myitem" id="event_title" type="text"
                                                             name="event_title" style="width: 500px" maxlength="23">
@@ -412,21 +410,21 @@
                                                             src="">
                                                     </td>
                                                 <tr>
-                                                    <td>副標題
+                                                    <td>Event Subtitle
                                                 <tr>
                                                     <td><input class="myitem" id="event_subtitle" type="text"
                                                             name="event_subtitle" style="width: 500px"><span id="sp2"
                                                             style="width: 10px" class="add_span"></span> <img src="">
                                                     </td>
                                                 <tr>
-                                                    <td>上傳日期
+                                                    <td>Upload Date
                                                 <tr>
                                                     <td><input class="myitem" id="event_uploaddate" type="date"
                                                             name="event_uploaddate" /> <span id="sp3"
                                                             style="width: 10px;" class="add_span"></span> <img src="">
                                                     </td>
                                                 <tr>
-                                                    <td>報名期間
+                                                    <td>Reservation starts from
                                                 <tr>
                                                     <td><input class="myitem" type="date" id="reserve_start_date"
                                                             name="reserve_start_date" rows="30" cols="70" />
@@ -439,7 +437,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>活動日期
+                                                    <td>Event date
                                                 <tr>
                                                     <td><input id="event_date" class="myitem" type="date"
                                                             name="event_date" /><span id="sp6" style="width: 10px;"
@@ -447,7 +445,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>地點
+                                                    <td>Location
                                                 <tr>
                                                     <td><input id="location" class="myitem" type="text"
                                                             name="location" /><span id="sp7" style="width: 10px;"
@@ -455,7 +453,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>人數上限
+                                                    <td>Attendance limit
                                                 <tr>
                                                     <td><input id="attend_limit" class="myitem" type="text"
                                                             name="attend_limit" /><span id="sp8" style="width: 10px;"
@@ -463,7 +461,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>已報名人數
+                                                    <td>Reservation Tally
                                                 <tr>
                                                     <td><input id="reserved_people" class="myitem" type="text"
                                                             name="reserved_people" /><span id="sp9" style="width: 10px;"
@@ -472,7 +470,7 @@
 
 
                                                 <tr>
-                                                    <td>內容
+                                                    <td>Content
 
                                                 <tr>
                                                     <td><textarea id="event_content" class="myitem" name="event_content"
@@ -480,7 +478,7 @@
                                                             id="sp10" style="width: 10px;"></span> <img src=""></td>
 
                                                 <tr>
-                                                    <td>圖片
+                                                    <td>Image
 
                                                 <tr>
                                                     <td>
@@ -500,10 +498,10 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">關閉</button>
+                                            data-dismiss="modal">Close</button>
                                         <button id="submit" type="button" data-dismiss="modal"
-                                            class="btn btn-primary">送出</button>
-                                        <button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
+                                            class="btn btn-primary">Submit</button>
+                                        <button id="shortcut" type="button" class="btn btn-primary">ShortCut</button>
                                     </div>
 
                                 </div>
@@ -523,7 +521,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <h4 class="modal-title">編輯活動</h4>
+                                        <h4 class="modal-title">Edit News</h4>
                                     </div>
                                     <div class="modal-body">
 
@@ -534,7 +532,7 @@
                                                 <input type="hidden" id="edit_event_id" name="event_id">
 
                                                 <tr>
-                                                    <td>標題
+                                                    <td>Event Title
                                                 <tr>
                                                     <td><input class="edit_myitem" id="edit_event_title" type="text"
                                                             name="event_title" style="width: 500px"
@@ -543,7 +541,7 @@
                                                             src="">
                                                     </td>
                                                 <tr>
-                                                    <td>副標題
+                                                    <td>Event Subtitle
                                                 <tr>
                                                     <td><input class="edit_myitem" id="edit_event_subtitle" type="text"
                                                             name="event_subtitle" style="width: 500px"><br /> <span
@@ -551,14 +549,14 @@
                                                             src="">
                                                     </td>
                                                 <tr>
-                                                    <td>上傳日期
+                                                    <td>Upload Date
                                                 <tr>
                                                     <td><input class="edit_myitem" id="edit_event_uploaddate"
                                                             type="date" name="event_uploaddate" /> <br /> <span id="sp3"
                                                             style="width: 10px;" class="add_span"></span> <img src="">
                                                     </td>
                                                 <tr>
-                                                    <td>報名期間
+                                                    <td>Reservation starts from
                                                 <tr>
                                                     <td><input type="date" class="edit_myitem"
                                                             id="edit_reserve_start_date" name="reserve_start_date"
@@ -573,7 +571,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>活動日期
+                                                    <td>Event date
                                                 <tr>
                                                     <td><input class="edit_myitem" id="edit_event_date" type="date"
                                                             name="event_date" /> <br /> <span id="sp6"
@@ -581,7 +579,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>地點
+                                                    <td>Location
                                                 <tr>
                                                     <td><input id="edit_location" class="edit_myitem" type="text"
                                                             name="location" /><br /><span id="sp7" style="width: 10px;"
@@ -589,7 +587,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>人數上限
+                                                    <td>Attendance limit
                                                 <tr>
                                                     <td><input class="edit_myitem" id="edit_attend_limit" type="text"
                                                             name="attend_limit" /> <br /> <span id="sp8"
@@ -597,7 +595,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>已報名人數
+                                                    <td>Reservation Tally
                                                 <tr>
                                                     <td><input class="edit_myitem" id="edit_reserved_people" type="text"
                                                             name="reserved_people" /> <br /> <span id="sp9"
@@ -606,7 +604,7 @@
 
 
                                                 <tr>
-                                                    <td>內容
+                                                    <td>Content
 
                                                 <tr>
                                                     <td><textarea class="edit_myitem" id="edit_event_content"
@@ -615,7 +613,7 @@
                                                     </td>
 
                                                 <tr>
-                                                    <td>圖片
+                                                    <td>Image
 
                                                 <tr>
                                                     <td>
@@ -636,10 +634,10 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">關閉</button>
+                                            data-dismiss="modal">Close</button>
                                         <button id="edit_submit" data-dismiss="modal" type="button"
-                                            class="btn btn-primary">送出</button>
-                                        <button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
+                                            class="btn btn-primary">Submit</button>
+                                        <button id="shortcut" type="button" class="btn btn-primary">ShortCut</button>
                                     </div>
 
                                 </div>
@@ -778,7 +776,7 @@
                                     .modal({
                                         "header": function (row) {
                                             var data = row.data();
-                                            return '活動詳細資訊';
+                                            return 'Details for the event';
                                         }
                                     }),
                                 "renderer": $.fn.dataTable.Responsive.renderer
@@ -879,7 +877,7 @@
 
         //check if add event form has blank field
         function checkinputblank() {
-            var warning = "必填欄位"
+            var warning = "This field is required."
             var blank_field = 0
             $(".myitem").each(function () {
                 if ($(this).val() == '') {
@@ -1010,13 +1008,13 @@
         //Delete Event
         function deleteEvent(event_id) {
             Swal.fire({
-                title: '確定刪除此筆資料?',
-                text: "刪除後將無法復原！",
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '確認，刪除此筆資料！'
+                confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -1032,9 +1030,9 @@
                         }
                     });
                     Swal.fire(
-                        '刪除成功!',
-                        '此筆資料已成功刪除',
-                        '成功'
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
                     )
                 }
             })
@@ -1058,4 +1056,5 @@
 
     </script>
 
-    </html>
+
+</html>
