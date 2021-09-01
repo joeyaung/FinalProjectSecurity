@@ -1,5 +1,7 @@
 package tw.com.finalproject.yumyu.PageController;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,7 +16,8 @@ public class RootPageController {
 
 //	Login Page
 	@GetMapping("/login")
-	public String logingViewController() {
+	public String logingViewController(HttpServletRequest request) {
+		
 		return "login";
 	}
 	
@@ -30,12 +33,22 @@ public class RootPageController {
 		return "account";
 	}
 	
-	
+//	Product Page
+	@GetMapping("/products")
+	public String productViewController() {
+		return "Product/ProductMainPage";
+	}
 
 //	Test Drive Page
 	@GetMapping("/TestDrive")
 	public String testDriveViewController() {
 		return "TestDrive/BookForm";
+	}
+	
+//	Shopping Cart Page
+	@GetMapping("/product/cart")
+	public String shoppingCartPageController() {
+		return "Product/ShoppingCartPage";
 	}
 //	
 ////	TODO

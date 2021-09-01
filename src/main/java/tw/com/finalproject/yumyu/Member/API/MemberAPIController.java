@@ -38,7 +38,7 @@ public class MemberAPIController {
 	@RolesAllowed("ROLE_MEMBER")
 	public ApplicationUser queryByID(@PathVariable(name = "id") String id, Principal principal) {
 		String username = principal.getName();
-		ApplicationUser curUser = applicationUserService.queryByUsername(username);
+		ApplicationUser curUser = applicationUserService.findByUsername(username);
 		if (!id.equals(String.valueOf(curUser.getId()))) {
 			return null;
 		}
@@ -49,7 +49,7 @@ public class MemberAPIController {
 	@GetMapping(path = "isExits/{username}", produces = "plain/text;charset=UTF-8")
 	public String queryByID(@PathVariable(name = "username") String username) {
 		System.out.println(username);
-		ApplicationUser curUser = applicationUserService.queryByUsername(username);
+		ApplicationUser curUser = applicationUserService.findByUsername(username);
 		System.out.println(curUser);
 		if (curUser != null) {
 			
@@ -64,7 +64,7 @@ public class MemberAPIController {
 	@RolesAllowed("ROLE_MEMBER")
 	public ApplicationUser profileChangeAuth(Principal principal, @RequestParam("password") String rawPassword) {
 		String name = principal.getName();
-		ApplicationUser queryByUsername = applicationUserService.queryByUsername(name);
+		ApplicationUser queryByUsername = applicationUserService.findByUsername(name);
 		String encodePassword = queryByUsername.getPassword();
 		if (passwordEncoder.matches(rawPassword, encodePassword)) {
 			return queryByUsername;
@@ -77,7 +77,7 @@ public class MemberAPIController {
 	@RolesAllowed("ROLE_MEMBER")
 	public String updateUserProfile(Principal principal, @RequestBody Map<String, String> data) {
 		String name = principal.getName();
-		ApplicationUser result = applicationUserService.queryByUsername(name);
+		ApplicationUser result = applicationUserService.findByUsername(name);
 		for (Entry<String, String> curData : data.entrySet()) {
 			String curKey = curData.getKey();
 			List<String> userAttributes = List.of("password", "fullName", "phone", "city", "town", "fullAddress",

@@ -5,7 +5,9 @@ import static tw.com.finalproject.yumyu.Enums.ApplicationRoles.MEMBER;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -16,8 +18,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import tw.com.finalproject.kevinLai.Product.Product;
-import tw.com.finalproject.kevinLai.Product.Service.ProductService;
 import tw.com.finalproject.naiChuan.Retailer.Retailer;
 import tw.com.finalproject.naiChuan.Retailer.Service.RetailerService;
 import tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment;
@@ -26,6 +26,8 @@ import tw.com.finalproject.shellyYang.Event.Event;
 import tw.com.finalproject.shellyYang.Event.Service.EventService;
 import tw.com.finalproject.shellyYang.News.News;
 import tw.com.finalproject.shellyYang.News.Service.NewsService;
+import tw.com.finalproject.yumyu.Cart.CartItem;
+import tw.com.finalproject.yumyu.Cart.Service.CartService;
 import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
 import tw.com.finalproject.yumyu.Enums.ClientActivityType;
 import tw.com.finalproject.yumyu.Enums.OfficeLocations;
@@ -38,6 +40,8 @@ import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
 import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
 import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
+import tw.com.finalproject.yumyu.Products.Product;
+import tw.com.finalproject.yumyu.Products.Service.ProductService;
 
 @Component
 @Transactional
@@ -61,6 +65,8 @@ public class InitService {
 	private NewsService newsService;
 	@Autowired
 	private EventService eventService;
+	@Autowired
+	private CartService cartService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -123,14 +129,20 @@ public class InitService {
 		retailerService.createRetailer(defaultRetailer1);
 		retailerService.createRetailer(defaultRetailer2);
 
-//		Create default Products
-		Product defaultProduct1 = Product.builder().productname("Audi rings x LAMY 限定版聯名銀灰色鋼筆").price(2250).quantity(28)
-				.build();
+		boolean saveProductsResult = createDefaultProducts();
+		if (saveProductsResult) {
+			System.out.println("Products Init Complete.");
+		} else {
+			System.out.println("Products Init Error!");
+		}
+		
+		boolean saveCartItems = createDefaultCartItem(defaultApplicationUser);
+		if (saveCartItems) {
+			System.out.println(String.format("Cart for Member id: %d is COMPLETED.", defaultApplicationUser.getId()));
+		} else {
+			System.out.println(String.format("Cart for Member id: %d is FAILED.", defaultApplicationUser.getId()));
+		}
 
-		Product defaultProduct2 = Product.builder().productname("Audi 駕駛證行駛證皮套").price(1800).quantity(57).build();
-
-		productService.addProduct(defaultProduct1);
-		productService.addProduct(defaultProduct2);
 
 //		Create default News & Events data
 		try {
@@ -335,8 +347,72 @@ public class InitService {
 
 	}
 
-//	Default Client Data
-	private void createDefaultClientData(int clientNumber, Employee employee) {
+//	Default Product Data
+	private boolean createDefaultProducts() {
+		Product product1 = Product.builder()
+				.name("男仕圓領T恤(白)")
+				.curPrice(300)
+				.originalPrice(300)
+				.isOnSale(false)
+				.quantityInStock(10)
+				.imgPath("/FinalProject/images/products/audi-t-shirt-white.png")
+				.tags(List.of("服飾", "男"))
+				.build();
 		
+		Product product2 = Product.builder()
+				.name("男仕圓領T恤(深藍)")
+				.curPrice(240)
+				.originalPrice(300)
+				.isOnSale(true)
+				.quantityInStock(15)
+				.imgPath("/FinalProject/images/products/audi-t-shirt-navyblue.png")
+				.tags(List.of("服飾", "男"))
+				.build();
+		
+		Product product3 = Product.builder()
+				.name("男仕POLO衫(深藍)")
+				.curPrice(450)
+				.originalPrice(450)
+				.isOnSale(false)
+				.quantityInStock(5)
+				.imgPath("/FinalProject/images/products/audi-polo-navyblue.png")
+				.tags(List.of("服飾", "男"))
+				.build();
+		
+		Product product4 = Product.builder()
+				.name("男仕外套夾克")
+				.curPrice(1750)
+				.originalPrice(1750)
+				.isOnSale(false)
+				.quantityInStock(20)
+				.imgPath("/FinalProject/images/products/audi-jacket-black.png")
+				.tags(List.of("服飾", "男", "外套"))
+				.build();
+		
+		List<Product> products = List.of(product1,product2, product3, product4);
+		boolean saveResult = productService.saveAll(products);
+		return saveResult;		
+
+	}
+
+//	Default Member Data
+	private boolean createDefaultCartItem(ApplicationUser member) {
+		CartItem cart1 = CartItem.builder()
+				.member(member)
+				.product(productService.findById(1L))
+				.quantityInCart(2)
+				.build();
+		CartItem cart2 = CartItem.builder()
+				.member(member)
+				.product(productService.findById(4L))
+				.quantityInCart(1)
+				.build();
+		CartItem cart3 = CartItem.builder()
+				.member(member)
+				.product(productService.findById(2L))
+				.quantityInCart(2)
+				.build();
+		boolean result = cartService.saveAll(List.of(cart1, cart2, cart3));
+		return result;
 	}
 }

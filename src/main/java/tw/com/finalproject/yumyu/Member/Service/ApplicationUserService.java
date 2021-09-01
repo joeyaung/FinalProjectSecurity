@@ -37,7 +37,7 @@ public class ApplicationUserService implements UserDetailsService {
 		return findAll;
 	}
 
-	public ApplicationUser queryByUsername(String username) {
+	public ApplicationUser findByUsername(String username) {
 		Optional<ApplicationUser> findByUsername = applicationUserRepository.findByUsername(username);
 		if (findByUsername.isEmpty()) {
 			return null;
