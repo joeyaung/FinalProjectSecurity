@@ -18,7 +18,7 @@ public class EventFormRestController {
 	@Autowired
 	private EventFormService eventFormService;
 	
-	@PostMapping("/addEventForm")
+	@GetMapping("/addEventForm")
 	public String addEventForm(EventForm eventForm) {
 		
 		return eventFormService.createEventForm(eventForm);

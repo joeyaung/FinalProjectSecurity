@@ -235,11 +235,32 @@
       const urlParams = new URLSearchParams(queryString);
       const event_id = urlParams.get('event_id');
 
+
       var el = '<input type="hidden" name="event_id" value=' + event_id + '></input>';
       $('#event_form').append(el);
 
-      //Add Event Registration function
+      //TODO 撈出會員ID，把會員全部資料自動填到input裏面存到local storage，可以在後端先把會員資料撈出？
+
+      $.ajax({
+        url:"/FinalProject/findUserByUserName",
+        method:"GET",
+        success: function(response){
+          var userJson = JSON.parse(response);
+          $("#name").val(userJson.fullName);
+          $("#phone").val(userJson.phone);
+          $("#email").val(userJson.username);
+
+          localStorage.setItem('userInfo', userJson);
+         
+        },
+        error: function(err){
+          alert(err);
+        }
+      })
+
+      //送出表單，連結到確認畫面
       $("#submitid").click(function (e) {
+
 
         var formData = new FormData(document.getElementById("event_form"));
 

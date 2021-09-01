@@ -1,5 +1,6 @@
 package tw.com.finalproject.shellyYang.Event.Controller;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
 import tw.com.finalproject.shellyYang.Event.Event;
 import tw.com.finalproject.shellyYang.Event.Service.EventService;
+import tw.com.finalproject.yumyu.Member.ApplicationUser;
+import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
 
 
 
@@ -21,6 +28,9 @@ public class EventRestController {
 
 	@Autowired
 	private EventService eventService;
+	
+	@Autowired
+	private ApplicationUserService appUserService;
 
 	@GetMapping("/getAllEvents")
 	public List<Event> getAllEvent() {
@@ -60,6 +70,18 @@ public class EventRestController {
 
 		return "success";
 
+	}
+	
+	@GetMapping("/findUserByUserName")
+	public String findUserByUserName(Principal principal) throws JsonProcessingException {
+		
+		String userName = principal.getName();
+		ApplicationUser appUser = appUserService.queryByUsername(userName);
+		
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String appUserJson = ow.writeValueAsString(appUser);
+		
+		return appUserJson;
 	}
 
 	
