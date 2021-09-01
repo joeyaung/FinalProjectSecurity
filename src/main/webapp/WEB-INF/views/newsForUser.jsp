@@ -29,7 +29,7 @@
 		<link href="css/index.css" rel="stylesheet" />
 		<style>
 			.news_li {
-				color: white;
+				color:black;
 				list-style-type: none;
 				text-align: left;
 			}
@@ -40,12 +40,12 @@
 
 			#seemore_btn {
 				background-color: black;
-				color: white;
+				color:black;
 				border: none;
 			}
 
 			.msg_title {
-				color: white;
+				color:black;
 			}
 
 			nav input {
@@ -60,6 +60,10 @@
 				color: #003C9D;
 				background-color: #fff;
 				border: 2px #003C9D solid;
+			}
+
+			.bg-gray-custom {
+				background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
 			}
 		</style>
 	</head>
@@ -94,11 +98,11 @@
 		<!-- 以上不要動 -->
 		<!-- 這裡開始加你們的東西 -->
 		<!-- About -->
-		<section class="about-section text-center">
+		<section class="about-section text-center bg-gray-custom pd-2rem">
 			<div class="container px-4 px-lg-5">
 				<div class="row gx-4 gx-lg-5 justify-content-center">
-					<div class="col-lg-8">
-						<h2 class="text-white mb-4">最新消息 Latest News</h2>
+				  <div class="col-lg-10 po-re">
+					<h2 class="h_bookf" style="color:black;">最新消息</h2>
 						<p class="text-white-50">
 						<div class="input-group">
 							<div class="input-group rounded">
@@ -131,7 +135,7 @@
 
 					</div>
 				</div>
-				<img class="img-fluid" src="images/audi-etron.png" alt="..." />
+				<!-- <img class="img-fluid" src="images/audi-etron.png" alt="..." /> -->
 		</section>
 
 		<!-- 以下不要動 -->

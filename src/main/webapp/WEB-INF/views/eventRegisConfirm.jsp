@@ -144,6 +144,9 @@
           url: '/FinalProject/findEventById/' + formData.event_id,
           method: 'GET',
           success: function (data) {
+            var eventInfo = JSON.stringify(data);
+            localStorage.setItem("eventInfo", eventInfo);
+
             $("#tbody").append("<tr><td>活動名稱:</td><td>" + data.event_title + "</td></tr><tr><td>活動日期:</td><td>" + data.event_date + "</td></tr><tr><td>活動地點:</td><td>" + data.location + "</td></tr><tr><td>姓名:</td><td>" + formData.name + "</td></tr><tr><td>性別:</td><td>" + formData.gender + "</td></tr><tr><td>身分證字號: </td><td>" + formData.id_number + "</td></tr><tr><td>行動電話:</td><td>" + formData.phone +
               "</td></tr><tr><td>Email:</td><td>" + formData.email + "</td></tr><tr><td>備註:</td><td>" + formData.message + "</td></tr></br></br>");
             $(".table_bookd tbody tr td").css('padding-bottom', '1em');
@@ -151,8 +154,15 @@
             $("#edit_btn").click(function () {
 
 
+              localStorage.getItem("eventInfo", eventInfo)
 
-              var content = " <h2 class='h_bookd' style='color: white;'>報名活動資料修改</h2><h5 style='color: white';>您報名的活動" + formData.event_id + "</h5><form id='new_event_form'><table class='table_bookf' style='margin: auto;text-align: center;'><tbody id='tbody'><tr><td><label for='name'>姓名:</label></td><td><div class='form-group'><input class='form-control' type='text' aria-label='default input example' name='name' maxlength='10' id='name' placeholder='請輸入姓名' value='" + formData.name + "'required>"
+              // Retrieve the object from storage
+              var retrievedObject = localStorage.getItem('eventInfo');
+
+              eventInfoJson = JSON.parse(retrievedObject);
+
+              var content = "<h2 class='h_bookd' style='color: white' ; padding-bottom: 5em';>報名活動資料修改</h2></br><h5 style='color: white';>您報名的活動名稱：" + eventInfoJson.event_title + "</h5></br><h5 style='color: white';>您報名的活動日期：" + eventInfoJson.event_date + "</h5></br><h5 style='color: white';>您報名的活動地點：" + eventInfoJson.event_date + "</h5></br>"
+              + "<form id='new_event_form'><table class='table_bookf' style='margin: auto;text-align: center;'><tbody id='tbody'><tr><td><label for='name'>姓名:</label></td><td><div class='form-group'><input class='form-control' type='text' aria-label='default input example' name='name' maxlength='10' id='name' placeholder='請輸入姓名' value='" + formData.name + "'required>"
                 + "<div id='validationServer02Feedback' class='invalid-feedback'>姓名欄位不可為空白</div></td></tr><tr><td><label for='gender'>性別:</label></td><td><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='gender' id='flexRadioDefault1' value='先生' />"
                 + "<label class='form-check-label' for='flexRadioDefault1'></label>先生</label></div><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='gender' id='flexRadioDefault2' value='小姐' checked /><label class='form-check-label' for='flexRadioDefault2'>小姐</label></div>"
                 + "<div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='gender' id='flexRadioDefault3' value='其他'checked /><label class='form-check-label' for='flexRadioDefault3'>其他</label></div></td></tr><tr><td><label for='idnumber'>身份證字號:</label></td><td><div class='form-group'>"
@@ -164,7 +174,7 @@
               $('#container').empty().append(content);
               $('#tbody').css('margin', 'auto').css('text-align', 'center');
 
-              $("td").css('padding-bottom', '1em');
+              $("td").css('padding-bottom', '3em');
               $("td").css('color', 'white');
 
               var value = formData.gender;

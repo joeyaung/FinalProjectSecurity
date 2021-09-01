@@ -71,7 +71,12 @@ public class EventRestController {
 		return "success";
 
 	}
-	
+	/**
+	 * 活動報名表單，自動抓會員資料填入
+	 * @param principal
+	 * @return
+	 * @throws JsonProcessingException
+	 */
 	@GetMapping("/findUserByUserName")
 	public String findUserByUserName(Principal principal) throws JsonProcessingException {
 		

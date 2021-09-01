@@ -34,6 +34,10 @@
 
 
 		<style>
+			.bg-gray-custom {
+				background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
+			}
+
 			@import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
 		</style>
 
@@ -70,23 +74,16 @@
 		<!-- 以上不要動 -->
 		<!-- 這裡開始加你們的東西 -->
 		<!-- About -->
-		<section class="about-section text-center">
+		<section class="about-section text-center bg-gray-custom pd-2rem">
 			<div class="container px-4 px-lg-5">
 				<div class="row gx-4 gx-lg-5 justify-content-center">
-					<div class="col-lg-8">
-						<h2 class="text-white mb-4">活動</h2>
+				  <div class="col-lg-10 po-re">
+					<h2 class="h_bookf" style="color:black;">活動</h2>
 						<p class="text-white-50">
 						<div id="container">
 
 							<div id="lightSlider">
-								<!-- <li>
-								<h3>First Slide</h3>
-								<p>Lorem ipsum Cupidatat quis pariatur anim.</p>
-							</li>
-							<li>
-								<h3>Second Slide</h3>
-								<p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
-							</li> -->
+							
 							</div>
 
 						</div>
@@ -95,7 +92,7 @@
 
 				</div>
 			</div>
-			<img class="img-fluid" src="images/audi-etron.png" alt="..." />
+			<!-- <img class="img-fluid" src="images/audi-etron.png" alt="..." /> -->
 		</section>
 
 		<!-- 以下不要動 -->
@@ -110,10 +107,10 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 
-			function showdetails(){
-						console.log('Hello');
-					}
-		
+			function showdetails() {
+				console.log('Hello');
+			}
+
 
 			$.ajax({
 				url: "/FinalProject/getAllEvents",
@@ -125,13 +122,13 @@
 					$.each(data, function (index, item) {
 
 						list += "<div class='event_div' style='position: relative; width: 563px; height: 350px;'><a href='Events/OneEvent?event_id=" + item.event_id + "'><img class='event_img' src='data:image/png;base64,"
-							+ item.event_img + "' width='563' height='350' alt='pic cannot be displayed' style='border-radius: 10%'';;/><span style='position:absolute; z-index:2; left:150px; top:10px; color:white; font-family: ‘cwTeXFangSong’, serif; font-size: 25px;'>" + item.event_title + "</span></a></div>";
+							+ item.event_img + "' width='563' height='350' alt='pic cannot be displayed' style='border-radius: 10%'';;/><span style='position:absolute; z-index:2; left:275px; top:10px; color:white; font-family: ‘cwTeXFangSong’, serif; font-size: 25px;'>" + item.event_title + "</span></a></div>";
 					});
 
-				
+
 					$("#lightSlider").html(list);
 
-					
+
 
 					$("#lightSlider").lightSlider({
 						slideWidth: 320, // 物件寬度
@@ -156,7 +153,7 @@
 							}
 						]
 
-						
+
 
 					});
 
@@ -168,7 +165,7 @@
 				}
 			});
 
-			
+
 
 
 		});

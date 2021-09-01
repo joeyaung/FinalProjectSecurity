@@ -32,8 +32,9 @@
       }
 
       .table_bookf tbody tr td {
-        padding: 0.8rem 0;
-        color: white;
+        /* padding: 0.8rem 0; */
+        padding: 1em;
+        color:black;
         text-align: justify;
       }
 
@@ -50,6 +51,15 @@
         margin: auto;
         text-align: center;
       }
+
+      #container{
+        background-color: #DBD6D6;
+        margin-bottom: 3em;
+      }
+
+    .bg-gray-custom {
+    background: linear-gradient( to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100% );
+}
     </style>
   </head>
 
@@ -89,9 +99,10 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-lg-10 po-re">
 
-            <h2 class="h_bookf" style="color: white;">報名活動</h2>
+            <h2 class="h_bookf">報名活動</h2>
+          </br>
             <!-- 	<form action="ControllerServlet" method="post" id="idfSub"> -->
-
+            <div id='container'>
             <form id="event_form">
               <table class="table_bookf">
                 <tbody>
@@ -205,6 +216,8 @@
 
 
       </div>
+
+      </div>
       </div>
       </div>
     </section>
@@ -239,18 +252,20 @@
       var el = '<input type="hidden" name="event_id" value=' + event_id + '></input>';
       $('#event_form').append(el);
 
-      //TODO 撈出會員ID，把會員全部資料自動填到input裏面存到local storage，可以在後端先把會員資料撈出？
-
+      //撈出會員ID，把會員全部資料自動填到input裏面存到local storage
       $.ajax({
         url:"/FinalProject/findUserByUserName",
         method:"GET",
         success: function(response){
+          //JSON.parse：把JSON字串轉為物件
           var userJson = JSON.parse(response);
           $("#name").val(userJson.fullName);
           $("#phone").val(userJson.phone);
           $("#email").val(userJson.username);
 
-          localStorage.setItem('userInfo', userJson);
+          //JSON.stringify：把物件轉為JSON字串
+          var json1 = JSON.stringify(userJson);
+          localStorage.setItem('userInfo', json1);
          
         },
         error: function(err){
@@ -274,7 +289,7 @@
 
       });
 
-      //Execute Add Event
+      //Execute Add Event（目前沒有用到）
 
       function addevent(formData) {
         $.ajax({
