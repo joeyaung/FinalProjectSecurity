@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,8 +25,12 @@ public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@OneToMany
+	@OneToOne
+	private MemberOrder order;
+	@ManyToOne
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Product product;
 	@Column(nullable = false)
 	private int quantity;
+	private int pricePerUnit;
 }

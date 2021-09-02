@@ -58,6 +58,41 @@ let cartVM = new Vue({
         },
       });
     },
+    ecpayCheckout() {
+      let now = moment(moment().valueOf()).format('YYYY/MM/DD HH:mm:ss');
+      let self = this;
+      const MerchantID = "2000132";
+      const MerchantTradeNo = this.makeid(10);
+      const MerchantTradeDate = now;
+      const PaymentType = "aio";
+      let TotalAmount = self.cart_item_total_cost;
+      let TradeDesc = "Audi Online Shop";
+      let ItemName = "Product";
+      const ReturnURL = "http://localhost:8080/FinalProject/product/checkout/ecpay/result";
+      let ChoosePayment = "";
+      let CheckMacValue = "";
+      const ClientBackURL = "http://localhost:8080/FinalProject/product/cart";
+      const OrderResultURL = "http://localhost:8080/FinalProject/product/checkout/ecpay/confirm"
+      const IgnorePayment = "ATM#WebATM#BARCODE#CVS";
+      let formData = {
+        MerchantID : MerchantID,
+        MerchantTradeNo: MerchantTradeNo,
+        MerchantTradeDate : MerchantTradeDate,
+        PaymentType: PaymentType,
+        
+
+      }
+    },
+    makeid(length) {
+      var result = '';
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() *
+          charactersLength));
+      }
+      return result;
+    }
   },
   computed: {
     cart_item_total_quantity() {

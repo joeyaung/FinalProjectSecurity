@@ -5,9 +5,14 @@ import static tw.com.finalproject.yumyu.Enums.ApplicationRoles.MEMBER;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import javax.transaction.Transactional;
 
@@ -17,6 +22,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import com.paypal.orders.Order;
 
 import tw.com.finalproject.naiChuan.Retailer.Retailer;
 import tw.com.finalproject.naiChuan.Retailer.Service.RetailerService;
@@ -40,6 +47,10 @@ import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
 import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
 import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
+import tw.com.finalproject.yumyu.MemberOrder.MemberOrder;
+import tw.com.finalproject.yumyu.MemberOrder.OrderDetail;
+import tw.com.finalproject.yumyu.MemberOrder.Service.MemberOrderService;
+import tw.com.finalproject.yumyu.PayPal.Service.PaypalService;
 import tw.com.finalproject.yumyu.Products.Product;
 import tw.com.finalproject.yumyu.Products.Service.ProductService;
 
@@ -67,6 +78,10 @@ public class InitService {
 	private EventService eventService;
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private MemberOrderService memberOrderService;
+	@Autowired
+	private PaypalService paypalService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -135,7 +150,7 @@ public class InitService {
 		} else {
 			System.out.println("Products Init Error!");
 		}
-		
+
 		boolean saveCartItems = createDefaultCartItem(defaultApplicationUser);
 		if (saveCartItems) {
 			System.out.println(String.format("Cart for Member id: %d is COMPLETED.", defaultApplicationUser.getId()));
@@ -143,6 +158,16 @@ public class InitService {
 			System.out.println(String.format("Cart for Member id: %d is FAILED.", defaultApplicationUser.getId()));
 		}
 
+		try {
+			boolean saveOrder = createDefaultOrder(defaultApplicationUser);
+			if (saveOrder) {
+				System.out.println("Order is saved!");
+			} else {
+				System.out.println("ERROR: Order is not saved!");
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 
 //		Create default News & Events data
 		try {
@@ -349,70 +374,77 @@ public class InitService {
 
 //	Default Product Data
 	private boolean createDefaultProducts() {
-		Product product1 = Product.builder()
-				.name("男仕圓領T恤(白)")
-				.curPrice(300)
-				.originalPrice(300)
-				.isOnSale(false)
-				.quantityInStock(10)
-				.imgPath("/FinalProject/images/products/audi-t-shirt-white.png")
-				.tags(List.of("服飾", "男"))
-				.build();
-		
-		Product product2 = Product.builder()
-				.name("男仕圓領T恤(深藍)")
-				.curPrice(240)
-				.originalPrice(300)
-				.isOnSale(true)
-				.quantityInStock(15)
-				.imgPath("/FinalProject/images/products/audi-t-shirt-navyblue.png")
-				.tags(List.of("服飾", "男"))
-				.build();
-		
-		Product product3 = Product.builder()
-				.name("男仕POLO衫(深藍)")
-				.curPrice(450)
-				.originalPrice(450)
-				.isOnSale(false)
-				.quantityInStock(5)
-				.imgPath("/FinalProject/images/products/audi-polo-navyblue.png")
-				.tags(List.of("服飾", "男"))
-				.build();
-		
-		Product product4 = Product.builder()
-				.name("男仕外套夾克")
-				.curPrice(1750)
-				.originalPrice(1750)
-				.isOnSale(false)
-				.quantityInStock(20)
-				.imgPath("/FinalProject/images/products/audi-jacket-black.png")
-				.tags(List.of("服飾", "男", "外套"))
-				.build();
-		
-		List<Product> products = List.of(product1,product2, product3, product4);
+		Product product1 = Product.builder().name("男仕圓領T恤(白)").curPrice(300).originalPrice(300).isOnSale(false)
+				.quantityInStock(10).imgPath("/FinalProject/images/products/audi-t-shirt-white.png")
+				.tags(List.of("服飾", "男")).build();
+
+		Product product2 = Product.builder().name("男仕圓領T恤(深藍)").curPrice(240).originalPrice(300).isOnSale(true)
+				.quantityInStock(15).imgPath("/FinalProject/images/products/audi-t-shirt-navyblue.png")
+				.tags(List.of("服飾", "男")).build();
+
+		Product product3 = Product.builder().name("男仕POLO衫(深藍)").curPrice(450).originalPrice(450).isOnSale(false)
+				.quantityInStock(5).imgPath("/FinalProject/images/products/audi-polo-navyblue.png")
+				.tags(List.of("服飾", "男")).build();
+
+		Product product4 = Product.builder().name("男仕外套夾克").curPrice(1750).originalPrice(1750).isOnSale(false)
+				.quantityInStock(20).imgPath("/FinalProject/images/products/audi-jacket-black.png")
+				.tags(List.of("服飾", "男", "外套")).build();
+
+		List<Product> products = List.of(product1, product2, product3, product4);
 		boolean saveResult = productService.saveAll(products);
-		return saveResult;		
+		return saveResult;
 
 	}
 
-//	Default Member Data
+//	Default Cart Data
 	private boolean createDefaultCartItem(ApplicationUser member) {
-		CartItem cart1 = CartItem.builder()
-				.member(member)
-				.product(productService.findById(1L))
-				.quantityInCart(2)
+		CartItem cart1 = CartItem.builder().member(member).product(productService.findById(1L)).quantityInCart(2)
 				.build();
-		CartItem cart2 = CartItem.builder()
-				.member(member)
-				.product(productService.findById(4L))
-				.quantityInCart(1)
+		CartItem cart2 = CartItem.builder().member(member).product(productService.findById(4L)).quantityInCart(1)
 				.build();
-		CartItem cart3 = CartItem.builder()
-				.member(member)
-				.product(productService.findById(2L))
-				.quantityInCart(2)
+		CartItem cart3 = CartItem.builder().member(member).product(productService.findById(2L)).quantityInCart(2)
 				.build();
 		boolean result = cartService.saveAll(List.of(cart1, cart2, cart3));
 		return result;
+	}
+
+//	Default MemberOrder & OrderDetail
+	private boolean createDefaultOrder(ApplicationUser member) throws IOException {
+		String orderId = "5EK74526RB316204L";
+		Order order = paypalService.getOrder(orderId);
+		if (!orderId.equals(order.id())) {
+			return false;
+		}
+		if (order.updateTime() == null) {
+			return false;
+		}
+
+		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
+		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+		LocalDateTime date = LocalDateTime.parse(order.updateTime(), inputFormatter);
+		LocalDateTime dateFormate = date.plusHours(8L);
+		String formattedDate = outputFormatter.format(dateFormate);
+
+		MemberOrder newOrder = MemberOrder.builder().method("paypal").paypalOrderId(orderId).member(member)
+				.createDate(formattedDate).build();
+		List<CartItem> cartItems = cartService.findByMember(member);
+		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+		for (CartItem cartItem : cartItems) {
+			OrderDetail newOrderDetail = OrderDetail.builder().order(newOrder).product(cartItem.getProduct())
+					.quantity(cartItem.getQuantityInCart()).pricePerUnit(cartItem.getProduct().getCurPrice()).build();
+			orderDetails.add(newOrderDetail);
+		}
+		int totalAmount = 0;
+		int totalQuantity = 0;
+		for (OrderDetail detail : orderDetails) {
+			totalAmount += detail.getQuantity() * detail.getPricePerUnit();
+			totalQuantity += detail.getQuantity();
+		}
+		newOrder.setOrderDetail(orderDetails);
+		newOrder.setTotalAmount(totalAmount);
+		newOrder.setTotalQuantity(totalQuantity);
+
+		memberOrderService.save(newOrder);
+		return true;
 	}
 }
