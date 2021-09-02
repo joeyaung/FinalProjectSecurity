@@ -603,6 +603,9 @@
 														<span id="sp1" style="width: 10px"></span> <img src="">
 													</td>
 												</tr> -->
+
+												<input type="hidden" id="edit_centerId" name="centerId">  <!--hidden-->
+
 												<tr>
 													<td>展示中心名稱:</td>
 												</tr>
@@ -861,7 +864,7 @@
 		// }
 
 
-		// add product To資料庫 V
+		// add center To資料庫 V
 		function addproduct(formData) {
 			$.ajax({
 				url: "/FinalProject/addCenter",
@@ -929,11 +932,11 @@
 		// 更新資料function
 		$("#edit_submit").click(
 			function () {
-				console.log("1111111")
+				// console.log("1111111")
 				var updateFormData = new FormData(document.getElementById("edit_form"));
-				console.log("2222222")
+				// console.log("2222222")
 				editCenter(updateFormData);
-				console.log("333333333")
+				// console.log("333333333")
 			})
 
 
@@ -941,11 +944,11 @@
 
 		//編輯商品的model
 		function editMode(centerId) {
-			console.log("按下按鈕")
+			// console.log("按下按鈕")
 			// edit_previewimg();
 
 			let aftersuccess = function (res) {
-				// $("#edit_centerId").val(res.centerId);
+				$("#edit_centerId").val(res.centerId);
 				$("#edit_centerName").val(res.centerName);
 				$("#edit_centerPhone").val(res.centerPhone);
 				$("#edit_centerEmail").val(res.centerEmail);
@@ -953,8 +956,9 @@
 				$("#edit_centerOpentime").val(res.centerOpentime);
 				$("#edit_centerService").val(res.centerService);
 				console.log("0123");
-				// console.log(res);
-				console.log(res.file);
+				console.log(res);
+				console.log(res.centerId)
+				// console.log(res.file);
 			}
 			findById(centerId, aftersuccess)
 			$('#editCenterModal').modal('show');

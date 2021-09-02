@@ -33,7 +33,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
       .news_li {
-        color: white;
+        /* color: white; */
         list-style-type: none;
         text-align: left;
       }
@@ -89,22 +89,58 @@
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
             </li>
           </ul>
-          <form class="d-flex ">
-            <button class="btn btn-outline-dark" type="submit">
-              <i class="bi-cart-fill me-1"></i>
-              Cart
-              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-            </button>
-          </form>
         </div>
       </div>
     </nav>
     <!-- 以上不要動 -->
     <!-- 這裡開始加你們的東西 -->
 
-    
 
-	
+
+    <!-- Header-->
+    <header class="bg-dark py-5">
+      <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">展示中心</h1>
+          <p class="lead fw-normal text-white-50 mb-0"> </p>
+        </div>
+      </div>
+    </header>
+    
+    
+    
+    <!-- Section-->
+    <section class="py-5" id="app">
+      <div class="container px-4 px-lg-5 mt-5">
+        <div class="gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center " id="product-container">
+          <div class="col mb-5" v-for="(item, index) in centers">  <!-- vue的for迴圈 -->
+            <div class="card h-100">
+              <!-- Sale badge-->
+              <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                        </div> -->
+              <!-- Product image-->
+              <!-- <img class="card-img-top" width="250px" height="250px" :src="`data:image/png;base64,`+item.base64Image" alt="..." /> -->
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder product-title">{{ item.centerName }}</h5>
+                  <li class="news_li">{{ item.centerAddress }}</li>
+                  <li class="news_li">連絡電話：{{ item.centerPhone }}</li>
+                  <li class="news_li">{{ item.centerEmail }}</li>
+
+
+                  <a :href="'http://localhost:8080/FinalProject/center?id='+item.centerId">Link</a>
+
+                  <!-- <span class="product-price">{{ item.centerPhone }}</span> -->
+                </div>
+              </div>
+              <!-- Product actions-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
     
     
@@ -126,18 +162,18 @@
       let productVM = new Vue({
 	el:"#app",
 	data:{
-	  products:[],
+	  centers:[],
 
 	},
 	
 	mounted: function(){
 		var self = this;
 		$.ajax({
-			url:"queryAllProduct",
+			url:"getAllCneter",
 			method:"GET",
 			success:function(res){
 				console.log(res);
-				self.products = res;
+				self.centers = res;
 			},
 			error:function(){
 				console.log("Fail");

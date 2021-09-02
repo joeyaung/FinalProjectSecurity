@@ -576,7 +576,7 @@
 
 
 						<!-- 更改商品model -->
-						<div class="modal fade" tabindex="-1" role="dialog" id="editNewsModal">
+						<div class="modal fade" tabindex="-1" role="dialog" id="editProductModal">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -912,14 +912,14 @@
 
 				var updateFormData = new FormData(document.getElementById("edit_form"));
 
-				editNews(updateFormData);
+				editProduct(updateFormData);
 			})
 
 
 
 
 		//編輯商品的model
-		function editMode(newsId) {
+		function editMode(id) {
 			edit_previewimg();
 
 			let aftersuccess = function (res) {
@@ -929,13 +929,13 @@
 				$("#edit_price").val(res.price);
 				$("#edit_preview_img").attr("src",'data:image/png;base64,' + res.base64Image);
 				$("#edit_file").val(res.file);
-				console.log("0123");
+				// console.log("0123");
 				// console.log(res);
-				console.log(res.file);
+				// console.log(res.file);
 			}
-			findById(newsId, aftersuccess)
-			$('#editNewsModal').modal('show');
-			$('#editNewsModal').css('overflow-y', 'auto');
+			findById(id, aftersuccess)
+			$('#editProductModal').modal('show');
+			$('#editProductModal').css('overflow-y', 'auto');
 
 		}
 
@@ -943,8 +943,8 @@
 
 
 
-		// Execute update news
-		function editNews(updateFormData) {
+		// 更新商品
+		function editProduct(updateFormData) {
 
 			$.ajax({
 				url: "/FinalProject/updateProduct",

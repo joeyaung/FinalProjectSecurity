@@ -4,7 +4,6 @@ import static tw.com.finalproject.yumyu.Enums.ApplicationRoles.MEMBER;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -21,7 +20,6 @@ import tw.com.finalproject.kevinLai.Center.Center;
 import tw.com.finalproject.kevinLai.Center.Repository.CenterRepository;
 import tw.com.finalproject.kevinLai.Product.Product;
 import tw.com.finalproject.kevinLai.Product.Repository.ProductRepositoy;
-import tw.com.finalproject.kevinLai.Product.Service.ProductService;
 import tw.com.finalproject.naiChuan.Retailer.Retailer;
 import tw.com.finalproject.naiChuan.Retailer.Service.RetailerService;
 import tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment;
@@ -153,11 +151,17 @@ public class InitService {
 		productRepository.save(defaultProduct3);
 		
 //		Create default Center
-		Center defaultCenter1 = Center.builder().centerName("內湖展示中心").centerPhone("02-2812-3214").centerEmail("Neihucar@gmail.com").centerAddress("台北市內湖區瑞光路123號").centerOpentime("週一至週六 9:00 - 18:00").centerService("銷售").build();
-		Center defaultCenter2 = Center.builder().centerName("士林展示中心").centerPhone("02-2881-1973").centerEmail("Shilin@gmail.com").centerAddress("台北市士林區文林路123號").centerOpentime("週一至週六 9:00 - 18:00").centerService("銷售").build();
+		Center defaultCenter1 = Center.builder().centerName("台北展示中心").centerPhone("02-27939191").centerEmail("TaipeiCenter@gmail.com").centerAddress("台北市內湖區新湖三路288號").centerOpentime("週一至週日 09:00 - 21:00").centerService("銷售").build();
+		Center defaultCenter2 = Center.builder().centerName("桃園展示中心").centerPhone("03-4357899").centerEmail("TaoyuanCenter@gmail.com").centerAddress("桃園市中壢區中園路467號").centerOpentime("週一至週日 09:00 - 21:00").centerService("銷售").build();
+		Center defaultCenter3 = Center.builder().centerName("台中展示中心").centerPhone("04-23831188").centerEmail("TaichungCenter@gmail.com").centerAddress("台中市南屯區五權西路二段589號").centerOpentime("週一至週日 09:00 - 21:00").centerService("銷售").build();
+		Center defaultCenter4 = Center.builder().centerName("台南展示中心").centerPhone("06-2493636").centerEmail("TainanCenter@gmail.com").centerAddress("台南市仁德區中山路688號").centerOpentime("週一至週日 09:00 - 21:00").centerService("銷售").build();
+		Center defaultCenter5 = Center.builder().centerName("高雄展示中心").centerPhone("07-5555936").centerEmail("KaohsiungCenter@gmail.com").centerAddress("高雄市左營區新莊一路306號").centerOpentime("週一至週日 09:00 - 21:00").centerService("銷售").build();
 		
 		centerRepository.save(defaultCenter1);
 		centerRepository.save(defaultCenter2);
+		centerRepository.save(defaultCenter3);
+		centerRepository.save(defaultCenter4);
+		centerRepository.save(defaultCenter5);
 
 //		Create default News & Events data
 		try {
