@@ -2,11 +2,14 @@ package tw.com.finalproject.shellyYang.EventForm.Controller;
 
 
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.com.finalproject.shellyYang.EventForm.EventForm;
@@ -18,10 +21,11 @@ public class EventFormRestController {
 	@Autowired
 	private EventFormService eventFormService;
 	
-	@GetMapping("/addEventForm")
-	public String addEventForm(EventForm eventForm) {
+	@PostMapping("/addEventForm")
+	public String addEventForm(@RequestParam("json") String json, HttpServletResponse response) {
 		
-		return eventFormService.createEventForm(eventForm);
+		response.setContentType("application/json;charset=utf-8");
+		return eventFormService.createEventForm(json);
 		
 	}
 	

@@ -10,13 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import tw.com.finalproject.yumyu.InternalUse.Employee;
-import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
-import tw.com.finalproject.yumyu.Member.ApplicationUser;
-import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper; 
-import com.fasterxml.jackson.databind.ObjectWriter; 
+import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService; 
 
 
 
@@ -50,9 +44,8 @@ public class EventController {
 	 * 取得會員ID，direct to eventBookForm.jsp
 	 
 	 */
-	@GetMapping("/Events/BookEvent")
+	@GetMapping("/account/BookEvent")
 	public String bookEvent()  {
-		
 		return "eventBookForm";
 	}
 

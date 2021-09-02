@@ -2,14 +2,27 @@ package tw.com.finalproject.shellyYang.EventForm.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import tw.com.finalproject.shellyYang.Event.Event;
+import tw.com.finalproject.shellyYang.Event.Repository.EventRepository;
 import tw.com.finalproject.shellyYang.EventForm.EventForm;
 import tw.com.finalproject.shellyYang.EventForm.Repository.EventFormRepository;
+import tw.com.finalproject.yumyu.Member.ApplicationUser;
+import tw.com.finalproject.yumyu.Member.Repository.ApplicationUserRepository;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class EventFormService {
@@ -18,7 +31,12 @@ public class EventFormService {
 	EventFormRepository eFormRepository;
 	
 	@Autowired
-	EventFormRepository eRepository;
+	EventRepository eRepository;
+	
+	@Autowired
+	ApplicationUserRepository appUserRepository;
+	
+	
 	
 	
 	
@@ -43,42 +61,82 @@ public class EventFormService {
 	 * 判斷報名是否重複、報名人數已達上限
 	 * @return
 	 */
-	public String createEventForm(EventForm eventForm) {
+	public String createEventForm(String json) {
 		
-		int attendLimit = eventForm.getEvent().getAttend_limit();
-		int reservedPeople = eventForm.getEvent().getReserved_people();
-		//此報名人ID
-		long memberId = eventForm.getApplicationUser().getId();
+		System.out.println("json" + json);
 		
+		EventForm eventForm = null;
 		
-		String limitWarning = "報名失敗，超過人數限制";
-		String registerTwice = "報名失敗，重複報名";
-		String success = "報名成功！請至您的電子郵件查看報名信件";
-		
-		//找報名過此event的user id
-		List list = eFormRepository.findUser_idByEvent_id(eventForm.getEvent().getEvent_id());
-		
-		//若報名人數已達上限，狀態設為失敗
-		if(reservedPeople-1<0) {
-			eventForm.setStatus(limitWarning);
-			return limitWarning;
+		ObjectMapper objectMapper = new ObjectMapper();
 
-			//透過活動ID撈出MemberId，重複報名狀態設為失敗
-		}else if(list.contains(memberId)) {
-			eventForm.setStatus(registerTwice);
-			return registerTwice;
+		try {
+			Map<String, String> map = objectMapper.readValue(json, new TypeReference<Map<String, String>>() {});
+			
+			System.out.println("Map" + map);
+		
+			long userId = Long.parseLong(map.get("user_id"));
+			
+			int eventId = Integer.parseInt(map.get("event_id"));
+					
+			String gender = map.get("user_gender");
+			String idNumber = map.get("user_id_number");
+			String message = map.get("user_message");
+			System.out.println("message=" + message);
+			
+			eventForm = new EventForm();
+			
+			Event event = eRepository.findById(eventId).get();
+			int attendLimit = event.getAttend_limit();
+			
+			int reservedPeople = event.getReserved_people();
+			//此報名人資訊
+			ApplicationUser appUser = appUserRepository.findById(userId).get();
+			
+			String limitWarning = "報名失敗，超過人數限制";
+			String registerTwice = "報名失敗，重複報名";
+			String success = "報名成功！請至您的電子郵件查看報名信件";
+			
+			//從EventForm找報名過此event的user id
+			List list = eFormRepository.findUser_idByEvent_id(eventId);
+			
+			//若報名人數已達上限，狀態設為失敗
+			if(reservedPeople-1<0) {
+				eventForm.setStatus(limitWarning);
+				return limitWarning;
+
+				//透過活動ID撈出MemberId，重複報名狀態設為失敗
+			}else if(list.contains(userId)) {
+				eventForm.setStatus(registerTwice);
+				return registerTwice;
+			}
+			
+			//若報名成功，則目前已報名人數加1
+			else {
+				String creationTime = new SimpleDateFormat("yyyy/MM/dd H:mm:ss").format(Calendar.getInstance().getTime());
+				
+				int newReservedPeople = reservedPeople+1;
+				
+				event.setReserved_people(newReservedPeople);
+				
+				eventForm.setCreation_time(creationTime);
+				eventForm.setApplicationUser(appUser);
+				eventForm.setEvent(event);
+				eventForm.setGender(gender);
+				eventForm.setId_number(idNumber);
+				eventForm.setMessage(message);
+				eventForm.setStatus(success);
+				
+				eFormRepository.save(eventForm);
+		
+				
+			}
+			
+			
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
 		}
 		
-		//若報名成功，則目前已報名人數加1
-		else {
-			String creationTime = new SimpleDateFormat("yyyy/MM/dd H:mm:ss").format(Calendar.getInstance().getTime());
-			eventForm.setCreation_time(creationTime);
-			int newReservedPeople = reservedPeople+1;
-			eventForm.getEvent().setReserved_people(newReservedPeople);
-			eFormRepository.save(eventForm);
-			return success;
-			
-		}
+		return eventForm.getStatus();
 		
 
 	}

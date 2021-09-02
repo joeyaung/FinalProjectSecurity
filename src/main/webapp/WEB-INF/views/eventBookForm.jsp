@@ -12,7 +12,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/template.js"></script>
+    <script src="/FinalProject/js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/index.css" rel="stylesheet" />
+    <link href="/FinalProject/css/index.css" rel="stylesheet" />
     <style>
       .table_booku thead tr th {
         padding: 0rem 0.5rem;
@@ -237,7 +237,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/template.js"></script>
+    <script src="/FinalProject/js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
   <script>
@@ -273,19 +273,24 @@
         }
       })
 
-      //送出表單，連結到確認畫面
+      //送出表單，連結到確認畫面，若有欄位為空alert
       $("#submitid").click(function (e) {
 
+        if($("#name").val() != "" && $("#idnumber").val() != "" && $("#email").val() != "" && $("#phone").val() !=""){
+          var formData = new FormData(document.getElementById("event_form"));
+  
+          var object = {};
+          formData.forEach(function (value, key) {
+            object[key] = value;
+          });
+          var json = JSON.stringify(object);
+          localStorage.setItem('formData', json);
+          window.location.href = "/FinalProject/account/BookEventConfirmation";
 
-        var formData = new FormData(document.getElementById("event_form"));
+        }else
+        alert('欄位不可為空')
+        return false;
 
-        var object = {};
-        formData.forEach(function (value, key) {
-          object[key] = value;
-        });
-        var json = JSON.stringify(object);
-        localStorage.setItem('formData', json);
-        window.location.href = "BookEventConfirmation";
 
       });
 
@@ -334,12 +339,11 @@
         if (id == '') {
           $("#idnumber").addClass("form-control is-invalid");
           $("#id_validation").html(warning1);
-
-          console.log('id is blank')
+        
         } else if (checkTwID(id) == false) {
           $("#idnumber").addClass("form-control is-invalid");
           $("#id_validation").html(warning2);
-          // console.log('id wrong format')
+          
         }
         else {
           $("#idnumber").removeClass("form-control is-invalid");

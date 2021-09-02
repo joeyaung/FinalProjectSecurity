@@ -33,8 +33,8 @@
 
       .table_bookd tbody tr td {
         /* padding: 0.9rem 0; */
-        padding-bottom: 5em;
-        color: white;
+        padding: 1em;
+        color: black;
         text-align: justify;
       }
 
@@ -50,6 +50,15 @@
       .table_bookd {
         margin: auto;
         text-align: center;
+      }
+
+      #container {
+        background-color: #DBD6D6;
+        margin-bottom: 3em;
+      }
+
+      .bg-gray-custom {
+        background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
       }
     </style>
   </head>
@@ -91,7 +100,8 @@
           <div class="col-lg-10 po-re">
 
             <div id='container'>
-              <h2 class="h_bookd" style="color: white;">報名資料如下請確認</h2>
+
+              <h2 class="h_bookf">報名資料如下請確認</h2>
 
               <form id="new_event_form">
                 <table class="table_bookd">
@@ -159,10 +169,10 @@
               // Retrieve the object from storage
               var retrievedObject = localStorage.getItem('eventInfo');
 
-              eventInfoJson = JSON.parse(retrievedObject);
+              var eventInfoJson = JSON.parse(retrievedObject);
 
-              var content = "<h2 class='h_bookd' style='color: white' ; padding-bottom: 5em';>報名活動資料修改</h2></br><h5 style='color: white';>您報名的活動名稱：" + eventInfoJson.event_title + "</h5></br><h5 style='color: white';>您報名的活動日期：" + eventInfoJson.event_date + "</h5></br><h5 style='color: white';>您報名的活動地點：" + eventInfoJson.event_date + "</h5></br>"
-              + "<form id='new_event_form'><table class='table_bookf' style='margin: auto;text-align: center;'><tbody id='tbody'><tr><td><label for='name'>姓名:</label></td><td><div class='form-group'><input class='form-control' type='text' aria-label='default input example' name='name' maxlength='10' id='name' placeholder='請輸入姓名' value='" + formData.name + "'required>"
+              var content = "<h2 class='h_bookd' style='color: black' ; padding-bottom: 5em';>報名活動資料修改</h2></br><h5 style='color: black';>您報名的活動名稱：" + eventInfoJson.event_title + "</h5></br><h5 style='color: black';>您報名的活動日期：" + eventInfoJson.event_date + "</h5></br><h5 style='color: black';>您報名的活動地點：" + eventInfoJson.location + "</h5></br>"
+                + "<form id='new_event_form'><table class='table_bookf' style='margin: auto;text-align: center;'><tbody id='tbody'><tr><td><label for='name'>姓名:</label></td><td><div class='form-group'><input class='form-control' type='text' aria-label='default input example' name='name' maxlength='10' id='name' placeholder='請輸入姓名' value='" + formData.name + "'required>"
                 + "<div id='validationServer02Feedback' class='invalid-feedback'>姓名欄位不可為空白</div></td></tr><tr><td><label for='gender'>性別:</label></td><td><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='gender' id='flexRadioDefault1' value='先生' />"
                 + "<label class='form-check-label' for='flexRadioDefault1'></label>先生</label></div><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='gender' id='flexRadioDefault2' value='小姐' checked /><label class='form-check-label' for='flexRadioDefault2'>小姐</label></div>"
                 + "<div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='gender' id='flexRadioDefault3' value='其他'checked /><label class='form-check-label' for='flexRadioDefault3'>其他</label></div></td></tr><tr><td><label for='idnumber'>身份證字號:</label></td><td><div class='form-group'>"
@@ -175,7 +185,7 @@
               $('#tbody').css('margin', 'auto').css('text-align', 'center');
 
               $("td").css('padding-bottom', '3em');
-              $("td").css('color', 'white');
+              $("td").css('color', 'black');
 
               var value = formData.gender;
               $("input[name='gender'][value=" + value + "]").prop('checked', true);
@@ -197,33 +207,60 @@
 
         var confirmedFormData = new FormData(document.getElementById("new_event_form"));
 
-        var object = {};
+        var formInfoJson = {};
         confirmedFormData.forEach(function (value, key) {
-          object[key] = value;
+          formInfoJson[key] = value;
         });
-        var json = JSON.stringify(object);
+        var json = JSON.stringify(formInfoJson);
         localStorage.setItem('confirmedFormData', json);
+        //TODO試著把EventForm所需參數湊起來！必要參數：user id 、活動id、表單性別、身分證、備註
 
+        //先取得userInfo的user id
+        var retrievedInfo = localStorage.getItem('userInfo');
+        var userInfoJson = JSON.parse(retrievedInfo);
+
+        var userId = userInfoJson.id;
+
+        //取得eventInfo的event id
+        localStorage.getItem('eventInfo')
+        var retrievedObject = localStorage.getItem('eventInfo');
+        eventInfoJson = JSON.parse(retrievedObject);
+
+        var eventId = eventInfoJson.event_id;
+
+        //表單所填性別、身分證、備註
+        var gender = formInfoJson.gender;
+        var id_number = formInfoJson.id_number;
+        var message = formInfoJson.message;
+
+
+        var eventRegisForm = { "user_id": userId, "event_id": eventId, "user_gender": gender, "user_id_number": id_number, "user_message": message };
+
+        addEventForm(eventRegisForm);
+
+
+      });
+
+
+      function addEventForm(eventRegisForm) {
 
         $.ajax({
           url: "/FinalProject/addEventForm",
-          method: "GET",
-          data: confirmedFormData,
-          contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-          processData: false, // NEEDED, DON'T OMIT THIS
+          method: "POST",
+          data: {"json" : JSON.stringify(eventRegisForm)},
+          // contentType:"application/json",
           success: function (response) {
             if (response != undefined) {
               alert(response);
             }
-
 
           },
           error: function (err) {
             alert(err);
           }
         });
-      });
 
+      }
 
 
     });

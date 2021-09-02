@@ -17,17 +17,17 @@ public class EventFormController {
 		@Autowired
 		private EmployeeService employeeService;
 		
-		@GetMapping("/Events/BookEventConfirmation")
-		public String bookEvent() {
-			return "eventRegisConfirm";
-		}
-		
 		@GetMapping("/inner/admin/AllEventForm")
 		public String allEventForm(HttpServletRequest request, Principal principal) {
 			String name = principal.getName();
 			Employee emp = employeeService.findbyUsername(name);
 			request.setAttribute("empName", emp.getFullName());
 			return "adminAllEventForm";
+		}
+		
+		@GetMapping("/account/BookEventConfirmation")
+		public String bookEventConfirm()  {
+			return "eventRegisConfirm";
 		}
 }
 	
