@@ -36,10 +36,9 @@ public class ProductService {
 
 	// 新增
 	public Product addProduct(Product product) {
-//		TODO Fix bug
-//		if (!product.getFile().isEmpty()) {
-//			product.setImage(ImgConverter.convertToBytesArrays(product.getFile()));
-//		}
+		if (!product.getFile().isEmpty()) {
+			product.setImage(ImgConverter.convertToBytesArrays(product.getFile()));
+		}
 		Product result = productRepository.save(product);
 
 		return result;

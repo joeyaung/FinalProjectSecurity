@@ -4,6 +4,7 @@ import static tw.com.finalproject.yumyu.Enums.ApplicationRoles.MEMBER;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -16,7 +17,10 @@ import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import tw.com.finalproject.kevinLai.Center.Center;
+import tw.com.finalproject.kevinLai.Center.Repository.CenterRepository;
 import tw.com.finalproject.kevinLai.Product.Product;
+import tw.com.finalproject.kevinLai.Product.Repository.ProductRepositoy;
 import tw.com.finalproject.kevinLai.Product.Service.ProductService;
 import tw.com.finalproject.naiChuan.Retailer.Retailer;
 import tw.com.finalproject.naiChuan.Retailer.Service.RetailerService;
@@ -56,7 +60,9 @@ public class InitService {
 	@Autowired
 	private RetailerService retailerService;
 	@Autowired
-	private ProductService productService;
+	private ProductRepositoy productRepository;
+	@Autowired
+	private CenterRepository centerRepository; 
 	@Autowired
 	private NewsService newsService;
 	@Autowired
@@ -65,7 +71,7 @@ public class InitService {
 	private PasswordEncoder passwordEncoder;
 
 	@EventListener(ApplicationReadyEvent.class)
-	public void doSomethingAfterStartup() {
+	public void doSomethingAfterStartup() throws IOException {
 		System.out.println("Init Start!");
 
 //		Create default Member		
@@ -124,13 +130,34 @@ public class InitService {
 		retailerService.createRetailer(defaultRetailer2);
 
 //		Create default Products
-		Product defaultProduct1 = Product.builder().productname("Audi rings x LAMY 限定版聯名銀灰色鋼筆").price(2250).quantity(28)
-				.build();
-
-		Product defaultProduct2 = Product.builder().productname("Audi 駕駛證行駛證皮套").price(1800).quantity(57).build();
-
-		productService.addProduct(defaultProduct1);
-		productService.addProduct(defaultProduct2);
+		File penjpg = new File("src\\main\\resources\\static\\images\\product\\pen.jpg");
+		FileInputStream penjpgg = new FileInputStream(penjpg);
+		byte[] bytepen = IOUtils.toByteArray(penjpgg);		
+		
+		Product defaultProduct1 = Product.builder().productname("Audi rings x LAMY 限定版聯名銀灰色鋼筆").price(2250).quantity(28).image(bytepen).build();
+		
+		File idcardjpg = new File("src\\main\\resources\\static\\images\\product\\idcard.jpg");
+		FileInputStream idcardjpgg = new FileInputStream(idcardjpg);
+		byte[] byteidcard = IOUtils.toByteArray(idcardjpgg);
+		
+		Product defaultProduct2 = Product.builder().productname("Audi 駕駛證行駛證皮套").price(1800).quantity(57).image(byteidcard).build();
+		
+		File keyCasejpg = new File("src\\main\\resources\\static\\images\\product\\keyCase.jpg");
+		FileInputStream keyCasejpgg = new FileInputStream(keyCasejpg);
+		byte[] bytekeyCase = IOUtils.toByteArray(keyCasejpgg);
+		
+		Product defaultProduct3 = Product.builder().productname("Audi 原廠鑰匙套").price(580).quantity(38).image(bytekeyCase).build();
+		
+		productRepository.save(defaultProduct1);
+		productRepository.save(defaultProduct2);
+		productRepository.save(defaultProduct3);
+		
+//		Create default Center
+		Center defaultCenter1 = Center.builder().centerName("內湖展示中心").centerPhone("02-2812-3214").centerEmail("Neihucar@gmail.com").centerAddress("台北市內湖區瑞光路123號").centerOpentime("週一至週六 9:00 - 18:00").centerService("銷售").build();
+		Center defaultCenter2 = Center.builder().centerName("士林展示中心").centerPhone("02-2881-1973").centerEmail("Shilin@gmail.com").centerAddress("台北市士林區文林路123號").centerOpentime("週一至週六 9:00 - 18:00").centerService("銷售").build();
+		
+		centerRepository.save(defaultCenter1);
+		centerRepository.save(defaultCenter2);
 
 //		Create default News & Events data
 		try {

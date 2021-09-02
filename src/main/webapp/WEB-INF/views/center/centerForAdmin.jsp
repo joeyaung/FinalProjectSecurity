@@ -9,7 +9,7 @@
 		<meta name="description" content="" />
 		<meta name="author" content="" />
 
-		<title>編輯商品資訊</title>
+		<title>編輯展示中心資訊</title>
 
 
 
@@ -439,8 +439,8 @@
 					<!-- Begin Page Content -->
 					<div class="container-fluid">
 						<!-- Page Heading -->
-						<h1 class="h3 mb-2 text-gray-800">編輯商品資訊</h1>
-						<p class="mb-4">編輯商品資訊</p>
+						<h1 class="h3 mb-2 text-gray-800">編輯展示中心資訊</h1>
+						<p class="mb-4">編輯展示中心資訊</p>
 
 						<!-- Content Row -->
 						<div class="row">
@@ -450,49 +450,28 @@
                     
                     
 							<!-- this is button -->
-							<button id="addProductButton" type="submit" class="btn btn-primary">增加商品</button>
+							<button id="addCenterButton" type="submit" class="btn btn-primary">增加展示中心資訊</button>
 								
 								
 								
 							<!-- this is datables -->
-							<table id="productList" class="table table-striped table-bordered nowrap" style="width: 100%">
+							<table id="centerList" class="table table-striped table-bordered nowrap" style="width: 100%">
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>商品圖片</th>
-										<th>商品名稱</th>
-										<th>數量</th>
-										<th>價錢</th>
+										<th>展示中心名稱</th>
+										<th>聯絡電話</th>
+										<th>E-Mail</th>
+										<th>地址</th>
+										<th>營業時間</th>
+										<th>服務內容</th>
 										<th>操作</th>
 
 									</tr>
 
 								</thead>
 								<tbody>
-									<!-- <tr>
-										<th>2048</th>
-										<th>雨傘</th>
-										<th>1247</th>
-										<th>123</th>
-										<th>圖片</th>
-										<th></th>
-									</tr>
-									<tr>
-										<th>2049</th>
-										<th>雨衣</th>
-										<th>154</th>
-										<th>12</th>
-										<th>圖片</th>
-										<th></th>
-									</tr>
-									<tr>
-										<th>1457</th>
-										<th>帽子</th>
-										<th>3787</th>
-										<th>964</th>
-										<th>圖片</th>
-										<th></th>
-									</tr> -->
+
 								</tbody>
 							</table>
 
@@ -500,55 +479,78 @@
 
 
 
-						<!-- 增加商品model -->
-						<div class="modal fade" tabindex="-1" role="dialog" id="addProductModel">
+						<!-- 增加展示中心model -->
+						<div class="modal fade" tabindex="-1" role="dialog" id="addCenterModel">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
-										<h4 class="modal-title">新增商品</h4>
+										<h4 class="modal-title">新增展示中心</h4>
 									</div>
 									<div class="modal-body">
 
 										<form id="form1">
 
 											<table class="box">
-												<tr>
-													<td>商品名稱:</td>
+												<!-- <tr>
+													<td>ID:</td>
 												</tr>
 												<tr>
 													<td>
-														<input class="myitem" id="productname" type="text" name="productname" value="" style="width: 500px"><br />
+														<input class="myitem" id="centerId" type="text" name="centerId" value="" style="width: 500px"><br />
+														<span id="sp1" style="width: 10px" class="add_span"></span> <img src="">
+													</td>
+												</tr> -->
+												<tr>
+													<td>展示中心名稱:</td>
+												</tr>
+												<tr>
+													<td>
+														<input class="myitem" id="centerName" type="text" name="centerName" value="" style="width: 500px"><br />
 														<span id="sp1" style="width: 10px" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
-													<td>商品數量:</td>
+													<td>連絡電話：</td>
 												</tr>
 												<tr>
-													<td><input class="myitem" id="quantity" type="text" name="quantity"
+													<td><input class="myitem" id="centerPhone" type="text" name="centerPhone"
 															value="" style="width: 500px"><br /> 
 															<span id="sp2" style="width: 10px" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
-													<td>商品價錢:</td>
+													<td>E-Mail:</td>
 												</tr>
 												<tr>
-													<td><input class="myitem" id="price" type="text" name="price" value="" /> <br /> 
+													<td><input class="myitem" id="centerEmail" type="text" name="centerEmail" value="" /> <br /> 
 														<span id="sp3" style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												</tr>
-											
 												<tr>
-													<td>
-														<div class="image" id=preview_img0>
-															<img class="myitem" id="preview_img" width="200" height="200" />
-														</div> 
-														<input id="file" type="file" name="file" /> 
-														<span class="add_span" id="sp4" style="width: 10px;"></span> <img src="">
+													<td>地址:</td>
+												</tr>
+												<tr>
+													<td><input class="myitem" id="centerAddress" type="text" name="centerAddress" value="" /> <br /> 
+														<span id="sp3" style="width: 10px;" class="add_span"></span> <img src="">
+													</td>
+												</tr>
+												<tr>
+													<td>營業時間:</td>
+												</tr>
+												<tr>
+													<td><input class="myitem" id="centerOpentime" type="text" name="centerOpentime" value="" /> <br /> 
+														<span id="sp3" style="width: 10px;" class="add_span"></span> <img src="">
+													</td>
+												</tr>
+												<tr>
+													<td>服務內容:</td>
+												</tr>
+												<tr>
+													<td><input class="myitem" id="centerService" type="text" name="centerService" value="" /> <br /> 
+														<span id="sp3" style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 
@@ -576,14 +578,14 @@
 
 
 						<!-- 更改商品model -->
-						<div class="modal fade" tabindex="-1" role="dialog" id="editNewsModal">
+						<div class="modal fade" tabindex="-1" role="dialog" id="editCenterModal">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
-										<h4 class="modal-title">編輯商品</h4>
+										<h4 class="modal-title">編輯展示中心</h4>
 									</div>
 									<div class="modal-body">
 
@@ -593,42 +595,59 @@
 
 												<input type="hidden" id="edit_id" name="id">  <!--hidden-->
 
-												<tr>
-													<td>商品名稱:</td>
+												<!-- <tr>
+													<td>ID:</td>
 												</tr>
 												<tr>
-
-													<td><input class="myitem" id="edit_productname" type="text" name="productname" style="width: 500px"><br />
+													<td><input class="myitem" id="edit_centerId" type="text" name="centerId" style="width: 500px"><br />
 														<span id="sp1" style="width: 10px"></span> <img src="">
 													</td>
+												</tr> -->
+												<tr>
+													<td>展示中心名稱:</td>
 												</tr>
 												<tr>
-													<td>商品數量:</td>
-												</tr>
-												<tr>
-													<td><input class="myitem" id="edit_quantity" type="text" name="quantity" style="width: 500px"><br />
+													<td><input class="myitem" id="edit_centerName" type="text" name="centerName" style="width: 500px"><br />
 														<span id="sp2" style="width: 10px"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
-													<td>商品價錢:</td>
+													<td>連絡電話：</td>
 												</tr>
 												<tr>
-													<td><input class="myitem" id="edit_price" type="text" name="price" /> <br />
+													<td><input class="myitem" id="edit_centerPhone" type="text" name="centerPhone" /> <br />
 														<span id="sp3" style="width: 10px;"></span> <img src=""></td>
 												</tr>
 												<tr>
-													<td>商品圖片：</td>
+													<td>E-Mail:</td>
 												</tr>
 												<tr>
-													<td>
-														<div class="image">
-															<!--原本的圖片-->
-															<img class="myitem" id="edit_preview_img" width="200" height="200" />
-															<!--更新的圖片-->
-															<img class="myitem" id="edit_img" width="200" height="200" />
-														</div> 
-														<input id="edit_file" type="file" name="file" /> <span id="sp5" style="width: 10px;"></span> <img src="">
+													<td><input class="myitem" id="edit_centerEmail" type="text" name="centerEmail" style="width: 500px"><br />
+														<span id="sp1" style="width: 10px"></span> <img src="">
+													</td>
+												</tr>
+												<tr>
+													<td>地址:</td>
+												</tr>
+												<tr>
+													<td><input class="myitem" id="edit_centerAddress" type="text" name="centerAddress" style="width: 500px"><br />
+														<span id="sp1" style="width: 10px"></span> <img src="">
+													</td>
+												</tr>
+												<tr>
+													<td>營業時間:</td>
+												</tr>
+												<tr>
+													<td><input class="myitem" id="edit_centerOpentime" type="text" name="centerOpentime" style="width: 500px"><br />
+														<span id="sp1" style="width: 10px"></span> <img src="">
+													</td>
+												</tr>
+												<tr>
+													<td>服務內容:</td>
+												</tr>
+												<tr>
+													<td><input class="myitem" id="edit_centerService" type="text" name="centerService" style="width: 500px"><br />
+														<span id="sp1" style="width: 10px"></span> <img src="">
 													</td>
 												</tr>
 											</table>
@@ -729,46 +748,47 @@
 
 		//datatable
 		function createdatatable(){
-		table = $('#productList').DataTable({
+		table = $('#centerList').DataTable({
 			"responsive": true,
 			"ajax":{
-				"url": "/FinalProject/queryAllProduct",
+				"url": "/FinalProject/getAllCneter",
 				"dataSrc": "",
 				// "type": "POST",
 				// "dataType": 'json',
 				
 			},
 			
-			"rowId":"id",
+			"rowId":"centerId",
 
 			"columns":[
-				{"data":"id"},
-				{"data":"base64Image"},
-				{"data":"productname"},
-				{"data":"quantity"},
-				{"data":"price"},
-				{"data":"id"},
-				// {"data":"image"},
+				{"data":"centerId"},
+				{"data":"centerName"},
+				{"data":"centerPhone"},
+				{"data":"centerEmail"},
+				{"data":"centerAddress"},
+				{"data":"centerOpentime"},
+				{"data":"centerService"},
+				{"data":"centerId"},
 				
 			],
 
 			"columnDefs": [
-							{
-								targets: 1,
-								render: function (data) {
-									return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
-								}
-							},
+			// 				{
+			// 					targets: 1,
+			// 					render: function (data) {
+			// 						return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+			// 					}
+			// 				},
 							
 							{
-								targets: 5,
-								data:"id",
+								targets: 7,
+								data:"centerId",
 								orderable: false,
 								defaultContent:"",
 								width:"10%",
 								render: function(data){
 									return '<button id="edit_btn" onclick="editMode(' + data + ')" data-dismiss="modal" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>Edit</button>'
-									+ '<button id="delete_btn" onclick="deleteProduct(' + data + ')" data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>Delete</button>';
+									+ '<button id="delete_btn" onclick="deleteCenter(' + data + ')" data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>Delete</button>';
 
 								}
 							}
@@ -798,13 +818,12 @@
 
 
 		//binding增加商品按鈕 V
-		$('#addProductButton').click(function (e) {
-			previewimg();
-			$('#addProductModel').modal('show');
-			validateData();
+		$('#addCenterButton').click(function (e) {
+			// previewimg(); 
+			$('#addCenterModel').modal('show');  //顯示增加展示中心的model
+			// validateData();
 			e.preventDefault();
 			
-			// e.preventDefault();
 		})
 
 
@@ -813,39 +832,39 @@
 		$("#submitadd").click(function (e) {
 
 			var formData = new FormData(document.getElementById("form1"));
-
-			if (checkinputblank() == true) {
+			
+			// if (checkinputblank() == true) {  //如果要驗證就要把這邊註解打開
 				addproduct(formData);
 				$(".add_span").html('');
 				$(".add_span").next().attr("src", "");
-			} else
-				e.stopPropagation();
+			// } else
+			// 	e.stopPropagation();
 		});
 
 
 
-		//增加商品的 預覽圖 V
-		function previewimg() {
+		// //增加商品的 預覽圖 V
+		// function previewimg() {
 
-			$("#file").change(function () {
-				if (this.files && this.files[0]) {
-					let reader = new FileReader();
-					reader.readAsDataURL(this.files[0]);  //readAsDataURL(blob) —— 读取二进制数据，并将其编码为 base64 的 data url。
-					// console.log(this);
-					reader.onload = function (e) {
-						$('#preview_img').attr('src', e.target.result);
-					}
+		// 	$("#file").change(function () {
+		// 		if (this.files && this.files[0]) {
+		// 			let reader = new FileReader();
+		// 			reader.readAsDataURL(this.files[0]);  //readAsDataURL(blob) —— 读取二进制数据，并将其编码为 base64 的 data url。
+		// 			// console.log(this);
+		// 			reader.onload = function (e) {
+		// 				$('#preview_img').attr('src', e.target.result);
+		// 			}
 					
-				}
-			});
+		// 		}
+		// 	});
 
-		}
+		// }
 
 
 		// add product To資料庫 V
 		function addproduct(formData) {
 			$.ajax({
-				url: "/FinalProject/addProduct",
+				url: "/FinalProject/addCenter",
 				method: "POST",
 				data: formData,
 				contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
@@ -869,20 +888,21 @@
 
 
 		// 刪除商品 V
-		function deleteProduct(id) {
-			console.log('delete id=' + id);
+		function deleteCenter(centerId) {
+			console.log('delete id=' + centerId);
 			Swal.fire({
-				title: 'Are you sure?',
-				text: "You won't be able to revert this!",
+				title: '確定刪除?',
+				text: "再給一次機會喔！真的要刪除嗎？",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes, delete it!'
+				confirmButtonText: '確定刪除',
+				cancelButtonText: '取消'
 			}).then((result) => {
 				if (result.isConfirmed) {
 					$.ajax({
-						url: "/FinalProject/deleteProduct/" + id,
+						url: "/FinalProject/deleteCenterById/" + centerId,
 						method: "POST",
 						dataType: "json",
 						success: function (res) {
@@ -894,48 +914,51 @@
 						}
 					});
 					Swal.fire(
-						'Deleted!',
-						'Your file has been deleted.',
-						'success'
+						'已刪除',
+						'您選的資料已確定刪除',
+						'成功'
 					)
 				}
 			})
 		}
 
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// //////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// //////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// 更新資料function
 		$("#edit_submit").click(
 			function () {
-
+				console.log("1111111")
 				var updateFormData = new FormData(document.getElementById("edit_form"));
-
-				editNews(updateFormData);
+				console.log("2222222")
+				editCenter(updateFormData);
+				console.log("333333333")
 			})
 
 
 
 
 		//編輯商品的model
-		function editMode(newsId) {
-			edit_previewimg();
+		function editMode(centerId) {
+			console.log("按下按鈕")
+			// edit_previewimg();
 
 			let aftersuccess = function (res) {
-				$("#edit_id").val(res.id);
-				$("#edit_productname").val(res.productname);
-				$("#edit_quantity").val(res.quantity);
-				$("#edit_price").val(res.price);
-				$("#edit_preview_img").attr("src",'data:image/png;base64,' + res.base64Image);
-				$("#edit_file").val(res.file);
+				// $("#edit_centerId").val(res.centerId);
+				$("#edit_centerName").val(res.centerName);
+				$("#edit_centerPhone").val(res.centerPhone);
+				$("#edit_centerEmail").val(res.centerEmail);
+				$("#edit_centerAddress").val(res.centerAddress);
+				$("#edit_centerOpentime").val(res.centerOpentime);
+				$("#edit_centerService").val(res.centerService);
 				console.log("0123");
 				// console.log(res);
 				console.log(res.file);
 			}
-			findById(newsId, aftersuccess)
-			$('#editNewsModal').modal('show');
-			$('#editNewsModal').css('overflow-y', 'auto');
+			findById(centerId, aftersuccess)
+			$('#editCenterModal').modal('show');
+			$('#editCenterModal').css('overflow-y', 'auto');
 
 		}
 
@@ -943,11 +966,11 @@
 
 
 
-		// Execute update news
-		function editNews(updateFormData) {
+		// 修改展示中心model
+		function editCenter(updateFormData) {
 
 			$.ajax({
-				url: "/FinalProject/updateProduct",
+				url: "/FinalProject/updateCenter",
 				method: "POST",
 				data: updateFormData,
 				contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
@@ -968,31 +991,31 @@
 
 
 
-		//更新圖片的model
-		function edit_previewimg() {
+		// //更新圖片的model
+		// function edit_previewimg() {
 
-			$("#edit_file").change(function () {
-				if (this.files && this.files[0]) {
-					// console.log("1");
-					// console.log(this);
-					// console.log("12");
-					let reader = new FileReader();
-					reader.readAsDataURL(this.files[0]);
-					reader.onload = function (e) {
-						$('#edit_img').attr('src', e.target.result);
-						console.log(e.target.result)
-					}
-				}
-			});
-		}
-
-
+		// 	$("#edit_file").change(function () {
+		// 		if (this.files && this.files[0]) {
+		// 			// console.log("1");
+		// 			// console.log(this);
+		// 			// console.log("12");
+		// 			let reader = new FileReader();
+		// 			reader.readAsDataURL(this.files[0]);
+		// 			reader.onload = function (e) {
+		// 				$('#edit_img').attr('src', e.target.result);
+		// 				console.log(e.target.result)
+		// 			}
+		// 		}
+		// 	});
+		// }
 
 
-		function findById(id, aftersuccess) {
 
+
+		function findById(centerId, aftersuccess) {
+			console.log("findbyid:" + centerId)
 			$.ajax({
-				url: "/FinalProject/findProductById/" + id,
+				url: "/FinalProject/findCenterById/" + centerId,
 				method: "GET",
 				dataType: "json",
 				success: function (res) {
@@ -1009,6 +1032,7 @@
 				error: function (err) {
 					console.log("findbyid失敗")
 					alert(err)
+					console.log(err)
 				}
 			});
 
@@ -1017,106 +1041,106 @@
 
 		
 
-		// //Add News Autofill  一鍵自動輸入 
-		// $("#shortcut")
-		// 	.click(
-		// 		function () {
+		// // //Add News Autofill  一鍵自動輸入 
+		// // $("#shortcut")
+		// // 	.click(
+		// // 		function () {
 
-		// 			var text1 = "Audi 萬人註冊感謝季即刻開跑 敬邀四環車主預約回廠獨享尊榮禮遇";
-		// 			text1 = $("#title").val(text1);
-		// 			var text2 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定";
-		// 			text2 = $("#subtitle").val(text2);
-		// 			var text3 = "2021-03-09";
-		// 			text3 = $("#uploaddate").val(text3);
-		// 			var text4 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定。凡於活動期間內預約回廠健檢，即可享有免費全車系安全檢查，包括引擎、輪胎、底盤、煞車系統、燈光系統等檢測項目，車輛相關維修及保養另可享 Audi 原廠零件 88 折、輪胎兩條 85 折四條 8 折、風箱清洗優惠價 NT$ 2,288 元 、電瓶以及雨刷片 7 折、原廠配件與精品 85 折等專屬優惠。單次消費金額滿 NT$ 11,888 以上即贈送好禮一份 (數量有限，送完為止)。此外，凡於活動期間加入 Audi 點點入心禮活動並完成「免費行車安全檢查」之所有車主，將可獲得 2021 精緻筆記本。";
-		// 			text4 = $("#content1").val(text4);
-		// 			var text5 = "凡於活動期間內預約回廠車主即可享有多項品牌尊榮優惠禮遇。";
-		// 			text5 = $("#remarks").val(text5);
-		// 		})
-
-		
-		
-
-
-
-		//按下送出時再確認一次是否有空白 
-		function checkinputblank() {
-
-			let warning = "請輸入內容";
-
-			let productname = $("#productname").val().trim();
-			let quantity = $("#quantity").val().trim();
-			let price = $("#price").val().trim();
-			let file = $("#file").val();
-
-			if (productname == "" || quantity == "" || price == "" || file == "") {
-				if (productname == "") {
-					$("#sp1").html(warning).css('color', 'red');
-					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
-				}
-				if (quantity == "") {
-					$("#sp2").html(warning).css('color', 'red');
-					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
-				}
-				if (price == "") {
-					$("#sp3").html(warning).css('color', 'red');
-					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
-				}
-				if (file == "") {
-					$("#sp4").html(warning).css('color', 'red');
-					$("#sp4").next().attr("src", "/FinalProject/images/error.png");
-				}
-				return false;
-
-			}
-			return true;
-		}
-
-
+		// // 			var text1 = "Audi 萬人註冊感謝季即刻開跑 敬邀四環車主預約回廠獨享尊榮禮遇";
+		// // 			text1 = $("#title").val(text1);
+		// // 			var text2 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定";
+		// // 			text2 = $("#subtitle").val(text2);
+		// // 			var text3 = "2021-03-09";
+		// // 			text3 = $("#uploaddate").val(text3);
+		// // 			var text4 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定。凡於活動期間內預約回廠健檢，即可享有免費全車系安全檢查，包括引擎、輪胎、底盤、煞車系統、燈光系統等檢測項目，車輛相關維修及保養另可享 Audi 原廠零件 88 折、輪胎兩條 85 折四條 8 折、風箱清洗優惠價 NT$ 2,288 元 、電瓶以及雨刷片 7 折、原廠配件與精品 85 折等專屬優惠。單次消費金額滿 NT$ 11,888 以上即贈送好禮一份 (數量有限，送完為止)。此外，凡於活動期間加入 Audi 點點入心禮活動並完成「免費行車安全檢查」之所有車主，將可獲得 2021 精緻筆記本。";
+		// // 			text4 = $("#content1").val(text4);
+		// // 			var text5 = "凡於活動期間內預約回廠車主即可享有多項品牌尊榮優惠禮遇。";
+		// // 			text5 = $("#remarks").val(text5);
+		// // 		})
 
 		
-		//Add product validation 新增商品驗證
-		function validateData() {
-			let warning = "請輸入內容";
-			$("#productname").blur(function () {
-
-				var productname = $("#productname").val().trim();
-
-				if (productname == "") {
-					$("#sp1").html(warning).css('color', 'red');
-					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
-				} else if (productname != "") {
-					$("#sp1").html("");
-					$("#sp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
-				}
-
-			})
-			$("#quantity").blur(function () {
-
-				var quantity = $("#quantity").val().trim();
-				if (quantity == "") {
-					$("#sp2").html(warning).css('color', 'red');
-					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
-				} else if (quantity != "") {
-					$("#sp2").html("");
-					$("#sp2").next().attr("src", "/FinalProject/images/greencheck.jpg");
-				}
-			})
+		
 
 
 
-			$("#price").blur(function () {
+		// //按下送出時再確認一次是否有空白 
+		// function checkinputblank() {
 
-				var price = $("#price").val().trim();
-				if (price == "") {
-					$("#sp3").html(warning).css('color', 'red');
-					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
-				} else if (price != "") {
-					$("#sp3").html("");
-					$("#sp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
-				}
-			})
-		}
+		// 	let warning = "請輸入內容";
+
+		// 	let productname = $("#productname").val().trim();
+		// 	let quantity = $("#quantity").val().trim();
+		// 	let price = $("#price").val().trim();
+		// 	let file = $("#file").val();
+
+		// 	if (productname == "" || quantity == "" || price == "" || file == "") {
+		// 		if (productname == "") {
+		// 			$("#sp1").html(warning).css('color', 'red');
+		// 			$("#sp1").next().attr("src", "./images/error.png");
+		// 		}
+		// 		if (quantity == "") {
+		// 			$("#sp2").html(warning).css('color', 'red');
+		// 			$("#sp2").next().attr("src", "./images/error.png");
+		// 		}
+		// 		if (price == "") {
+		// 			$("#sp3").html(warning).css('color', 'red');
+		// 			$("#sp3").next().attr("src", "./images/error.png");
+		// 		}
+		// 		if (file == "") {
+		// 			$("#sp4").html(warning).css('color', 'red');
+		// 			$("#sp4").next().attr("src", "./images/error.png");
+		// 		}
+		// 		return false;
+
+		// 	}
+		// 	return true;
+		// }
+
+
+
+		
+		// //Add product validation 新增商品驗證
+		// function validateData() {
+		// 	let warning = "請輸入內容";
+		// 	$("#productname").blur(function () {
+
+		// 		var productname = $("#productname").val().trim();
+
+		// 		if (productname == "") {
+		// 			$("#sp1").html(warning).css('color', 'red');
+		// 			$("#sp1").next().attr("src", "./images/error.png");
+		// 		} else if (productname != "") {
+		// 			$("#sp1").html("");
+		// 			$("#sp1").next().attr("src", "./images/greencheck.jpg");
+		// 		}
+
+		// 	})
+		// 	$("#quantity").blur(function () {
+
+		// 		var quantity = $("#quantity").val().trim();
+		// 		if (quantity == "") {
+		// 			$("#sp2").html(warning).css('color', 'red');
+		// 			$("#sp2").next().attr("src", "./images/error.png");
+		// 		} else if (quantity != "") {
+		// 			$("#sp2").html("");
+		// 			$("#sp2").next().attr("src", "./images/greencheck.jpg");
+		// 		}
+		// 	})
+
+
+
+		// 	$("#price").blur(function () {
+
+		// 		var price = $("#price").val().trim();
+		// 		if (price == "") {
+		// 			$("#sp3").html(warning).css('color', 'red');
+		// 			$("#sp3").next().attr("src", "./images/error.png");
+		// 		} else if (price != "") {
+		// 			$("#sp3").html("");
+		// 			$("#sp3").next().attr("src", "./images/greencheck.jpg");
+		// 		}
+		// 	})
+		// }
 
 		
 

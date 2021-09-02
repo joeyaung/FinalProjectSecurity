@@ -63,17 +63,7 @@ public class ProductAPIController {
 		return productService.findById(id);
 	}
 
-	public void Init() throws IOException {
-		Product defaultProduct1 = Product.builder().productname("Audi rings x LAMY 限定版聯名銀灰色鋼筆").price(2250).quantity(28)
-				.image(null).build();
-
-		Product defaultProduct2 = Product.builder().productname("Audi 駕駛證行駛證皮套").price(1800).quantity(57).image(null)
-				.build();
-
-		productService.addProduct(defaultProduct1);
-		productService.addProduct(defaultProduct2);
-
-	}
+ 
 
 //		//透過id找pName和pPrice產生成cookie
 //		@PostMapping(path="/cartitem")

@@ -1,5 +1,6 @@
 package tw.com.finalproject.kevinLai.Product;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,12 +22,12 @@ import lombok.NoArgsConstructor;
 public class Product {
 
 	@Id
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String productname;
 	private int price;
 	private int quantity;
+	@Column(name = "image",columnDefinition = "VARBINARY(MAX)")
 	private byte[] image;
 
 	@Transient
