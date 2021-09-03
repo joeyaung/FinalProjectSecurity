@@ -1,5 +1,7 @@
 package tw.com.finalproject.shellyYang.EventForm.Service;
 
+import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -7,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -63,7 +66,6 @@ public class EventFormService {
 	 */
 	public String createEventForm(String json) {
 		
-		System.out.println("json" + json);
 		
 		EventForm eventForm = null;
 		
@@ -71,8 +73,6 @@ public class EventFormService {
 
 		try {
 			Map<String, String> map = objectMapper.readValue(json, new TypeReference<Map<String, String>>() {});
-			
-			System.out.println("Map" + map);
 		
 			long userId = Long.parseLong(map.get("user_id"));
 			
@@ -81,7 +81,6 @@ public class EventFormService {
 			String gender = map.get("user_gender");
 			String idNumber = map.get("user_id_number");
 			String message = map.get("user_message");
-			System.out.println("message=" + message);
 			
 			eventForm = new EventForm();
 			
@@ -93,27 +92,23 @@ public class EventFormService {
 			ApplicationUser appUser = appUserRepository.findById(userId).get();
 			
 			String limitWarning = "報名失敗，超過人數限制";
-			String registerTwice = "報名失敗，重複報名";
 			String success = "報名成功！請至您的電子郵件查看報名信件";
 			
 			//從EventForm找報名過此event的user id
 			List list = eFormRepository.findUser_idByEvent_id(eventId);
 			
 			//若報名人數已達上限，狀態設為失敗
-			if(reservedPeople-1<0) {
-				eventForm.setStatus(limitWarning);
+			
+			if(reservedPeople+1 > attendLimit) {		
 				return limitWarning;
-
-				//透過活動ID撈出MemberId，重複報名狀態設為失敗
-			}else if(list.contains(userId)) {
-				eventForm.setStatus(registerTwice);
-				return registerTwice;
+				
 			}
 			
-			//若報名成功，則目前已報名人數加1
+			//若報名成功
 			else {
 				String creationTime = new SimpleDateFormat("yyyy/MM/dd H:mm:ss").format(Calendar.getInstance().getTime());
 				
+				//報名成功，目前已報名人數加1
 				int newReservedPeople = reservedPeople+1;
 				
 				event.setReserved_people(newReservedPeople);
@@ -127,6 +122,7 @@ public class EventFormService {
 				eventForm.setStatus(success);
 				
 				eFormRepository.save(eventForm);
+				
 		
 				
 			}
@@ -136,6 +132,7 @@ public class EventFormService {
 			e.printStackTrace();
 		}
 		
+		System.out.println(eventForm.getStatus());
 		return eventForm.getStatus();
 		
 

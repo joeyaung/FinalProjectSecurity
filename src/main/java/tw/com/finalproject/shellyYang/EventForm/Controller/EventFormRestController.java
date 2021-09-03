@@ -1,11 +1,12 @@
 package tw.com.finalproject.shellyYang.EventForm.Controller;
 
 
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +24,22 @@ public class EventFormRestController {
 	
 	@PostMapping("/addEventForm")
 	public String addEventForm(@RequestParam("json") String json, HttpServletResponse response) {
-		
+		String result = null;
+			
 		response.setContentType("application/json;charset=utf-8");
-		return eventFormService.createEventForm(json);
+		try {
+			
+			result = eventFormService.createEventForm(json);
+			
+			System.out.println("Im result=" + result);
+			
+		}catch(Exception ex){
+		//攔截Violation of Unique Contraints錯誤
+				return "您已報名過此活動，請至活動管理確認！";
+			
+		}
+		return result;
+		
 		
 	}
 	

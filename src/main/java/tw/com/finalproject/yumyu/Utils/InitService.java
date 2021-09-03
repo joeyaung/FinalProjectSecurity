@@ -298,7 +298,7 @@ public class InitService {
 		Event defaultEvent3 = Event.builder().event_title("2021 Audi quattro Cup Taiwan")
 				.event_subtitle("台灣奧迪自 2005 年成立以來，連年舉辦 Audi quattro Cup 車主杯高爾夫球賽").event_uploaddate("2021-08-20")
 				.reserve_start_date("2021-09-01").reserve_end_date("2021-10-03").event_date("2021-10-15")
-				.location("士林高爾夫練習場").attend_limit(30).reserved_people(25)
+				.location("士林高爾夫練習場").attend_limit(30).reserved_people(30)
 				.event_content(
 						"台灣奧迪自 2005 年成立以來，連年舉辦 Audi quattro Cup 車主杯高爾夫球賽，期望能提供優質的高爾夫球活動以增進 Audi 車主們對 Audi 品牌的喜愛與支持，\n"
 								+ "並且以球會友，以服務 Audi 車主為職志。")
