@@ -195,19 +195,6 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <button
-                      class="
-                        btn btn-wd-100
-                        my-3
-                        bgc-primary
-                        text-white
-                        tx-13rem
-                        hov-float
-                      "
-                    >
-                      直接結帳<i class="fas fa-shopping-bag mx-2"></i>
-                    </button>
-                    <br />
                     <div id="paypal-button-container"></div>
                   </div>
                 </div>
