@@ -27,17 +27,17 @@ public class EventController {
 		String name = principal.getName();
 		Employee emp = employeeService.findbyUsername(name);
 		request.setAttribute("empName", emp.getFullName());
-		return "adminAllEvents";
+		return "Event/adminAllEvents";
 	}
 
 	@GetMapping("/Events")
 	public String allEventsForUser() {
-		return "eventForUser";
+		return "Event/eventForUser";
 	}
 
 	@GetMapping("/Events/OneEvent")
 	public String displayOneEventForUser() {
-		return "displayOneEvent";
+		return "Event/displayOneEvent";
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class EventController {
 	 */
 	@GetMapping("/account/BookEvent")
 	public String bookEvent()  {
-		return "eventBookForm";
+		return "Event/eventBookForm";
 	}
 
 }

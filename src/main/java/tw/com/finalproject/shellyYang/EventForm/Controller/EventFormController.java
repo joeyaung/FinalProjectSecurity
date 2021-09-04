@@ -22,12 +22,12 @@ public class EventFormController {
 			String name = principal.getName();
 			Employee emp = employeeService.findbyUsername(name);
 			request.setAttribute("empName", emp.getFullName());
-			return "adminAllEventForm";
+			return "Event/adminAllEventForm";
 		}
 		
 		@GetMapping("/account/BookEventConfirmation")
 		public String bookEventConfirm()  {
-			return "eventRegisConfirm";
+			return "Event/eventRegisConfirm";
 		}
 }
 	

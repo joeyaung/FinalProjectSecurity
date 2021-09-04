@@ -252,6 +252,7 @@
           success: function (response) {
             if (response != undefined) {
               alert(response);
+              window.location.href="/FinalProject/Events";
             }
 
           },

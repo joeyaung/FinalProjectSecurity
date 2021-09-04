@@ -99,7 +99,8 @@ public class EventFormService {
 			
 			//若報名人數已達上限，狀態設為失敗
 			
-			if(reservedPeople+1 > attendLimit) {		
+			if(reservedPeople+1 > attendLimit) {	
+				
 				return limitWarning;
 				
 			}
@@ -119,7 +120,7 @@ public class EventFormService {
 				eventForm.setGender(gender);
 				eventForm.setId_number(idNumber);
 				eventForm.setMessage(message);
-				eventForm.setStatus(success);
+				eventForm.setStatus("成功");
 				
 				eFormRepository.save(eventForm);
 				
@@ -132,8 +133,8 @@ public class EventFormService {
 			e.printStackTrace();
 		}
 		
-		System.out.println(eventForm.getStatus());
-		return eventForm.getStatus();
+
+		return "報名成功！請至您的電子郵件查看報名信件";
 		
 
 	}

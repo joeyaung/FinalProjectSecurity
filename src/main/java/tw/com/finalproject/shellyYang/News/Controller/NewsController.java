@@ -22,17 +22,17 @@ public class NewsController {
 		String name = principal.getName();
 		Employee emp = employeeService.findbyUsername(name);
 		request.setAttribute("empName", emp.getFullName());
-		return "adminAllNews";
+		return "News/adminAllNews";
 	}
 
 	@GetMapping("/News")
 	public String allNewsForUser() {
-		return "newsForUser";
+		return "News/newsForUser";
 	}
 
 	@GetMapping("/News/OneNews")
 	public String displayOneNewsForUser() {
-		return "displayOneNews";
+		return "News/displayOneNews";
 	}
 
 }

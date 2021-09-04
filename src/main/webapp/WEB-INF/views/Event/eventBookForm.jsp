@@ -294,30 +294,6 @@
 
       });
 
-      //Execute Add Event（目前沒有用到）
-
-      function addevent(formData) {
-        $.ajax({
-          url: "/FinalProject/Events/addEventForm",
-          method: "POST",
-          data: formData,
-          contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-          processData: false, // NEEDED, DON'T OMIT THIS
-          "mimeType": "multipart/form-data",
-          success: function (data) {
-            console.log(data);
-          },
-          error: function (err) {
-            console.log(err);
-            alert('Registration failed:' + err);
-          }
-        });
-
-      }
-
-
-
-
       //姓名欄位驗證
       $("#name").blur(function () {
         if ($("#name").val() != "") {
