@@ -16,7 +16,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="js/template.js"></script>
+    <script src="/FinalProject/js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.ico" />
@@ -32,11 +32,37 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
-      .product_li {
-        /* color: white; */
+      .center_li {
         list-style-type: none;
-        text-align: left;
+        text-align: center;
+        
       }
+
+      .section_height{
+        height: 1500px;
+      }
+
+      .main{
+        border: solid red;
+        width: 800px;
+        float: right;
+      }
+
+
+      .side{
+        border: solid green;
+        width: 300px;
+        float: left;
+      }
+
+      .sidecard{
+        width: 250px;
+      }
+
+
+
+
+
 
 
     </style>
@@ -98,27 +124,44 @@
     
     
     <!-- Section-->
-    <section class="py-5" id="app">
+    <section class="py-5 section_height" id="app">
       <div class="container px-4 px-lg-5 mt-5">
-        <div class="gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center " id="product-container">
-          <div class="col mb-5" v-for="(item, index) in centers">  <!-- vue的for迴圈 -->
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                        </div> -->
-              <!-- Product image-->
-              <!-- <img class="card-img-top" width="250px" height="250px" :src="`data:image/png;base64,`+item.base64Image" alt="..." /> -->
-              <!-- Product details-->
+      
+        <!-- main -->
+        <div class="gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center main" id="product-container">
+          <div class="col mb-5"> 
+
+                <div class="text-center">
+
+                  <!-- findbyid From Center-->
+                  <h5>台北展示中心</h5>
+                  <li class="center_li">地址:台北市大同區</li>
+                  <li class="center_li">連絡電話：02-12345678</li>
+                  <li class="center_li">Email:abc@gamil.com</li>
+
+
+
+                </div>
+          </div>
+        </div>
+
+
+
+        <!-- side -->
+        <div class="gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center side" id="product-container">
+          <div class="col mb-5" v-for="(item, index) in centers ">  <!-- vue的for迴圈 -->
+            <div class="card h-100 sidecard">
               <div class="card-body p-4">
                 <div class="text-center">
-                  <!-- Product name-->
-                  <h5 class="fw-bolder product-title">{{ item.centerName }}</h5>
-                  <li class="product_li">{{ item.centerAddress }}</li>
-                  <li class="product_li">連絡電話：{{ item.centerPhone }}</li>
-                  <li class="product_li">{{ item.centerEmail }}</li>
+
+                  <!-- Center name-->
+                  <h5 class="fw-bolder center-title">{{ item.centerName }}</h5>
+                  <li class="center_li">{{ item.centerAddress }}</li>
+                  <li class="center_li">連絡電話：{{ item.centerPhone }}</li>
+                  <li class="center_li">{{ item.centerEmail }}</li>
 
 
-                  <a :href="'http://localhost:8080/FinalProject/center/location?id='+ item.centerId">Link</a>
+                  <a :href="'http://localhost:8080/FinalProject/location/center?id='+item.centerId">Link</a>
 
                   <!-- <span class="product-price">{{ item.centerPhone }}</span> -->
                 </div>

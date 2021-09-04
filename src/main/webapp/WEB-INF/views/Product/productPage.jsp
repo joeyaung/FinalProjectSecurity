@@ -32,24 +32,7 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
-      .news_li {
-        color: white;
-        list-style-type: none;
-        text-align: left;
-      }
 
-      #title_li {
-        font-size: 20px;
-      }
-      #seemore_btn {
-      background-color:black;
-      color:white;
-      border: none;
-      }
-
-      .msg_title{
-        color:white;
-      }
 
     </style>
   </head>

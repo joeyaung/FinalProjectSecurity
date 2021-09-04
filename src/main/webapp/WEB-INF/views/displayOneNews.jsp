@@ -124,12 +124,9 @@
 
             <div id="container">
               <nav style="margin-top: 100px">
-                <input type="button" id="secondHalfYear" class="2021070120211231"
-                  value="2021年07-12月" style="width: 150px; height: 50px;"> <input type="button"
-                  id="firstHalfYear" class="2021010120210630" value="2021年01-06月"
-                  style="width: 150px; height: 50px;">
-                <input type="button" id="secondHalfYear2020" class="2020070120201231"
-                  value="2020年07-12月" style="width: 150px; height: 50px;">
+                <input type="button" id="secondHalfYear" class="2021070120211231"value="2021年07-12月" style="width: 150px; height: 50px;">
+                <input type="button" id="firstHalfYear" class="2021010120210630" value="2021年01-06月" style="width: 150px; height: 50px;">
+                <input type="button" id="secondHalfYear2020" class="2020070120201231" value="2020年07-12月" style="width: 150px; height: 50px;">
               </nav>
 
               </br> </br>
