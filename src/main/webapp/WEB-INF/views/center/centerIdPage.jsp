@@ -213,6 +213,24 @@
 		});
 		
 	},
+
+  // mounted: function(){
+	// 	var self = this;
+  //   console.log(window.location.search)
+	// 	$.ajax({
+	// 		url:"/FinalProject/getAllCneter/" + centerId,
+	// 		method:"GET",
+	// 		success:function(res){
+	// 			console.log(res);
+	// 			self.centers = res;
+	// 		},
+	// 		error:function(){
+	// 			console.log("Fail");
+	// 		},
+			
+	// 	});
+		
+	// },
 	
 });
       

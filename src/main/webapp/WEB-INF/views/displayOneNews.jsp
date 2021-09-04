@@ -198,6 +198,7 @@
   <script>
     //display details of the selected news
     $(document).ready(function () {
+      console.log(window.location)
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const newsId = urlParams.get('newsId');
@@ -253,18 +254,13 @@
 								var end;
 								start = res.substring(0, 8);
 								end = res.substring(8);
-								$
-									.ajax({
-										url: "/FinalProject/sortByUploadDate/"
-											+ start
-											+ "/"
-											+ end,
+								$.ajax({
+										url: "/FinalProject/sortByUploadDate/" +  start +  "/" + end,
 										method: "GET",
 										dataType: "json",
 										success: function (data) {
 											var list = "";
-											$
-												.each(
+											$.each(
 													data,
 													function (
 														index,
@@ -279,8 +275,7 @@
 															+ item.newsId
 															+ "'>更多資訊<input id='newsId' type='hidden' value=" + item.newsId + "><i class=‘fas fa-angle-right’></i></a></li></br></br>";
 													});
-											$("#user_newslist")
-												.html(list);
+											$("#user_newslist").html(list);
 										},
 										error: function (err) {
 											alert('Cannot find any news uploaded during the period');

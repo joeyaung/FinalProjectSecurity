@@ -155,21 +155,25 @@
     
     <!-- <script src="js/productall.js"></script> -->
     <script>
+      // 創建一个新的 Vue 实例
       let productVM = new Vue({
+        // DOM 元素，挂载视图模型
 	el:"#app",
-	data:{
+	data:{  //定義屬性並設初始值
 	  products:[],
 
 	},
 	
+  //在整個初始化結束後就執行這個
 	mounted: function(){
 		var self = this;
 		$.ajax({
 			url:"queryAllProduct",
 			method:"GET",
 			success:function(res){
-				console.log(res);
+				// console.log(res);
 				self.products = res;
+        // console.log(self);
 			},
 			error:function(){
 				console.log("Fail");

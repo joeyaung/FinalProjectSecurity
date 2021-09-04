@@ -534,7 +534,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="centerAddress" type="text" name="centerAddress" value="" /> <br /> 
-														<span id="sp3" style="width: 10px;" class="add_span"></span> <img src="">
+														<span id="sp4" style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -542,7 +542,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="centerOpentime" type="text" name="centerOpentime" value="" /> <br /> 
-														<span id="sp3" style="width: 10px;" class="add_span"></span> <img src="">
+														<span id="sp5" style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -550,7 +550,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="centerService" type="text" name="centerService" value="" /> <br /> 
-														<span id="sp3" style="width: 10px;" class="add_span"></span> <img src="">
+														<span id="sp6" style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 
@@ -831,17 +831,17 @@
 
 
 
-		//增加商品function  V
+		//增加中心的function  V
 		$("#submitadd").click(function (e) {
 
 			var formData = new FormData(document.getElementById("form1"));
 			
-			// if (checkinputblank() == true) {  //如果要驗證就要把這邊註解打開
+			if (checkinputblank() == true) {  //如果要驗證就要把這邊註解打開
 				addproduct(formData);
 				$(".add_span").html('');
 				$(".add_span").next().attr("src", "");
-			// } else
-			// 	e.stopPropagation();
+			} else
+				e.stopPropagation();
 		});
 
 
@@ -890,7 +890,7 @@
 
 
 
-		// 刪除商品 V
+		// 刪除Center V
 		function deleteCenter(centerId) {
 			console.log('delete id=' + centerId);
 			Swal.fire({
@@ -1068,37 +1068,49 @@
 
 
 		// //按下送出時再確認一次是否有空白 
-		// function checkinputblank() {
+		function checkinputblank() {
 
-		// 	let warning = "請輸入內容";
+			let warning = "請輸入內容";
 
-		// 	let productname = $("#productname").val().trim();
-		// 	let quantity = $("#quantity").val().trim();
-		// 	let price = $("#price").val().trim();
-		// 	let file = $("#file").val();
+			let centerName = $("#centerName").val().trim();
+			let centerPhone = $("#centerPhone").val().trim();
+			let centerEmail = $("#centerEmail").val().trim();
+			let centerAddress = $("#centerAddress").val().trim();
+			let centerOpentime = $("#centerOpentime").val().trim();
+			let centerService = $("#centerService").val().trim();
 
-		// 	if (productname == "" || quantity == "" || price == "" || file == "") {
-		// 		if (productname == "") {
-		// 			$("#sp1").html(warning).css('color', 'red');
-		// 			$("#sp1").next().attr("src", "./images/error.png");
-		// 		}
-		// 		if (quantity == "") {
-		// 			$("#sp2").html(warning).css('color', 'red');
-		// 			$("#sp2").next().attr("src", "./images/error.png");
-		// 		}
-		// 		if (price == "") {
-		// 			$("#sp3").html(warning).css('color', 'red');
-		// 			$("#sp3").next().attr("src", "./images/error.png");
-		// 		}
-		// 		if (file == "") {
-		// 			$("#sp4").html(warning).css('color', 'red');
-		// 			$("#sp4").next().attr("src", "./images/error.png");
-		// 		}
-		// 		return false;
+			// let file = $("#file").val();
 
-		// 	}
-		// 	return true;
-		// }
+			if (centerName == "" || centerPhone == "" || centerEmail == "" || centerAddress == "" || centerOpentime == "" || centerService == "") {
+				if (centerName == "") {
+					$("#sp1").html(warning).css('color', 'red');
+					$("#sp1").next().attr("src", "./images/error.png");
+				}
+				if (centerPhone == "") {
+					$("#sp2").html(warning).css('color', 'red');
+					$("#sp2").next().attr("src", "./images/error.png");
+				}
+				if (centerEmail == "") {
+					$("#sp3").html(warning).css('color', 'red');
+					$("#sp3").next().attr("src", "./images/error.png");
+				}
+				if (centerAddress == "") {
+					$("#sp4").html(warning).css('color', 'red');
+					$("#sp4").next().attr("src", "./images/error.png");
+				}
+				if (centerOpentime == "") {
+					$("#sp5").html(warning).css('color', 'red');
+					$("#sp5").next().attr("src", "./images/error.png");
+				}
+				if (centerService == "") {
+					$("#sp6").html(warning).css('color', 'red');
+					$("#sp6").next().attr("src", "./images/error.png");
+				}
+				return false;
+
+			}
+			return true;
+		}
 
 
 

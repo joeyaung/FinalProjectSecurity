@@ -10,7 +10,7 @@ import tw.com.finalproject.kevinLai.Center.Service.CenterService;
 
 @Controller
 @SessionAttributes
-public class CenterPage {
+public class CenterController {
 	
 	private CenterService centerService;
 	
@@ -26,13 +26,13 @@ public class CenterPage {
 		return "center/centerIdPage";
 	}
 	
-	//單一中心的頁面
-	@GetMapping(path = "/center/location/{centerId}")
-	public String centerIdPage(@PathVariable Integer centerId) {
-		Center center= centerService.findCenterById(centerId);
-//		setAttributter(center,center);
-		return "center/centerIdPage";
-	}
+//	//單一中心的頁面
+//	@GetMapping(path = "/center/location/{centerId}")
+//	public String centerIdPage(@PathVariable Integer centerId) {
+//		Center center= centerService.findCenterById(centerId);
+////		setAttributter(center,center);
+//		return "center/centerIdPage";
+//	}
 	
 	
 	//後台頁面
