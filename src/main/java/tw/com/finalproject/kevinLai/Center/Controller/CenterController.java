@@ -23,7 +23,7 @@ public class CenterController {
 	//單一中心的頁面
 	@GetMapping(path = "/center/location")
 	public String centerIdPage() {
-		return "center/centerIdPage";
+		return "center/centerOnePage";
 	}
 	
 //	//單一中心的頁面

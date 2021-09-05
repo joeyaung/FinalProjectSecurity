@@ -628,7 +628,8 @@
 															<!--更新的圖片-->
 															<img class="myitem" id="edit_img" width="200" height="200" />
 														</div> 
-														<input id="edit_file" type="file" name="file" /> <span id="sp5" style="width: 10px;"></span> <img src="">
+														<input id="edit_file" type="file" name="file" />
+														<span id="sp5" style="width: 10px;"></span> <img src="">
 													</td>
 												</tr>
 											</table>

@@ -67,7 +67,7 @@ public class ProductService {
 	}
 
 	// 修改
-	public Product updateProduct(Product product) throws IOException {
+	public Product updateProduct(Product product){
 		if (!product.getFile().isEmpty()) {
 			byte[] bytes = ImgConverter.convertToBytesArrays(product.getFile());
 			product.setImage(bytes);

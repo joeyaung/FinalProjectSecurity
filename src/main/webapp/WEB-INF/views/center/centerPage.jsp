@@ -112,13 +112,13 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder product-title">{{ item.centerName }}</h5>
-                  <li class="product_li">{{ item.centerAddress }}</li>
-                  <li class="product_li">連絡電話：{{ item.centerPhone }}</li>
-                  <li class="product_li">{{ item.centerEmail }}</li>
+                  <h3 class="fw-bolder product-title">{{ item.centerName }}</h3>
+                  <li class="product_li">地址:{{ item.centerAddress }}</li>
+                  <li class="product_li">連絡電話:{{ item.centerPhone }}</li>
+                  <li class="product_li">E-mail:{{ item.centerEmail }}</li>
 
 
-                  <a :href="'http://localhost:8080/FinalProject/center/location?id='+ item.centerId">Link</a>
+                  <a :href="'http://localhost:8080/FinalProject/center/location?centerId='+ item.centerId">Link</a>
 
                   <!-- <span class="product-price">{{ item.centerPhone }}</span> -->
                 </div>

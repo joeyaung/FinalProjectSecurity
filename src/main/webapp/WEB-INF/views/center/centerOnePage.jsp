@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>最新消息</title>
+    <title>展示中心</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- Bootstrap core JS-->
@@ -71,6 +71,16 @@
 				background-color: #fff;
 				border: 2px #003C9D solid;
 			}
+
+      /* 預約駕車的連結css，待修 */
+      a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: white;
+}
     </style>
   </head>
 
@@ -119,65 +129,55 @@
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-lg-8">
-            <h2 class="text-white mb-4">最新消息 Latest News</h2>
+            <h1 class="text-white mb-4">展示中心</h1>
             <p class="text-white-50">
 
             <div id="container">
-              <nav style="margin-top: 100px">
+              <!-- <nav style="margin-top: 100px">
                 <input type="button" id="secondHalfYear" class="2021070120211231"value="2021年07-12月" style="width: 150px; height: 50px;">
                 <input type="button" id="firstHalfYear" class="2021010120210630" value="2021年01-06月" style="width: 150px; height: 50px;">
                 <input type="button" id="secondHalfYear2020" class="2020070120201231" value="2020年07-12月" style="width: 150px; height: 50px;">
-              </nav>
+              </nav> -->
 
               </br> </br>
 
-              <ul id="user_newslist">
+              <ul id="centerdata">
+                <!-- <li class='news_li'><h2> 台北展示中心 </h2></li>
+                <li class='news_li'>連絡電話:02-27939191</li>
+                <li class='news_li'>中心地址:台北市內湖區新湖三路288號</li>
+                <li class='news_li'>E-mail:TaipeiCenter@gmail.com</li>
+                <li class='news_li'>營業時間:週一至週日 09:00 - 21:00</li>
+                <li class='news_li'>服務項目:銷售</li>
+                <li class='news_li'><img src="/FinalProject/images/center/taipei.jpg" width="800px" height="600px" alt="沒圖片"></li> -->
+                <li class='news_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="沒圖片"></li>
 
+              <a href='/FinalProject/center'><img src='/FinalProject/images/goBack.jpg'></a>
+            </br></br></br>
               </ul>
-              <!-- message board 留言板功能尚待完成 -->
-              <!-- create message -->
-              <!-- <h3 style="color: white;">發佈留言</h3>
-              <form action="#">
-                <div class="row form-group">
-                  <input type="text" class="form-control" placeholder="標題" />
-                </div>
-                <div class="row form-group">
-                  <textarea rows="3" class="form-control" style="resize: vertical" placeholder="正文"></textarea>
-                </div>
-                <input class="btn btn-primary text-right pull-right" type="submit" value="送出" />
-              </form> -->
 
 
-              <!-- list of messages -->
-              <!-- <h3 style="color: white;">留言列表</h3>
-              <ul class="list-group">
-                <li class="list-group-item">
-
-                  <div class="media">
-
-                    <div class="media-heading">
-                      <h3>title</h3>
-                      <h5>content</h5>
-                    </div>
-
-                    <span>creation time:xxx</span>
-                    <!-- delete message button-->
-                    <!-- <div class="media-right media-middle pull-right">
-                      <form action="#">
-                        <button class="btn btn-danger" type="submit">刪除</button>
-                      </form>
-                    </div> -->
-                        <!-- modify message button-->
-                    <!-- <div class="media-right media-middle pull-right">
-                      <button type="button" class="btn btn-primary editButton" data-toggle="modal">編輯</button>
-                    </div>
-
-                  </div>
-
-                </li>
+              <!-- <ul id="user_newslist">
+                <li class='news_li'><h2> 2020-12-05 </h2></li>
+                <li class='news_li'><h1> 開創未來的四環純電科技核心 </h1></li>
+                <li class='news_li'><img src='data:image/png;base64,data.image' width='563' height='350' alt='pic cannot be displayed'/></li>
+              </br>
+                <li class='news_li'>次標題</li>
+              </br>
+                <li class='news_li'>內容</li>
+              </br>
+                <li class='news_li'></li>
+              </br>
+              </br>
+              <a href='/FinalProject/News'><img src='/FinalProject/images/goBack.jpg'></a>
+            </br></br></br>
               </ul> -->
-
-
+              
+              <a href="http://localhost:8080/FinalProject/TestDrive" class="button">預約試駕</a>
+              <!-- <input type="button" id="secondHalfYear" class="2021070120211231"value="預約試駕" style="width: 150px; height: 50px;"> -->
+              <!-- <div><a href='/FinalProject/center'><img src='/FinalProject/images/goBack.jpg'></a></div> -->
+            </br>
+          </br>
+        </br>
             </div>
 
           </div>
@@ -200,89 +200,39 @@
     $(document).ready(function () {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const newsId = urlParams.get('newsId');
-      console.log(queryString)
+      const centerId = urlParams.get('centerId');
+      console.log(queryString);
+      console.log(centerId);
       $.ajax({
-        url: "/FinalProject/findNewsById/" + newsId,
+        url: "/FinalProject/findCenterById/" + centerId,
         method: "GET",
         dataType: "json",
         success: function (data) {
+          console.log("成功抓到id")
+          console.log(data)
+          
           var list = "";
-          list += "<li class='news_li'><h2>" + data.uploadDate + "</h2></li><li class='news_li'><h1>"
-            + data.title + "</h1></li></br><li class='news_li'><img src='data:image/png;base64,"
-            + data.image + "' width='563' height='350' alt='pic cannot be displayed'/></li></br><li class='news_li'>"
-            + data.subtitle + "</li></br><li class='news_li'>"
-            + data.content + "</li></br><li class='news_li'>"
-            + data.remarks + "</li></br></br><a href='/FinalProject/News'><img src='../images/goBack.jpg'></a></br></br></br>";
-          $("#user_newslist").html(list);
+          list += "<li class='news_li'><h2>" + data.centerName + "</h2></li><li class='news_li'>連絡電話:"
+            + data.centerPhone + "</li><li class='news_li'中心地址:>"
+            + data.centerAddress + "</li><li class='news_li'>E-mail:"
+            + data.centerEmail + "</li><li class='news_li'>營業項目"
+            + data.centerOpentime + "</li><li class='news_li'>服務項目:銷售"
+            + data.centerService + "</li><li class='news_li'><img src='data:image/png;base64,"
+            + data.centerImage + "'width='800px' height='600px' alt='展示中心圖片'></li>"
+          
+          $("#centerdata").html(list)
+
         },
         error: function (err) {
+          console.log("沒抓到id")
           alert(err)
+          console.log(err)
         }
       });
 
-//      $.ajax({
-//       url: "/FinalProject/getAllMessage",
-//        method: "GET",
-//        dataType: "json",
-//        success: function(data){
-//          var list = "";
-//          $.each(data, function(index,item){
-//            console.log(item.msg_title);
-//            list += "<li class='list-group-item'><div class='media'><div class='media-heading'><h3>" 
-//              + item.msg_title + "</h3><h5>"
-//                +item.msg_content +
-//                "</h5></div><span>creation time:"
-//                  +item.creation_date+
-//                  "</span> <div class='media-right media-middle pull-right'><form action='#'><button class='btn btn-danger' type='submit'>刪除</button></form></div><div class='media-right media-middle pull-right'><button type='button' class='btn btn-primary editButton' data-toggle='modal'>編輯</button></div></div></li>";
-//          
-//          })
-//           
-//          $(".list-group").html(list);
-//        },
-//          error: function (err) {
-//          alert(err)
-//        }
-//      });
 
 
-      $("#secondHalfYear,#firstHalfYear,#secondHalfYear2020")
-						.click(
-							function () {
-								var res = $(this).attr("class")
-								var start;
-								var end;
-								start = res.substring(0, 8);
-								end = res.substring(8);
-								$.ajax({
-										url: "/FinalProject/sortByUploadDate/" +  start +  "/" + end,
-										method: "GET",
-										dataType: "json",
-										success: function (data) {
-											var list = "";
-											$.each(
-													data,
-													function (
-														index,
-														item) {
-														list += "<li class='news_li'><img src='data:image/png;base64,"
-															+ item.image + "' width='563' height='350' alt='pic cannot be displayed'/></li><li class='news_li' id='title_li'><strong>"
-															+ item.title
-															+ "</strong></li>"
-															+ "<li class='news_li'>"
-															+ item.subtitle
-															+ "...<a href='News/OneNews?newsId="
-															+ item.newsId
-															+ "'>更多資訊<input id='newsId' type='hidden' value=" + item.newsId + "><i class=‘fas fa-angle-right’></i></a></li></br></br>";
-													});
-											$("#user_newslist").html(list);
-										},
-										error: function (err) {
-											alert('Cannot find any news uploaded during the period');
-										}
 
-									});
-                });
 
       
     });

@@ -50,7 +50,7 @@ public class ProductAPIController {
 	// 修改商品
 	@PostMapping(path = "/updateProduct", produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String updateProduct(Product product) throws Exception {
+	public String updateProduct(Product product) {
 		productService.updateProduct(product);
 		return "success";
 

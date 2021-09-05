@@ -27,14 +27,21 @@ public class CenterAPIController {
 		return centerService.queryCenterAll();
 	}
 	
-	//用id找單筆資料(V)
+//	//用id找單筆資料(V)
+//	@GetMapping("/findCenterById/{centerId}")
+//	public Center findCenterByIdAction(@PathVariable Integer centerId) {
+//		return centerService.findCenterById(centerId);
+//		
+//	}
+	
+	//用id找單筆資料 (有圖片)
 	@GetMapping("/findCenterById/{centerId}")
-	public Center findCenterByIdAction(@PathVariable Integer centerId) {
+	public Center findCenterByIdAction(@PathVariable Integer centerId) throws Exception {
 		return centerService.findCenterById(centerId);
 		
 	}
 	
-	//新增資料 (不知道如何用postman測)
+	//新增資料 (不知道如何用postman測) (20210905待修) 
 	@PostMapping(path = "/addCenter", produces = "text/plain;charset=UTF-8")
 	public String addCenterAction(Center center) {
 		centerService.addCenter(center);

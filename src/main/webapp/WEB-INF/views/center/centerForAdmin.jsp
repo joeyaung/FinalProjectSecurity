@@ -465,6 +465,7 @@
 										<th>地址</th>
 										<th>營業時間</th>
 										<th>服務內容</th>
+										<th>圖片</th>
 										<th>操作</th>
 
 									</tr>
@@ -553,6 +554,15 @@
 														<span id="sp6" style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												</tr>
+												<tr>
+													<td>
+														<div class="image" id=preview_img0>
+															<img class="myitem" id="preview_img" width="400" height="300" />
+														</div> 
+														<input id="centerFile" type="file" name="centerFile" /> 
+														<span class="add_span" id="sp7" style="width: 10px;"></span> <img src="">
+													</td>
+												</tr>
 
 
 											</table>
@@ -593,8 +603,6 @@
 
 											<table class="box">
 
-												<input type="hidden" id="edit_id" name="id">  <!--hidden-->
-
 												<!-- <tr>
 													<td>ID:</td>
 												</tr>
@@ -611,7 +619,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerName" type="text" name="centerName" style="width: 500px"><br />
-														<span id="sp2" style="width: 10px"></span> <img src="">
+														<span id="sp1" style="width: 10px"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -619,14 +627,14 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerPhone" type="text" name="centerPhone" /> <br />
-														<span id="sp3" style="width: 10px;"></span> <img src=""></td>
+														<span id="sp2" style="width: 10px;"></span> <img src=""></td>
 												</tr>
 												<tr>
 													<td>E-Mail:</td>
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerEmail" type="text" name="centerEmail" style="width: 500px"><br />
-														<span id="sp1" style="width: 10px"></span> <img src="">
+														<span id="sp3" style="width: 10px"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -634,7 +642,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerAddress" type="text" name="centerAddress" style="width: 500px"><br />
-														<span id="sp1" style="width: 10px"></span> <img src="">
+														<span id="sp4" style="width: 10px"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -642,7 +650,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerOpentime" type="text" name="centerOpentime" style="width: 500px"><br />
-														<span id="sp1" style="width: 10px"></span> <img src="">
+														<span id="sp5" style="width: 10px"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -650,7 +658,22 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerService" type="text" name="centerService" style="width: 500px"><br />
-														<span id="sp1" style="width: 10px"></span> <img src="">
+														<span id="sp6" style="width: 10px"></span> <img src="">
+													</td>
+												</tr>
+												<tr>
+													<td>商品圖片：</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="image">
+															<!--原本的圖片-->
+															<img class="myitem" id="edit_preview_img" width="400" height="300" />
+															<!--更新的圖片-->
+															<img class="myitem" id="edit_img" width="400" height="300" />
+														</div> 
+														<input id="edit_centerFile" type="file" name="centerFile" />
+														<span id="sp7" style="width: 10px;"></span> <img src="">
 													</td>
 												</tr>
 											</table>
@@ -658,11 +681,9 @@
 
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
-										<button id="edit_submit" data-dismiss="modal" type="button"
-											class="btn btn-primary">Submit</button>
-										<button id="shortcut" type="button" class="btn btn-primary">ShortCut</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<button id="edit_submit" data-dismiss="modal" type="button" class="btn btn-primary">Submit</button>
+										<!-- <button id="shortcut" type="button" class="btn btn-primary">ShortCut</button> -->
 									</div>
 
 								</div>
@@ -764,27 +785,28 @@
 			"rowId":"centerId",
 
 			"columns":[
-				{"data":"centerId"},
-				{"data":"centerName"},
-				{"data":"centerPhone"},
+				{"data":"centerId",responsivePriority:1},
+				{"data":"centerName",responsivePriority:1},
+				{"data":"centerPhone",responsivePriority:1},
 				{"data":"centerEmail"},
 				{"data":"centerAddress"},
-				{"data":"centerOpentime"},
+				{"data":"centerOpentime",responsivePriority:1},
 				{"data":"centerService"},
-				{"data":"centerId"},
+				{"data":"centerBase64Image"},
+				{"data":"centerId",responsivePriority:1},
 				
 			],
 
 			"columnDefs": [
-			// 				{
-			// 					targets: 1,
-			// 					render: function (data) {
-			// 						return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
-			// 					}
-			// 				},
-							
 							{
 								targets: 7,
+								render: function (data) {
+									return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+								}
+							},
+							
+							{
+								targets: 8,
 								data:"centerId",
 								orderable: false,
 								defaultContent:"",
@@ -822,9 +844,9 @@
 
 		//binding增加商品按鈕 V
 		$('#addCenterButton').click(function (e) {
-			// previewimg(); 
+			previewimg(); 
 			$('#addCenterModel').modal('show');  //顯示增加展示中心的model
-			// validateData();
+			validateData();
 			e.preventDefault();
 			
 		})
@@ -846,22 +868,22 @@
 
 
 
-		// //增加商品的 預覽圖 V
-		// function previewimg() {
+		//增加中心的 預覽圖 V
+		function previewimg() {
 
-		// 	$("#file").change(function () {
-		// 		if (this.files && this.files[0]) {
-		// 			let reader = new FileReader();
-		// 			reader.readAsDataURL(this.files[0]);  //readAsDataURL(blob) —— 读取二进制数据，并将其编码为 base64 的 data url。
-		// 			// console.log(this);
-		// 			reader.onload = function (e) {
-		// 				$('#preview_img').attr('src', e.target.result);
-		// 			}
+			$("#file").change(function () {
+				if (this.files && this.files[0]) {
+					let reader = new FileReader();
+					reader.readAsDataURL(this.files[0]);  //readAsDataURL(blob) —— 读取二进制数据，并将其编码为 base64 的 data url。
+					// console.log(this);
+					reader.onload = function (e) {
+						$('#preview_img').attr('src', e.target.result);
+					}
 					
-		// 		}
-		// 	});
+				}
+			});
 
-		// }
+		}
 
 
 		// add center To資料庫 V
@@ -955,9 +977,11 @@
 				$("#edit_centerAddress").val(res.centerAddress);
 				$("#edit_centerOpentime").val(res.centerOpentime);
 				$("#edit_centerService").val(res.centerService);
-				console.log("0123");
-				console.log(res);
-				console.log(res.centerId)
+				$("#edit_preview_img").attr("src",'data:image/png;base64,' + res.centerBase64Image);
+				$("#edit_centerFile").val(res.centerFile);
+				// console.log("0123");
+				// console.log(res);
+				// console.log(res.centerId)
 				// console.log(res.file);
 			}
 			findById(centerId, aftersuccess)
@@ -980,12 +1004,13 @@
 				contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 				processData: false, // NEEDED, DON'T OMIT THIS
 				success: function (res) {
-					// $("#edit_form")[0].reset();  //把剛剛傳出後的資料清空
-					// $('#edit_img').attr('src', '');  //把圖片清空
+					$("#edit_form")[0].reset();  //把剛剛傳出後的資料清空
+					$('#edit_img').attr('src', '');  //把圖片清空
 					table.ajax.reload();
 				},
 				error: function (err) {
 					console.log("失敗");
+					console.log(err);
 					alert('update failed' + err);
 				}
 			});
@@ -995,23 +1020,23 @@
 
 
 
-		// //更新圖片的model
-		// function edit_previewimg() {
+		//更新圖片的model
+		function edit_previewimg() {
 
-		// 	$("#edit_file").change(function () {
-		// 		if (this.files && this.files[0]) {
-		// 			// console.log("1");
-		// 			// console.log(this);
-		// 			// console.log("12");
-		// 			let reader = new FileReader();
-		// 			reader.readAsDataURL(this.files[0]);
-		// 			reader.onload = function (e) {
-		// 				$('#edit_img').attr('src', e.target.result);
-		// 				console.log(e.target.result)
-		// 			}
-		// 		}
-		// 	});
-		// }
+			$("#edit_centerFile").change(function () {
+				if (this.files && this.files[0]) {
+					// console.log("1");
+					// console.log(this);
+					// console.log("12");
+					let reader = new FileReader();
+					reader.readAsDataURL(this.files[0]);
+					reader.onload = function (e) {
+						$('#edit_img').attr('src', e.target.result);
+						console.log(e.target.result)
+					}
+				}
+			});
+		}
 
 
 
@@ -1078,33 +1103,37 @@
 			let centerAddress = $("#centerAddress").val().trim();
 			let centerOpentime = $("#centerOpentime").val().trim();
 			let centerService = $("#centerService").val().trim();
+			let centerFile = $("#centerFile").val();
 
-			// let file = $("#file").val();
 
-			if (centerName == "" || centerPhone == "" || centerEmail == "" || centerAddress == "" || centerOpentime == "" || centerService == "") {
+			if (centerName == "" || centerPhone == "" || centerEmail == "" || centerAddress == "" || centerOpentime == "" || centerService == "" || centerFile == "" ) {
 				if (centerName == "") {
 					$("#sp1").html(warning).css('color', 'red');
-					$("#sp1").next().attr("src", "./images/error.png");
+					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
 				}
 				if (centerPhone == "") {
 					$("#sp2").html(warning).css('color', 'red');
-					$("#sp2").next().attr("src", "./images/error.png");
+					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
 				}
 				if (centerEmail == "") {
 					$("#sp3").html(warning).css('color', 'red');
-					$("#sp3").next().attr("src", "./images/error.png");
+					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
 				}
 				if (centerAddress == "") {
 					$("#sp4").html(warning).css('color', 'red');
-					$("#sp4").next().attr("src", "./images/error.png");
+					$("#sp4").next().attr("src", "/FinalProject/images/error.png");
 				}
 				if (centerOpentime == "") {
 					$("#sp5").html(warning).css('color', 'red');
-					$("#sp5").next().attr("src", "./images/error.png");
+					$("#sp5").next().attr("src", "/FinalProject/images/error.png");
 				}
 				if (centerService == "") {
 					$("#sp6").html(warning).css('color', 'red');
-					$("#sp6").next().attr("src", "./images/error.png");
+					$("#sp6").next().attr("src", "/FinalProject/images/error.png");
+				}
+				if (centerFile == "") {
+					$("#sp7").html(warning).css('color', 'red');
+					$("#sp7").next().attr("src", "/FinalProject/images/error.png");
 				}
 				return false;
 
@@ -1115,48 +1144,89 @@
 
 
 		
-		// //Add product validation 新增商品驗證
-		// function validateData() {
-		// 	let warning = "請輸入內容";
-		// 	$("#productname").blur(function () {
+		//Add product validation 新增商品驗證
+		function validateData() {
+			let warning = "請輸入內容";
+			$("#centerName").blur(function () {
 
-		// 		var productname = $("#productname").val().trim();
+				var productname = $("#centerName").val().trim();
 
-		// 		if (productname == "") {
-		// 			$("#sp1").html(warning).css('color', 'red');
-		// 			$("#sp1").next().attr("src", "./images/error.png");
-		// 		} else if (productname != "") {
-		// 			$("#sp1").html("");
-		// 			$("#sp1").next().attr("src", "./images/greencheck.jpg");
-		// 		}
+				if (productname == "") {
+					$("#sp1").html(warning).css('color', 'red');
+					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
+				} else if (productname != "") {
+					$("#sp1").html("");
+					$("#sp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
+				}
 
-		// 	})
-		// 	$("#quantity").blur(function () {
+			})
+			$("#centerPhone").blur(function () {
 
-		// 		var quantity = $("#quantity").val().trim();
-		// 		if (quantity == "") {
-		// 			$("#sp2").html(warning).css('color', 'red');
-		// 			$("#sp2").next().attr("src", "./images/error.png");
-		// 		} else if (quantity != "") {
-		// 			$("#sp2").html("");
-		// 			$("#sp2").next().attr("src", "./images/greencheck.jpg");
-		// 		}
-		// 	})
+				var quantity = $("#centerPhone").val().trim();
+				if (quantity == "") {
+					$("#sp2").html(warning).css('color', 'red');
+					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
+				} else if (quantity != "") {
+					$("#sp2").html("");
+					$("#sp2").next().attr("src", "/FinalProject/images/greencheck.jpg");
+				}
+			})
 
 
 
-		// 	$("#price").blur(function () {
+			$("#centerEmail").blur(function () {
 
-		// 		var price = $("#price").val().trim();
-		// 		if (price == "") {
-		// 			$("#sp3").html(warning).css('color', 'red');
-		// 			$("#sp3").next().attr("src", "./images/error.png");
-		// 		} else if (price != "") {
-		// 			$("#sp3").html("");
-		// 			$("#sp3").next().attr("src", "./images/greencheck.jpg");
-		// 		}
-		// 	})
-		// }
+				var price = $("#centerEmail").val().trim();
+				if (price == "") {
+					$("#sp3").html(warning).css('color', 'red');
+					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
+				} else if (price != "") {
+					$("#sp3").html("");
+					$("#sp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
+				}
+			})
+
+			$("#centerAddress").blur(function () {
+
+				var price = $("#centerAddress").val().trim();
+				if (price == "") {
+					$("#sp4").html(warning).css('color', 'red');
+					$("#sp4").next().attr("src", "/FinalProject/images/error.png");
+				} else if (price != "") {
+					$("#sp4").html("");
+					$("#sp4").next().attr("src", "/FinalProject/images/greencheck.jpg");
+				}
+			})
+
+
+			$("#centerOpentime").blur(function () {
+
+				var price = $("#centerOpentime").val().trim();
+				if (price == "") {
+					$("#sp5").html(warning).css('color', 'red');
+					$("#sp5").next().attr("src", "/FinalProject/images/error.png");
+				} else if (price != "") {
+					$("#sp5").html("");
+					$("#sp5").next().attr("src", "/FinalProject/images/greencheck.jpg");
+				}
+			})
+
+
+			$("#centerService").blur(function () {
+
+				var price = $("#centerService").val().trim();
+				if (price == "") {
+					$("#sp6").html(warning).css('color', 'red');
+					$("#sp6").next().attr("src", "/FinalProject/images/error.png");
+				} else if (price != "") {
+					$("#sp6").html("");
+					$("#sp6").next().attr("src", "/FinalProject/images/greencheck.jpg");
+				}
+			})
+
+
+			
+		}
 
 		
 
