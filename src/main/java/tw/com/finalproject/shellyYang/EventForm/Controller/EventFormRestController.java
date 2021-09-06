@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 
 import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +48,11 @@ public class EventFormRestController {
 	@GetMapping("/getAllEventForm")
 	public List<EventForm> findAllEventForm() {
 		return eventFormService.findAllEventForm();
+	}
+	
+	@GetMapping("/findEventFormByUserid/{user_id}")
+	public List<EventForm> findEventFormByUserid(@PathVariable Long user_id){
+		return eventFormService.findEventByUserid(user_id);
 	}
 	
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import tw.com.finalproject.yumyu.InternalUse.Employee;
 import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
@@ -28,6 +29,11 @@ public class EventFormController {
 		@GetMapping("/account/BookEventConfirmation")
 		public String bookEventConfirm()  {
 			return "Event/eventRegisConfirm";
+		}
+		
+		@GetMapping("/account/event")
+		public String userEventDashboard() {
+			return "Event/userEventDashboard";
 		}
 }
 	

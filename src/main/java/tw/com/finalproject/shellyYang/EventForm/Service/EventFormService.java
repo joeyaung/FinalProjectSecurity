@@ -81,6 +81,7 @@ public class EventFormService {
 			String gender = map.get("user_gender");
 			String idNumber = map.get("user_id_number");
 			String message = map.get("user_message");
+			System.out.println("message=" + message);
 			
 			eventForm = new EventForm();
 			
@@ -119,8 +120,11 @@ public class EventFormService {
 				eventForm.setEvent(event);
 				eventForm.setGender(gender);
 				eventForm.setId_number(idNumber);
+				if(message==null) {
+					eventForm.setMessage("無");
+									}
 				eventForm.setMessage(message);
-				eventForm.setStatus("成功");
+				eventForm.setStatus("待審核");
 				
 				eFormRepository.save(eventForm);
 				
@@ -134,7 +138,7 @@ public class EventFormService {
 		}
 		
 
-		return "報名成功！請至您的電子郵件查看報名信件";
+		return "報名資料已送出！審核通過會寄送電子郵件通知，近日請留意您的Email";
 		
 
 	}
@@ -178,6 +182,10 @@ public class EventFormService {
 			return true;
 		}
 		return false;
+	}
+	
+	public List<EventForm> findEventByUserid(Long user_id){
+		return eFormRepository.findByApplicationUserId(user_id);
 	}
 
 }

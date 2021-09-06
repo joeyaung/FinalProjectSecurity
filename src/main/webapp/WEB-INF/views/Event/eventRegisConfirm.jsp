@@ -111,7 +111,10 @@
                 </table>
 
             </div>
+        
 
+           
+        
 
             <input class="btn btn-primary" id='submitId' type="submit" value="確認送出">
             <button type="button" id='edit_btn' class="btn btn-secondary">編輯資料</button>
@@ -158,7 +161,8 @@
             localStorage.setItem("eventInfo", eventInfo);
 
             $("#tbody").append("<tr><td>活動名稱:</td><td>" + data.event_title + "</td></tr><tr><td>活動日期:</td><td>" + data.event_date + "</td></tr><tr><td>活動地點:</td><td>" + data.location + "</td></tr><tr><td>姓名:</td><td>" + formData.name + "</td></tr><tr><td>性別:</td><td>" + formData.gender + "</td></tr><tr><td>身分證字號: </td><td>" + formData.id_number + "</td></tr><tr><td>行動電話:</td><td>" + formData.phone +
-              "</td></tr><tr><td>Email:</td><td>" + formData.email + "</td></tr><tr><td>備註:</td><td>" + formData.message + "</td></tr></br></br>");
+              "</td></tr><tr><td>Email:</td><td>" + formData.email + "</td></tr><tr><td>備註:</td><td>" + formData.message + "</td></tr><input type='hidden' id='id_number' name='id_number' value='" + formData.id_number + "'><input type='hidden' id='gender' name='gender' value='" + formData.gender + "'>"
+            +"<input type='hidden' id='message' name='message' value='" + formData.message + "'></br></br>");
             $(".table_bookd tbody tr td").css('padding-bottom', '1em');
 
             $("#edit_btn").click(function () {
@@ -213,7 +217,8 @@
         });
         var json = JSON.stringify(formInfoJson);
         localStorage.setItem('confirmedFormData', json);
-        //TODO試著把EventForm所需參數湊起來！必要參數：user id 、活動id、表單性別、身分證、備註
+
+        //把EventForm所需參數湊起來！必要參數：user id 、活動id、表單性別、身分證、備註
 
         //先取得userInfo的user id
         var retrievedInfo = localStorage.getItem('userInfo');
@@ -235,6 +240,8 @@
 
 
         var eventRegisForm = { "user_id": userId, "event_id": eventId, "user_gender": gender, "user_id_number": id_number, "user_message": message };
+        
+       
 
         addEventForm(eventRegisForm);
 
@@ -243,7 +250,7 @@
 
 
       function addEventForm(eventRegisForm) {
-
+        
         $.ajax({
           url: "/FinalProject/addEventForm",
           method: "POST",

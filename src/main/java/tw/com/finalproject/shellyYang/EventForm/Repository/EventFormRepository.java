@@ -13,5 +13,6 @@ public interface EventFormRepository extends JpaRepository<EventForm, Integer> {
 			+ "where event_id = ?1",nativeQuery=true)
 	List<Integer> findUser_idByEvent_id(int event_id);
 	
+	List<EventForm> findByApplicationUserId(Long user_id);
 	
 }
