@@ -123,8 +123,7 @@
 			
 			<!-- Nav Item - 編輯商品 -->
 			<li class="nav-item"><a class="nav-link"
-				href="/FinalProject/inner/admin/edit/products"> <i
-					class="fas fa-rss-square"></i> <span>編輯商品</span></a></li>
+				href="/FinalProject/inner/admin/products"> <i class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block" />

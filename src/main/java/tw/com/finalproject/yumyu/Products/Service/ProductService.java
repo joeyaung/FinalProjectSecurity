@@ -22,6 +22,10 @@ public class ProductService {
 	public boolean save(Product product) {
 		try {
 			productRepositoy.save(product);
+			long id = product.getId();
+			String imgPath = product.getImgPath() + id;
+			product.setImgPath(imgPath);
+			productRepositoy.saveAndFlush(product);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

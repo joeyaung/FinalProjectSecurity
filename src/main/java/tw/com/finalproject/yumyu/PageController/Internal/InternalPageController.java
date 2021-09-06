@@ -134,5 +134,21 @@ public class InternalPageController {
 		request.setAttribute("empName", emp.getFullName());
 		return "inner/AddEmployeePage";
 	}
+	
+	@GetMapping(path = "/inner/admin/products")
+	public String adminProductManagePageController(HttpServletRequest request, Principal principal) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		return "inner/admin/adminProductPage";
+	}
+	
+	@GetMapping(path = "/inner/admin/orders")
+	public String adminOrderManagePageController(HttpServletRequest request, Principal principal) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		return "inner/admin/adminOrderPage";
+	}
 
 }

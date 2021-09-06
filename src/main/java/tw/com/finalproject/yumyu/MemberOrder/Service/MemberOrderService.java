@@ -39,7 +39,7 @@ public class MemberOrderService {
 	}
 
 	public List<MemberOrder> findByMember(ApplicationUser member) {
-		List<MemberOrder> resultList = memberOrderRepository.findByMember(member);
+		List<MemberOrder> resultList = memberOrderRepository.findByMemberOrderByCreateDateDesc(member);
 		return resultList;
 	}
 }
