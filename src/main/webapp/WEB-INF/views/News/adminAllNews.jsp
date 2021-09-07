@@ -156,7 +156,7 @@
 
 				<!-- Nav Item - 活動表單 -->
 				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
-					class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
+							class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
 
 				<!-- Divider -->
 				<hr class="sidebar-divider d-none d-md-block" />
@@ -309,11 +309,12 @@
 										Activity Log
 									</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
-											class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-										Logout
-									</a>
-								</div>
+                                    <a class="dropdown-item" href="/FinalProject/logout" data-toggle="modal"
+                                        data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
 							</li>
 						</ul>
 					</nav>
@@ -423,8 +424,7 @@
 
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">關閉</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
 										<button id="submit" type="button" data-dismiss="modal"
 											class="btn btn-primary">送出</button>
 										<button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
@@ -480,8 +480,8 @@
 												<tr>
 													<td>內文
 												<tr>
-													<td><textarea class="myitem" id="edit_content"
-															rows="30" cols="70"></textarea> <br /> <span id="sp4"
+													<td><textarea class="myitem" id="edit_content" rows="30"
+															cols="70"></textarea> <br /> <span id="sp4"
 															style="width: 10px;"></span> <img src=""></td>
 												<tr>
 													<td>圖片
@@ -506,8 +506,7 @@
 
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">關閉</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
 										<button id="edit_submit" data-dismiss="modal" type="button"
 											class="btn btn-primary">送出</button>
 										<button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
@@ -590,10 +589,10 @@
 							{
 								targets: 6,
 								render: function (data) {
-									if(data==null){
+									if (data == null) {
 										return "<img src='../../images/default.jpg' width='400' height='300' alt='pic cannot be displayed'/>"
-									}else
-									return "<img src='data:image/png;base64," + data + "' width='400' height='300' alt='pic cannot be displayed'/>"
+									} else
+										return "<img src='data:image/png;base64," + data + "' width='400' height='300' alt='pic cannot be displayed'/>"
 								}
 							},
 							{
@@ -657,7 +656,7 @@
 		$('#addNewsButton').click(function (e) {
 			previewimg();
 			$('#preview_img').attr('src', '../../images/default.jpg');
-			
+
 			$('#addNewsModal').modal('show');
 			CKEDITOR.replace('add_content');
 
@@ -666,14 +665,14 @@
 			e.preventDefault();
 		})
 
-		
-		
+
+
 
 
 		//call edit news modal and fill in the blank
 		function editMode(newsId) {
 			edit_previewimg();
-			
+
 			let aftersuccess = function (res) {
 				CKEDITOR.replace('edit_content');
 				$("#edit_newsId").val(res.newsId);
@@ -681,12 +680,12 @@
 				$("#edit_subtitle").val(res.subtitle);
 				$("#edit_uploaddate").val(res.uploadDate);
 				CKEDITOR.instances['edit_content'].setData(res.content);
-				if(res.base64Image ==''){
+				if (res.base64Image == '') {
 					$("#edit_preview_img").attr("src",
-					'../../images/default.jpg');
+						'../../images/default.jpg');
 					$("#edit_img").attr("src",
-					'../../images/default.jpg');
-				}else{
+						'../../images/default.jpg');
+				} else {
 					$("#edit_preview_img").attr("src",
 						'data:image/png;base64,' + res.base64Image);
 					$("#edit_img").attr("src",
@@ -779,10 +778,10 @@
 					var text3 = "2021-08-09";
 					text3 = $("#uploaddate").val(text3);
 					var text4 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定。凡於活動期間內預約回廠健檢，即可享有免費全車系安全檢查，包括引擎、輪胎、底盤、煞車系統、燈光系統等檢測項目，車輛相關維修及保養另可享 Audi 原廠零件 88 折、輪胎兩條 85 折四條 8 折、風箱清洗優惠價 NT$ 2,288 元 、電瓶以及雨刷片 7 折、原廠配件與精品 85 折等專屬優惠。單次消費金額滿 NT$ 11,888 以上即贈送好禮一份 (數量有限，送完為止)。此外，凡於活動期間加入 Audi 點點入心禮活動並完成「免費行車安全檢查」之所有車主，將可獲得 2021 精緻筆記本。";
-					
+
 					CKEDITOR.instances['add_content'].setData(text4);
-					
-				
+
+
 					var text5 = "凡於活動期間內預約回廠車主即可享有多項品牌尊榮優惠禮遇。";
 					text5 = $("#remarks").val(text5);
 				})
@@ -793,7 +792,7 @@
 			var formData = new FormData(document.getElementById("form1"));
 
 			formData.append('content', CKEDITOR.instances['add_content'].getData());
-		
+
 			if (checkinputblank() == true) {
 				addnews(formData);
 				$(".add_span").html('');
@@ -849,10 +848,10 @@
 					$("#sp3").html(warning).css('color', 'red');
 					$("#sp3").next().attr("src", "../../images/error.png");
 				}
-				 if (content == "") {
-				 	$("#sp4").html(warning).css('color', 'red');
-				 	$("#sp4").next().attr("src", "../../images/error.png");
-				 }
+				if (content == "") {
+					$("#sp4").html(warning).css('color', 'red');
+					$("#sp4").next().attr("src", "../../images/error.png");
+				}
 
 				if (file == "") {
 					$("#sp5").html(warning).css('color', 'red');
@@ -868,7 +867,7 @@
 		function validateData() {
 			let warning = "This field is required.";
 
-		
+
 			$("#title").blur(function () {
 
 				var title = $("#title").val().trim();
@@ -905,7 +904,7 @@
 					$("#sp3").next().attr("src", "../../images/greencheck.jpg");
 				}
 			})
-			
+
 			$("#add_content").blur(function () {
 
 				var content = CKEDITOR.instances['add_content'].getData()
@@ -956,9 +955,9 @@
 						}
 					});
 					Swal.fire(
-							 '刪除成功!',
-		                        '此筆資料已成功刪除',
-		                        '成功'
+						'刪除成功!',
+						'此筆資料已成功刪除',
+						'成功'
 					)
 				}
 			})

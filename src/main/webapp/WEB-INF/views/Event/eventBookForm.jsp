@@ -377,7 +377,7 @@
             var text1 = "王小明";
             text1 = $("#name").val(text1);
             $('input[name="gender"]')[0].checked = true;
-            var text3 = "B223789765";
+            var text3 = "Z122338754";
             text3 = $("#idnumber").val(text3);
             var text4 = "0917922177";
             text4 = $("#phone").val(text4);

@@ -145,7 +145,7 @@
         success: function (response) {
           var list = "";
           $.each(response, function (index, item) {
-            list += "<tr><th scope='row'></th><td>" + item.form_id + "</td><td>" + item.creation_time + "</td><td>" + item.event.event_title + "</td><td>" + item.event.location + "</td><td>" + item.event.event_date + "</td><td><a href='/FinalProject/Events/OneEvent?event_id=" + item.event.event_id + "'>活動連結</a></td><td>" + item.message + "</td><td>" + item.status + "</td><td>操作</td></tr>";
+            list += "<tr><th scope='row'></th><td>" + item.form_id + "</td><td>" + item.creation_time + "</td><td>" + item.event.event_title + "</td><td>" + item.event.location + "</td><td>" + item.event.event_date + "</td><td><a href='/FinalProject/Events/OneEvent?event_id=" + item.event.event_id + "'>活動連結</a></td><td>" + item.message + "</td><td>" + item.status + "</td><td><button><i class='fas fa-trash-alt'></i></button></td></tr>";
           })
 
           $("#tbody").html(list);

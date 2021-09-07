@@ -1,13 +1,8 @@
 package tw.com.finalproject.shellyYang.EventForm.Controller;
 
-
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
-
-import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,6 +48,17 @@ public class EventFormRestController {
 	@GetMapping("/findEventFormByUserid/{user_id}")
 	public List<EventForm> findEventFormByUserid(@PathVariable Long user_id){
 		return eventFormService.findEventByUserid(user_id);
+	}
+	
+	@PostMapping("/approveEventForm")
+	public boolean approveEventForm(String jsonString) {
+		if(eventFormService.approveEventForm(jsonString) == true) {
+			System.out.println("成功寄送郵件！");
+			return true;
+		}else
+			System.out.println("寄送郵件失敗");
+			return false;		
+		
 	}
 	
 

@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="zh-TW">
- <head>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+
+    <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -75,6 +75,66 @@
         <style>
             .error {
                 outline: 1px solid red;
+            }
+
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 60px;
+                height: 34px;
+            }
+
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            input:checked+.slider {
+                background-color: #2196F3;
+            }
+
+            input:focus+.slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked+.slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+                border-radius: 34px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
             }
         </style>
 
@@ -338,7 +398,8 @@
                                         Activity Log
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <a class="dropdown-item" href="/FinalProject/logout" data-toggle="modal"
+                                        data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>
@@ -358,9 +419,10 @@
                         <div class="row">
                             <!-- 以下開始替換成你們的內容
                         可放表格, 圖表, 要填的 form 之類的~ -->
-                        
+
                             <!-- this is datables -->
-                            <table id="eventFormList" class="table table-striped table-bordered nowrap" style="width: 100%">
+                            <table id="eventFormList" class="table table-striped table-bordered nowrap"
+                                style="width: 100%">
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -369,12 +431,17 @@
                                 </thead>
                                 <tbody>
 
+
+
+
+
+
                                 </tbody>
                             </table>
 
                         </div>
 
-                      
+
                         <!-- /.container-fluid -->
                         <!-- 結束內容 -->
 
@@ -426,21 +493,60 @@
     </body>
     <script>
         var table;
-
-        $(function () {
-
+        var formData = new FormData();
+        var switchStatus = false;
+        $(document).ready(function () {
             createdatatable();
 
-        });
+
+        })
+
+        
+        function approveFunction() {
+      
+        var checkBoxes = $("#approve_id");
+        checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+        if(checkBoxes.prop("checked")){
+            var object = {};
+          formData.forEach(function (value, key) {
+            object[key] = value;
+          });
+
+           var formId = object.form_id;
+           var userId = object.user_id;
+           var eventId = object.event_id;
+
+        var idString  = { "form_id": formId, "event_id": eventId, "user_id": userId };
+        
+       
+              $.ajax({
+                    url: "/FinalProject/approveEventForm",
+                    method: "POST",
+                    data: {"jsonString" : JSON.stringify(idString)},
+                    success: function (response) {
+                        alert('email has been sent!');
+                        table.ajax.reload();
+                    },
+                    error: function (err) {
+                        alert('failed!')
+                        alert(err);
+                    }
+                });
+            
+            } else{
+                alert('err!');
+            }
+
+        }
 
         //datatable 
         function createdatatable() {
 
-            if (table !== null ) {      
-        $('#eventFormList').DataTable().destroy();
-        mytable = null;
-        $('#eventFormList').empty();
-    }  
+            if (table !== null) {
+                $('#eventFormList').DataTable().destroy();
+                mytable = null;
+                $('#eventFormList').empty();
+            }
 
             table = $("#eventFormList")
                 .DataTable(
@@ -477,13 +583,23 @@
                             title: "聯絡電話"
                         }, {
                             data: "applicationUser.username",
-                            title:"電子郵件"
+                            title: "電子郵件"
                         }, {
                             data: "applicationUser.fullAddress",
-                            title:"地址"
+                            title: "地址"
                         }, {
                             data: "status",
-                            title:"審核"
+                            title: "狀態"
+                        },{
+                            data: "message",
+                            title: "備註"
+                        },
+                         {
+                            data: null,
+                            title: "審核",
+                            render: function (data, type, row) {
+                                return "<label class='switch'><input id='approve_id' type='checkbox'  onChange='approveFunction()'><span class='slider round'></span></label>";
+                            }
                         }
                         ],
 
@@ -492,7 +608,10 @@
                                 "display": $.fn.dataTable.Responsive.display
                                     .modal({
                                         "header": function (row) {
-                                            var data = row.data();
+                                            var data = row.data();               
+                                            formData.append("form_id", data.form_id);
+                                            formData.append("event_id", data.event.event_id);
+                                            formData.append("user_id", data.applicationUser.id);
                                             return '表單報名詳細資訊';
                                         }
                                     }),
@@ -512,4 +631,4 @@
     </script>
 
 
-</html>
+    </html>

@@ -176,8 +176,8 @@
                 </li>
 
                 <!-- Nav Item - 活動表單 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
-					class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
+                            class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
 
 
                 <!-- Divider -->
@@ -343,7 +343,8 @@
                                         Activity Log
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <a class="dropdown-item" href="/FinalProject/logout" data-toggle="modal"
+                                        data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>
@@ -504,8 +505,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">關閉</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                                         <button id="submit" type="button" data-dismiss="modal"
                                             class="btn btn-primary">送出</button>
                                         <button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
@@ -640,8 +640,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">關閉</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                                         <button id="edit_submit" data-dismiss="modal" type="button"
                                             class="btn btn-primary">送出</button>
                                         <button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
@@ -728,10 +727,10 @@
                             {
                                 targets: 11,
                                 render: function (data) {
-                                    if(data==null){
-										return "<img src='../../images/default.jpg' width='400' height='300' alt='pic cannot be displayed'/>"
-									}else
-                                    return "<img src='data:image/png;base64," + data + "' width='400' height='300' alt='pic cannot be displayed'/>"
+                                    if (data == null) {
+                                        return "<img src='../../images/default.jpg' width='400' height='300' alt='pic cannot be displayed'/>"
+                                    } else
+                                        return "<img src='data:image/png;base64," + data + "' width='400' height='300' alt='pic cannot be displayed'/>"
                                 }
                             },
                             {
@@ -837,7 +836,7 @@
                     text8 = $("#reserved_people").val(text9);
 
                     var text10 = "Audi集團總裁在一次公開發表中提到：「我堅信快速地應對氣候變遷以及如何妥善利用資源將決定全球環境的未來。這就是身為地球其中一員的BMW在此時此地需要承擔起的責任，並將這些議題做為我們未來經營策略的核心。這個全新經營理念將落實於每一個環節中，從管理、採購到開發和生產，進而延伸到銷售。Audi正將永續經營提升到更高的層次。」正因如此，Audi秉持對於環境永續的思量，將永續發展的理念深植於品牌核心價值，透過全盤性的思考與決策，無時無刻搶先一步思考對於整體環境及社會的影響。";
-                     text10 = $("#event_content").val(text10);
+                    text10 = $("#event_content").val(text10);
 
 
                 })
@@ -903,8 +902,8 @@
                 console.log(blank_field);
                 return false
             } else
-            console.log(blank_field + 'true');
-                return true;
+                console.log(blank_field + 'true');
+            return true;
         }
 
 
@@ -926,12 +925,12 @@
                 $("#edit_reserved_people").val(res.reserved_people);
                 $("#edit_event_content").val(res.event_content);
 
-                if(res.base64Image ==''){
-					$("#edit_preview_img").attr("src",
-					'../../images/default.jpg');
-					$("#edit_img").attr("src",
-					'../../images/default.jpg');
-				}else{
+                if (res.base64Image == '') {
+                    $("#edit_preview_img").attr("src",
+                        '../../images/default.jpg');
+                    $("#edit_img").attr("src",
+                        '../../images/default.jpg');
+                } else {
 
                     $("#edit_preview_img").attr("src",
                         'data:image/png;base64,' + res.base64Image);
