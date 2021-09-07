@@ -24,6 +24,8 @@ import tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment;
 import tw.com.finalproject.naiChuan.TestDrive.Service.TestDriveApointmentService;
 import tw.com.finalproject.shellyYang.Event.Event;
 import tw.com.finalproject.shellyYang.Event.Service.EventService;
+import tw.com.finalproject.shellyYang.EventForm.EventForm;
+import tw.com.finalproject.shellyYang.EventForm.Repository.EventFormRepository;
 import tw.com.finalproject.shellyYang.News.News;
 import tw.com.finalproject.shellyYang.News.Service.NewsService;
 import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
@@ -61,6 +63,8 @@ public class InitService {
 	private NewsService newsService;
 	@Autowired
 	private EventService eventService;
+	@Autowired
+	private EventFormRepository eFormRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -136,6 +140,7 @@ public class InitService {
 		try {
 			createDefaultNewsData();
 			createDefaultEventData();
+			createDefaultEventFormData();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -333,6 +338,22 @@ public class InitService {
 
 		eventService.saveAll(Arrays.asList(defaultEvent1, defaultEvent2, defaultEvent3, defaultEvent4, defaultEvent5));
 
+	}
+	//Defalut EventForm Data
+	private void createDefaultEventFormData() throws IOException {
+		Event event = null;
+		ApplicationUser appUser = null;
+		try {
+			event = eventService.findById(1);
+			appUser = applicationuserService.queryByUsername("eeit2905@gmail.com");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		EventForm defaultEventForm1 = EventForm.builder().event(event).creation_time("2021/09/01 13:57:53").gender("先生").id_number("Z122338754").message("我吃素").status("成功").applicationUser(appUser).build();
+				
+		eFormRepository.save(defaultEventForm1);
+		
 	}
 
 //	Default Client Data
