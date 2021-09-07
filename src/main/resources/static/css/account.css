@@ -1,3 +1,8 @@
+body {
+  position: relative;
+  height: 100vh;
+}
+
 .account-section {
   padding-top: 10rem;
   background: linear-gradient(
@@ -76,7 +81,7 @@
 }
 
 .footer-custom {
-  position: relative;
+  position: absolute;
   bottom: 0%;
   padding: 1.5rem;
   width: 100%;
@@ -84,4 +89,5 @@
 
 .pd-bottom-2rem {
 	padding-bottom:2rem;
+  height: 100%;
 }

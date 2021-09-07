@@ -31,6 +31,7 @@ public class MemberOrder {
 	private String paypalOrderId;
 	private int totalAmount;
 	private int totalQuantity;
+	private String stage;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetail;
 	@ManyToOne

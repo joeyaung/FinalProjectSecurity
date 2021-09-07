@@ -52,7 +52,7 @@ pageEncoding="UTF-8"%>
     ></script>
     <link
       rel="stylesheet"
-      href="/FinalProject/css/inner/admin/product/adminProductMain.css"
+      href="/FinalProject/css/inner/admin/product/adminOrderMain.css"
     />
   </head>
 
@@ -433,18 +433,7 @@ pageEncoding="UTF-8"%>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-body">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-12">
-                      <button
-                        class="btn btn-primary wd-100 mg-1"
-                        @click="showNewProductModal"
-                      >
-                        新增產品
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                
                 <table
                   id="productsTable"
                   class="display text-center"
@@ -452,14 +441,15 @@ pageEncoding="UTF-8"%>
                 >
                   <thead>
                     <tr>
-                      <th>產品編號</th>
-                      <th>產品縮圖</th>
-                      <th>名稱</th>
-                      <th>原始價格</th>
-                      <th>庫存數量</th>
-                      <th>是否特價</th>
-                      <th>目前銷售價格</th>
-                      <th>Tags</th>
+                      <th>訂單編號</th>
+                      <th>付款方法</th>
+                      <th>第三方 ID</th>
+                      <th>訂購人</th>
+                      <th>電子郵件</th>
+                      <th>電話</th>
+                      <th>總金額</th>
+                      <th>訂購時間</th>
+                      <th>訂單狀態</th>
                     </tr>
                   </thead>
                 </table>
@@ -707,6 +697,6 @@ pageEncoding="UTF-8"%>
     <script src="/FinalProject/js/sb-admin-2.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="/FinalProject/js/inner/admin/product/adminProductMain.js"></script>
+    <script src="/FinalProject/js/inner/admin/product/adminOrderMain.js"></script>
   </body>
 </html>

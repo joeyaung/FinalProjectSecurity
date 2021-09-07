@@ -1,6 +1,7 @@
 package tw.com.finalproject.yumyu.Utils;
 
 import static tw.com.finalproject.yumyu.Enums.ApplicationRoles.MEMBER;
+import static tw.com.finalproject.yumyu.Enums.OrderStages.PREPARED;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -479,7 +480,7 @@ public class InitService {
 		LocalDateTime dateFormate = date.plusHours(8L);
 		String formattedDate = outputFormatter.format(dateFormate);
 
-		MemberOrder newOrder = MemberOrder.builder().method("paypal").paypalOrderId(orderId).member(member)
+		MemberOrder newOrder = MemberOrder.builder().method("paypal").paypalOrderId(orderId).member(member).stage(PREPARED.value())
 				.createDate(formattedDate).build();
 		List<CartItem> cartItems = cartService.findByMember(member);
 		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();

@@ -27,5 +27,10 @@ public class MemberOrderAPIController {
 		List<MemberOrder> resultList = memberOrderService.findByMember(member);
 		return resultList;
 	}
-
+	
+	@GetMapping(path = "/inner/admin/api/v1/order", produces = "application/json; charset=UTF-8")
+	public List<MemberOrder> queryAllOrders(){
+		List<MemberOrder> result = memberOrderService.findAllOrders();
+		return result;
+	}
 }

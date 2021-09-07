@@ -1,5 +1,7 @@
 package tw.com.finalproject.yumyu.PayPal.API;
 
+import static tw.com.finalproject.yumyu.Enums.OrderStages.PREPARED;
+
 import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -82,6 +84,7 @@ public class PaypalAPIController {
 		newOrder.setOrderDetail(orderDetails);
 		newOrder.setTotalAmount(totalAmount);
 		newOrder.setTotalQuantity(totalQuantity);
+		newOrder.setStage(PREPARED.value());
 
 		memberOrderService.save(newOrder);
 

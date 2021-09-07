@@ -42,4 +42,9 @@ public class MemberOrderService {
 		List<MemberOrder> resultList = memberOrderRepository.findByMemberOrderByCreateDateDesc(member);
 		return resultList;
 	}
+	
+	public List<MemberOrder> findAllOrders(){
+		List<MemberOrder> result = memberOrderRepository.findAll();
+		return result;
+	}
 }
