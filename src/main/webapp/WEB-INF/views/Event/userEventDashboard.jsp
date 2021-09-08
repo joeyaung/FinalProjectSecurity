@@ -28,6 +28,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--JS for sweetalert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body id="page-top">
@@ -53,7 +56,7 @@
               <a class="nav-link" href="#signup">了解車型</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">活動</a>
+              <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/products">精品商城</a>
@@ -77,37 +80,37 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="user-title-container">
 
-    <h1 id="userH1">Hello, <span id="username">游聿民</span></h1>
-    <div class="user-nav">
-      <ul>
-        <li><a href="/FinalProject/logout">登出</a></li>
-        <li><a href="/FinalProject/account/setting">設定</a></li>
-        <li><a href="/FinalProject/account/order">訂單管理</a></li>
-        <li><a href="/FinalProject/account/event">活動管理</a></li>
-        <li><a href="/FinalProject/account">首頁</a></li>
-      </ul>
-    </div>
-    <hr style="width: 100%; margin-top: 60px" />
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">表單編號</th>
-                    <th scope="col">表單建立時間</th>
-                    <th scope="col">活動名稱</th>
-                    <th scope="col">活動地點</th>
-                    <th scope="col">活動日期</th>
-                    <th scope="col">活動詳情</th>
-                    <th scope="col">備註</th>
-                    <th scope="col">報名狀態</th>
-                    <th scope="col">操作</th>
-                  </tr>
-                </thead>
-                <tbody id='tbody'>
-                  <!--TODO: 可從EventForm撈出資料-->
+            <h1 id="userH1">Hello, <span id="username">游聿民</span></h1>
+            <div class="user-nav">
+              <ul>
+                <li><a href="/FinalProject/logout">登出</a></li>
+                <li><a href="/FinalProject/account/setting">設定</a></li>
+                <li><a href="/FinalProject/account/order">訂單管理</a></li>
+                <li><a href="/FinalProject/account/event">活動管理</a></li>
+                <li><a href="/FinalProject/account">首頁</a></li>
+              </ul>
+            </div>
+            <hr style="width: 100%; margin-top: 60px" />
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">表單編號</th>
+                  <th scope="col">表單建立時間</th>
+                  <th scope="col">活動名稱</th>
+                  <th scope="col">活動地點</th>
+                  <th scope="col">活動日期</th>
+                  <th scope="col">活動詳情</th>
+                  <th scope="col">備註</th>
+                  <th scope="col">報名狀態</th>
+                  <th scope="col">取消報名</th>
+                </tr>
+              </thead>
+              <tbody id='tbody'>
+                <!--TODO: 可從EventForm撈出資料-->
 
-                </tbody>
-              </table>
+              </tbody>
+            </table>
 
           </div>
         </div>
@@ -131,6 +134,8 @@
     <script src="/FinalProject/js/clientSetting.js"></script>
   </body>
   <script>
+
+    var formid;
     $(document).ready(function () {
       //取得user id以查找他的活動報名資訊
       var retrievedInfo = localStorage.getItem('userInfo');
@@ -145,15 +150,55 @@
         success: function (response) {
           var list = "";
           $.each(response, function (index, item) {
-            list += "<tr><th scope='row'></th><td>" + item.form_id + "</td><td>" + item.creation_time + "</td><td>" + item.event.event_title + "</td><td>" + item.event.location + "</td><td>" + item.event.event_date + "</td><td><a href='/FinalProject/Events/OneEvent?event_id=" + item.event.event_id + "'>活動連結</a></td><td>" + item.message + "</td><td>" + item.status + "</td><td><button><i class='fas fa-trash-alt'></i></button></td></tr>";
+            formid = item.form_id;
+            list += "<tr><th scope='row'></th><td>" + item.form_id + "</td><td>" + item.creation_time + "</td><td>" + item.event.event_title + "</td><td>" + item.event.location + "</td><td>" + item.event.event_date + "</td><td><a href='/FinalProject/Events/OneEvent?event_id=" + item.event.event_id + "'>活動連結</a></td><td>" + item.message + "</td><td>" + item.status + "</td><td><button id='cancelBtn' onClick='cancelRegistration()'><i class='fas fa-trash-alt'></i></button></td></tr>";
           })
 
           $("#tbody").html(list);
 
         }
 
-      })
-    })
+      });
+
+
+
+    });
+
+    function cancelRegistration() {
+      Swal.fire({
+        title: '確定取消報名?',
+        text: "取消後將無法復原！",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '確認，取消報名！'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: "/FinalProject/cancelEventRegistration",
+            method: "POST",
+            data: {"formId" : JSON.stringify(formid)},
+            dataType: "json",
+            success: function (res) {
+              if (res == true) {
+                window.location.reload();
+              } else
+                alert('取消報名失敗！');
+            },
+            error: function (err) {
+              alert(err)
+            }
+          });
+          Swal.fire(
+            '取消成功!',
+            '此筆資料已成功取消',
+            '取消成功'
+          )
+        }
+      });
+
+    }
   </script>
 
   </html>

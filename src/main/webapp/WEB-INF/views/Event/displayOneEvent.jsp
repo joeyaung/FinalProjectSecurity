@@ -57,6 +57,7 @@
 			.bg-gray-custom {
 				background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
 			}
+			
 		</style>
 	</head>
 
@@ -137,7 +138,7 @@
 						+ data.event_title + "</h1></li></br><li class='news_li'><img src='data:image/png;base64,"
 						+ data.event_img + "' width='563' height='350' alt='pic cannot be displayed'/></li></br><li class='news_li'>"
 						+ data.event_subtitle + "</li></br><li class='news_li'>"
-						+ data.event_content + "<h5>活動日期：" + data.event_date + "</h5><h5>報名期間：" + data.reserve_start_date + "-" + data.reserve_end_date + "</h5><h5>活動地點: " + data.location + "</h5></li></br></br><a href='/FinalProject/account/BookEvent?event_id=" + event_id + "'>點我報名</a></br></br></br></br>";
+						+ data.event_content + "</br><h5><i class='fas fa-calendar-alt'></i>  活動日期：" + data.event_date + "</h5><h5><i class='fas fa-fire-alt'></i>  報名期間：" + data.reserve_start_date + "-" + data.reserve_end_date + "</h5><h5><i class='fas fa-location-arrow'></i>  活動地點: " + data.location + "</h5></li></br></br><a class='link' href='/FinalProject/account/BookEvent?event_id=" + event_id + "'><img src='/FinalProject/images/eventIcon.jpg'/></a></br></br></br></br>";
 					$("#user_eventlist").html(list);
 				},
 				error: function (err) {

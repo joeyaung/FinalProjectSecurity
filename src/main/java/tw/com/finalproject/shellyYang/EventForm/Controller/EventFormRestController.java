@@ -53,14 +53,21 @@ public class EventFormRestController {
 	@PostMapping("/approveEventForm")
 	public boolean approveEventForm(String jsonString) {
 		if(eventFormService.approveEventForm(jsonString) == true) {
-			System.out.println("成功寄送郵件！");
 			return true;
 		}else
-			System.out.println("寄送郵件失敗");
 			return false;		
 		
 	}
 	
+	@PostMapping("/cancelEventRegistration")
+	public boolean cancelEventRegistration(@RequestParam String formId) {
+		System.out.println("formId=" + formId);
+		if(eventFormService.cancelEventRegistration(formId)==true) {
+			return true;
+		}else
+			return false;
+		
+	}
 
 
 }

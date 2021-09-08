@@ -218,7 +218,7 @@
             + data.image + "' width='563' height='350' alt='pic cannot be displayed'/></li></br><li class='news_li'>"
             + data.subtitle + "</li></br><li class='news_li'>"
             + data.content + "</li></br><li class='news_li'>"
-            + data.remarks + "</li></br></br></br></br></br>";
+            + data.remarks + "</li></br></br><a href='/FinalProject/News'><i class='fas fa-arrow-alt-circle-left'></i></a></br></br></br>";
           $("#user_newslist").html(list);
         },
         error: function (err) {

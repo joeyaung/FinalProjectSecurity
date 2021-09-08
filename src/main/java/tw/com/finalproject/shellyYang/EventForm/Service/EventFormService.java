@@ -234,7 +234,7 @@ public class EventFormService {
 					+ "<tr style='background-color:#EBF5FB;padding:12px;'><td>" + event_title + "</td><td>" + event_date
 					+ "</td><td>" + event_loc + "</td></tr></table></div>"
 					+ "您可以以您的表單ID，至以下網址查詢或修改您的完整表單資訊"
-					+ "<br/><a style='font-size:20px' href=\'http://localhost:8080/FinalProject/account/event'>Audi AG Check Event Registration Details HERE</a>"
+					+ "<br/><a style='font-size:20px' href=\'http://localhost:8080/FinalProject/account/event'>Audi AG 於此檢查活動報名詳情</a>"
 					+ "<br/>期待您的蒞臨~";
 			mailService.prepareAndSendImg(email, "[奧迪車業]活動報名 成功 通知", textString);
 			
@@ -248,6 +248,34 @@ public class EventFormService {
 		eventForm.setStatus("成功");
 		eFormRepository.save(eventForm);
 		return true;
+	}
+	
+	/**
+	 * 使用者端取消活動報名
+	 * @param form_id
+	 * @return
+	 */
+	public boolean cancelEventRegistration(String formId) {
+		int form_id = Integer.parseInt(formId);
+		
+		Optional<EventForm> eForm = eFormRepository.findById(form_id);
+		if(eForm.isPresent()) {
+			EventForm eventForm = eForm.get();
+			
+			eventForm.setStatus("報名取消");
+			int reservedPeople = eventForm.getEvent().getReserved_people();
+			//報名若取消，目前已報名人數+1
+			int newReservedPeople = reservedPeople-1;
+			
+			eventForm.getEvent().setReserved_people(newReservedPeople);
+			
+			eFormRepository.save(eventForm);
+			return true;
+		}else {
+			System.out.println("查無此筆報名資料");
+			return false;
+		}
+		
 	}
 
 }
