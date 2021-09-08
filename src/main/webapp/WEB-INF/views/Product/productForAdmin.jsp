@@ -832,7 +832,6 @@
 				if (this.files && this.files[0]) {
 					let reader = new FileReader();
 					reader.readAsDataURL(this.files[0]);  //readAsDataURL(blob) —— 读取二进制数据，并将其编码为 base64 的 data url。
-					// console.log(this);
 					reader.onload = function (e) {
 						$('#preview_img').attr('src', e.target.result);
 					}

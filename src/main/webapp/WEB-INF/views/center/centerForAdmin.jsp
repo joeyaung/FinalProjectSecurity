@@ -556,8 +556,8 @@
 												</tr>
 												<tr>
 													<td>
-														<div class="image" id=preview_img0>
-															<img class="myitem" id="preview_img" width="400" height="300" />
+														<div class="image">
+															<img class="myitem" src="/FinalProject/images/default.jpg" id="preview_img" width="400" height="300" />
 														</div> 
 														<input id="centerFile" type="file" name="centerFile" /> 
 														<span class="add_span" id="sp7" style="width: 10px;"></span> <img src="">
@@ -573,7 +573,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
 										<button id="submitadd" type="button" data-dismiss="modal" class="btn btn-primary">送出</button>
-										<!-- <button id="shortcut" type="button" class="btn btn-primary">ShortCut</button> -->
+										<button id="onekey" type="button" class="btn btn-primary">一鍵輸入</button>
 									</div>
 
 								</div>
@@ -619,7 +619,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerName" type="text" name="centerName" style="width: 500px"><br />
-														<span id="sp1" style="width: 10px"></span> <img src="">
+														<span id="editsp1" style="width: 10px" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -627,14 +627,14 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerPhone" type="text" name="centerPhone" /> <br />
-														<span id="sp2" style="width: 10px;"></span> <img src=""></td>
+														<span id="editsp2" style="width: 10px;" class="add_span"></span> <img src=""></td>
 												</tr>
 												<tr>
 													<td>E-Mail:</td>
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerEmail" type="text" name="centerEmail" style="width: 500px"><br />
-														<span id="sp3" style="width: 10px"></span> <img src="">
+														<span id="editsp3" style="width: 10px" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -642,7 +642,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerAddress" type="text" name="centerAddress" style="width: 500px"><br />
-														<span id="sp4" style="width: 10px"></span> <img src="">
+														<span id="editsp4" style="width: 10px" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -650,7 +650,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerOpentime" type="text" name="centerOpentime" style="width: 500px"><br />
-														<span id="sp5" style="width: 10px"></span> <img src="">
+														<span id="editsp5" style="width: 10px" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -658,7 +658,7 @@
 												</tr>
 												<tr>
 													<td><input class="myitem" id="edit_centerService" type="text" name="centerService" style="width: 500px"><br />
-														<span id="sp6" style="width: 10px"></span> <img src="">
+														<span id="editsp6" style="width: 10px" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 												<tr>
@@ -667,13 +667,10 @@
 												<tr>
 													<td>
 														<div class="image">
-															<!--原本的圖片-->
-															<img class="myitem" id="edit_preview_img" width="400" height="300" />
-															<!--更新的圖片-->
-															<img class="myitem" id="edit_img" width="400" height="300" />
+															<img class="myitem" src="/FinalProject/images/default.jpg" id="edit_img" width="400" height="300" />
 														</div> 
 														<input id="edit_centerFile" type="file" name="centerFile" />
-														<span id="sp7" style="width: 10px;"></span> <img src="">
+														<span id="editsp7" style="width: 10px;" class="add_span"></span> <img src="">
 													</td>
 												</tr>
 											</table>
@@ -683,7 +680,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										<button id="edit_submit" data-dismiss="modal" type="button" class="btn btn-primary">Submit</button>
-										<!-- <button id="shortcut" type="button" class="btn btn-primary">ShortCut</button> -->
+										<button id="edit_onekey" type="button" class="btn btn-primary">一鍵輸入</button>
 									</div>
 
 								</div>
@@ -858,8 +855,8 @@
 
 			var formData = new FormData(document.getElementById("form1"));
 			
-			if (checkinputblank() == true) {  //如果要驗證就要把這邊註解打開
-				addproduct(formData);
+			if (checkinputblank() == true) { 
+				addCenter(formData);
 				$(".add_span").html('');
 				$(".add_span").next().attr("src", "");
 			} else
@@ -868,14 +865,13 @@
 
 
 
-		//增加中心的 預覽圖 V
+		//增加中心的 預覽圖 function V
 		function previewimg() {
 
-			$("#file").change(function () {
+			$("#centerFile").change(function () {
 				if (this.files && this.files[0]) {
 					let reader = new FileReader();
 					reader.readAsDataURL(this.files[0]);  //readAsDataURL(blob) —— 读取二进制数据，并将其编码为 base64 的 data url。
-					// console.log(this);
 					reader.onload = function (e) {
 						$('#preview_img').attr('src', e.target.result);
 					}
@@ -887,7 +883,7 @@
 
 
 		// add center To資料庫 V
-		function addproduct(formData) {
+		function addCenter(formData) {
 			$.ajax({
 				url: "/FinalProject/addCenter",
 				method: "POST",
@@ -896,14 +892,11 @@
 				processData: false, // NEEDED, DON'T OMIT THIS
 				"mimeType": "multipart/form-data",
 				success: function (response) {
-					console.log("成功");
 					$("#form1")[0].reset();
-					$('#preview_img').attr('src','');
+					$('#preview_img').attr('src','/FinalProject/images/default.jpg');
 					table.ajax.reload();
 				},
 				error: function (err) {
-					console.log("失敗");
-					console.log(err);
 					alert('insert failed:' + err);
 				}
 			});
@@ -914,7 +907,6 @@
 
 		// 刪除Center V
 		function deleteCenter(centerId) {
-			console.log('delete id=' + centerId);
 			Swal.fire({
 				title: '確定刪除?',
 				text: "再給一次機會喔！真的要刪除嗎？",
@@ -947,27 +939,101 @@
 			})
 		}
 
-		// //////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// //////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			//展示中心的修改fnction 驗證是否有空白
+			function checkeditinputblank(){
+
+				let edit_centerName = $('#edit_centerName').val().trim();
+				let edit_centerPhone = $('#edit_centerPhone').val().trim();
+				let edit_centerEmail = $('#edit_centerEmail').val().trim();
+				let edit_centerAddress = $('#edit_centerAddress').val().trim();
+				let edit_centerOpentime = $('#edit_centerOpentime').val().trim();
+				let edit_centerService = $('#edit_centerService').val().trim();
+				let edit_centerFile = $('#edit_centerFile').val();
+
+				if (edit_centerName == '' || edit_centerPhone == '' || edit_centerEmail == '' || edit_centerAddress == '' || edit_centerOpentime == '' || edit_centerService == '' || edit_centerFile == '' ){
+					if(edit_centerName == ''){
+						$('#editsp1').html('請輸入中心名稱').css('color','red');
+						$('#editsp1').next().attr('src', '/FinalProject/images/error.png');
+					}else if (edit_centerName != "") {
+						$("#editsp1").html("");
+						$("#editsp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					}
+					
+					if(edit_centerPhone == ''){
+						$('#editsp2').html('請輸入中心電話').css('color','red');
+						$('#editsp2').next().attr('src', '/FinalProject/images/error.png');
+					}else if (edit_centerPhone != "") {
+						$("#editsp2").html("");
+						$("#editsp2").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					}
+
+					if(edit_centerEmail == ''){
+						$('#editsp3').html('請輸入中心電子信箱').css('color','red');
+						$('#editsp3').next().attr('src', '/FinalProject/images/error.png');
+					}else if (edit_centerEmail != "") {
+						$("#editsp3").html("");
+						$("#editsp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					}
+					
+					if(edit_centerAddress == ''){
+						$('#editsp4').html('請輸入中心地址').css('color','red');
+						$('#editsp4').next().attr('src', '/FinalProject/images/error.png');
+					}else if (edit_centerAddress != "") {
+						$("#editsp4").html("");
+						$("#editsp4").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					}
+
+					if(edit_centerOpentime == ''){
+						$('#editsp5').html('請輸入中心營業時間').css('color','red');
+						$('#editsp5').next().attr('src', '/FinalProject/images/error.png');
+					}else if (edit_centerOpentime != "") {
+						$("#editsp5").html("");
+						$("#editsp5").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					}
+					
+					if(edit_centerService == ''){
+						$('#editsp6').html('請輸入服務項目').css('color','red');
+						$('#editsp6').next().attr('src', '/FinalProject/images/error.png');
+					}else if (edit_centerService != "") {
+						$("#editsp6").html("");
+						$("#editsp6").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					}
+
+					if (edit_centerFile == ''){
+						$('#editsp7').html('請加入圖片').css('color','red');
+						$('#editsp7').next().attr('src','/FinalProject/images/error.png');
+					}else if (edit_centerFile != ''){
+						$('#editsp7').html();
+						$('#editsp7').next().attr('src', '/FinalProject/images/greencheck.jpg')
+					}
+
+					return false;
+				}
+				return true;
+			}
+
+
 
 		// 更新資料function
-		$("#edit_submit").click(
-			function () {
-				// console.log("1111111")
+		$("#edit_submit").click(function (e) {
+
 				var updateFormData = new FormData(document.getElementById("edit_form"));
-				// console.log("2222222")
-				editCenter(updateFormData);
-				// console.log("333333333")
+
+			if (checkeditinputblank() == true){
+				editCenter(updateFormData);  //修改展示中心的ajax
+				$(".add_span").html('');
+				$(".add_span").next().attr("src", "");
+			} else
+				e.stopPropagation();
 			})
 
 
 
 
-		//編輯商品的model
+		// 修改商品的model
 		function editMode(centerId) {
-			// console.log("按下按鈕")
-			// edit_previewimg();
+			edit_previewimg();  // 更新圖片function
 
 			let aftersuccess = function (res) {
 				$("#edit_centerId").val(res.centerId);
@@ -979,12 +1045,8 @@
 				$("#edit_centerService").val(res.centerService);
 				$("#edit_preview_img").attr("src",'data:image/png;base64,' + res.centerBase64Image);
 				$("#edit_centerFile").val(res.centerFile);
-				// console.log("0123");
-				// console.log(res);
-				// console.log(res.centerId)
-				// console.log(res.file);
 			}
-			findById(centerId, aftersuccess)
+			findById(centerId, aftersuccess)  //帶入id資料function
 			$('#editCenterModal').modal('show');
 			$('#editCenterModal').css('overflow-y', 'auto');
 
@@ -994,7 +1056,7 @@
 
 
 
-		// 修改展示中心model
+		// 修改展示中心的ajax
 		function editCenter(updateFormData) {
 
 			$.ajax({
@@ -1005,12 +1067,10 @@
 				processData: false, // NEEDED, DON'T OMIT THIS
 				success: function (res) {
 					$("#edit_form")[0].reset();  //把剛剛傳出後的資料清空
-					$('#edit_img').attr('src', '');  //把圖片清空
+					$('#edit_img').attr('src', '/FinalProject/images/default.jpg');  //把圖片變成預設值
 					table.ajax.reload();
 				},
 				error: function (err) {
-					console.log("失敗");
-					console.log(err);
 					alert('update failed' + err);
 				}
 			});
@@ -1020,19 +1080,15 @@
 
 
 
-		//更新圖片的model
+		// 修改中心的 預覽圖 function
 		function edit_previewimg() {
 
 			$("#edit_centerFile").change(function () {
 				if (this.files && this.files[0]) {
-					// console.log("1");
-					// console.log(this);
-					// console.log("12");
 					let reader = new FileReader();
 					reader.readAsDataURL(this.files[0]);
 					reader.onload = function (e) {
 						$('#edit_img').attr('src', e.target.result);
-						console.log(e.target.result)
 					}
 				}
 			});
@@ -1040,28 +1096,18 @@
 
 
 
-
+		//帶入id資料
 		function findById(centerId, aftersuccess) {
-			console.log("findbyid:" + centerId)
 			$.ajax({
 				url: "/FinalProject/findCenterById/" + centerId,
 				method: "GET",
 				dataType: "json",
 				success: function (res) {
-					// console.log("成功")
-					// console.log("1")
-					// console.log(res)
-					// console.log("2")
-					// console.log(aftersuccess)
-					// console.log("3")
-					// console.log(aftersuccess(res))
 					aftersuccess(res)
 
 				},
 				error: function (err) {
-					console.log("findbyid失敗")
 					alert(err)
-					console.log(err)
 				}
 			});
 
@@ -1069,33 +1115,34 @@
 
 
 		
+		//一鍵輸入(增加)
+		$('#onekey').on('click',function(){
+			$('#centerName').val('宜蘭展示中心');
+			$('#centerPhone').val('03-9220319');
+			$('#centerEmail').val('YilanCenter@gmail.com');
+			$('#centerAddress').val('宜蘭縣羅東鎮公正路188號');
+			$('#centerOpentime').val('週一至週日 09:00 - 21:00');
+			$('#centerService').val('銷售.洗車');
+		})
 
-		// // //Add News Autofill  一鍵自動輸入 
-		// // $("#shortcut")
-		// // 	.click(
-		// // 		function () {
 
-		// // 			var text1 = "Audi 萬人註冊感謝季即刻開跑 敬邀四環車主預約回廠獨享尊榮禮遇";
-		// // 			text1 = $("#title").val(text1);
-		// // 			var text2 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定";
-		// // 			text2 = $("#subtitle").val(text2);
-		// // 			var text3 = "2021-03-09";
-		// // 			text3 = $("#uploaddate").val(text3);
-		// // 			var text4 = "自 Audi 行動助理服務上線以來，台灣奧迪即日起至 2021 年 2 月 9 日舉辦「Audi 萬人註冊感謝季」，以回饋車主們一直以來的支持與肯定。凡於活動期間內預約回廠健檢，即可享有免費全車系安全檢查，包括引擎、輪胎、底盤、煞車系統、燈光系統等檢測項目，車輛相關維修及保養另可享 Audi 原廠零件 88 折、輪胎兩條 85 折四條 8 折、風箱清洗優惠價 NT$ 2,288 元 、電瓶以及雨刷片 7 折、原廠配件與精品 85 折等專屬優惠。單次消費金額滿 NT$ 11,888 以上即贈送好禮一份 (數量有限，送完為止)。此外，凡於活動期間加入 Audi 點點入心禮活動並完成「免費行車安全檢查」之所有車主，將可獲得 2021 精緻筆記本。";
-		// // 			text4 = $("#content1").val(text4);
-		// // 			var text5 = "凡於活動期間內預約回廠車主即可享有多項品牌尊榮優惠禮遇。";
-		// // 			text5 = $("#remarks").val(text5);
-		// // 		})
+		//一鍵輸入(修改)
+		$('#edit_onekey').on('click',function(){
+			$('#edit_centerName').val('嘉義展示中心');
+			$('#edit_centerPhone').val('05-2227669');
+			$('#edit_centerEmail').val('ChiayiCenter@gmail.com');
+			$('#edit_centerAddress').val('嘉義市東區公明路197號');
+			$('#edit_centerOpentime').val('週一至週日 09:00 - 21:00');
+			$('#edit_centerService').val('銷售.保養');
+		})
 
 		
 		
 
 
 
-		// //按下送出時再確認一次是否有空白 
+		//新增商品按下送出時再確認一次是否有空白 
 		function checkinputblank() {
-
-			let warning = "請輸入內容";
 
 			let centerName = $("#centerName").val().trim();
 			let centerPhone = $("#centerPhone").val().trim();
@@ -1108,32 +1155,54 @@
 
 			if (centerName == "" || centerPhone == "" || centerEmail == "" || centerAddress == "" || centerOpentime == "" || centerService == "" || centerFile == "" ) {
 				if (centerName == "") {
-					$("#sp1").html(warning).css('color', 'red');
+					$("#sp1").html('請輸入中心名稱').css('color', 'red');
 					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
+				}else if (centerName != "") {
+					$("#sp1").html("");
+					$("#sp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
 				if (centerPhone == "") {
-					$("#sp2").html(warning).css('color', 'red');
+					$("#sp2").html('請新增中心電話').css('color', 'red');
 					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
+				}else if (centerPhone != "") {
+					$("#sp2").html("");
+					$("#sp2").next().attr("src", "/FinalProject/images/greencheck.jpg")
 				}
 				if (centerEmail == "") {
-					$("#sp3").html(warning).css('color', 'red');
+					$("#sp3").html('請新增中心電子信箱').css('color', 'red');
 					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
+				}else if (centerEmail != "") {
+					$("#sp3").html("");
+					$("#sp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
 				if (centerAddress == "") {
-					$("#sp4").html(warning).css('color', 'red');
+					$("#sp4").html('請新增中心地址').css('color', 'red');
 					$("#sp4").next().attr("src", "/FinalProject/images/error.png");
+				}else if (centerAddress != "") {
+					$("#sp4").html("");
+					$("#sp4").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
 				if (centerOpentime == "") {
-					$("#sp5").html(warning).css('color', 'red');
+					$("#sp5").html('請新增中心營業時間').css('color', 'red');
 					$("#sp5").next().attr("src", "/FinalProject/images/error.png");
+				}else if (centerOpentime != "") {
+					$("#sp5").html("");
+					$("#sp5").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
 				if (centerService == "") {
-					$("#sp6").html(warning).css('color', 'red');
+					$("#sp6").html('請新增中心服務項目').css('color', 'red');
 					$("#sp6").next().attr("src", "/FinalProject/images/error.png");
+				}else if (centerService != "") {
+					$("#sp6").html("");
+					$("#sp6").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
+
 				if (centerFile == "") {
-					$("#sp7").html(warning).css('color', 'red');
+					$("#sp7").html('請新增圖片').css('color', 'red');
 					$("#sp7").next().attr("src", "/FinalProject/images/error.png");
+				}else if (centerFile !=''){
+					$('#sp7').html('');
+					$('#sp7').next().attr('src', '/FinalProject/images/greencheck.jpg');
 				}
 				return false;
 
@@ -1144,29 +1213,27 @@
 
 
 		
-		//Add product validation 新增商品驗證
+		//新增商品時滑鼠移開的即時確認
 		function validateData() {
-			let warning = "請輸入內容";
 			$("#centerName").blur(function () {
 
-				var productname = $("#centerName").val().trim();
+				var centerName = $("#centerName").val().trim();
 
-				if (productname == "") {
-					$("#sp1").html(warning).css('color', 'red');
+				if (centerName == "") {
+					$("#sp1").html('請輸入中心名稱').css('color', 'red');
 					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
-				} else if (productname != "") {
+				} else if (centerName != "") {
 					$("#sp1").html("");
 					$("#sp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
-
 			})
 			$("#centerPhone").blur(function () {
 
-				var quantity = $("#centerPhone").val().trim();
-				if (quantity == "") {
-					$("#sp2").html(warning).css('color', 'red');
+				var centerPhone = $("#centerPhone").val().trim();
+				if (centerPhone == "") {
+					$("#sp2").html('請新增中心電話').css('color', 'red');
 					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
-				} else if (quantity != "") {
+				} else if (centerPhone != "") {
 					$("#sp2").html("");
 					$("#sp2").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
@@ -1176,11 +1243,11 @@
 
 			$("#centerEmail").blur(function () {
 
-				var price = $("#centerEmail").val().trim();
-				if (price == "") {
-					$("#sp3").html(warning).css('color', 'red');
+				var centerEmail = $("#centerEmail").val().trim();
+				if (centerEmail == "") {
+					$("#sp3").html('請新增中心電子信箱').css('color', 'red');
 					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
-				} else if (price != "") {
+				} else if (centerEmail != "") {
 					$("#sp3").html("");
 					$("#sp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
@@ -1188,11 +1255,11 @@
 
 			$("#centerAddress").blur(function () {
 
-				var price = $("#centerAddress").val().trim();
-				if (price == "") {
-					$("#sp4").html(warning).css('color', 'red');
+				var centerAddress = $("#centerAddress").val().trim();
+				if (centerAddress == "") {
+					$("#sp4").html('請新增中心地址').css('color', 'red');
 					$("#sp4").next().attr("src", "/FinalProject/images/error.png");
-				} else if (price != "") {
+				} else if (centerAddress != "") {
 					$("#sp4").html("");
 					$("#sp4").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
@@ -1201,11 +1268,11 @@
 
 			$("#centerOpentime").blur(function () {
 
-				var price = $("#centerOpentime").val().trim();
-				if (price == "") {
-					$("#sp5").html(warning).css('color', 'red');
+				var centerOpentime = $("#centerOpentime").val().trim();
+				if (centerOpentime == "") {
+					$("#sp5").html('請新增中心營業時間').css('color', 'red');
 					$("#sp5").next().attr("src", "/FinalProject/images/error.png");
-				} else if (price != "") {
+				} else if (centerOpentime != "") {
 					$("#sp5").html("");
 					$("#sp5").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
@@ -1214,16 +1281,15 @@
 
 			$("#centerService").blur(function () {
 
-				var price = $("#centerService").val().trim();
-				if (price == "") {
-					$("#sp6").html(warning).css('color', 'red');
+				var centerService = $("#centerService").val().trim();
+				if (centerService == "") {
+					$("#sp6").html('請新增中心服務項目').css('color', 'red');
 					$("#sp6").next().attr("src", "/FinalProject/images/error.png");
-				} else if (price != "") {
+				} else if (centerService != "") {
 					$("#sp6").html("");
 					$("#sp6").next().attr("src", "/FinalProject/images/greencheck.jpg");
 				}
 			})
-
 
 			
 		}

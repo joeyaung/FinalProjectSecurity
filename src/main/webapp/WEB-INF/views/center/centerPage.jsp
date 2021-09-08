@@ -9,6 +9,8 @@
     <meta name="author" content="" />
     <title>展示中心</title>
 
+    <!-- Google Map API -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jquery安裝 -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- Vue安裝 -->
@@ -37,8 +39,6 @@
         list-style-type: none;
         text-align: left;
       }
-
-
     </style>
   </head>
 
@@ -94,44 +94,52 @@
         </div>
       </div>
     </header>
-    
-    
-    
+
+
+
     <!-- Section-->
     <section class="py-5" id="app">
       <div class="container px-4 px-lg-5 mt-5">
-        <div class="gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center " id="product-container">
-          <div class="col mb-5" v-for="(item, index) in centers">  <!-- vue的for迴圈 -->
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                        </div> -->
-              <!-- Product image-->
-              <!-- <img class="card-img-top" width="250px" height="250px" :src="`data:image/png;base64,`+item.base64Image" alt="..." /> -->
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h3 class="fw-bolder product-title">{{ item.centerName }}</h3>
-                  <li class="product_li">地址:{{ item.centerAddress }}</li>
-                  <li class="product_li">連絡電話:{{ item.centerPhone }}</li>
-                  <li class="product_li">E-mail:{{ item.centerEmail }}</li>
+        <div class="row">
+          <div class="col-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-12" v-for="(item, index) in centers">
+                  <div class="card h-100">
+                    <!-- Sale badge-->
+                    <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                              </div> -->
+                    <!-- Product image-->
+                    <!-- <img class="card-img-top" width="250px" height="250px" :src="`data:image/png;base64,`+item.base64Image" alt="..." /> -->
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                      <div class="text-center">
+                        <!-- Product name-->
+                        <h3 class="fw-bolder product-title">{{ item.centerName }}</h3>
+                        <li class="product_li">地址:{{ item.centerAddress }}</li>
+                        <li class="product_li">連絡電話:{{ item.centerPhone }}</li>
+                        <li class="product_li">E-mail:{{ item.centerEmail }}</li>
 
 
-                  <a :href="'http://localhost:8080/FinalProject/center/location?centerId='+ item.centerId">Link</a>
-
-                  <!-- <span class="product-price">{{ item.centerPhone }}</span> -->
+                        <a :href="'http://localhost:8080/FinalProject/center/location?centerId='+ item.centerId">Link</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <!-- Product actions-->
             </div>
           </div>
+          <div class="col-8">
+            <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+          </div>
         </div>
+
+      </div>
       </div>
     </section>
-    
-    
-    
+
+
+
     <!-- 以下不要動 -->
     <!-- Footer-->
     <footer class="footer bg-black small text-center text-white-50">
@@ -144,40 +152,110 @@
   </body>
 
 
-    
-    <!-- <script src="js/productall.js"></script> -->
-    <script>
-      let productVM = new Vue({
-	el:"#app",
-	data:{
-	  centers:[],
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg" async></script>
+  <!-- <script src="js/productall.js"></script> -->
+  <script>
+    let productVM = new Vue({
+      el: "#app",
+      data: {
+        centers: [],
+        map: null, 
 
-	},
-	
-	mounted: function(){
-		var self = this;
-		$.ajax({
-			url:"/FinalProject/getAllCneter",
-			method:"GET",
-			success:function(res){
-				console.log(res);
-				self.centers = res;
-			},
-			error:function(){
-				console.log("Fail");
-			},
-			
-		});
-		
-	},
-	
-});
-      
-      
+      },
+
+
+
+      mounted: function () {
+        var self = this;
+        console.log(this)
+        $.ajax({
+          url: "/FinalProject/getAllCneter",
+          method: "GET",
+          success: function (res) {
+            console.log(res);
+            self.centers = res;
+            
+
+
+            // console.log(res[0].latitude)
+            // for( location of res){
+            //   console.log(location.latitude)
+            // }
+
+
+
+
+            
+
+          },
+          error: function () {
+            console.log("Fail");
+          },
+
+        });
+
+      },
 
       
+      methods: {
+            // init google map
+            initMap() {
+              
+              // 預設顯示的地點
+              let location = {
+                lat: 23.97565, // 經度
+                lng: 120.9738819 // 緯度
+              };
+              
+              // 建立地圖
+              this.map = new google.maps.Map(document.getElementById('map'), {
+                center: location, // 中心點座標
+                zoom: 7.5, // 1-20，數字愈大，地圖愈細：1是世界地圖，20就會到街道
+                mapTypeId: 'roadmap'
+
+              });
+  
+              // 放置marker
+              let marker = new google.maps.Marker({
+                position: location,
+                map: this.map,
+                // animation: google.maps.Animation.DROP
+                animation: google.maps.Animation.BOUNCE
+              });
+              
+              // console.log("123")
+              // console.log(this.map)
+              // console.log("321")
+
+
+              // 放置多個marker
+                
+
+
+  
+            }
+          },
       
       
-    </script>
+      
+      created() {
+            window.addEventListener('load', () => {
+              this.initMap();
+            });
+          }
+
+
+
+      
+
+    });
+
+
+
+
+
+
+  </script>
   </body>
-</html>
+
+  </html>
