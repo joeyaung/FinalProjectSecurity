@@ -5,7 +5,18 @@ import static tw.com.finalproject.yumyu.Enums.ApplicationRoles.MEMBER;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.transaction.Transactional;
 
@@ -39,6 +50,7 @@ import tw.com.finalproject.yumyu.InternalUse.Service.ClientActivityService;
 import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
 import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
+import tw.com.finalproject.yumyu.Member.Repository.ApplicationUserRepository;
 import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
 
 @Component
@@ -65,6 +77,8 @@ public class InitService {
 	private EventService eventService;
 	@Autowired
 	private EventFormRepository eFormRepository;
+	@Autowired
+	private ApplicationUserRepository applicationuserRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -140,7 +154,9 @@ public class InitService {
 		try {
 			createDefaultNewsData();
 			createDefaultEventData();
+			createDefaultApplicationUser();
 			createDefaultEventFormData();
+//			createDefaultEventFormData();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -339,25 +355,163 @@ public class InitService {
 		eventService.saveAll(Arrays.asList(defaultEvent1, defaultEvent2, defaultEvent3, defaultEvent4, defaultEvent5));
 
 	}
-	//Defalut EventForm Data
-	private void createDefaultEventFormData() throws IOException {
+
+	// Use loop to create 30 application user (for event form chart.js統計)
+	private void createDefaultApplicationUser() {
+
+		List<ApplicationUser> users = new ArrayList<ApplicationUser>();
+
+		List<String> city = new ArrayList<String>();
+		city.add("台北市");
+		city.add("新北市");
+		city.add("高雄市");
+		city.add("新竹市");
+
+		for (int i = 0; i < 30; i++) {
+			int random = new Random().nextInt(city.size());
+			ApplicationUser user = new ApplicationUser();
+			user.setUsername("eeit2905_" + i + "@gmail.com");
+			user.setPhone("091792217" + i);
+			user.setFullName("王小明" + i);
+			user.setRoles(MEMBER.name());
+			user.setZipCode("105");
+			user.setPassword("asd");
+			user.setCity(city.get(random));
+			user.setFullAddress("寶清街105巷13號");
+			user.setTown("松山區");
+			users.add(user);
+		}
+		applicationuserRepository.saveAll(users);
+	}
+
+	// Defalut EventForm Data
+	private void createDefaultEventFormData() {
+
+		List<EventForm> forms = new ArrayList<EventForm>();
+		List<Integer> age = new ArrayList<Integer>();
+		age.add(25);
+		age.add(35);
+		age.add(45);
+		age.add(55);
+		age.add(65);
+
+		String[] gender = new String[] { "先生", "小姐" };
+
+		for (long i = 2; i < 31; i++) {
+
+			int random = new Random().nextInt(age.size());
+
+			// 隨機取得一活動
+			Random random1 = new Random(); // instance of random class
+			int min = 1;
+			int max = 5;
+			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+
+			// 取得此活動報名開始＋結束日期
+			Event event;
+			try {
+				event = eventService.findById(random_int);
+				String startDate = event.getReserve_start_date();
+				String endDate = event.getReserve_end_date();
+
+				int startYear = Integer.parseInt(startDate.substring(0, 4));
+				int startMonth = Integer.parseInt(startDate.substring(5, 7));
+				int startDay = Integer.parseInt(startDate.substring(8, 10));
+
+				int endYear = Integer.parseInt(endDate.substring(0, 4));
+				int endMonth = Integer.parseInt(endDate.substring(5, 7));
+				int endDay = Integer.parseInt(endDate.substring(8, 10));
+
+				LocalDate start_date = LocalDate.of(startYear, startMonth, startDay); // start date
+				long start = start_date.toEpochDay();
+
+				LocalDate end_date = LocalDate.of(endYear, endMonth, endDay); // end date
+				long end = end_date.toEpochDay();
+
+				long randomEpochDay = ThreadLocalRandom.current().longs(start, end).findAny().getAsLong();
+
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+				String formattedRandomDate = LocalDate.ofEpochDay(randomEpochDay).format(formatter);
+
+				// 取得隨機時間（時分秒）
+				// 取得此活動報名之間隨機日期＋時間
+				Random timeRandom = new Random();
+				int millisInDay = 24 * 60 * 60 * 1000;
+				Time time = new Time((long) timeRandom.nextInt(millisInDay));
+				String randomDateTime = formattedRandomDate + " " + time.toString();
+
+				// 取得隨機性別
+				Random genderRandom = new Random();
+				int n = genderRandom.nextInt(gender.length);
+				String randomGender = gender[n];
+
+				// 取得隨機身分證字號
+				Random r = new Random();
+				String s = "";
+				// 產生前9碼的同時計算產生驗證碼
+				int checknum = 0;
+				String checkHead = "ABCDEFGHJKLMNPQRSTUVWXYZIO";
+
+				// 產生第一個英文字母
+				int t = (r.nextInt(26) + 65);
+				s += (char) t;
+				t = checkHead.indexOf((char) t) + 10;
+				checknum += t / 10;
+				checknum += t % 10 * 9;
+
+				// 產生第2個數字 (1~2)
+				s += Integer.toString(t = r.nextInt(2) + 1);
+				checknum += t * 8;
+
+				// 產生後8碼
+				for (int j = 2; j < 9; j++) {
+					s += Integer.toString(t = r.nextInt(10));
+					checknum += t * (9 - j);
+				}
+
+				// 完成驗證碼計算
+				checknum = (10 - ((checknum) % 10)) % 10;
+				s += Integer.toString(checknum);
+
+				// set eventform
+
+				EventForm eventForm = new EventForm();
+				ApplicationUser appUser = applicationuserRepository.findById(i).get();
+
+				eventForm.setApplicationUser(appUser);
+				eventForm.setCreation_time(randomDateTime);
+				eventForm.setEvent(event);
+				eventForm.setGender(randomGender);
+				eventForm.setId_number(s);
+				eventForm.setStatus("成功");
+
+				forms.add(eventForm);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		// Default EvnentForm data Demo專用user_id=1 王小明
 		Event event = null;
 		ApplicationUser appUser = null;
 		try {
 			event = eventService.findById(1);
 			appUser = applicationuserService.queryByUsername("eeit2905@gmail.com");
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		EventForm defaultEventForm1 = EventForm.builder().event(event).creation_time("2021/09/01 13:57:53").gender("先生").id_number("Z122338754").message("我吃素").status("成功").applicationUser(appUser).build();
-				
+		EventForm defaultEventForm1 = EventForm.builder().event(event).creation_time("2021/09/01 13:57:53").gender("先生")
+				.id_number("Z122338754").message("我吃素").status("成功").applicationUser(appUser).build();
+
+		eFormRepository.saveAll(forms);
 		eFormRepository.save(defaultEventForm1);
-		
+
 	}
 
 //	Default Client Data
 	private void createDefaultClientData(int clientNumber, Employee employee) {
-		
+
 	}
 }
