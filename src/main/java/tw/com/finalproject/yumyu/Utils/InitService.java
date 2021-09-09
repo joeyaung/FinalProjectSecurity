@@ -367,11 +367,15 @@ public class InitService {
 		city.add("高雄市");
 		city.add("新竹市");
 
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 200; i++) {
 			int random = new Random().nextInt(city.size());
 			ApplicationUser user = new ApplicationUser();
 			user.setUsername("eeit2905_" + i + "@gmail.com");
-			user.setPhone("091792217" + i);
+			if(i<10) {
+				user.setPhone("091792217" + i);		
+			}else {
+				user.setPhone("09179221" + i);
+			}
 			user.setFullName("王小明" + i);
 			user.setRoles(MEMBER.name());
 			user.setZipCode("105");
@@ -388,18 +392,12 @@ public class InitService {
 	private void createDefaultEventFormData() {
 
 		List<EventForm> forms = new ArrayList<EventForm>();
-		List<Integer> age = new ArrayList<Integer>();
-		age.add(25);
-		age.add(35);
-		age.add(45);
-		age.add(55);
-		age.add(65);
 
 		String[] gender = new String[] { "先生", "小姐" };
 
-		for (long i = 2; i < 31; i++) {
-
-			int random = new Random().nextInt(age.size());
+		for (long i = 2; i < 201; i++) {
+			
+			
 
 			// 隨機取得一活動
 			Random random1 = new Random(); // instance of random class
@@ -444,6 +442,7 @@ public class InitService {
 				Random genderRandom = new Random();
 				int n = genderRandom.nextInt(gender.length);
 				String randomGender = gender[n];
+				
 
 				// 取得隨機身分證字號
 				Random r = new Random();
