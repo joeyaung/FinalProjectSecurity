@@ -61,13 +61,23 @@ public class EventFormRestController {
 	
 	@PostMapping("/cancelEventRegistration")
 	public boolean cancelEventRegistration(@RequestParam String formId) {
-		System.out.println("formId=" + formId);
 		if(eventFormService.cancelEventRegistration(formId)==true) {
 			return true;
 		}else
 			return false;
 		
 	}
+	
+	@GetMapping("/findEachEventManCount")
+	public List<Integer> findEventManCount(){
+		return eventFormService.findNumberOfMan();
+	}
+	
+	@GetMapping("/findEachEventWomanCount")
+	public List<Integer> findEventWomanCount(){
+		return eventFormService.findNumberOfWoman();
+	}
+
 
 
 }

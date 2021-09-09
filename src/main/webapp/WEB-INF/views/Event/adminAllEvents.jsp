@@ -1,201 +1,207 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <!DOCTYPE html>
-    <html lang="zh-TW">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="zh-TW">
 
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
 
-        <title>編輯活動列表</title>
+<title>編輯活動列表</title>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
-        <script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
+<script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="/FinalProject/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/FinalProject/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="/FinalProject/js/sb-admin-2.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/FinalProject/js/sb-admin-2.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="/FinalProject/vendor/chart.js/Chart.min.js"></script>
+<!-- Page level plugins -->
+<script src="/FinalProject/vendor/chart.js/Chart.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <!-- <script src="/FinalProject/js/inner/chart-area-demo.js"></script>
+<!-- Page level custom scripts -->
+<!-- <script src="/FinalProject/js/inner/chart-area-demo.js"></script>
         <script src="/FinalProject/js/inner/chart-pie-demo.js"></script>
         <script src="/FinalProject/js/inner/adminTemplate.js"></script> -->
 
-        <!-- js for datatables-->
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <!-- js for modal-->
+<!-- js for datatables-->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<!-- js for modal-->
 
-        <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/media/js/jquery.dataTables.js"></script>
-        <script src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/media/js/dataTables.bootstrap4.js"></script>
-        <script
-            src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/js/dataTables.responsive.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/media/js/jquery.dataTables.js"></script>
+<script
+	src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/media/js/dataTables.bootstrap4.js"></script>
+<script
+	src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/js/dataTables.responsive.js"></script>
 
-        <script
-            src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/js/dataTables.responsive.js"></script>
-        <script
-            src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/js/responsive.bootstrap4.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script
+	src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/js/dataTables.responsive.js"></script>
+<script
+	src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/js/responsive.bootstrap4.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <!-- Custom fonts for this template-->
-        <link href="/FinalProject/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet" />
+<!-- Custom fonts for this template-->
+<link href="/FinalProject/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet" />
 
-        <!-- Custom styles for this template-->
-        <link href="/FinalProject/css/sb-admin-2.min.css" rel="stylesheet" />
+<!-- Custom styles for this template-->
+<link href="/FinalProject/css/sb-admin-2.min.css" rel="stylesheet" />
 
-        <!-- css for modal-->
+<!-- css for modal-->
 
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.css">
-        <link rel="stylesheet"
-            href="https://www.ksia.or.kr/plugin/DataTables-1.10.15/media/css/dataTables.bootstrap4.css">
-        <link rel="stylesheet"
-            href="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/css/responsive.bootstrap4.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://www.ksia.or.kr/plugin/DataTables-1.10.15/media/css/dataTables.bootstrap4.css">
+<link rel="stylesheet"
+	href="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/css/responsive.bootstrap4.css">
 
-        <!--font awesome-->
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-            crossorigin="anonymous" />
+<!--font awesome-->
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
 
-        <!--buttons css-->
-        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+<!--buttons css-->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
-        <style>
-            .error {
-                outline: 1px solid red;
-            }
-        </style>
+<style>
+.error {
+	outline: 1px solid red;
+}
+</style>
 
-    </head>
+</head>
 
-    <body id="page-top">
-        <!-- Page Wrapper -->
-        <div id="wrapper">
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/FinalProject/inner">
-                    <div class="sidebar-brand-icon">
-                        <img src="/FinalProject/images/audi-logo.png" alt="" />
-                    </div>
-                </a>
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="/FinalProject/inner">
+				<div class="sidebar-brand-icon">
+					<img src="/FinalProject/images/audi-logo.png" alt="" />
+				</div>
+			</a>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0" />
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0" />
 
-                <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="/FinalProject/inner">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link"
+				href="/FinalProject/inner"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider" />
+			<!-- Divider -->
+			<hr class="sidebar-divider" />
 
-                <!-- Heading -->
-                <div class="sidebar-heading">Analytics</div>
+			<!-- Heading -->
+			<div class="sidebar-heading">Analytics</div>
 
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-users"></i>
-                        <span>Client</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Clients:</h6>
-                            <a class="collapse-item" href="buttons.html">Overview</a>
-                            <a class="collapse-item" href="cards.html">Curent Stage</a>
-                        </div>
-                    </div>
-                </li>
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> <i
+					class="fas fa-users"></i> <span>Client</span>
+			</a>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Clients:</h6>
+						<a class="collapse-item" href="buttons.html">Overview</a> <a
+							class="collapse-item" href="cards.html">Curent Stage</a>
+					</div>
+				</div></li>
 
-                <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                        aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-id-card-alt"></i>
-                        <span>Employee</span>
-                    </a>
-                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Employee:</h6>
-                            <a class="collapse-item" href="utilities-color.html">Overview</a>
-                            <a class="collapse-item" href="utilities-border.html">Sales</a>
-                        </div>
-                    </div>
-                </li>
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities"
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-id-card-alt"></i> <span>Employee</span>
+			</a>
+				<div id="collapseUtilities" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Employee:</h6>
+						<a class="collapse-item" href="utilities-color.html">Overview</a>
+						<a class="collapse-item" href="utilities-border.html">Sales</a>
+					</div>
+				</div></li>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider" />
+			<!-- Divider -->
+			<hr class="sidebar-divider" />
 
-                <!-- Heading -->
-                <div class="sidebar-heading">FUNCTIONS</div>
+			<!-- Heading -->
+			<div class="sidebar-heading">FUNCTIONS</div>
 
-                <!-- Nav Item - 新增員工 -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/FinalProject/inner/admin/addEmployee">
-                        <i class="fas fa-user-plus"></i>
-                        <span>新增員工</span></a>
-                </li>
+			<!-- Nav Item - 新增員工 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/addEmployee"> <i
+					class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
 
-                <!-- Nav Item - 試駕總覽 -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/FinalProject/admin/edit/testdrive">
-                        <i class="fas fa-car"></i>
-                        <span>試駕總覽</span></a>
-                </li>
+			<!-- Nav Item - 試駕總覽 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/admin/edit/testdrive"> <i class="fas fa-car"></i>
+					<span>試駕總覽</span></a></li>
 
-                <!-- Nav Item - 編輯消息 -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage">
-                        <i class="fas fa-rss-square"></i>
-                        <span>編輯消息</span></a>
-                </li>
+			<!-- Nav Item - 編輯消息 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/AllNewsPage"> <i
+					class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
 
-                <!-- Nav Item - 編輯活動 -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage">
-                        <i class="fas fa-rss-square"></i>
-                        <span>編輯活動</span></a>
-                </li>
+			<!-- Nav Item - 編輯活動 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/AllEventsPage"> <i
+					class="fas fa-rss-square"></i> <span>編輯活動</span></a></li>
 
-                <!-- Nav Item - 活動表單 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
-                            class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
+			<!-- Nav Item - 活動表單 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/AllEventForm"> <i
+					class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
+
+			<!-- Nav Item - 活動報名統計 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/EventDashboard"> <i
+					class="fas fa-rss-square"></i> <span>活動報名統計</span></a></li>
 
 
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block" />
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block" />
 
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-            </ul>
-            <!-- End of Sidebar -->
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
+		</ul>
+		<!-- End of Sidebar -->
 
-            <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
-                <!-- Main Content -->
-                <div id="content">
-                    <!-- Topbar -->
-                    <nav class="
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Main Content -->
+			<div id="content">
+				<!-- Topbar -->
+				<nav
+					class="
                   navbar navbar-expand navbar-light
                   bg-white
                   topbar
@@ -203,13 +209,15 @@
                   static-top
                   shadow
                 ">
-                        <!-- Sidebar Toggle (Topbar) -->
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop"
+						class="btn btn-link d-md-none rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
 
-                        <!-- Topbar Search -->
-                        <form class="
+					<!-- Topbar Search -->
+					<form
+						class="
                     d-none d-sm-inline-block
                     form-inline
                     mr-auto
@@ -218,490 +226,467 @@
                     mw-100
                     navbar-search
                   ">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+						<div class="input-group">
+							<input type="text" class="form-control bg-light border-0 small"
+								placeholder="Search for..." aria-label="Search"
+								aria-describedby="basic-addon2" />
+							<div class="input-group-append">
+								<button class="btn btn-primary" type="button">
+									<i class="fas fa-search fa-sm"></i>
+								</button>
+							</div>
+						</div>
+					</form>
 
-                        <!-- Topbar Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                            <li class="nav-item dropdown no-arrow d-sm-none">
-                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </a>
-                                <!-- Dropdown - Messages -->
-                                <div class="
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+						<li class="nav-item dropdown no-arrow d-sm-none"><a
+							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+						</a> <!-- Dropdown - Messages -->
+							<div
+								class="
                         dropdown-menu dropdown-menu-right
                         p-3
                         shadow
                         animated--grow-in
-                      " aria-labelledby="searchDropdown">
-                                    <form class="form-inline mr-auto w-100 navbar-search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small"
-                                                placeholder="Search for..." aria-label="Search"
-                                                aria-describedby="basic-addon2" />
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
-                                                    <i class="fas fa-search fa-sm"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
+                      "
+								aria-labelledby="searchDropdown">
+								<form class="form-inline mr-auto w-100 navbar-search">
+									<div class="input-group">
+										<input type="text"
+											class="form-control bg-light border-0 small"
+											placeholder="Search for..." aria-label="Search"
+											aria-describedby="basic-addon2" />
+										<div class="input-group-append">
+											<button class="btn btn-primary" type="button">
+												<i class="fas fa-search fa-sm"></i>
+											</button>
+										</div>
+									</div>
+								</form>
+							</div></li>
 
-                            <!-- Nav Item - Alerts -->
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-bell fa-fw"></i>
-                                    <!-- Counter - Alerts -->
-                                    <span class="badge badge-danger badge-counter">3+</span>
-                                </a>
-                                <!-- Dropdown - Alerts -->
-                                <div class="
+						<!-- Nav Item - Alerts -->
+						<li class="nav-item dropdown no-arrow mx-1"><a
+							class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
+								<span class="badge badge-danger badge-counter">3+</span>
+						</a> <!-- Dropdown - Alerts -->
+							<div
+								class="
                         dropdown-list dropdown-menu dropdown-menu-right
                         shadow
                         animated--grow-in
-                      " aria-labelledby="alertsDropdown">
-                                    <h6 class="dropdown-header">Alerts Center</h6>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="mr-3">
-                                            <div class="icon-circle bg-primary">
-                                                <i class="fas fa-file-alt text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="small text-gray-500">December 12, 2019</div>
-                                            <span class="font-weight-bold">A new monthly report is ready to
-                                                download!</span>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="mr-3">
-                                            <div class="icon-circle bg-success">
-                                                <i class="fas fa-donate text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="small text-gray-500">December 7, 2019</div>
-                                            $290.29 has been deposited into your account!
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="mr-3">
-                                            <div class="icon-circle bg-warning">
-                                                <i class="fas fa-exclamation-triangle text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="small text-gray-500">December 2, 2019</div>
-                                            Spending Alert: We've noticed unusually high spending for
-                                            your account.
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All
-                                        Alerts</a>
-                                </div>
-                            </li>
+                      "
+								aria-labelledby="alertsDropdown">
+								<h6 class="dropdown-header">Alerts Center</h6>
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-primary">
+											<i class="fas fa-file-alt text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">December 12, 2019</div>
+										<span class="font-weight-bold">A new monthly report is
+											ready to download!</span>
+									</div>
+								</a> <a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-success">
+											<i class="fas fa-donate text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">December 7, 2019</div>
+										$290.29 has been deposited into your account!
+									</div>
+								</a> <a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-warning">
+											<i class="fas fa-exclamation-triangle text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">December 2, 2019</div>
+										Spending Alert: We've noticed unusually high spending for your
+										account.
+									</div>
+								</a> <a class="dropdown-item text-center small text-gray-500"
+									href="#">Show All Alerts</a>
+							</div></li>
 
-                            <div class="topbar-divider d-none d-sm-block"></div>
+						<div class="topbar-divider d-none d-sm-block"></div>
 
-                            <!-- Nav Item - User Information -->
-                            <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">${ empName }</span>
-                                    <img class="img-profile rounded-circle"
-                                        src="/FinalProject/images/svg/undraw_profile.svg" />
-                                </a>
-                                <!-- Dropdown - User Information -->
-                                <div class="
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <span
+								class="mr-2 d-none d-lg-inline text-gray-600 small">${ empName }</span>
+								<img class="img-profile rounded-circle"
+								src="/FinalProject/images/svg/undraw_profile.svg" />
+						</a> <!-- Dropdown - User Information -->
+							<div
+								class="
                         dropdown-menu dropdown-menu-right
                         shadow
                         animated--grow-in
-                      " aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Profile
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Settings
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Activity Log
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/FinalProject/logout" data-toggle="modal"
-                                        data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                    <!-- End of Topbar -->
+                      "
+								aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="#"> <i
+									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="#"> <i
+									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Settings
+								</a> <a class="dropdown-item" href="#"> <i
+									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+									Activity Log
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/FinalProject/logout"
+									data-toggle="modal" data-target="#logoutModal"> <i
+									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Logout
+								</a>
+							</div></li>
+					</ul>
+				</nav>
+				<!-- End of Topbar -->
 
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid">
-                        <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">編輯活動</h1>
-                        <p class="mb-4">活動編輯</p>
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<!-- Page Heading -->
+					<h1 class="h3 mb-2 text-gray-800">編輯活動</h1>
+					<p class="mb-4">活動編輯</p>
 
-                        <!-- Content Row -->
-                        <div class="row">
-                            <!-- 以下開始替換成你們的內容
+					<!-- Content Row -->
+					<div class="row">
+						<!-- 以下開始替換成你們的內容
                         可放表格, 圖表, 要填的 form 之類的~ -->
-                            <!-- this is button -->
-                            <button id="addEventBtn" type="submit" class="btn btn-primary">新增活動</button>
-                            <!-- this is datables -->
-                            <table id="eventlist" class="table table-striped table-bordered nowrap" style="width: 100%">
-                                <thead>
-                                    <tr>
-                                        <th>編號</th>
-                                        <th>標題</th>
-                                        <th>副標題</th>
-                                        <th>上傳日期</th>
-                                        <th>報名開始</th>
-                                        <th>報名截止</th>
-                                        <th>活動日期</th>
-                                        <th>地點</th>
-                                        <th>人數上限</th>
-                                        <th>已報名人數</th>
-                                        <th>內容</th>
-                                        <th>圖片</th>
-                                        <th></th>
+						<!-- this is button -->
+						<button id="addEventBtn" type="submit" class="btn btn-primary">新增活動</button>
+						<!-- this is datables -->
+						<table id="eventlist"
+							class="table table-striped table-bordered nowrap"
+							style="width: 100%">
+							<thead>
+								<tr>
+									<th>編號</th>
+									<th>標題</th>
+									<th>副標題</th>
+									<th>上傳日期</th>
+									<th>報名開始</th>
+									<th>報名截止</th>
+									<th>活動日期</th>
+									<th>地點</th>
+									<th>人數上限</th>
+									<th>已報名人數</th>
+									<th>內容</th>
+									<th>圖片</th>
+									<th></th>
 
-                                    </tr>
+								</tr>
 
-                                </thead>
-                                <tbody>
+							</thead>
+							<tbody>
 
-                                </tbody>
-                            </table>
+							</tbody>
+						</table>
 
-                        </div>
+					</div>
 
-                        <!-- this is addEvent modal -->
-                        <div class="modal fade" tabindex="-1" role="dialog" id="addEventModal">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title">新增活動</h4>
-                                    </div>
-                                    <div class="modal-body">
+					<!-- this is addEvent modal -->
+					<div class="modal fade" tabindex="-1" role="dialog"
+						id="addEventModal">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">新增活動</h4>
+								</div>
+								<div class="modal-body">
 
-                                        <form id="form1">
+									<form id="form1">
 
-                                            <table class="box">
-                                                <tr>
-                                                    <td>標題
-                                                <tr>
-                                                    <td><input class="myitem" id="event_title" type="text"
-                                                            name="event_title" style="width: 500px" maxlength="23">
-                                                        <span id="sp1" style="width: 10px" class="add_span"></span> <img
-                                                            src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>副標題
-                                                <tr>
-                                                    <td><input class="myitem" id="event_subtitle" type="text"
-                                                            name="event_subtitle" style="width: 500px"><span id="sp2"
-                                                            style="width: 10px" class="add_span"></span> <img src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>上傳日期
-                                                <tr>
-                                                    <td><input class="myitem" id="event_uploaddate" type="date"
-                                                            name="event_uploaddate" /> <span id="sp3"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>報名期間
-                                                <tr>
-                                                    <td><input class="myitem" type="date" id="reserve_start_date"
-                                                            name="reserve_start_date" rows="30" cols="70" />
-                                                        <span id="sp4" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">to
-                                                        <input class="myitem" type="date" id="reserve_end_date"
-                                                            name="reserve_end_date" rows="30" cols="70" />
-                                                        <span id="sp5" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">
-                                                    </td>
+										<table class="box">
+											<tr>
+												<td>標題
+											<tr>
+												<td><input class="myitem" id="event_title" type="text"
+													name="event_title" style="width: 500px" maxlength="23">
+													<span id="sp1" style="width: 10px" class="add_span"></span>
+													<img src=""></td>
+											<tr>
+												<td>副標題
+											<tr>
+												<td><input class="myitem" id="event_subtitle"
+													type="text" name="event_subtitle" style="width: 500px"><span
+													id="sp2" style="width: 10px" class="add_span"></span> <img
+													src=""></td>
+											<tr>
+												<td>上傳日期
+											<tr>
+												<td><input class="myitem" id="event_uploaddate"
+													type="date" name="event_uploaddate" /> <span id="sp3"
+													style="width: 10px;" class="add_span"></span> <img src="">
+												</td>
+											<tr>
+												<td>報名期間
+											<tr>
+												<td><input class="myitem" type="date"
+													id="reserve_start_date" name="reserve_start_date" rows="30"
+													cols="70" /> <span id="sp4" style="width: 10px;"
+													class="add_span"></span> <img src="">to <input
+													class="myitem" type="date" id="reserve_end_date"
+													name="reserve_end_date" rows="30" cols="70" /> <span
+													id="sp5" style="width: 10px;" class="add_span"></span> <img
+													src=""></td>
+											<tr>
+												<td>活動日期
+											<tr>
+												<td><input id="event_date" class="myitem" type="date"
+													name="event_date" /><span id="sp6" style="width: 10px;"
+													class="add_span"></span> <img src=""></td>
+											<tr>
+												<td>地點
+											<tr>
+												<td><input id="location" class="myitem" type="text"
+													name="location" /><span id="sp7" style="width: 10px;"
+													class="add_span"></span> <img src=""></td>
+											<tr>
+												<td>人數上限
+											<tr>
+												<td><input id="attend_limit" class="myitem" type="text"
+													name="attend_limit" /><span id="sp8" style="width: 10px;"
+													class="add_span"></span> <img src=""></td>
+											<tr>
+												<td>已報名人數
+											<tr>
+												<td><input id="reserved_people" class="myitem"
+													type="text" name="reserved_people" /><span id="sp9"
+													style="width: 10px;" class="add_span"></span> <img src="">
+												</td>
+											<tr>
+												<td>內容
+											<tr>
+												<td><textarea id="event_content" class="myitem"
+														name="event_content" rows="30" cols="70"></textarea><span
+													class="add_span" id="sp10" style="width: 10px;"></span> <img
+													src=""></td>
+											<tr>
+												<td>圖片
+											<tr>
+												<td>
+													<div class="image">
+														<img id="preview_img" width="200" height="200" />
 
-                                                <tr>
-                                                    <td>活動日期
-                                                <tr>
-                                                    <td><input id="event_date" class="myitem" type="date"
-                                                            name="event_date" /><span id="sp6" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
+													</div> <input id="file" type="file" class="myitem" name="file" />
+													<span class="add_span" id="sp11" style="width: 10px;"></span>
+													<img src="">
+												</td>
+										</table>
 
-                                                <tr>
-                                                    <td>地點
-                                                <tr>
-                                                    <td><input id="location" class="myitem" type="text"
-                                                            name="location" /><span id="sp7" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
+									</form>
 
-                                                <tr>
-                                                    <td>人數上限
-                                                <tr>
-                                                    <td><input id="attend_limit" class="myitem" type="text"
-                                                            name="attend_limit" /><span id="sp8" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">關閉</button>
+									<button id="submit" type="button" data-dismiss="modal"
+										class="btn btn-primary">送出</button>
+									<button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
+								</div>
 
-                                                <tr>
-                                                    <td>已報名人數
-                                                <tr>
-                                                    <td><input id="reserved_people" class="myitem" type="text"
-                                                            name="reserved_people" /><span id="sp9" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
-
-
-                                                <tr>
-                                                    <td>內容
-
-                                                <tr>
-                                                    <td><textarea id="event_content" class="myitem" name="event_content"
-                                                            rows="30" cols="70"></textarea><span class="add_span"
-                                                            id="sp10" style="width: 10px;"></span> <img src=""></td>
-
-                                                <tr>
-                                                    <td>圖片
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="image">
-                                                            <img id="preview_img" width="200" height="200" />
-
-                                                        </div> <input id="file" type="file" class="myitem"
-                                                            name="file" /> <span class="add_span" id="sp11"
-                                                            style="width: 10px;"></span> <img src="">
-                                                    </td>
-
-
-                                            </table>
-
-                                        </form>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-                                        <button id="submit" type="button" data-dismiss="modal"
-                                            class="btn btn-primary">送出</button>
-                                        <button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
 
 
 
-                        <!-- this is editEvent modal -->
-                        <div class="modal fade" tabindex="-1" role="dialog" id="editEventModal">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title">編輯活動</h4>
-                                    </div>
-                                    <div class="modal-body">
+					<!-- this is editEvent modal -->
+					<div class="modal fade" tabindex="-1" role="dialog"
+						id="editEventModal">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">編輯活動</h4>
+								</div>
+								<div class="modal-body">
 
-                                        <form id="edit_form">
+									<form id="edit_form">
 
-                                            <table class="box">
+										<table class="box">
 
-                                                <input type="hidden" id="edit_event_id" name="event_id">
+											<input type="hidden" id="edit_event_id" name="event_id">
 
-                                                <tr>
-                                                    <td>標題
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_title" type="text"
-                                                            name="event_title" style="width: 500px"
-                                                            maxlength="23"><br />
-                                                        <span id="sp1" style="width: 10px" class="add_span"></span> <img
-                                                            src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>副標題
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_subtitle" type="text"
-                                                            name="event_subtitle" style="width: 500px"><br /> <span
-                                                            id="sp2" style="width: 10px" class="add_span"></span> <img
-                                                            src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>上傳日期
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_uploaddate"
-                                                            type="date" name="event_uploaddate" /> <br /> <span id="sp3"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-                                                <tr>
-                                                    <td>報名期間
-                                                <tr>
-                                                    <td><input type="date" class="edit_myitem"
-                                                            id="edit_reserve_start_date" name="reserve_start_date"
-                                                            rows="30" cols="70" />
-                                                        <span id="sp4" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">to
-                                                        <input type="date" class="edit_myitem"
-                                                            id="edit_reserve_end_date" name="reserve_end_date" rows="30"
-                                                            cols="70" /><br />
-                                                        <span id="sp5" style="width: 10px;" class="add_span"></span>
-                                                        <img src="">
-                                                    </td>
+											<tr>
+												<td>標題
+											<tr>
+												<td><input class="edit_myitem" id="edit_event_title"
+													type="text" name="event_title" style="width: 500px"
+													maxlength="23"><br /> <span id="sp1"
+													style="width: 10px" class="add_span"></span> <img src="">
+												</td>
+											<tr>
+												<td>副標題
+											<tr>
+												<td><input class="edit_myitem" id="edit_event_subtitle"
+													type="text" name="event_subtitle" style="width: 500px"><br />
+													<span id="sp2" style="width: 10px" class="add_span"></span>
+													<img src=""></td>
+											<tr>
+												<td>上傳日期
+											<tr>
+												<td><input class="edit_myitem"
+													id="edit_event_uploaddate" type="date"
+													name="event_uploaddate" /> <br /> <span id="sp3"
+													style="width: 10px;" class="add_span"></span> <img src="">
+												</td>
+											<tr>
+												<td>報名期間
+											<tr>
+												<td><input type="date" class="edit_myitem"
+													id="edit_reserve_start_date" name="reserve_start_date"
+													rows="30" cols="70" /> <span id="sp4" style="width: 10px;"
+													class="add_span"></span> <img src="">to <input
+													type="date" class="edit_myitem" id="edit_reserve_end_date"
+													name="reserve_end_date" rows="30" cols="70" /><br /> <span
+													id="sp5" style="width: 10px;" class="add_span"></span> <img
+													src=""></td>
+											<tr>
+												<td>活動日期
+											<tr>
+												<td><input class="edit_myitem" id="edit_event_date"
+													type="date" name="event_date" /> <br /> <span id="sp6"
+													style="width: 10px;" class="add_span"></span> <img src="">
+												</td>
+											<tr>
+												<td>地點
+											<tr>
+												<td><input id="edit_location" class="edit_myitem"
+													type="text" name="location" /><br />
+												<span id="sp7" style="width: 10px;" class="add_span"></span>
+													<img src=""></td>
+											<tr>
+												<td>人數上限
+											<tr>
+												<td><input class="edit_myitem" id="edit_attend_limit"
+													type="text" name="attend_limit" /> <br /> <span id="sp8"
+													style="width: 10px;" class="add_span"></span> <img src="">
+												</td>
+											<tr>
+												<td>已報名人數
+											<tr>
+												<td><input class="edit_myitem"
+													id="edit_reserved_people" type="text"
+													name="reserved_people" /> <br /> <span id="sp9"
+													style="width: 10px;" class="add_span"></span> <img src="">
+												</td>
+											<tr>
+												<td>內容
+											<tr>
+												<td><textarea class="edit_myitem"
+														id="edit_event_content" name="event_content" rows="30"
+														cols="70"></textarea> <br /> <span id="sp10"
+													style="width: 10px;"></span> <img src=""></td>
+											<tr>
+												<td>圖片
+											<tr>
+												<td>
+													<div class="image">
+														<img class="edit_myitem" id="edit_preview_img" width="200"
+															height="200" /><img class="edit_myitem" id="edit_img"
+															width="200" height="200" />
 
-                                                <tr>
-                                                    <td>活動日期
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_event_date" type="date"
-                                                            name="event_date" /> <br /> <span id="sp6"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
+													</div> <input class="edit_myitem" id="edit_file" type="file"
+													name="file" /> <br />
+												<span class="add_span" id="sp11" style="width: 10px;"></span>
+													<img src="">
+												</td>
+										</table>
+									</form>
 
-                                                <tr>
-                                                    <td>地點
-                                                <tr>
-                                                    <td><input id="edit_location" class="edit_myitem" type="text"
-                                                            name="location" /><br /><span id="sp7" style="width: 10px;"
-                                                            class="add_span"></span> <img src="">
-                                                    </td>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">關閉</button>
+									<button id="edit_submit" data-dismiss="modal" type="button"
+										class="btn btn-primary">送出</button>
+									<button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
+								</div>
 
-                                                <tr>
-                                                    <td>人數上限
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_attend_limit" type="text"
-                                                            name="attend_limit" /> <br /> <span id="sp8"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>已報名人數
-                                                <tr>
-                                                    <td><input class="edit_myitem" id="edit_reserved_people" type="text"
-                                                            name="reserved_people" /> <br /> <span id="sp9"
-                                                            style="width: 10px;" class="add_span"></span> <img src="">
-                                                    </td>
-
-
-                                                <tr>
-                                                    <td>內容
-
-                                                <tr>
-                                                    <td><textarea class="edit_myitem" id="edit_event_content"
-                                                            name="event_content" rows="30" cols="70"></textarea> <br />
-                                                        <span id="sp10" style="width: 10px;"></span> <img src="">
-                                                    </td>
-
-                                                <tr>
-                                                    <td>圖片
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="image">
-                                                            <img class="edit_myitem" id="edit_preview_img" width="200"
-                                                                height="200" /><img class="edit_myitem" id="edit_img"
-                                                                width="200" height="200" />
-
-                                                        </div> <input class="edit_myitem" id="edit_file" type="file"
-                                                            name="file" /> <br /><span class="add_span" id="sp11"
-                                                            style="width: 10px;"></span> <img src="">
-                                                    </td>
-
-
-                                            </table>
-                                        </form>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-                                        <button id="edit_submit" data-dismiss="modal" type="button"
-                                            class="btn btn-primary">送出</button>
-                                        <button id="shortcut" type="button" class="btn btn-primary">一鍵輸入</button>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-                        <!-- /.container-fluid -->
-                        <!-- 結束內容 -->
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+					<!-- /.container-fluid -->
+					<!-- 結束內容 -->
 
 
-                    </div>
-                    <!-- End of Main Content -->
+				</div>
+				<!-- End of Main Content -->
 
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; 資策會第五組專題報告 2021</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
-                </div>
-                <!-- End of Content Wrapper -->
-            </div>
-            <!-- End of Page Wrapper -->
+				<!-- Footer -->
+				<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Copyright &copy; 資策會第五組專題報告 2021</span>
+						</div>
+					</div>
+				</footer>
+				<!-- End of Footer -->
+			</div>
+			<!-- End of Content Wrapper -->
+		</div>
+		<!-- End of Page Wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i>
-            </a>
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
 
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to
-                                Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are
-                            ready to end your current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.html">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    </body>
-    <script>
+		<!-- Logout Modal-->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Ready to
+							Leave?</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Select "Logout" below if you are
+						ready to end your current session.</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-dismiss="modal">Cancel</button>
+						<a class="btn btn-primary" href="../../logout">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+<script>
         var table;
 
         $(function () {
@@ -1062,4 +1047,4 @@
 
     </script>
 
-    </html>
+</html>

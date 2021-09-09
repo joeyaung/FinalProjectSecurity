@@ -88,7 +88,24 @@ public class EventRestController {
 		
 		return appUserJson;
 	}
-
+	/**
+	 * 找尋各活動報名人數
+	 * @return
+	 */
+	@GetMapping("/findEventRegisteredNumber")
+	public List<Integer> findRegisteredNumber(){
+		return eventService.findReserved_people();
+	}
 	
+	/**
+	 * 找尋各活動報名上限
+	 * @return
+	 */
+	@GetMapping("/findEventRegisteredLimit")
+	public List<Integer> findAttendLimit(){
+		return eventService.findAttend_limit();
+	}
+	
+
 
 }

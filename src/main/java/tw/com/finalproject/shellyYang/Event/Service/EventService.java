@@ -2,6 +2,7 @@ package tw.com.finalproject.shellyYang.Event.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,6 +116,14 @@ public class EventService {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public List<Integer> findReserved_people(){
+		return eventRepository.findReserved_people();	
+	}
+	
+	public List<Integer> findAttend_limit(){
+		return eventRepository.findAttend_limit();
 	}
 
 }

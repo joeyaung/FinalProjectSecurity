@@ -15,4 +15,7 @@ public interface EventFormRepository extends JpaRepository<EventForm, Integer> {
 	
 	List<EventForm> findByApplicationUserId(Long user_id);
 	
+	@Query(value="select gender from eventform where event_id = ?1 and gender like ?2",nativeQuery=true)
+	List<String> findByEvent_idAndGenderContaining(int event_id, String gender);
+	
 }

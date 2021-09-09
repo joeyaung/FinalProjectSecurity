@@ -25,6 +25,15 @@ public class EventFormController {
 			return "Event/adminAllEventForm";
 		}
 		
+		@GetMapping("/inner/admin/EventDashboard")
+		public String eventDashboard(HttpServletRequest request, Principal principal) {
+			String name = principal.getName();
+			Employee emp = employeeService.findbyUsername(name);
+			request.setAttribute("empName", emp.getFullName());
+			return "Event/adminEventChart";
+			
+		}
+		
 		@GetMapping("/account/BookEventConfirmation")
 		public String bookEventConfirm()  {
 			return "Event/eventRegisConfirm";

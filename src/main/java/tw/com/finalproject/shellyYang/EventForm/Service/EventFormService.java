@@ -1,6 +1,7 @@
 package tw.com.finalproject.shellyYang.EventForm.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
@@ -275,6 +276,37 @@ public class EventFormService {
 			System.out.println("查無此筆報名資料");
 			return false;
 		}
+		
+	}
+	/**
+	 * chart js統計各活動男性人數
+	 * @return
+	 */
+	public List<Integer> findNumberOfMan() {
+		List<Integer> eventManCount = new ArrayList<Integer>();
+		for(int i = 1; i<=5; i++) {
+			List<String> manList = eFormRepository.findByEvent_idAndGenderContaining(i, "先生");
+			int manNumber = manList.size();		
+			eventManCount.add(manNumber);
+			
+		}
+		
+		return eventManCount;
+		
+		
+	}
+	
+	public List<Integer> findNumberOfWoman() {
+		List<Integer> eventWomanCount = new ArrayList<Integer>();
+		for(int i = 1; i<=5; i++) {
+			List<String> womanList = eFormRepository.findByEvent_idAndGenderContaining(i, "小姐");
+			int womanNumber = womanList.size();
+			eventWomanCount.add(womanNumber);
+			
+		}
+		
+		return eventWomanCount;
+		
 		
 	}
 
