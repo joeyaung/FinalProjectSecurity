@@ -218,14 +218,14 @@
 					<!-- Topbar Search -->
 					<form
 						class="
-                    d-none d-sm-inline-block
-                    form-inline
-                    mr-auto
-                    ml-md-3
-                    my-2 my-md-0
-                    mw-100
-                    navbar-search
-                  ">
+                d-none d-sm-inline-block
+                form-inline
+                mr-auto
+                ml-md-3
+                my-2 my-md-0
+                mw-100
+                navbar-search
+              ">
 						<div class="input-group">
 							<input type="text" class="form-control bg-light border-0 small"
 								placeholder="Search for..." aria-label="Search"
@@ -248,11 +248,11 @@
 						</a> <!-- Dropdown - Messages -->
 							<div
 								class="
-                        dropdown-menu dropdown-menu-right
-                        p-3
-                        shadow
-                        animated--grow-in
-                      "
+                    dropdown-menu dropdown-menu-right
+                    p-3
+                    shadow
+                    animated--grow-in
+                  "
 								aria-labelledby="searchDropdown">
 								<form class="form-inline mr-auto w-100 navbar-search">
 									<div class="input-group">
@@ -278,10 +278,10 @@
 						</a> <!-- Dropdown - Alerts -->
 							<div
 								class="
-                        dropdown-list dropdown-menu dropdown-menu-right
-                        shadow
-                        animated--grow-in
-                      "
+                    dropdown-list dropdown-menu dropdown-menu-right
+                    shadow
+                    animated--grow-in
+                  "
 								aria-labelledby="alertsDropdown">
 								<h6 class="dropdown-header">Alerts Center</h6>
 								<a class="dropdown-item d-flex align-items-center" href="#">
