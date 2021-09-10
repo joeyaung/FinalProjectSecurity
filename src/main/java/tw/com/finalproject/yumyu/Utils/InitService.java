@@ -373,9 +373,11 @@ public class InitService {
 			user.setUsername("eeit2905_" + i + "@gmail.com");
 			if(i<10) {
 				user.setPhone("091792217" + i);		
-			}else {
+			}else if(i>10 && i<100){
 				user.setPhone("09179221" + i);
-			}
+			}else
+				user.setPhone("0917922" + i);
+				
 			user.setFullName("王小明" + i);
 			user.setRoles(MEMBER.name());
 			user.setZipCode("105");
