@@ -228,18 +228,12 @@ input:checked+.slider:before {
 			<li class="nav-item"><a class="nav-link"
 				href="/FinalProject/inner/admin/AllNewsPage"> <i
 					class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
-
-			<!-- Nav Item - 編輯活動 -->
-			<li class="nav-item"><a class="nav-link"
-				href="/FinalProject/inner/admin/AllEventsPage"> <i
-					class="fas fa-rss-square"></i> <span>編輯活動</span></a></li>
-
 			<!-- Nav Item - 活動表單 -->
 			<li class="nav-item"><a class="nav-link"
 				href="/FinalProject/inner/admin/AllEventForm"> <i
 					class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
-
-			<!-- Nav Item - 活動報名統計 -->
+					
+			<!-- Nav Item - 活動報名統計-->
 			<li class="nav-item"><a class="nav-link"
 				href="/FinalProject/inner/admin/EventDashboard"> <i
 					class="fas fa-rss-square"></i> <span>活動報名統計</span></a></li>
