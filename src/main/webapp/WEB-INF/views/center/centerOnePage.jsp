@@ -54,40 +54,28 @@
       }
 
       nav input {
-				border: 0;
-				background-color: #003C9D;
-				color: #fff;
-				border-radius: 10px;
-				cursor: pointer;
-			}
-
-			nav input:hover {
-				color: #003C9D;
-				background-color: #fff;
-				border: 2px #003C9D solid;
-			}
-
-      .bg-gray-custom {
-    background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
-   }
-
-      /* 預約駕車的連結css，待修 */
-      /* a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-      } */
-
-      
-      /* Set the size of the div element that contains the map */
-      #map {
-          height: 500px;
-          width: 500px;
+        border: 0;
+        background-color: #003C9D;
+        color: #fff;
+        border-radius: 10px;
+        cursor: pointer;
       }
 
+      nav input:hover {
+        color: #003C9D;
+        background-color: #fff;
+        border: 2px #003C9D solid;
+      }
 
+      .bg-gray-custom {
+        background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
+      }
+
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 500px;
+        width: 500px;
+      }
     </style>
 
     </style>
@@ -122,7 +110,7 @@
               <a class="nav-link" href="#signup">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
@@ -138,61 +126,38 @@
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-lg-8">
-            <h1 class="text-black mb-4">展示中心</h1>
+            <!-- <h1 class="text-black mb-4">展示中心</h1> -->
             <p class="text-white-50">
 
             <div id="container">
-              <!-- <nav style="margin-top: 100px">
-                <input type="button" id="secondHalfYear" class="2021070120211231"value="2021年07-12月" style="width: 150px; height: 50px;">
-                <input type="button" id="firstHalfYear" class="2021010120210630" value="2021年01-06月" style="width: 150px; height: 50px;">
-                <input type="button" id="secondHalfYear2020" class="2020070120201231" value="2020年07-12月" style="width: 150px; height: 50px;">
-              </nav> -->
 
               </br> </br>
 
               <ul id="centerdata">
-                <!-- <li class='news_li'><h2> 台北展示中心 </h2></li>
-                <li class='news_li'>連絡電話:02-27939191</li>
-                <li class='news_li'>中心地址:台北市內湖區新湖三路288號</li>
-                <li class='news_li'>E-mail:TaipeiCenter@gmail.com</li>
-                <li class='news_li'>營業時間:週一至週日 09:00 - 21:00</li>
-                <li class='news_li'>服務項目:銷售</li>
-                <li class='news_li'><img src="/FinalProject/images/center/taipei.jpg" width="800px" height="600px" alt="沒圖片"></li> -->
                 <li class='news_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="沒圖片"></li>
-
-              <a href='/FinalProject/center'><img src='/FinalProject/images/goBack.jpg'></a>
-            </br></br></br>
+                </br></br></br></br></br></br>
               </ul>
 
-              
-              
-              <a href="http://localhost:8080/FinalProject/TestDrive" class="button">預約試駕</a>
+              <a href="http://localhost:8080/FinalProject/TestDrive" class="btn btn-primary btn-lg active" role="button"
+                aria-pressed="true">預約試駕</a>
 
-
+              </br></br></br>
               <!--The div element for the map -->
               <div id="map">
 
               </div>
-          
 
               <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg&callback=initMap&libraries=&v=weekly" async></script>
-              
+              <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg&callback=initMap&libraries=&v=weekly"
+                async></script>
 
-
-            </br>
-          </br>
-        </br>
+              </br>
+              </br>
+              </br>
             </div>
-
           </div>
         </div>
-        <img class="img-fluid" src="../images/audi-etron.png" alt="..." />
-
-
-        
-
-
     </section>
 
     <!-- 以下不要動 -->
@@ -205,48 +170,34 @@
 
   </body>
 
-
-
   <script>
     //search by id
     $(document).ready(function () {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const centerId = urlParams.get('centerId');
-      // console.log(queryString);
-      // console.log(centerId);
 
       $.ajax({
         url: "/FinalProject/findCenterById/" + centerId,
         method: "GET",
         dataType: "json",
         success: function (data) {
-          // console.log("成功抓到id")
-          // console.log(data)
-          
+
           var list = "";
-          var latitude = parseFloat(data.latitude)
-          var longitude = parseFloat(data.longitude)
+          var latitude = parseFloat(data.centerLatitude)
+          var longitude = parseFloat(data.centerLongitude)
 
-
-          
-          
           list += "<li class='news_li'><h2>" + data.centerName + "</h2></li><li class='news_li'>連絡電話:"
             + data.centerPhone + "</li><li class='news_li'中心地址:>"
             + data.centerAddress + "</li><li class='news_li'>E-mail:"
-            + data.centerEmail + "</li><li class='news_li'>營業項目"
-            + data.centerOpentime + "</li><li class='news_li'>服務項目:銷售"
-            + data.centerService + "</li><li class='news_li'><img src='data:image/png;base64,"
+            + data.centerEmail + "</li><li class='news_li'>營業時間:"
+            + data.centerOpentime + "</li><li class='news_li'><img src='data:image/png;base64,"
             + data.centerImage + "'width='800px' height='600px' alt='展示中心圖片'></li>"
-                      
-              $("#centerdata").html(list)
-                      
 
-              
-           //執行地圖function
-            initMap(latitude, longitude);  
-                      
+          $("#centerdata").html(list)
 
+          //執行地圖function
+          initMap(latitude, longitude);
         },
         error: function (err) {
           console.log("沒抓到id")
@@ -255,47 +206,34 @@
         }
       });
 
-
-      
     });
+    // Initialize and add the map
 
+    function initMap(latitude, longitude) {
 
+      // 展示中心的座標
+      const location = {
+        lat: latitude,  //緯度   latitude
+        lng: longitude   //經度   longitude
+      };
 
-            // Initialize and add the map
-            function initMap(latitude, longitude) {
-            // 桃園奧迪的座標
-            const location = {
-                lat: latitude,  //緯度   latitude
-                lng: longitude   //經度   longitude
-            };
-            // 建立地圖
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 17,  // 1-20，數字愈大，地圖愈細：1是世界地圖，20就會到街道
-                center: location, // 中心點座標
+      // 建立地圖
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 17,  // 1-20，數字愈大，地圖愈細：1是世界地圖，20就會到街道
+        center: location, // 中心點座標
 
-              /*
-                roadmap 顯示默認道路地圖視圖。
-                satellite 顯示 Google 地球衛星圖像。
-                hybrid 顯示正常和衛星視圖的混合。
-                terrain 顯示基於地形信息的物理地圖。
-              */
+      });
 
-            });
-            // (放置marker) The marker, positioned at location
-            const marker = new google.maps.Marker({
-                position: location,  
-                map: map,
-            });
-        }
-
-
-
-
+      // (放置marker) The marker, positioned at location
+      const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: this.location,
+        icon: 'https://i.imgur.com/Z1H7jQI.jpg',
+        animation: google.maps.Animation.BOUNCE
+      });
+    }
 
   </script>
-
-  
-
-  </html>
 
   </html>

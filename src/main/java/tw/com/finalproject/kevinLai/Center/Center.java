@@ -31,8 +31,8 @@ public class Center {
 	private String centerLocSit;	//中心地區(與試駕中心結合)
 	private String centerAddress;	//中心地址
 	private String centerOpentime;  //中心營業時間
-	private String latitude;		//緯度
-	private String longitude;		//經度
+	private String centerLatitude;	//中心緯度
+	private String centerLongitude;	//中心經度
 	
 //	 @OneToOne
 //	 private Store store;
