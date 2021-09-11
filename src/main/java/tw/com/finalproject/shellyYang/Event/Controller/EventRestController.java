@@ -57,8 +57,8 @@ public class EventRestController {
 
 		Map<String, String> map = new HashMap<String, String>();
 
-		Integer result = eventService.deleteById(event_id);
-		map.put("msg", "成功刪除id:" + result);
+		eventService.deleteById(event_id);
+		map.put("msg", "成功刪除" );
 
 		return map;
 
@@ -101,9 +101,16 @@ public class EventRestController {
 	 * 找尋各活動報名上限
 	 * @return
 	 */
+	
 	@GetMapping("/findEventRegisteredLimit")
 	public List<Integer> findAttendLimit(){
 		return eventService.findAttend_limit();
+	}
+	
+	@GetMapping("/getAllEventsOrderById")
+	public List<Event> findAllEventOrderById() {
+
+		return eventService.findAllOrderByEvent_id();
 	}
 	
 

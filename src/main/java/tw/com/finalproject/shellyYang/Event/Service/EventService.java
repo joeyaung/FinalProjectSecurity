@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tw.com.finalproject.shellyYang.Event.Event;
 import tw.com.finalproject.shellyYang.Event.Repository.EventRepository;
+import tw.com.finalproject.shellyYang.EventForm.Repository.EventFormRepository;
+import tw.com.finalproject.shellyYang.EventForm.Service.EventFormService;
 import tw.com.finalproject.yumyu.Utils.ImgConverter;
 
 @Service
@@ -19,6 +21,9 @@ public class EventService {
 
 	@Autowired
 	private EventRepository eventRepository;
+	
+	@Autowired
+	private EventFormRepository eventFormRepository;
 
 	public List<Event> findAllEvent() {
 
@@ -69,11 +74,13 @@ public class EventService {
 	 * @param event_id
 	 * @return
 	 */
-	public Integer deleteById(Integer event_id) {
+	public void deleteById(Integer event_id) {
+		
+		//先將報名此活動的Form刪除(avoid violating FK constraints)
+		 eventFormRepository.deleteByEvent_eventid(event_id);
 
 		eventRepository.deleteById(event_id);
 
-		return event_id;
 
 	}
 
@@ -124,6 +131,10 @@ public class EventService {
 	
 	public List<Integer> findAttend_limit(){
 		return eventRepository.findAttend_limit();
+	}
+	
+	public List<Event> findAllOrderByEvent_id(){
+		return eventRepository.findAllOrderByEvent_id();
 	}
 
 }

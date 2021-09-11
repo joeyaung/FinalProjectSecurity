@@ -325,7 +325,7 @@
 
 							<section class="scroll-container">
 								<div class="scroll-element js-scroll fade-in">
-									<img width="400" height="500"
+									<img width="400" height="300"
 										src="/FinalProject/images/eventsphotos/event_img6.jpeg" />
 								</div>
 								<div class="scroll-caption">
@@ -337,7 +337,7 @@
 							</section>
 							<section class="scroll-container">
 								<div class="scroll-element js-scroll fade-in-bottom">
-									<img width="400" height="500"
+									<img width="400" height="300"
 										src="/FinalProject/images/eventsphotos/event_img5.jpg" />
 								</div>
 								<div class="scroll-caption">
@@ -348,7 +348,7 @@
 							</section>
 							<section class="scroll-container">
 								<div class="scroll-element js-scroll slide-left">
-									<img width="400" height="500"
+									<img width="400" height="300"
 										src="/FinalProject/images/eventsphotos/event_img4.jpg" />
 								</div>
 								<div class="scroll-caption">
@@ -359,7 +359,7 @@
 							</section>
 							<section class="scroll-container">
 								<div class="scroll-element js-scroll slide-right">
-									<img width="400" height="500"
+									<img width="400" height="300"
 										src="/FinalProject/images/eventsphotos/event_img2.jpg" />
 								</div>
 								<div class="scroll-caption">
@@ -373,7 +373,7 @@
 
 							<section class="scroll-container">
 								<div class="scroll-element js-scroll slide-right">
-									<img width="400" height="500"
+									<img width="400" height="300"
 										src="/FinalProject/images/eventsphotos/event_img1.jpeg" />
 								</div>
 								<div class="scroll-caption">

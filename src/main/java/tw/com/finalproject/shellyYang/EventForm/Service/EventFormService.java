@@ -284,7 +284,8 @@ public class EventFormService {
 	 */
 	public List<Integer> findNumberOfMan() {
 		List<Integer> eventManCount = new ArrayList<Integer>();
-		for(int i = 1; i<=5; i++) {
+		int formCount = eFormRepository.findAll().size();
+		for(int i = 1; i<=formCount; i++) {
 			List<String> manList = eFormRepository.findByEvent_idAndGenderContaining(i, "先生");
 			int manNumber = manList.size();		
 			eventManCount.add(manNumber);
@@ -298,7 +299,8 @@ public class EventFormService {
 	
 	public List<Integer> findNumberOfWoman() {
 		List<Integer> eventWomanCount = new ArrayList<Integer>();
-		for(int i = 1; i<=5; i++) {
+		int formCount = eFormRepository.findAll().size();
+		for(int i = 1; i<=formCount; i++) {
 			List<String> womanList = eFormRepository.findByEvent_idAndGenderContaining(i, "小姐");
 			int womanNumber = womanList.size();
 			eventWomanCount.add(womanNumber);
@@ -309,5 +311,5 @@ public class EventFormService {
 		
 		
 	}
-
+	
 }

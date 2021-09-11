@@ -3,6 +3,7 @@ package tw.com.finalproject.shellyYang.EventForm.Repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import tw.com.finalproject.shellyYang.EventForm.EventForm;
@@ -17,5 +18,10 @@ public interface EventFormRepository extends JpaRepository<EventForm, Integer> {
 	
 	@Query(value="select gender from eventform where event_id = ?1 and gender like ?2",nativeQuery=true)
 	List<String> findByEvent_idAndGenderContaining(int event_id, String gender);
+	
+	
+	@Query(value="delete from eventform where event_id = ?1",nativeQuery=true)
+	@Modifying
+	void deleteByEvent_eventid(Integer eventId);
 	
 }

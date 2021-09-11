@@ -17,4 +17,7 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
 	List<Integer> findReserved_people();
 	@Query("select attend_limit from Event e")
 	List<Integer> findAttend_limit();
+	
+	@Query("select e from Event e order by e.event_id asc")
+	List<Event> findAllOrderByEvent_id();
 }
