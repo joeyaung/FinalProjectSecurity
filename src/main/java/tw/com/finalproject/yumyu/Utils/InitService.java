@@ -403,8 +403,11 @@ public class InitService {
 
 			// 隨機取得一活動
 			Random random1 = new Random(); // instance of random class
+			List<Event> list = eventService.findAllEvent();
+			int eventCount = list.size();
+			
 			int min = 1;
-			int max = 5;
+			int max = eventCount;
 			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
 
 			// 取得此活動報名開始＋結束日期
