@@ -366,6 +366,19 @@ public class InitService {
 		city.add("新北市");
 		city.add("高雄市");
 		city.add("新竹市");
+		
+		List<String> name = new ArrayList<String>();
+		name.add("劉美華");
+		name.add("陳明華");
+		name.add("吳鳳麟");
+		name.add("楊曉慧");
+		name.add("陳大華");
+		name.add("屋重亮");
+		name.add("李芳芳");
+		name.add("劉婌方");
+		name.add("方美珠");
+		name.add("張美麗");
+		name.add("陳之華");
 
 		for (int i = 0; i < 200; i++) {
 			int random = new Random().nextInt(city.size());
@@ -377,8 +390,8 @@ public class InitService {
 				user.setPhone("09179221" + i);
 			}else
 				user.setPhone("0917922" + i);
-				
-			user.setFullName("王小明" + i);
+			int randomName = new Random().nextInt(name.size());
+			user.setFullName(name.get(randomName));
 			user.setRoles(MEMBER.name());
 			user.setZipCode("105");
 			user.setPassword("asd");
