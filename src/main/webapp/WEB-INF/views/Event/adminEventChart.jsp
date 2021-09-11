@@ -100,13 +100,14 @@
 							class="fas fa-car"></i>
 						<span>試駕總覽</span></a></li>
 
-				<!-- Nav Item - 編輯消息 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
-							class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
 
 				<!-- Nav Item - 編輯商品 -->
 				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/products"> <i
 							class="fas fa-rss-square"></i> <span>編輯商品</span></a></li>
+
+				<!-- Nav Item - 編輯消息 -->
+				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
+							class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
 
 				<!-- Nav Item - 編輯活動 -->
 				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i
@@ -320,75 +321,75 @@
 							<div id="container">
 								<!-- Content Row -->
 								<div class="row" id="rowid">
-									
 
 
+
+								</div>
+
+
+								<!-- /.container-fluid -->
 							</div>
+							<!-- End of Main Content -->
 
-
-							<!-- /.container-fluid -->
+							<!-- Footer -->
+							<footer class="sticky-footer bg-white">
+								<div class="container my-auto">
+									<div class="copyright text-center my-auto">
+										<span>Copyright &copy; 資策會第五組專題報告 2021</span>
+									</div>
+								</div>
+							</footer>
+							<!-- End of Footer -->
 						</div>
-						<!-- End of Main Content -->
+						<!-- End of Content Wrapper -->
+					</div>
+					<!-- End of Page Wrapper -->
 
-						<!-- Footer -->
-						<footer class="sticky-footer bg-white">
-							<div class="container my-auto">
-								<div class="copyright text-center my-auto">
-									<span>Copyright &copy; 資策會第五組專題報告 2021</span>
+					<!-- Scroll to Top Button-->
+					<a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i>
+					</a>
+
+					<!-- Logout Modal-->
+					<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body">Select "Logout" below if you are ready
+									to end your current session.</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+									<a class="btn btn-primary" href="../../logout">Logout</a>
 								</div>
 							</div>
-						</footer>
-						<!-- End of Footer -->
-					</div>
-					<!-- End of Content Wrapper -->
-				</div>
-				<!-- End of Page Wrapper -->
-
-				<!-- Scroll to Top Button-->
-				<a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i>
-				</a>
-
-				<!-- Logout Modal-->
-				<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-								<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-							</div>
-							<div class="modal-body">Select "Logout" below if you are ready
-								to end your current session.</div>
-							<div class="modal-footer">
-								<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-								<a class="btn btn-primary" href="../../logout">Logout</a>
-							</div>
 						</div>
 					</div>
-				</div>
 
-				<!-- Bootstrap core JavaScript-->
-				<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
-				<script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+					<!-- Bootstrap core JavaScript-->
+					<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
+					<script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-				<!-- Core plugin JavaScript-->
-				<script src="/FinalProject/vendor/jquery-easing/jquery.easing.min.js"></script>
+					<!-- Core plugin JavaScript-->
+					<script src="/FinalProject/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-				<!-- Custom scripts for all pages-->
-				<script src="/FinalProject/js/sb-admin-2.js"></script>
+					<!-- Custom scripts for all pages-->
+					<script src="/FinalProject/js/sb-admin-2.js"></script>
 
-				<!-- Page level custom scripts -->
-				<!-- Page level plugins -->
-				<script src="/FinalProject/vendor/chart.js/Chart.min.js"></script>
+					<!-- Page level custom scripts -->
+					<!-- Page level plugins -->
+					<script src="/FinalProject/vendor/chart.js/Chart.min.js"></script>
 
 
-				<!-- Page level custom scripts -->
-				<!-- <script src="./js/chart-area-demo.js"></script> -->
+					<!-- Page level custom scripts -->
+					<!-- <script src="./js/chart-area-demo.js"></script> -->
 
-				<script src="/FinalProject/js/inner/chart-area-demo.js"></script>
-				<script src="/FinalProject/js/inner/adminDashboard.js"></script>
+					<script src="/FinalProject/js/inner/chart-area-demo.js"></script>
+					<script src="/FinalProject/js/inner/adminDashboard.js"></script>
 
 
 	</body>
@@ -438,7 +439,7 @@
 						method: "GET",
 						async: false,
 						success: function (res) {
-							
+
 							event = res;
 						}
 
@@ -569,29 +570,29 @@
 					for (let i = 0; i < event.length; i++) {
 
 						var genderRatioArray = new Array(womanCount[i],
-						manCount[i]);
-						
+							manCount[i]);
+
 						tempId = 'pieChart' + event[i].event_id;
 						var ctx = document.getElementById(tempId)
-						.getContext('2d');
+							.getContext('2d');
 
 						var chart = new Chart(ctx, {
 							type: 'pie',
-						data: {
-							labels: ['女', '男'],
-							datasets: [{
-								data: genderRatioArray,
-								backgroundColor: ['rgb(255, 99, 132)',
-									'rgb(54, 162, 235)',],
-								hoverOffset: 4
-							}]
-						},
-						options: {
-							pieceLabel: {
-								render: 'value' //show values
+							data: {
+								labels: ['女', '男'],
+								datasets: [{
+									data: genderRatioArray,
+									backgroundColor: ['rgb(255, 99, 132)',
+										'rgb(54, 162, 235)',],
+									hoverOffset: 4
+								}]
 							},
-							maintainAspectRatio: false
-						}
+							options: {
+								pieceLabel: {
+									render: 'value' //show values
+								},
+								maintainAspectRatio: false
+							}
 
 						})
 					}
@@ -599,44 +600,44 @@
 				});
 
 		function createChart(res) {
-			var chart ="";
+			var chart = "";
 
 
-			for(var i = 0; i<res.length; i++){
+			for (var i = 0; i < res.length; i++) {
 
-				if(i<=2){
-					chart += 
-				   '<div class="col-xl-4 col-lg-5">' +
-				   '<div class="card shadow mb-4"></div>' +
-				   '<div class="card - header py - 3 d - flex flex - row align - items - center justify - content - between">'+
-				   '<h6 class="m-0 font-weight-bold text-primary">'+res[i].event_title+' 性別比</h6>' +
-				   '</div>' +
-				   '<div class="card-body d-flex flex-column">'+
-					   '<div class="chart-pie pt-4 pb-2">' +
-						   '<canvas class="myChart" id="pieChart'+res[i].event_id+'"></canvas>'+
-						   '</div>' +
-						   '<div class="mt-4 text-center small"></div>' +
-						   '</div>'+
-						   '</div>'+
-						   '</div>'
+				if (i <= 2) {
+					chart +=
+						'<div class="col-xl-4 col-lg-5">' +
+						'<div class="card shadow mb-4"></div>' +
+						'<div class="card - header py - 3 d - flex flex - row align - items - center justify - content - between">' +
+						'<h6 class="m-0 font-weight-bold text-primary">' + res[i].event_title + ' 性別比</h6>' +
+						'</div>' +
+						'<div class="card-body d-flex flex-column">' +
+						'<div class="chart-pie pt-4 pb-2">' +
+						'<canvas class="myChart" id="pieChart' + res[i].event_id + '"></canvas>' +
+						'</div>' +
+						'<div class="mt-4 text-center small"></div>' +
+						'</div>' +
+						'</div>' +
+						'</div>'
 
-				}else{
+				} else {
 
-					chart += 
-					
-				   '<div class="col-xl-4 col-lg-5">' +
-				   '<div class="card shadow mb-4"></div>' +
-				   '<div class="card - header py - 3 d - flex flex - row align - items - center justify - content - between">'+
-				   '<h6 class="m-0 font-weight-bold text-primary">'+res[i].event_title+' 性別比</h6>' +
-				   '</div>' +
-				   '<div class="card-body d-flex flex-column">'+
-					   '<div class="chart-pie pt-4 pb-2">' +
-						   '<canvas class="myChart" id="pieChart'+res[i].event_id+'"></canvas>'+
-						   '</div>' +
-						   '<div class="mt-4 text-center small"></div>' +
-						   '</div>'+
-						   '</div>'
-						   
+					chart +=
+
+						'<div class="col-xl-4 col-lg-5">' +
+						'<div class="card shadow mb-4"></div>' +
+						'<div class="card - header py - 3 d - flex flex - row align - items - center justify - content - between">' +
+						'<h6 class="m-0 font-weight-bold text-primary">' + res[i].event_title + ' 性別比</h6>' +
+						'</div>' +
+						'<div class="card-body d-flex flex-column">' +
+						'<div class="chart-pie pt-4 pb-2">' +
+						'<canvas class="myChart" id="pieChart' + res[i].event_id + '"></canvas>' +
+						'</div>' +
+						'<div class="mt-4 text-center small"></div>' +
+						'</div>' +
+						'</div>'
+
 
 
 				}
@@ -644,8 +645,8 @@
 			}
 
 
-		$("#rowid").html(chart);	
-		
+			$("#rowid").html(chart);
+
 		}
 
 

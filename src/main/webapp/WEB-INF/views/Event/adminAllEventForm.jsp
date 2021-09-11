@@ -231,10 +231,18 @@
 				<li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/testdrive"> <i
 							class="fas fa-car"></i>
 						<span>試駕總覽</span></a></li>
+				<!-- Nav Item - 編輯商品 -->
+				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/products"> <i
+							class="fas fa-rss-square"></i> <span>編輯商品</span></a></li>
 
 				<!-- Nav Item - 編輯消息 -->
 				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
 							class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
+
+				<!-- Nav Item - 編輯活動 -->
+				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i
+							class="fas fa-rss-square"></i> <span>編輯活動</span></a></li>
+
 				<!-- Nav Item - 活動表單 -->
 				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
 							class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
@@ -380,10 +388,10 @@
 										src="/FinalProject/images/svg/undraw_profile.svg" />
 								</a> <!-- Dropdown - User Information -->
 								<div class="
-                        dropdown-menu dropdown-menu-right
-                        shadow
-                        animated--grow-in
-                      " aria-labelledby="userDropdown">
+                    dropdown-menu dropdown-menu-right
+                    shadow
+                    animated--grow-in
+                  " aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="#"> <i
 											class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
 									</a> <a class="dropdown-item" href="#"> <i
@@ -394,8 +402,7 @@
 										Activity Log
 									</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="/FinalProject/logout" data-toggle="modal"
-										data-target="#logoutModal"> <i
+									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
 											class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 										Logout
 									</a>
@@ -469,16 +476,18 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Ready to
-								Leave?</h5>
+							<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">×</span>
 							</button>
 						</div>
-						<div class="modal-body">Select "Logout" below if you are
-							ready to end your current session.</div>
+						<div class="modal-body">
+							Select "Logout" below if you are ready to end your current session.
+						</div>
 						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+							<button class="btn btn-secondary" type="button" data-dismiss="modal">
+								Cancel
+							</button>
 							<a class="btn btn-primary" href="../../logout">Logout</a>
 						</div>
 					</div>
@@ -490,7 +499,7 @@
 		var formData = new FormData();
 		var switchStatus = false;
 		$(document).ready(function () {
-			
+
 			createdatatable();
 
 		})
@@ -612,12 +621,12 @@
 								data: null,
 								title: "審核",
 								render: function (data, type, row) {
-									if(row['status']=="成功"){
+									if (row['status'] == "成功") {
 										return "<label class='switch'><input id='approve_id' type='checkbox' onChange='approveFunction()' checked><span class='slider round'> <span class='on'>ON</span>"
-										+ "<span class='off'>OFF</span</span></label>";
-									}else
-									return "<label class='switch'><input id='approve_id' type='checkbox' onChange='approveFunction()'><span class='slider round'> <span class='on'>ON</span>"
-										+ "<span class='off'>OFF</span</span></label>";
+											+ "<span class='off'>OFF</span</span></label>";
+									} else
+										return "<label class='switch'><input id='approve_id' type='checkbox' onChange='approveFunction()'><span class='slider round'> <span class='on'>ON</span>"
+											+ "<span class='off'>OFF</span</span></label>";
 								}
 							}],
 
