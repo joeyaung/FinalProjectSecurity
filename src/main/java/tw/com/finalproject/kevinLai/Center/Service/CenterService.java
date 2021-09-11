@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tw.com.finalproject.kevinLai.Center.Center;
 import tw.com.finalproject.kevinLai.Center.Repository.CenterRepository;
-import tw.com.finalproject.naiChuan.Retailer.Retailer;
 
 @Service
 @Transactional

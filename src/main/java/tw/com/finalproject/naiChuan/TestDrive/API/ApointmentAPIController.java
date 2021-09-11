@@ -30,6 +30,21 @@ public class ApointmentAPIController {
 	public List<TestDriveApointment> getAllTestdrive() {
 		return tdriveService.findAllTestdrive();
 	}
+	
+	// 找某日所有資料
+	@GetMapping("/findByDriveDateAPI/{driveDate}")
+	public Map<String, Object> findByDriveDate(@PathVariable String driveDate) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		List<TestDriveApointment> findResult = tdriveService.findByDriveDate(driveDate);
+		if (findResult == null) {
+			resultMap.put("data", "fail");
+		} else {
+			resultMap.put("data", findResult);
+		}
+		
+		return resultMap;
+	}
 
 	// 找單一筆
 	@GetMapping("/findByIdTestdriveAPI/{formId}")
@@ -57,7 +72,7 @@ public class ApointmentAPIController {
 		sales = salesList.get(0);
 
 		// 抓系統時間做為formTime
-		formTime = new SimpleDateFormat("yyyy/MM/dd H:mm:ss").format(Calendar.getInstance().getTime());
+		formTime = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
 
 		// 把TimCli得到的 checkbox 轉成 無逗號字串
 		testdrive.setTimCli(testdrive.getTimCli().replace(",", ""));

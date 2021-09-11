@@ -1,13 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-<%
-response.setContentType("text/html;charset=UTF-8");
-response.setHeader("Cache-Control", "no-cache"); // HTTP 1.1
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
-%>
 <html lang="zh-TW">
 
 <head>
@@ -15,7 +7,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>預約試駕</title>
+  <title>Audi - 預約試駕</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -46,16 +38,16 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#about">試駕體驗</a>
+            <a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#projects">最新消息</a>
+            <a class="nav-link" href="/FinalProject/News">最新消息</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">了解車型</a>
+            <a class="nav-link" href="/FinalProject/Model">了解車型</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">活動</a>
+            <a class="nav-link" href="/FinalProject/Events">活動</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#signup">精品商城</a>
@@ -64,7 +56,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
             <a class="nav-link" href="#signup">展示中心</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">會員專區</a>
+            <a class="nav-link" href="/FinalProject/account">會員專區</a>
           </li>
         </ul>
       </div>
@@ -83,63 +75,62 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
           <table class="table_bookd mgl-0">
 
             <tr>
-              <td>賞車日期:</td>
-              <td>${newTestdrive.driveDate}</td>
+              <td>賞車日期時間:</td>
+              <td class="client-data-display">${newTestdrive.driveDate}, ${newTestdrive.driveTime} 點</td>
             </tr>
 
             <tr>
               <td>試駕車種:</td>
-              <td>${newTestdrive.carMod}</td>
+              <td class="client-data-display">${newTestdrive.carMod}</td>
             </tr>
 
             <tr>
               <td>試駕地區:</td>
-              <td>${newTestdrive.driveLoc}</td>
+              <td class="client-data-display">${newTestdrive.driveLoc}</td>
             </tr>
 
             <tr>
               <td>試駕據點:</td>
-              <td>${newTestdrive.driveLocSit}</td>
+              <td class="client-data-display">${newTestdrive.driveLocSit}</td>
             </tr>
 
             <tr>
               <td>業務人員:</td>
-              <td>${newTestdrive.sales}</td>
+              <td class="client-data-display">${newTestdrive.sales}</td>
             </tr>
 
             <tr>
               <td>姓名:</td>
-              <td>${newTestdrive.nameCli}</td>
+              <td class="client-data-display">${newTestdrive.nameCli}</td>
             </tr>
 
             <tr>
-              <td>性別:</td>
-              <td>${newTestdrive.gendCli}</td>
+              <td>稱謂:</td>
+              <td class="client-data-display">${newTestdrive.gendCli}</td>
             </tr>
 
             <tr>
-              <td>方便的聯絡時間:</td>
-              <td>${newTestdrive.timCli}</td>
+              <td>您方便的聯絡時間:</td>
+              <td class="client-data-display">${newTestdrive.timCli}</td>
             </tr>
 
             <tr>
               <td>E-mail:</td>
-              <td>${newTestdrive.mailCli}</td>
+              <td class="client-data-display">${newTestdrive.mailCli}</td>
             </tr>
 
             <tr>
               <td>聯絡電話:</td>
-              <td>${newTestdrive.telCli}</td>
+              <td class="client-data-display">${newTestdrive.telCli}</td>
             </tr>
 
             <tr>
               <td>備註:</td>
-              <td>${newTestdrive.remark}</td>
+              <td class="client-data-display">${newTestdrive.remark}</td>
             </tr>
           </table>
           <div class="formTime">填表日期:${newTestdrive.formTime}</div>
           <h3 class="h_bookd">您的試駕表單編號為:<strong>${newTestdrive.formId}</strong></h3>
-          <h3 class="h_bookd">請記住此表單編號，以方便您線上查詢或修改</h3>
 
           <div class="div_bookd po-re">
           <!--    reCAP -->
@@ -153,6 +144,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                 
                 <input type="hidden" name="formId" value="${newTestdrive.formId}">
                 <input type="hidden" name="driveDate" value="${newTestdrive.driveDate}">
+                <input type="hidden" name="driveTime" value="${newTestdrive.driveTime}">
                 <input type="hidden" name="carMod" value="${newTestdrive.carMod}">
                 <input type="hidden" name="driveLoc" value="${newTestdrive.driveLoc}">
                 <input type="hidden" name="driveLocSit" value="${newTestdrive.driveLocSit}">
@@ -168,7 +160,6 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                 <button type="submit" class="btn btn-primary wh-40">確認</button>
             </form>
             <form action="TestDrive" method="post">
-              <!-- <input type="submit" value="返回預約賞車" class="btn btn-primary"> -->
               <button type="submit" class="btn btn-warning wh-40 back">返回預約賞車</button>
             </form>
           </div>
@@ -187,7 +178,8 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                 		alert("請點擊[我不是機器人]再點擊確認"")
                 		return false;
                 	}
-                }</script>
+                }
+                </script>
 <!-- reCAP --> 
   
 

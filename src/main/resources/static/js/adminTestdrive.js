@@ -1,4 +1,28 @@
+
+//var vueAll = new Vue({
+//    el: '#vueAll',
+//    data: {
+//        vueTime1: '',
+//        vueTime2: ''
+//    },
+//    methods:{     
+//	// driveTime Modal連動給input值
+//   		setTime(index){
+//   		let rows = $("#timeTable tr");
+//   		let row = $("#timeTable tr")[index];
+//   		
+//   		for (let i = 0; i < $("#timeTable tr").length; i++) {
+//   			$("#timeTable tr")[i].classList.remove("selected-Time");
+//   		}
+//   		row.classList.add("selected-Time");
+//    	this.vueTime1=index+9;
+//   	}   
+//  } 
+//})
+
+
 let flagDate1 = true;
+let flagDriveTime1 = true;
 let flagCarmod1 = true;
 let flagLoc1 = true;
 let flagLocsit1 = true;
@@ -14,27 +38,40 @@ let flagTel1 = true;
 function checkDate(){
     
     let dateObj = document.getElementById("1date");
-    let dateObjDate = new Date(dateObj.value)
-    let today = new Date()
 
     // 選擇日為空值，則"請選擇日期"
     if(dateObj.value == ""){
-        console.log("dateObj.value = "+ dateObj.value)
-        $('#1dateCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇日期");
+    	$("#1dateCheck").html("請選擇日期").css('color', 'red');
+		$("#1dateCheck").next().attr("src", '/FinalProject/images/error.png');
         flagDate1 = false;
-    // 選擇日<=今天，則...   
-    } else if(dateObjDate.getTime() <= today.getTime()){
-        console.log("select day = "+dateObjDate.getTime())
-        console.log("today = "+today.getTime())
-        $('#1dateCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>日期不能早於一日內");
-        flagDate1 = false;
+    	
     // 此外，移除錯誤訊息
     } else{
-        $('#1dateCheck').html('');
+    	$("#1dateCheck").html("");
+    	$("#1dateCheck").next().attr("src", '');
         flagDate1 = true;
     }
 }
+$('#1date').on('blur',checkDate);
 
+
+//  driveTime
+function checkDriveTime(){
+    
+    // 選擇日為空值，則"請選擇日期"
+    if( $('#1driveTime').val() == ""){
+    	$("#1driveTimeCheck").html("請選擇時間").css('color', 'red');
+		$("#1driveTimeCheck").next().attr("src", '/FinalProject/images/error.png');
+        flagDriveTime1 = false;
+    	
+    // 此外，移除錯誤訊息
+    } else{
+    	$("#1driveTimeCheck").html("");
+    	$("#1driveTimeCheck").next().attr("src", '');
+        flagDriveTime1 = true;
+    }
+}
+$('#1driveTime').on('blur',checkDriveTime);
 
 
 // carmod
@@ -44,15 +81,18 @@ function checkCarmod(){
 
     // 如果 carmod 的值跟預設一樣，錯誤
     if (carmodObj.value == document.getElementById("1carmoddef").value){
-        $('#1carmodCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇車型");
+    	$("#1carmodCheck").html("請選擇車型").css('color', 'red');
+		$("#1carmodCheck").next().attr("src", '/FinalProject/images/error.png');
         flagCarmod1 = false;
+    	
     // 反之，移除錯誤訊息
     } else{
-    	$('#1carmodCheck').html('');
+    	$("#1carmodCheck").html("");
+    	$("#1carmodCheck").next().attr("src", '');
         flagCarmod1 = true;
     }
 }
-
+$('#1carmod').on('blur',checkCarmod);
 
 
 // loc
@@ -62,15 +102,18 @@ function checkLoc(){
 
     // 如果 loc 的值跟預設一樣，錯誤
     if (locObj.value == document.getElementById("1locdef").value){
-        $('#1locCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇地區");
+    	$("#1locCheck").html("請選擇地區").css('color', 'red');
+		$("#1locCheck").next().attr("src", '/FinalProject/images/error.png');
         flagLoc1 = false;
+
     // 反之，移除錯誤訊息
     } else{
-        $('#1locCheck').html('');
+    	$("#1locCheck").html("");
+    	$("#1locCheck").next().attr("src", '');
         flagLoc1 = true;
     }
 }
-
+$('#1loc').on('blur',checkLoc);
 
 
 // locsit
@@ -81,15 +124,19 @@ function checkLocsit(){
 
     // 如果 locsit 的值跟預設一樣，錯誤
     if (locsitObj.value == document.getElementById("1locsitdef").value){
-        $('#1locsitCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇服務據點");
+    	$("#1locsitCheck").html("請選擇服務據點").css('color', 'red');
+		$("#1locsitCheck").next().attr("src", '/FinalProject/images/error.png');
         flagLocsit1 = false;
+    	
     // 反之，移除錯誤訊息
     } else{
-        $('#1locsitCheck').html('');
+    	$("#1locsitCheck").html("");
+    	$("#1locsitCheck").next().attr("src", '');
         flagLocsit1 = true;
+    	
     }
 }
-
+$('#1locsit').on('blur',checkLocsit);
 
 
 // name
@@ -100,14 +147,18 @@ function checkName(){
 
     // 如果 name 的值為空或長度小於2
     if (nameObj.value.trim() == "" || nameObj.value.trim().length <= 1){
-        $('#1nameCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入姓名(姓名不可小於2個字元)");
+    	$("#1nameCheck").html("請輸入姓名(姓名不可少於2個字元)").css('color', 'red');
+		$("#1nameCheck").next().attr("src", '/FinalProject/images/error.png');
         flagName1 = false;
+    
     } else{
-        $('#1nameCheck').html('');
+    	$("#1nameCheck").html("");
+    	$("#1nameCheck").next().attr("src", '');
         flagName1 = true;
     }
-
 }
+$('#1name').on('blur',checkName);
+
 
 
 // Gender
@@ -126,18 +177,21 @@ function checkGender() {
     
     // 最終，若flag標記為假，不OK；若為真OK
     if(flagGender1 == false) {
-        $('#1gendCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請點選性別");
+    	$("#1gendCheck").html("請點選性別").css('color', 'red');
+        $("#1gendCheck").next().attr("src", '/FinalProject/images/error.png');
+    
     }else{
-        $('#1gendCheck').html('');           
+    	$("#1gendCheck").html("");
+    	$("#1gendCheck").next().attr("src", '');
     }
 }
+//其他jQuery檢查語法
 //$("#tdcheckbox > div > input").each(function() {
 //	$('#radio_button').is(':checked')
 //
 //if ($('input[name=gender]:checked').length > 0) {
 //    // do something here
 //}
-
 
 
 //  方便的聯絡時間  checkbox
@@ -154,9 +208,12 @@ function checkConTim() {
     }
     // 最終，若input標記為假，不OK；若為真OK
     if(flagConTim1 == false) {
-        $('#1contimCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇聯絡時段");
+    	$("#1contimCheck").html("請選擇聯絡時段").css('color', 'red');
+        $("#1contimCheck").next().attr("src", '/FinalProject/images/error.png');
+    
     }else{
-        $('#1contimCheck').html('');  
+    	$("#1contimCheck").html("");
+    	$("#1contimCheck").next().attr("src", '');
     }
 }
 
@@ -170,17 +227,23 @@ function checkMail(){
     let re = /^.+@.+$/g;
     // 如果 mail 為空值
     if (mailObj.value.trim() == ""){
-        $('#1mailCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入電子信箱");
+    	$("#1mailCheck").html("請輸入電子信箱").css('color', 'red');
+		$("#1mailCheck").next().attr("src", '/FinalProject/images/error.png');
         flagMail1 = false;
+        
     //如果 mail 不合規則
     } else if(re.test(mailObj.value) == false){
-        $('#1mailCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入有效的電子信箱");
+    	$("#1mailCheck").html("請輸入有效的電子信箱").css('color', 'red');
+		$("#1mailCheck").next().attr("src", '/FinalProject/images/error.png');
         flagMail1 = false;
+        
     }else{
-        $('#1mailCheck').html('');
+    	$("#1mailCheck").html("");
+    	$("#1mailCheck").next().attr("src", '');
         flagMail1 = true;
     }
 }
+$('#1mail').on('blur',checkMail);
 
 
 
@@ -189,25 +252,33 @@ function checkMail(){
 function checkTel(){
 
     let telObj = document.getElementById("1tel");
-    let re = /^\d{7,12}$/g;
+    let re = /^\d{9,12}$/g;
     // 如果 tel 為空值
     if (telObj.value.trim() == ""){
-        $('#1telCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入連絡電話");
+    	$("#1telCheck").html("請輸入連絡電話").css('color', 'red');
+		$("#1telCheck").next().attr("src", '/FinalProject/images/error.png');
         flagTel1 = false;
+    
     //如果 tel 不合規則
     } else if(re.test(telObj.value) == false){
-        $('#1telCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入有效的電話號碼(9-12碼數字)");
+    	$("#1telCheck").html("請輸入有效的電話號碼(9-12碼數字)").css('color', 'red');
+		$("#1telCheck").next().attr("src", '/FinalProject/images/error.png');
         flagTel1 = false;
+    	
     }else{
-        $('#1telCheck').html('');
+    	$("#1telCheck").html("");
+        $("#1telCheck").next().attr("src", '');
         flagTel1 = true;
     }
 }
 
 
+
+
 //  一鍵輸入
 $('#1oneKey').on('click', function(){
     $('#1date').val('2021-12-21');
+    $('#1driveTime').val('13');
     $('#1carmoddef').next().children(":last").prev().prop('selected',true)
     $('#1opt2').prop('selected',true)
    	toLocsit1();
@@ -220,6 +291,7 @@ $('#1oneKey').on('click', function(){
     $('#1comm').val('');
 }).on('dblclick', function(){
     $('#1date').val('2021-10-14');
+    $('#1driveTime').val('11');
     $('#1carmoddef').next().children(":first").next().prop('selected',true)
     $('#1opt1').prop('selected',true)
    	toLocsit1();
@@ -236,6 +308,7 @@ $('#1oneKey').on('click', function(){
 // 總檢查
 function checkAll1(){
     checkDate();
+    checkDriveTime();
     checkCarmod();
     checkLoc();
     checkLocsit();
@@ -246,12 +319,11 @@ function checkAll1(){
     checkMail();
     checkTel();
     
-    if (flagDate1 && flagCarmod1 && flagLoc1 && flagLocsit1 && flagName1 && 
+    if (flagDate1 && flagDriveTime1 && flagCarmod1 && flagLoc1 && flagLocsit1 && flagName1 && 
     	flagGender1 && flagConTim1 && flagMail1 && flagTel1){
         return true;
     } else{
         document.getElementById("1submitcheck").innerHTML = "表單資料不齊全或含有無效內容，請重新檢查";
-        Swal.fire('表單資料不齊全或含有無效內容，請重新檢查')        
         return false;
     }
 }
@@ -277,6 +349,7 @@ function addTesdrive(formData){
         success: function (response) {
             $("#form1")[0].reset();
             table.ajax.reload();
+            changeComment();
         },
         error: function (err) {
             console.log(err);
@@ -318,7 +391,6 @@ function toLocsit1(){
     }else if(locObj1.value==document.getElementById("1opt4").value){
         document.getElementById("1opt41").disabled = "";
         document.getElementById("1opt42").disabled = "";
-
     }
 }
 
@@ -326,33 +398,57 @@ function toLocsit1(){
  $(document).ready(function(){
    toLocsit1();
    toLocsit2();
-   
-   $("#1datetimepicker").datepicker({
-    orientation: "bottom",
-    dateFormat: 'yy-mm-dd',
-	startDate: '+1d',
-  });
   
-  $("#2datetimepicker").datepicker({
+   $("#1date").datepicker({
+    format: 'yyyy-mm-dd',
     orientation: "bottom",
-    dateFormat: 'yy-mm-dd',
 	startDate: '+1d',
-  });
+   });
+   $("#2date").datepicker({
+    format: 'yyyy-mm-dd',
+    orientation: "bottom",
+	startDate: '+1d',
+   });
+   
+   $("#inputAddOnIcon").on("click",function(){
+   	$("#1date").focus();
+   });
+   $("#inputAddOnIcon2").on("click",function(){
+   	$("#2date").focus();
+   });
+   
+   //載入時，顯示 data table，隱藏calender
+   $("#Testdrive1").css('display','block');
+   $("#Testdrive2").css('display','none');
+//   $("#Testdrive1").css('display','none');
+//   $("#Testdrive2").css('display','block');
+   
    
 });
 
+ $('#toggle-event').change(function() {
+ 	
+ 	if(this.checked) { 
+	 	$("#Testdrive1").css('display','block'); 
+   		$("#Testdrive2").css('display','none'); 
+   		$("#fas-Cal").css('color','#2f3542')
+    } else {
+	 	$("#Testdrive1").css('display','none'); 
+   		$("#Testdrive2").css('display','block'); 
+   		$("#fas-Cal").css('color','#5bc0de')
+    }
+ });
+
 
 
 //以下是  editModal
 //以下是  editModal
 //以下是  editModal
-
-
-
 
 
 
 let flagDate2 = true;
+let flagDriveTime2 = true;
 let flagCarmod2 = true;
 let flagLoc2 = true;
 let flagLocsit2 = true;
@@ -369,26 +465,42 @@ let flagTel2 = true;
 function checkDate2(){
     
     let dateObj = document.getElementById("2date");
-    let dateObjDate = new Date(dateObj.value)
-    let today = new Date()
 
     // 選擇日為空值，則"請選擇日期"
     if(dateObj.value == ""){
-        console.log("dateObj.value = "+ dateObj.value)
-        $('#2dateCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇日期");
+    	$("#2dateCheck").html("請選擇日期").css('color', 'red');
+		$("#2dateCheck").next().attr("src", '/FinalProject/images/error.png');
         flagDate2 = false;
-    // 選擇日<=今天，則...   
-    } else if(dateObjDate.getTime() <= today.getTime()){
-        console.log("select day = "+dateObjDate.getTime())
-        console.log("today = "+today.getTime())
-        $('#2dateCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>日期不能早於一日內");
-        flagDate2 = false;
+    	
     // 此外，移除錯誤訊息
     } else{
-        $('#2dateCheck').html('');
+    	$("#2dateCheck").html("");
+    	$("#2dateCheck").next().attr("src", '');
         flagDate2 = true;
     }
 }
+$('#2date').on('blur',checkDate2);
+
+
+
+//  driveTime
+function checkDriveTime2(){
+    
+    // 選擇日為空值，則"請選擇日期"
+    if( $('#2driveTime').val() == ""){
+    	$("#2driveTimeCheck").html("請選擇時間").css('color', 'red');
+		$("#2driveTimeCheck").next().attr("src", '/FinalProject/images/error.png');
+        flagDriveTime2 = false;
+    	
+    // 此外，移除錯誤訊息
+    } else{
+    	$("#2driveTimeCheck").html("");
+    	$("#2driveTimeCheck").next().attr("src", '');
+        flagDriveTime2 = true;
+    }
+}
+$('#2driveTime').on('blur',checkDriveTime2);
+
 
 
 
@@ -399,16 +511,18 @@ function checkCarmod2(){
 
     // 如果 carmod 的值跟預設一樣，錯誤
     if (carmodObj.value == document.getElementById("2carmoddef").value){
-        console.log("carmodObj.value = "+carmodObj.value)
-        $('#2carmodCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇車型");
+    	$("#2carmodCheck").html("請選擇車型").css('color', 'red');
+		$("#2carmodCheck").next().attr("src", '/FinalProject/images/error.png');
         flagCarmod2 = false;
+        
     // 反之，移除錯誤訊息
     } else{
-    	$('#2carmodCheck').html('');
+    	$("#2carmodCheck").html("");
+    	$("#2carmodCheck").next().attr("src", '');
         flagCarmod2 = true;
     }
 }
-
+$('#2carmod').on('blur',checkCarmod2);
 
 
 // loc
@@ -418,16 +532,18 @@ function checkLoc2(){
 
     // 如果 loc 的值跟預設一樣，錯誤
     if (locObj.value == document.getElementById("2locdef").value){
-        console.log("locObj.value = "+locObj.value)
-        $('#2locCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇地區");
+    	$("#2locCheck").html("請選擇地區").css('color', 'red');
+		$("#2locCheck").next().attr("src", '/FinalProject/images/error.png');
         flagLoc2 = false;
+        
     // 反之，移除錯誤訊息
     } else{
-        $('#2locCheck').html('');
+    	$("#2locCheck").html("");
+    	$("#2locCheck").next().attr("src", '');
         flagLoc2 = true;
     }
 }
-
+$('#2loc').on('blur',checkLoc2);
 
 
 // locsit
@@ -437,26 +553,31 @@ function checkLocsit2(){
 
     // 如果 locsit 的值跟預設一樣，錯誤
     if (locsitObj.value == document.getElementById("2locsitdef").value){
-        console.log("locsitObj.value = "+locsitObj.value)
-        $('#2locsitCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇服務據點");
+    	$("#2locsitCheck").html("請選擇服務據點").css('color', 'red');
+		$("#2locsitCheck").next().attr("src", '/FinalProject/images/error.png');
         flagLocsit2 = false;
+        
     // 反之，移除錯誤訊息
     } else{
-        $('#2locsitCheck').html('');
+    	$("#2locsitCheck").html("");
+    	$("#2locsitCheck").next().attr("src", '');
         flagLocsit2 = true;
     }
 }
-
+$('#2locsit').on('blur',checkLocsit2);
 
 // sales
 function checkSale2(){
 	
 	// 如果 sale 的值為空或長度小於2
 	if($('#2sale').val().trim() == '' || $('#2sale').val().trim().length<=2){
-		$('#2saleCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入業務姓名");
+		$("#2saleCheck").html("請輸入業務姓名").css('color', 'red');
+		$("#2saleCheck").next().attr("src", '/FinalProject/images/error.png');
         flagSales2 = false;
+        
 	} else{
         $('#2saleCheck').html('');
+        $("#2saleCheck").next().attr("src", '');
         flagSales2 = true;
     }
 }
@@ -465,18 +586,21 @@ $('#2sale').on('blur',checkSale2);
 // name
 
 function checkName2(){
-
     let nameObj = document.getElementById("2name");
 
     // 如果 name 的值為空或長度小於2
     if (nameObj.value.trim() == "" || nameObj.value.trim().length <= 1){
-        $('#2nameCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入姓名(姓名不可小於2個字元)");
+    	$("#2nameCheck").html("請輸入姓名(姓名不可少於2個字元)").css('color', 'red');
+		$("#2nameCheck").next().attr("src", '/FinalProject/images/error.png');
         flagName2 = false;
+        
     } else{
-        $('#2nameCheck').html('');
+    	$("#2nameCheck").html("");
+    	$("#2nameCheck").next().attr("src", '');
         flagName2 = true;
     }
 }
+$('#2name').on('blur',checkName2);
 
 
 // Gender
@@ -495,17 +619,13 @@ function checkGender2() {
     
     // 最終，若flag標記為假，不OK；若為真OK
     if(flagGender2 == false) {
-        $('#2gendCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請點選性別");
+    	$("#2gendCheck").html("請點選性別").css('color', 'red');
+        $("#2gendCheck").next().attr("src", '/FinalProject/images/error.png');
     }else{
-        $('#2gendCheck').html('');           
+    	$("#2gendCheck").html("");
+    	$("#2gendCheck").next().attr("src", '');       
     }
 }
-//$("#tdcheckbox > div > input").each(function() {
-//	$('#radio_button').is(':checked')
-//
-//if ($('input[name=gender]:checked').length > 0) {
-//    // do something here
-//}
 
 
 
@@ -523,9 +643,12 @@ function checkConTim2() {
     }
     // 最終，若input標記為假，不OK；若為真OK
     if(flagConTim2 == false) {
-        $('#2contimCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇聯絡時段");
+    	$("#2contimCheck").html("請選擇聯絡時段").css('color', 'red');
+        $("#2contimCheck").next().attr("src", '/FinalProject/images/error.png');
+
     }else{
-        $('#2contimCheck').html('');  
+    	$("#1contimCheck").html("");
+    	$("#1contimCheck").next().attr("src", '');
     }
 }
 
@@ -539,19 +662,23 @@ function checkMail2(){
     let re = /^.+@.+$/g;
     // 如果 mail 為空值
     if (mailObj.value.trim() == ""){
-        console.log("mailObj.value = "+mailObj.value)
-        $('#2mailCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入電子信箱");
+		$("#2mailCheck").html("請輸入電子信箱").css('color', 'red');
+		$("#2mailCheck").next().attr("src", '/FinalProject/images/error.png');
         flagMail2 = false;
+    
     //如果 mail 不合規則
     } else if(re.test(mailObj.value) == false){
-        console.log("mailObj.value = "+mailObj.value)
-        $('#2mailCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入有效的電子信箱");
+    	$("#2mailCheck").html("請輸入有效的電子信箱").css('color', 'red');
+		$("#2mailCheck").next().attr("src", '/FinalProject/images/error.png');
         flagMail2 = false;
+        
     }else{
-        $('#2mailCheck').html('');
+    	$("#2mailCheck").html("");
+    	$("#2mailCheck").next().attr("src", '');
         flagMail2 = true;
     }
 }
+$('#2mail').on('blur',checkMail2);
 
 
 
@@ -560,28 +687,32 @@ function checkMail2(){
 function checkTel2(){
 
     let telObj = document.getElementById("2tel");
-    let re = /^\d{7,12}$/g;
+    let re = /^\d{9,12}$/g;
     // 如果 tel 為空值
     if (telObj.value.trim() == ""){
-        console.log("telObj.value = "+telObj.value)
-        $('#2telCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入連絡電話");
+    	$("#2telCheck").html("請輸入連絡電話").css('color', 'red');
+		$("#2telCheck").next().attr("src", '/FinalProject/images/error.png');
         flagTel2 = false;
+        
     //如果 tel 不合規則
     } else if(re.test(telObj.value) == false){
-        console.log("telObj.value = "+telObj.value)
-        $('#2telCheck').html("<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入有效的電話號碼(9-12碼數字)");
+    	$("#2telCheck").html("請輸入有效的電話號碼(9-12碼數字)").css('color', 'red');
+		$("#2telCheck").next().attr("src", '/FinalProject/images/error.png');
         flagTel2 = false;
+        
     }else{
-        $('#2telCheck').html('');
+    	$("#2telCheck").html("");
+        $("#2telCheck").next().attr("src", '');
         flagTel2 = true;
     }
-
 }
+$('#2tel').on('blur',checkTel2);
 
 
 //  一鍵輸入
 $('#2oneKey').on('click', function(){
     $('#2date').val('2021-09-18');
+    $('#2driveTime').val('14');
     $('#2carmoddef').next().children(":last").prev().prop('selected',true)
     $('#2opt3').prop('selected',true)
    	toLocsit2();
@@ -594,6 +725,7 @@ $('#2oneKey').on('click', function(){
     $('#2comm').val('');
 }).on('dblclick', function(){
     $('#2date').val('2021-10-04');
+    $('#2driveTime').val('15');
     $('#2carmoddef').next().children(":first").next().prop('selected',true)
     $('#2opt1').prop('selected',true)
    	toLocsit2();
@@ -610,6 +742,7 @@ $('#2oneKey').on('click', function(){
 // 總檢查
 function checkAll2(){
     checkDate2();
+    checkDriveTime2();
     checkCarmod2();
     checkLoc2();
     checkLocsit2();
@@ -621,21 +754,21 @@ function checkAll2(){
     checkMail2();
     checkTel2();
     
-    if (flagDate2 && flagCarmod2 && flagLoc2 && flagLocsit2 
-    && flagSales2 && flagName2 && flagGender2 && flagConTim2 
-    && flagMail2 && flagTel2){
+    if (flagDate2 && flagDriveTime2 && flagCarmod2 && flagLoc2 
+    && flagLocsit2 && flagSales2 && flagName2 && flagGender2 && 
+    flagConTim2 && flagMail2 && flagTel2){
         return true;
     } else{
-        Swal.fire('表單資料不齊全或含有無效內容，請重新檢查')        
+    	document.getElementById("2submitcheck").innerHTML = "表單資料不齊全或含有無效內容，請重新檢查";
         return false;
     }
 }
 
 // 點"送出"先執行總檢查，再執行送出的Ajax
 $("#2submit").click(function (e) {			
-//    var formData = new FormData(document.getElementById("form2"));
+    var formData2 = new FormData(document.getElementById("form2"));
     if (checkAll2() == true) {
-        editTesdrive();
+        editTesdrive(formData2);
     } else
         e.stopPropagation();
 });
@@ -643,19 +776,18 @@ $("#2submit").click(function (e) {
 
 // "確認修改"按鈕，儲存資料
 //$("#2submit").click(
-	function editTesdrive () {
-		var editTestdriveFormData = new FormData($('#form2')[0]);
-		console.log('確認修改click')				
+	function editTesdrive (formData2) {
+//		var editTestdriveFormData = new FormData($('#form2')[0]);
 		$.ajax({
 			url: "/FinalProject/updateTestdriveAPI",
 			method: "POST",
-			data: editTestdriveFormData,
+			data: formData2,
 			contentType: false,
 			processData: false,
 			success: function (res) {
-				console.log('edit success');
 				$("#form2")[0].reset();   // 修改的model清空
 				table.ajax.reload();     // data table刷新
+				changeComment();
 			},
 			error: function (err) {
 				alert('update failed' + err);
@@ -683,11 +815,9 @@ function toLocsit2(){
         document.getElementById("2opt11").disabled = "";
         document.getElementById("2opt12").disabled = "";
 
-
     }else if(locObj2.value==document.getElementById("2opt2").value){
         document.getElementById("2opt21").disabled = "";
         document.getElementById("2opt22").disabled = "";
-
 
     }else if(locObj2.value==document.getElementById("2opt3").value){
         document.getElementById("2opt31").disabled = "";
@@ -696,9 +826,345 @@ function toLocsit2(){
     }else if(locObj2.value==document.getElementById("2opt4").value){
         document.getElementById("2opt41").disabled = "";
         document.getElementById("2opt42").disabled = "";
-
     }
 }
+
+
+
+
+// 以下Calender的
+// 以下Calender的
+// 以下Calender的
+// 以下Calender的
+
+
+
+        // 建立 資訊欄
+        document.getElementById("dateComment").innerHTML = `日期選擇中...`
+
+        // 建立 年 選項
+        for (i = 2021; i <= 2025; i++) {
+            let opt = document.createElement("option")
+            opt.value = i
+            opt.innerHTML = i
+            document.getElementById("idYear").appendChild(opt)
+        }
+        // console.log(document.getElementById("idYear").lastChild) //確認lastChild是年份
+        document.getElementById("idYear").firstChild.selected = true //設為預設
+
+        // 建立 月 選項
+        for (i = 1; i <= 12; i++) {
+            let opt = document.createElement("option")
+            let optText = document.createTextNode(i)
+            opt.appendChild(optText)
+            opt.setAttribute("value", i)
+
+            document.getElementById("idMonth").appendChild(opt)
+        }
+        document.getElementById("idMonth").lastChild.selected = true //設為預設
+
+        // 綁定事件
+        document.getElementById("idYear").addEventListener("change", changeComment)
+        document.getElementById("idMonth").addEventListener("change", changeComment)
+
+
+        // 修改  資訊欄  以及  表格
+        function changeComment() {
+            // 修改資訊欄文字
+            let yCom = ~~document.getElementById("idYear").value
+            let mCom = ~~document.getElementById("idMonth").value
+            document.getElementById("dateComment").innerHTML =
+                yCom +`年`+ mCom +`月 的預約試駕表單`
+            $('#titleBE').html((mCom-1)+'月預約試駕資訊');
+            $('#titleAF').html((mCom+1)+'月預約試駕資訊');
+
+
+            // 載入 表頭
+            for(item of document.querySelectorAll("#idThead")){
+                item.innerHTML=`<td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td>
+                <td>Thu</td><td>Fri</td><td>Sat</td>`
+            }
+
+            
+            
+            $.ajax({
+				url: "/FinalProject/getAllTestdrive/",
+				method: "GET",
+				dataType: "json",
+				success: function (data) {
+
+			// 修改表格
+            let str = "<tr>"
+            let calendF = new Date(yCom, mCom - 1, 1).getDay() //該月第一天星期幾
+            // 補滿前面的td
+            for (let j = 0; j < calendF; j++) {
+                str += "<td></td>"
+            }
+            // 取得月的二位文字
+            mCom<10 ? '0' + mCom : '' + mCom;
+            // 該月最後一天的  日  期 
+            let lastDay = new Date(yCom, mCom, 0).getDate()
+            
+			for (let i = 1; i <= lastDay; i++) {
+             		i<10 ? dCom="0"+i : dCom=""+i 
+					str += "<td id='"+ yCom + "-" + mCom + "-"+ dCom +"' onclick=dayModal(this.id) )>"+ i +"";
+						
+					data.forEach(function(item){
+						let driveY = ~~(item.driveDate.slice(0,4))
+						let driveM = ~~(item.driveDate.slice(5,7))
+						let driveD = ~~(item.driveDate.slice(8))
+						if( i==driveD && mCom==driveM && yCom==driveY){
+							str += "<br/><kbd id="+item.formId+" class='kbd' onclick='event.stopPropagation();recordModal(this.id)'>"+item.formId.slice(0,5)+"..</kbd>"
+			            }
+					});
+					str += `</td>`
+                	if (new Date(yCom, mCom - 1, i).getDay() == 6) {
+                    	str += "</tr><tr>"
+                	}
+            }
+
+             // 該月最後一天並補滿td
+             let calendL = new Date(yCom, mCom - 1, lastDay).getDay()
+             for (let j = 0; j < 6 - calendL; j++) {
+                  str += "<td></td>"
+             }
+             // 將以上資訊寫入
+             str += "</tr>"
+             document.getElementById("idTbody").innerHTML = str
+                    
+                    
+                    
+                    
+                    
+                    // 表格BE   前一個月
+                    let strBE = "<tr>"
+                    let calendFBE = new Date(yCom, mCom - 2, 1).getDay()
+                    for (let j = 0; j < calendFBE; j++) {
+                        strBE += "<td></td>"
+                    }
+                 	// 取得月的二位文字
+                 	let mComBE = mCom -1
+                    mComBE < 10 ? '0' + mComBE : '' + mComBE;
+                 	// 該月最後一天的  日  期
+                    let lastDayBE = new Date(yCom, mComBE, 0).getDate()
+                    for (let i = 1; i <= lastDayBE; i++) {
+                    	i<10 ? dCom="0"+i : dCom=""+i 
+                        strBE += `<td`
+						data.forEach(function(item){
+							let driveY = ~~(item.driveDate.slice(0,4))
+							let driveM = ~~(item.driveDate.slice(5,7))
+							let driveD = ~~(item.driveDate.slice(8))
+							if( i==driveD && mComBE==driveM && yCom==driveY){
+								strBE += " style='background-color: #cedcec' "
+	                		}
+						});
+                        strBE += `>` + i +`</td>`
+                        if (new Date(yCom, mComBE - 1, i).getDay() == 6) {
+                            strBE += "</tr><tr>"
+                        }
+                    }
+                    let calendLBE = new Date(yCom, mComBE - 1, lastDayBE).getDay()
+                    for (let j=0; j< 6-calendLBE ; j++) {
+                        strBE += "<td></td>"
+                    }
+                    strBE += "</tr>"
+                    document.getElementById("idTbodyBE").innerHTML = strBE
+                    
+                    
+                    
+                    // 表格AF    後一個月
+            		let strAF = "<tr>"
+            		let calendFAF = new Date(yCom, mCom, 1).getDay()
+            		for (let j = 0; j < calendFAF; j++) {
+            		    strAF += "<td></td>"
+            		}
+            		// 取得月的二位文字
+                 	let mComAF = mCom +1
+                    mComAF < 10 ? '0' + mComAF : '' + mComAF;
+                    // 該月最後一天的  日  期
+            		let lastDayAF = new Date(yCom, mComAF, 0).getDate()
+            		for (let i = 1; i <= lastDayAF; i++) {
+                    	i<10 ? dCom="0"+i : dCom=""+i 
+                        strAF += `<td`
+						data.forEach(function(item){
+							let driveY = ~~(item.driveDate.slice(0,4))
+							let driveM = ~~(item.driveDate.slice(5,7))
+							let driveD = ~~(item.driveDate.slice(8))
+							if( i==driveD && mComAF==driveM && yCom==driveY){
+								strAF += " style='background-color: #cedcec' "
+	                		}
+						});
+                        strAF += `>` + i +`</td>`
+                        if (new Date(yCom, mComAF - 1, i).getDay() == 6) {
+                            strAF += "</tr><tr>"
+                        }
+                    }
+            		let calendLAF = new Date(yCom, mComAF -1, lastDayAF).getDay()
+            		for (let j=0; j < 6-calendLAF ; j++) {
+            		    strAF += "<td></td>"
+            		}
+            		strAF += "</tr>"
+            		document.getElementById("idTbodyAF").innerHTML = strAF
+        		
+                    
+                    
+                    		
+                    
+                    
+                    
+                    
+                    
+
+				},
+				error: function (err) {
+					alert(err)
+				}
+			});
+            
+        }
+
+		
+	function formModal(formId) {
+		
+		$('#form2')[0].reset(); // formModel清空
+
+		let fillWithOrigin = function (res) {
+			$("#2showId").html("表單編號 " + res.formId);
+			$("#2formId").val(res.formId);
+			$("#2formTime").val(res.formTime);
+			$("#2date").val(res.driveDate);
+			$("#2carmod").val(res.carMod);
+			$("#2loc").val(res.driveLoc);
+// 			toLocsit2();
+//				$("#2loc").val(res.driveLoc).change();
+			$("#2locsit").val(res.driveLocSit);
+			$("#2sale").val(res.sales);
+			$("#2name").val(res.nameCli);
+			$("[name=gendCli]").val([res.gendCli]);
+			$("#tdcheckbox > div > input").each(function() {
+				if(res.timCli.includes(this.value)){
+					$(this).prop("checked",true);
+				}
+			});
+			$("#2mail").val(res.mailCli);
+			$("#2tel").val(res.telCli);
+			$("#2comm").val(res.remark);
+		}
+
+		findById(formId, fillWithOrigin)
+		$('#editTestdriveModal').modal('show');
+		$('#editTestdriveModal').css('overflow-y', 'auto');
+		
+	}			
+	
+	
+	// 月曆中 單筆資料的model叫出
+	function recordModal(formId) {
+		let showOnModel = function (res) {
+			$("#3formId").html(res.formId);
+			$("#3date").html(res.driveDate);
+			$("#3driveTime").html(res.driveTime);
+			$("#3carmod").html(res.carMod);
+			$("#3loc").html(res.driveLoc);
+			$("#3locsit").html(res.driveLocSit);
+			$("#3sale").html(res.sales);
+			$("#3formTime").html(res.formTime);
+			$("#3name").html(res.nameCli);
+			$("#3gend").html(res.gendCli);
+			$("#3timCli").html(res.timCli);
+			$("#3mail").html(res.mailCli);
+			$("#3tel").html(res.telCli);
+			$("#3comm").html(res.remark);
+			$("#3operate").children().prop("id",res.formId);
+		}
+
+		findByIdCalend(formId, showOnModel)
+		$('#recordModal').modal('show');
+		$('#recordModal').css('overflow-y', 'auto');
+	}		
+	
+	
+	// 尋找單筆Calender
+	function findByIdCalend(formId, showOnModel) {
+		console.log("findbyid:  "+formId)
+		$.ajax({
+			url: "/FinalProject/findByIdTestdriveAPI/" + formId,
+			method: "GET",
+			dataType: "json",
+			success: function (res) {
+				console.log("findbyid success")	
+				showOnModel(res)
+			},
+			error: function (err) {
+				alert(err)
+			}
+		});
+	}		
+	
+	
+	
+	// 尋找單筆
+	function findById(formId, fillWithOrigin) {
+		console.log("findbyid:  "+formId)
+		$.ajax({
+			url: "/FinalProject/findByIdTestdriveAPI/" + formId,
+			method: "GET",
+			dataType: "json",
+			success: function (res) {
+				console.log("findbyid success")	
+				fillWithOrigin(res)
+			},
+			error: function (err) {
+				alert(err)
+			}
+		});
+	}		
+			
+	
+	// 叫出時間表
+// 	function dayModal(){
+// 		let theDay = $('#date').val()
+	function dayModal(theDay){
+		// 塞入modal header 所選日期
+		$('#modalheader').html(theDay);
+		// 清空 modal
+		$('#timeTable tr').removeClass('table-secondary');
+		$('#timeTable').find('tr td:last-child').html('');
+		// Ajax抓當日值
+		$.ajax({
+				url: "/FinalProject/findByDriveDateAPI/" + theDay,
+				method: "GET",
+				dataType: "json",
+				success: function (response) {
+		// 值塞入欄位
+					if (response.data == "fail"){
+						return;
+					}
+					let data = response.data;
+					data.forEach(function(item){
+						for(let i=10; i<20; i++){
+							if(item.driveTime == i){
+								$('#Time'+i).html(item.formId).parent().addClass('table-secondary');
+							}
+						}
+					});
+				},
+				error: function (err) {
+					alert(err)
+				}
+			});
+		
+		
+		// show modal
+		$('#dayModal').modal('show');
+		$('#dayModal').css('overflow-y', 'auto');
+	}
+	
+
+
+
+
+
 
 
 

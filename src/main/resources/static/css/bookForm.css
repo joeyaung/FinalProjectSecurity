@@ -67,7 +67,7 @@
 }
 
 .search-input-custom {
-  width: 150px;
+  width: 190px;
   display: inline;
 }
 
@@ -131,6 +131,7 @@
   text-align: left;
   font-size: 16px;
   margin: 1rem 0;
+  padding-bottom: 10px;
 }
 
 
@@ -140,6 +141,18 @@
   left: 0px;
   width: 20%;
 }
+
+.forward {
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+  width: 20%;
+}
+
+
+
+
+
 
 .dis-ib-custom{
   display: inline-block;
@@ -159,8 +172,29 @@
   padding: 5px 9px 3px 9px;
 }
 
-.table_booku thead tr th{
-  padding: 0rem 0.5rem;
+.h_booku{
+  margin-bottom:50px;
+}
+
+.table_booku{
+  width: 100%;
+  margin-bottom:10px;
+}
+
+.table_booku tbody tr td{
+  padding: 1rem 0.2rem;
+}
+
+.client-data td{
+	font-weight: bold;
+	color: #64a19d;
+	font-size: larger;
+}
+
+.client-data-display{
+	font-weight: bold;
+	color: #64a19d;
+	font-size: larger;
 }
 
 .table_bookf tbody tr td{
@@ -170,11 +204,6 @@
 #changedForm > div.row > div > table > tbody > tr {
 	width: 100%;
 }
-
-/* .bor-lef-custom{ */
-/*   position: absolute; */
-/*   left:5%; */
-/* } */
 
 .w100-h40 {
   width: 100px;
@@ -192,3 +221,261 @@
   left: 0px;
   width: 20%;
 }
+
+
+/*內外移動顯示欄位標題 Start*/
+.row-custom{
+  position: relative;
+  margin-right: 10px;
+}
+.row-custom input{
+  font-size: 1rem;
+  /* border: 1px solid #03c9a9; */
+  border-radius: 4px;
+  margin: 0;
+  padding: 0.4rem 1rem;
+  box-shadow: 0px 1px 2px rgba(0,0,0, .25);
+  /* width: 100%; */
+  box-sizing: border-box;
+  color: #2e3131;
+  /* outline: none; 為focus時的browser加上的框線樣式 */
+}
+
+.row-custom label{
+  position: absolute;
+  left: 1rem;
+  top: .5rem;
+  color: #ccc;
+  /* 動畫效果 */
+  transition: all ease-in-out .2s;
+}
+
+.row-custom input:focus {
+  /* border: 1px solid #1ba39c; */
+}
+.row-custom input:focus + label{
+  /* -100 是左移自己的寬度 ，不夠，再加上2.5rem*/
+  transform: translateX(calc(-100% - 2.5rem));
+  color: #2e3131;
+}
+
+.row-custom input:not(:focus):not(:placeholder-shown) + label {
+  color:rgba(0,0,0,0);
+}
+
+/* .search-input-custom {
+  width: 180px;
+  display: inline;
+} */
+
+.row-custom button {
+/* .inside-custom{ */
+  /* background: none; */
+  border: none;
+  position: absolute;
+  top: .4rem;
+  /* transform: translateY(-50%); */
+  right: calc(.5rem + 1px); 
+  
+  margin: 0;
+  padding: 0;
+  outline: none;
+  display: none;
+}
+
+.row-custom input:not(:placeholder-shown) ~ button {
+  display: inline-block;
+}
+/*內外移動顯示欄位標題 End*/
+
+
+
+/*scroll animation 滾動漸變圖 Start */
+header {
+  height: 506px;
+  position: relative;
+  overflow: hidden;
+  --percentage: 0;
+}
+
+header .season, header .car {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header img{
+  position: absolute;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+header .spring{
+  z-index: 30;
+  opacity: calc(1 - (var(--percentage) - 0.05) / 0.22);
+}
+header .summer{
+  z-index: 20;
+  opacity: calc(1 - (var(--percentage) - 0.34) / 0.22);
+}
+header .autumn{
+  z-index: 10;
+  opacity: calc(1 - (var(--percentage) - 0.79) / 0.22);
+}
+header .winter{
+  opacity: 1;
+}
+
+/* header .car{ */
+/*   filter: blur(3px); */
+/* } */
+
+
+header .season,
+header .car,
+header .spring,
+header .summer,
+header .autumn,
+header .winter{
+  transition: .5s all ease-in;
+}
+
+header.moving .season,
+header.moving .car,
+header.moving .spring,
+header.moving .summer,
+header.moving .autumn,
+header.moving .winter{
+  transition: none;
+}
+/*scroll animation 滾動漸變圖 End */
+
+
+
+
+/* 拼圖驗證 start */
+#outerCaptcha{
+  display: flex;
+  min-height: 200px;
+}
+
+#captcha{
+	margin-bottom: 100px;
+	margin-right: 35%;
+	margin-left: 45%;
+	
+	--width: 200px;
+	--height: 130px;
+	--puzzle-width: 40px;
+	--puzzle-height: 40px;
+	--moved: 0px
+	
+	display: block;
+	width: var(--width);
+	height: var(--height);	
+	border-radius: 4px;
+	background-image: url(https://source.unsplash.com/featured/?nature,landscape);
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	box-shadow: 0px 2px 4px rgba(0,0,0,.3);
+}
+
+#captcha::before, #captcha::after {
+	position: absolute;
+	content: '';
+	display: block;
+	width: inherit;
+	height: inherit;
+	background-image: inherit;
+	background-size: inherit;
+	background-position: inherit;
+	
+    clip-path: inset(
+    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 45px 上裁切值 */
+    var(--puzzle-width) /* 40px 右裁切值 */
+    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 45px 下裁切值 */
+    calc( var(--width) - var(--puzzle-width) * 2 ) /* 120px 左裁切值 */
+    );
+    -webkit-clip-path: inset(
+    calc( (var(--height) - var(--puzzle-height)) / 2 )
+    var(--puzzle-width)
+    calc( (var(--height) - var(--puzzle-height)) / 2 ) 
+    calc( var(--width) - var(--puzzle-width) * 2 ) 
+    );
+}
+
+#captcha::after {
+	transform: translatex(
+	  clamp(
+		calc( var(--width) * -1),	
+		calc((var(--width) * -1) + var(--moved)),	
+		calc( var(--puzzle-width))
+	  )
+	);
+	transition: .2s all ease-in-out;  /*彈回時有transition*/
+}
+#captcha:active::after {
+	transition: none;  /*拖動時沒有transition*/
+}
+
+#captcha::before {
+	background-color: rgba(0, 0, 0, .6);
+	background-blend-mode: multiply;
+}
+
+#handle {
+  width: calc( var(--width) + var(--puzzle-width) * 2 );
+  height: 20px;
+  border-radius: 18px;
+  background-color: #eee;
+  position: absolute;
+  bottom: -30px;
+  left: calc( var(--puzzle-width) * 2 * -1 );
+  box-shadow: inset 0px 0px 12px rgba(0, 0, 0, .2);
+  border: 3px solid #ccc;
+}
+
+#handle span {
+  display: block;
+  width: var(--puzzle-width);
+  height: 14px;
+  border-radius: inherit;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, .25), 0px 2px 4px rgba(0, 0, 0, .3);
+  position: absolute;
+  cursor: move;
+  transform: translatex(
+    clamp(
+      0px,
+      calc(var(--moved)),
+      calc( var(--width) + var(--puzzle-width) )
+    )
+  );
+  transition: .2s all ease-in-out;
+}
+
+#captcha:active #handle span{
+	transition: none;
+}
+
+#captcha.passed::before,
+#captcha.passed::after,
+#captcha.passed #handle {
+  opacity: 0;
+}
+
+/* 拼圖驗證 end */
+
+
+/* Vue driveTime */
+.selected-Time {
+	background-color: #d4ebf2;
+}
+
+
+

@@ -32,7 +32,10 @@ import tw.com.finalproject.Mail.MailService;
 import tw.com.finalproject.naiChuan.TestDrive.ReCaptchaResponse;
 import tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment;
 import tw.com.finalproject.naiChuan.TestDrive.Service.TestDriveApointmentService;
+import tw.com.finalproject.yumyu.Enums.SalesStages;
+import tw.com.finalproject.yumyu.InternalUse.Client;
 import tw.com.finalproject.yumyu.InternalUse.Employee;
+import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
 import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
 
 @Controller
@@ -46,6 +49,9 @@ public class TestDrivePageController {
 	private EmployeeService employeeService;
 
 	@Autowired
+	private ClientService clientService;
+
+	@Autowired
 	private MailService mailService;
 
 	@GetMapping("/PrivacyPolicy")
@@ -54,90 +60,46 @@ public class TestDrivePageController {
 	}
 
 	@PostMapping("/TestDrive")
-	public String reEntryTestdrive() {
+	public String reEnterTestdrive() {
 		return "TestDrive/BookForm";
 	}
-
-	// TODO: 所有 redirectToBookForm 改 /TestDrive
-	// 回到 BookForm
-//	@PostMapping("/redirectToBookForm")
-//	public String redirectToBookForm() {
-//		return "redirect:/TestDrive";
-//	}
-
-	// TODO: 所有 redirectToQueryForm 改 /TestDrive
-	// 回到 QueryForm
-	@PostMapping("/admin/edit/redirectToQueryForm")
-	public String redirectToQueryForm() {
-		return "redirect:/admin/edit/testdrive";
-	}
-
-	//////////////////////
-//	@GetMapping("/admin/edit/testdrive")
-//	public String entryInner(HttpServletRequest request, HttpServletResponse response) {
-//		System.out.println("11111");
-//		String title = Util.getCookieValueByName(request, "empDep");
-//		System.out.println(title);
-//		if (title == null) {
-//			return "redirect:/inner";
-//		}
-//		if (title.equalsIgnoreCase("admin") || title.equalsIgnoreCase("boss")) {
-//			return "TestDrive/QueryForm";
-//		}
-//		return "redirect:/inner";
-//	}
-	//////////////////////
-
-	// 查詢_全部
-	@PostMapping("/admin/edit/queryCarForms")
-	public String findAllTestdrive(Model m, HttpServletRequest request, Principal principal) {
-
-		String empName = principal.getName();
-		Employee emp = employeeService.findbyUsername(empName);
-		request.setAttribute("empName", emp.getFullName());
-		return "TestDrive/QueryDisplay";
-	}
-
-	// admin進入testdrive，查詢全部
+	
+	
+	// admin 進入 testdrive
 	@GetMapping("/admin/edit/testdrive")
-	public String entryInner(HttpServletRequest request, HttpServletResponse response, Model m, Principal principal) {
+	public String enterInnerTestdrive(HttpServletRequest request, HttpServletResponse response, Model m, Principal principal) {
 
-		List<TestDriveApointment> testdrives = (List<TestDriveApointment>) tdriveService.findAllTestdrive();
-
-		m.addAttribute("testdrives", testdrives);
 		String empName = principal.getName();
 		Employee emp = employeeService.findbyUsername(empName);
 		request.setAttribute("empName", emp.getFullName());
-		return "TestDrive/QueryDisplay";
-
+		return "TestDrive/adminAllTestdrive";
 	}
 
-	// 暫時 展示中心
-	@GetMapping("/admin/edit/tempRetailer")
-	public String tempRetailer(HttpServletRequest request, HttpServletResponse response, Model m) {
-		return "TestDrive/adminAllRetailer";
-	}
-
-	// 刪除
-	@PostMapping("/admin/edit/delCarFormById")
-	public String deleteByIdTestdrive(@RequestParam("formId") String formId) {
-		tdriveService.deleteByIdTestdrive(formId);
-
-		return "TestDrive/QueryDelComplete";
-	}
-
+	// 查詢單筆
 	@PostMapping("/findByIdTestdrive")
-
 	public String findByIdTestdrive(@RequestParam("findById") String formId, Model m) {
-
+		
 		TestDriveApointment oneTestdrive = tdriveService.findByIdTestdrive(formId);
-		// TODO: 沒查詢到資料的話?
-
 		m.addAttribute("oneTestdrive", oneTestdrive);
 		return "TestDrive/BookUpdate";
 	}
 
-	// 修改_初步輸入
+	// 暫時 adminTD導向日曆檢視
+	@GetMapping("/admin/edit/adminAllTestdriveCal")
+	public String tempRetailer(HttpServletRequest request, HttpServletResponse response, Model m) {
+		return "TestDrive/adminAllTestdriveCal";
+	}
+
+//	// 刪除 改由APIcontroller處理
+//	@PostMapping("/admin/edit/delCarFormById")
+//	public String deleteByIdTestdrive(@RequestParam("formId") String formId) {
+//		tdriveService.deleteByIdTestdrive(formId);
+//
+//		return "TestDrive/QueryDelComplete";
+//	}
+	
+
+	// 修改_初步顯示
 
 	@PostMapping("/updateTestdrive")
 	public String findByIdTestdrive(@RequestParam("formId") String formId, HttpServletRequest request) {
@@ -145,30 +107,26 @@ public class TestDrivePageController {
 		TestDriveApointment tesdrive = tdriveService.findByIdTestdrive(formId);
 
 		request.setAttribute("oneTestdrive", tesdrive);
-		////// 測試
 		request.setAttribute("carMod", tesdrive.getCarMod());
-
 		request.setAttribute("driveLoc", tesdrive.getDriveLoc());
-
 		request.setAttribute("driveLocSit", tesdrive.getDriveLocSit());
-
 		request.setAttribute("gendCli", tesdrive.getGendCli());
-
 		request.setAttribute("timCli", tesdrive.getTimCli());
 
-		////// 測試
 		return "TestDrive/BookUpdSub";
 	}
 
 	// 修改_確認儲存
-	@PostMapping("/updateCarFormConfirm")
-	public String updateCarFormConfirm(HttpServletRequest request, @RequestParam("driveDate") String driveDate,
-			@RequestParam("carMod") String carMod, @RequestParam("driveLoc") String driveLoc,
-			@RequestParam("driveLocSit") String driveLocSit, @RequestParam("sales") String sales,
-			@RequestParam("formTime") String formTime, @RequestParam("nameCli") String nameCli,
-			@RequestParam("gendCli") String gendCli, @RequestParam("timCli") String[] timCliArr,
-			@RequestParam("mailCli") String mailCli, @RequestParam("telCli") String telCli,
-			@RequestParam("remark") String remark, Model m) {
+	@PostMapping("/updateTestdriveConfirm")
+	public String updateCarFormConfirm(
+//			HttpServletRequest request, 
+			@RequestParam("formId") String formId,@RequestParam("driveDate") String driveDate,
+			@RequestParam("driveTime") String driveTime, @RequestParam("carMod") String carMod, 
+			@RequestParam("driveLoc") String driveLoc, @RequestParam("driveLocSit") String driveLocSit, 
+			@RequestParam("sales") String sales, @RequestParam("formTime") String formTime, 
+			@RequestParam("nameCli") String nameCli, @RequestParam("gendCli") String gendCli, 
+			@RequestParam("timCli") String[] timCliArr, @RequestParam("mailCli") String mailCli, 
+			@RequestParam("telCli") String telCli, @RequestParam("remark") String remark, Model m) {
 
 		String timCli;
 		StringBuffer strbuf = new StringBuffer();
@@ -177,17 +135,65 @@ public class TestDrivePageController {
 		}
 		timCli = strbuf.toString();
 
-		tdriveService.updateTestdrive(new TestDriveApointment(request.getParameter("formId"), driveDate, carMod,
+		tdriveService.updateTestdrive(new TestDriveApointment(formId, driveDate, driveTime, carMod,
 				driveLoc, driveLocSit, sales, formTime, nameCli, gendCli, timCli, mailCli, telCli, remark));
-
+		
+		// 將預約試駕者的資料 儲存為 Client
+		try {
+			// 查email是否已存在
+			Client client = clientService.findByEmail(mailCli);
+			// 若不存在，新增Client
+			if(client==null) {
+				Client newClient = Client.builder().fullName(nameCli).email(mailCli).phone(telCli)
+						.city(driveLoc).build();			
+				clientService.save(newClient);
+			// 若存在，更新Client
+			} else {
+				// 更新資訊
+				client.setFullName(nameCli);
+				client.setEmail(mailCli);
+				client.setPhone(telCli);
+				client.setCity(driveLoc);
+				boolean updateResult = clientService.update(client);
+				if (updateResult) {
+					System.out.println("email已存在於DB，以新試駕表單資料更新DB客戶資料");
+				} else {
+					System.out.println("Update client Fail!");
+				}
+			}
+		} catch (Exception e1) {
+				System.out.println("儲存為 Client失敗，檢查是否為PK error");
+		}
+		
+		
+		// 寄送E-mail給使用者。MailService
+		try {
+			String textString = "<h2>親愛的貴賓 " + nameCli + " 您好:</h2>"
+				+ "您於今日修改了先前送出的試駕體驗表單，我們已經收到"
+				+ "<br/>您的 表單ID 是: <span style='font:bold 18px sans-serif;color:red;'>" + formId
+				+ "</span><br/>您的修改後的預約資訊如下:<br/>"
+				+ "<br/><div style='text-align: center'><table width=550 ; style='font-size:18px; border-collapse:collapse;border:2px solid #7DCEA0'>"
+				+ "<tr style='background-color:#D4EFDF'><td>試駕日期</td><td>試駕車種</td><td>試駕地區</td><td>試駕據點</td></tr>"
+				+ "<tr style='background-color:#EBF5FB;padding:12px;'><td>" + driveDate +", " + driveTime + "點</td><td>" + carMod
+				+ "</td><td>" + driveLoc + "</td><td>" + driveLocSit + "</td></tr></table></div>"
+				+ "您可以以您的表單ID，至以下網址查詢或修改您的完整表單資訊"
+				+ "<br/><a style='font-size:20px' href=\'http://localhost:8080/FinalProject/TestDrive'>Audi AG 於此檢查預約詳情</a>"
+				+ "<br/>期待您的蒞臨~";
+				// 暫時comment 避免一直送email。不要不小心刪了
+//			mailService.prepareAndSendImg(mailCli, "[奧迪車業]試駕體驗預約 修改 通知", textString);
+		} catch (Exception e) {
+			System.out.println("Send Mail Fail.");
+			e.printStackTrace();
+		}
+		
 		return "redirect:/TestDrive";
 	}
 
 	// 新增_初步輸入
 	@PostMapping("/addForm")
-	public String addForm(@RequestParam("driveDate") String driveDate, @RequestParam("carMod") String carMod,
+	public String addForm(@RequestParam("driveDate") String driveDate,
+			@RequestParam("driveTime") String driveTime, @RequestParam("carMod") String carMod,
 			@RequestParam("driveLoc") String driveLoc, @RequestParam("driveLocSit") String driveLocSit,
-
 			@RequestParam("nameCli") String nameCli, @RequestParam("gendCli") String gendCli,
 			@RequestParam("timCli") String[] timCliArr, @RequestParam("mailCli") String mailCli,
 			@RequestParam("telCli") String telCli, @RequestParam("remark") String remark, Model m) {
@@ -220,7 +226,7 @@ public class TestDrivePageController {
 		timCli = strbuf.toString();
 
 		// 以有參數建構子，新增 Testdrive
-		TestDriveApointment testdrive = new TestDriveApointment(formId, driveDate.trim(), carMod.trim(),
+		TestDriveApointment testdrive = new TestDriveApointment(formId, driveDate.trim(), driveTime, carMod.trim(),
 				driveLoc.trim(), driveLocSit.trim(), sales, formTime, nameCli.trim(), gendCli.trim(), timCli,
 				mailCli.trim(), telCli.trim(), remark.trim());
 		// 放到Session
@@ -243,8 +249,8 @@ public class TestDrivePageController {
 
 	@Autowired
 	private RestTemplate restTemplate;
-
 	// reCAP
+	
 	// reCAP驗證方法
 	private boolean verifyReCAPTCHA(String gRecaptchaResponse) {
 		HttpHeaders headers = new HttpHeaders();
@@ -269,55 +275,79 @@ public class TestDrivePageController {
 		}
 		return response.isSuccess();
 	}
-	// reCAP
+	// reCAP驗證方法
 
 	// 新增_確認儲存
 	@PostMapping("/addFormConfirm")
 	public String addFormConfirm(@RequestParam("formId") String formId, @RequestParam("driveDate") String driveDate,
-			@RequestParam("carMod") String carMod, @RequestParam("driveLoc") String driveLoc,
-			@RequestParam("driveLocSit") String driveLocSit, @RequestParam("sales") String sales,
-			@RequestParam("formTime") String formTime, @RequestParam("nameCli") String nameCli,
-			@RequestParam("gendCli") String gendCli, @RequestParam("timCli") String timCli,
-			@RequestParam("mailCli") String mailCli, @RequestParam("telCli") String telCli,
-			@RequestParam("remark") String remark, @RequestParam("g-recaptcha-response") String gRecaptchaResponse,
-			Model m) {
+			@RequestParam("driveTime") String driveTime, @RequestParam("carMod") String carMod, 
+			@RequestParam("driveLoc") String driveLoc, @RequestParam("driveLocSit") String driveLocSit, 
+			@RequestParam("sales") String sales, @RequestParam("formTime") String formTime, 
+			@RequestParam("nameCli") String nameCli, @RequestParam("gendCli") String gendCli, 
+			@RequestParam("timCli") String timCli, @RequestParam("mailCli") String mailCli, 
+			@RequestParam("telCli") String telCli, @RequestParam("remark") String remark, 
+			@RequestParam("g-recaptcha-response") String gRecaptchaResponse, Model m) {
 
-		// 抓出來都是物件型態，但我知道那是個bean所以做強迫轉型
 		// reCAP
-
 		if (!verifyReCAPTCHA(gRecaptchaResponse)) {
-			// TODO:未來若有error page可用error page
-			return "TestDrive/BookDisplay";
+			return "errorPage/404";
 		}
 		// reCAP
 
-		TestDriveApointment testdrive = new TestDriveApointment(formId, driveDate, carMod, driveLoc, driveLocSit, sales,
+		TestDriveApointment testdrive = new TestDriveApointment(formId, driveDate, driveTime, carMod, driveLoc, driveLocSit, sales,
 				formTime, nameCli, gendCli, timCli, mailCli, telCli, remark);
 		tdriveService.createTestdrive(testdrive);
-
-		// 寄送E-mail給使用者。MailService
-		// TODO: createTestdrive 設個回傳，給個if判斷成功，再send email
-
+		
+		// 將預約試駕者的資料 儲存為 Client
 		try {
-			String textString = "<h2>Dear " + nameCli + "  " + gendCli + ":</h2>"
-					+ "We've received your test drive appointment"
-					+ "<br/>Your appointment ID is: <span style='font:bold 18px sans-serif'>" + formId
-					+ "</span><br/>The appointment information is as followed.<br/>"
+			// 查email是否已存在
+			Client client = clientService.findByEmail(mailCli);
+			// 若不存在，新增Client
+			if(client==null) {
+				Client newClient = Client.builder().fullName(nameCli).email(mailCli).phone(telCli)
+						.city(driveLoc).build();			
+				clientService.save(newClient);
+			// 若存在，更新Client
+			} else {
+				// 更新資訊
+				client.setFullName(nameCli);
+				client.setEmail(mailCli);
+				client.setPhone(telCli);
+				client.setCity(driveLoc);
+				boolean updateResult = clientService.update(client);
+				if (updateResult) {
+					System.out.println("email已存在於DB，以新試駕表單資料更新DB客戶資料");
+				} else {
+					System.out.println("Update client Fail!");
+				}
+			}
+		} catch (Exception e1) {
+				System.out.println("儲存為 Client失敗，檢查是否為PK error");
+		}
+		
+		
+		
+		// 寄送E-mail給使用者。MailService
+		try {
+			String textString = "<h2>親愛的貴賓 " + nameCli + " 您好:</h2>"
+					+ "我們已經收到您的試駕體驗表單"
+					+ "<br/>您的 表單ID 是: <span style='font:bold 18px sans-serif;color:red;'>" + formId
+					+ "</span><br/>您的預約資訊如下:<br/>"
 					+ "<br/><div style='text-align: center'><table width=550 ; style='font-size:18px; border-collapse:collapse;border:2px solid #7DCEA0'>"
 					+ "<tr style='background-color:#D4EFDF'><td>試駕日期</td><td>試駕車種</td><td>試駕地區</td><td>試駕據點</td></tr>"
-					+ "<tr style='background-color:#EBF5FB;padding:12px;'><td>" + driveDate + "</td><td>" + carMod
+					+ "<tr style='background-color:#EBF5FB;padding:12px;'><td>"+driveDate+", "+driveTime+"點</td><td>" + carMod
 					+ "</td><td>" + driveLoc + "</td><td>" + driveLocSit + "</td></tr></table></div>"
-					+ "You can check more details and edit it on the link below with your ID"
-					+ "<br/><a style='font-size:20px' href=\'http://localhost:8080/FinalProject/TestDrive'>Audi AG Check Appointment Details HERE</a>"
-					+ "<br/>We look forward to your visit!";
-			mailService.prepareAndSendImg(mailCli, "Test Drive Appointment", textString);
-		} catch (Exception e) {
+					+ "您可以以您的表單ID，至以下網址查詢或修改您的完整表單資訊"
+					+ "<br/><a style='font-size:20px' href=\'http://localhost:8080/FinalProject/TestDrive'>Audi AG 於此檢查預約詳情</a>"
+					+ "<br/>期待您的蒞臨~";
+			// 暫時comment 避免一直送email。不要不小心刪了
+//			mailService.prepareAndSendImg(mailCli, "[奧迪車業]試駕體驗預約 成功 通知", textString);
+		} catch (Exception e2) {
 			System.out.println("Send Mail Fail.");
-			e.printStackTrace();
+			e2.printStackTrace();
 		}
-
+		
 		m.addAttribute("formId", formId);
-
 		return "TestDrive/BookComplete";
 	}
 }

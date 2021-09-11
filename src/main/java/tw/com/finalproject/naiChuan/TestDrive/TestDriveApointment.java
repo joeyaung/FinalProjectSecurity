@@ -18,6 +18,7 @@ public class TestDriveApointment {
 	@Id
 	private String formId;
 	private String driveDate;
+	private String driveTime;
 	private String carMod;
 	private String driveLoc;
 	private String driveLocSit;

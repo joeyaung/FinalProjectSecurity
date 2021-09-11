@@ -32,7 +32,16 @@ public class TestDriveApointmentService {
 		}
 		return result.get();
 	}
-
+	
+	// 查詢特定日期 find by driveDay 
+	public List<TestDriveApointment> findByDriveDate(String driveDate) {
+		List<TestDriveApointment> result = testDriveApointRepository.findByDriveDate(driveDate);
+		if (result.isEmpty()) {
+			return null;
+		}
+		return result;
+	}
+	
 	// 查詢全部 find All get All
 	public List<TestDriveApointment> findAllTestdrive() {
 		List<TestDriveApointment> result = testDriveApointRepository.findAll();

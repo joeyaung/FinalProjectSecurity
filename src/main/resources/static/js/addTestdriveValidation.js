@@ -1,8 +1,32 @@
+
+var vueAll = new Vue({
+    el: '#vueAll',
+    data: {
+        vueTime: ''
+    },
+    methods:{     
+	// driveTime Modal連動給input值
+   		setTime(index){
+   		let rows = $("#timeTable tr");
+   		let row = $("#timeTable tr")[index];
+   		
+   		for (let i = 0; i < $("#timeTable tr").length; i++) {
+   			$("#timeTable tr")[i].classList.remove("selected-Time");
+   		}
+   		row.classList.add("selected-Time");
+    	this.vueTime=index+9;
+   	}   
+  } 
+})
+
+
+
 let flagDate = true;
+let flagTime = true;
 let flagCarmod = true;
 let flagLoc = true;
 let flagLocsit = true;
-// let flagSales = true;
+
 let flagName = true;
 let flagGender = true;
 let flagConTim = true;
@@ -10,49 +34,75 @@ let flagMail = true;
 let flagTel = true;
 let flagToS = true;
 
+
+// date圖案點擊有反應
+$("#inputAddOnIcon").on("click",function(){
+	$("#date").focus();
+});
+
+
+
 //  date
 function checkDate(){
     
     let dateObj = document.getElementById("date");
-    let dateObjDate = new Date(dateObj.value)
-    let today = new Date()
 
     // 選擇日為空值，則"請選擇日期"
     if(dateObj.value == ""){
-        document.getElementById("dateCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇日期";
+    	$("#dateCheck").html("請選擇日期").css('color', '#a16468');
+		$("#dateCheck").next().attr("src", '/FinalProject/images/error.png');
         flagDate = false;
-        $('#date').addClass('valid-false');
-    // 選擇日<=今天，則...   
-    } else if(dateObjDate.getTime() <= today.getTime()){
-        document.getElementById("dateCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>日期不能早於一日內";
-        flagDate = false;
-        $('#date').addClass('valid-false');
+        $('#date').removeClass('is-valid').addClass('is-invalid');
+    
     // 此外，移除錯誤訊息
     } else{
-        document.getElementById("dateCheck").innerHTML = "";
+    	$("#dateCheck").html("");
+    	$("#dateCheck").next().attr("src", '');
         flagDate = true;
-        $('#date').removeClass('valid-false');
+        $('#date').removeClass('is-invalid').addClass('is-valid');
     }
 }
-$('#date').on('blur',checkDate);
+$('#date').on('change',checkDate);
+
+
+//  driveTime
+function checkTime(){
+    
+    // 選擇時間有值，則OK
+    if($('#driveTime').val()){
+    	$("#driveTimeCheck").html("");
+    	$("#driveTimeCheck").next().attr("src", '');
+        flagTime = true;
+        $('#driveTime').removeClass('is-invalid').addClass('is-valid');
+
+    // 此外，"請選擇日期後選擇時間"
+    } else{
+    	$("#driveTimeCheck").html("請選擇日期後選擇時間").css('color', '#a16468');
+		$("#driveTimeCheck").next().attr("src", '/FinalProject/images/error.png');
+        flagTime = false;
+        $('#driveTime').removeClass('is-valid').addClass('is-invalid');
+    }
+}
+$('#driveTime').on('change',checkTime);
 
 
 // carmod
-
 function checkCarmod(){
     let carmodObj = document.getElementById("carmod");
 
     // 如果 carmod 的值跟預設一樣，錯誤
     if (carmodObj.value == document.getElementById("carmoddef").value){
-        console.log("carmodObj.value = "+carmodObj.value)
-        document.getElementById("carmodCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇車型";
+        $("#carmodCheck").html("請選擇車型").css('color', '#a16468');
+		$("#carmodCheck").next().attr("src", '/FinalProject/images/error.png');
         flagCarmod = false;
-        carmodObj.classList.add("valid-false");
+        $('#carmod').removeClass('is-valid').addClass('is-invalid');
+        
     // 反之，移除錯誤訊息
     } else{
-        document.getElementById("carmodCheck").innerHTML = "";
+    	$("#carmodCheck").html("");
+    	$("#carmodCheck").next().attr("src", '');
         flagCarmod = true;
-        carmodObj.classList.remove("valid-false");
+        $('#carmod').removeClass('is-invalid').addClass('is-valid');
     }
 }
 $('#carmod').on('blur',checkCarmod);
@@ -65,14 +115,17 @@ function checkLoc(){
 
     // 如果 loc 的值跟預設一樣，錯誤
     if (locObj.value == document.getElementById("locdef").value){
-        document.getElementById("locCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇地區";
+        $("#locCheck").html("請選擇地區").css('color', '#a16468');
+		$("#locCheck").next().attr("src", '/FinalProject/images/error.png');
         flagLoc = false;
-        locObj.classList.add("valid-false");
+        $('#loc').removeClass('is-valid').addClass('is-invalid');
+        
     // 反之，移除錯誤訊息
     } else{
-        document.getElementById("locCheck").innerHTML = "";
+    	$("#locCheck").html("");
+    	$("#locCheck").next().attr("src", '');
         flagLoc = true;
-        locObj.classList.remove("valid-false");
+        $('#loc').removeClass('is-invalid').addClass('is-valid');
     }
 }
 $('#loc').on('blur',checkLoc);
@@ -81,19 +134,21 @@ $('#loc').on('blur',checkLoc);
 // locsit
 
 function checkLocsit(){
-
-    let locsitObj = document.getElementById("locsit");
-
+	let locsitObj = document.getElementById("locsit");
+	
     // 如果 locsit 的值跟預設一樣，錯誤
-    if (locsitObj.value == document.getElementById("locsitdef").value){
-        document.getElementById("locsitCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇服務據點";
+    if ( locsitObj.value == document.getElementById("locsitdef").value){
+        $("#locsitCheck").html("請選擇服務據點").css('color', '#a16468');
+		$("#locsitCheck").next().attr("src", '/FinalProject/images/error.png');
         flagLocsit = false;
-        locsitObj.classList.add("valid-false");
+        $('#locsit').removeClass('is-valid').addClass('is-invalid');
+
     // 反之，移除錯誤訊息
     } else{
-        document.getElementById("locsitCheck").innerHTML = "";
+    	$("#locsitCheck").html("");
+    	$("#locsitCheck").next().attr("src", '');
         flagLocsit = true;
-        locsitObj.classList.remove("valid-false");
+        $('#locsit').removeClass('is-invalid').addClass('is-valid');
     }
 }
 $('#locsit').on('blur',checkLocsit);
@@ -103,17 +158,19 @@ $('#locsit').on('blur',checkLocsit);
 
 function checkName(){
 
-    let nameObj = document.getElementById("name");
-
     // 如果 name 的值為空或長度小於2
-    if (nameObj.value == "" || nameObj.value.length <= 1){
-        document.getElementById("nameCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入姓名(姓名不可少於2個字元)";
+    if ($('#name').val() == "" || $('#name').val().length <= 1){ 	
+    	
+    	$("#nameCheck").html("請輸入姓名(姓名不可少於2個字元)").css('color', '#a16468');
+		$("#nameCheck").next().attr("src", '/FinalProject/images/error.png');
         flagName = false;
-        nameObj.classList.add("valid-false");
+        $('#name').removeClass('is-valid').addClass('is-invalid');
     } else{
-        document.getElementById("nameCheck").innerHTML = "";
+    
+    	$("#nameCheck").html("");
+    	$("#nameCheck").next().attr("src", '');
         flagName = true;
-        nameObj.classList.remove("valid-false");
+        $('#name').removeClass('is-invalid').addClass('is-valid');
     }
 }
 $('#name').on('blur',checkName);
@@ -124,31 +181,33 @@ $('#name').on('blur',checkName);
 function checkGender() {
     // 取得gendCli的 3個元素群組
     let Total_Obj = document.getElementsByName('gendCli');
-    // 是否有input的標記，初始為無
-    let gendInput=false;
-    // 迭代 該群組，若有其中一項被勾選(checked)，input標記改為真
+    // flag 初始為 假
+    flagGender = false;
+    // 迭代 該群組，若有其中一項被勾選(checked)，flag改為真
     for (let i = 0; i < Total_Obj.length; i++) {
         if (Total_Obj[i].checked) {
-            gendInput=true;
+            flagGender = true;
         } 
     }
-    // 最終，若input標記為假，不OK；若為真OK
-    if(gendInput == false) {
-        gendCheck.innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請點選性別";
-        flagGender = false;
-        $('#flexRadio1').addClass("valid-false");
-        $('#flexRadio2').addClass("valid-false");
-        $('#flexRadio3').addClass("valid-false");
+    // 最終，若 flag 為假，不OK；若為真OK
+    if(flagGender == false) {
+    
+    	$("#gendCheck").html("請點選性別").css('color', '#a16468');
+        $("#gendCheck").next().attr("src", '/FinalProject/images/error.png');
+        
+        $('#flexRadio1').removeClass('is-valid').addClass('is-invalid');
+        $('#flexRadio2').removeClass('is-valid').addClass('is-invalid');
+        $('#flexRadio3').removeClass('is-valid').addClass('is-invalid');
     }else{
-        gendCheck.innerHTML = "";       
-        flagGender = true;
-        $('#flexRadio1').removeClass("valid-false");
-        $('#flexRadio2').removeClass("valid-false");
-        $('#flexRadio3').removeClass("valid-false");
+        $("#gendCheck").html("");
+    	$("#gendCheck").next().attr("src", '');
+    	
+    	$('#flexRadio1').removeClass('is-invalid').addClass('is-valid');
+        $('#flexRadio2').removeClass('is-invalid').addClass('is-valid');
+        $('#flexRadio3').removeClass('is-invalid').addClass('is-valid');
     }
 }
 $('#flexRadio1').parent().parent().on('blur',checkGender);
-
 
 
 
@@ -158,27 +217,31 @@ $('#flexRadio1').parent().parent().on('blur',checkGender);
 function checkConTim() {
     // 取得timCli的 3個元素群組
     let Total_Obj = document.getElementsByName('timCli');
-    // 是否有input標記，初始為無
-    let ConTimInput=false;
-    // 迭代 該群組，若有其中一項被勾選(checked)，input標記改為真
-    for (let i = 0; i < Total_Obj.length; i++) {
+    // flag，初始為假
+    flagConTim = false;
+    // 迭代 該群組，若有其中一項被勾選(checked)，flag改為真
+    for (let i=0; i<Total_Obj.length; i++) {
         if (Total_Obj[i].checked) {
-            ConTimInput=true;
+            flagConTim = true;
         } 
     }
-    // 最終，若input標記為假，不OK；若為真OK
-    if(ConTimInput == false) {
-        document.getElementById("contimCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請選擇聯絡時段";
-        flagConTim = false;
-        $('#inlineCheckbox1').addClass("valid-false");
-        $('#inlineCheckbox2').addClass("valid-false");
-        $('#inlineCheckbox3').addClass("valid-false");
+    // 最終，若flag為假，不OK；若為真OK
+    if(flagConTim == false) {
+    
+    	$("#contimCheck").html("請選擇聯絡時段").css('color', '#a16468');
+        $("#contimCheck").next().attr("src", '/FinalProject/images/error.png');
+    
+    	$('#inlineCheckbox1').removeClass('is-valid').addClass('is-invalid');
+        $('#inlineCheckbox2').removeClass('is-valid').addClass('is-invalid');
+        $('#inlineCheckbox3').removeClass('is-valid').addClass('is-invalid');
+        
     }else{
-        document.getElementById("contimCheck").innerHTML = "";       
-        flagConTim = true;
-        $('#inlineCheckbox1').removeClass("valid-false");
-        $('#inlineCheckbox2').removeClass("valid-false");
-        $('#inlineCheckbox3').removeClass("valid-false");
+    	$("#contimCheck").html("");
+    	$("#contimCheck").next().attr("src", '');
+    
+    	$('#inlineCheckbox1').removeClass('is-invalid').addClass('is-valid');
+        $('#inlineCheckbox2').removeClass('is-invalid').addClass('is-valid');
+        $('#inlineCheckbox3').removeClass('is-invalid').addClass('is-valid');
     }
 }
 $('#inlineCheckbox1').parent().parent().on('blur',checkConTim);
@@ -193,27 +256,29 @@ function checkMail(){
     let re = /^.+@.+$/g;
     // 如果 mail 為空值
     if (mailObj.value == ""){
-        console.log("mailObj.value = "+mailObj.value)
-        document.getElementById("mailCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入電子信箱";
+        $("#mailCheck").html("請輸入電子信箱").css('color', '#a16468');
+		$("#mailCheck").next().attr("src", '/FinalProject/images/error.png');
+        
         flagMail = false;
-        mailObj.classList.add("valid-false");
-//        $('#mail').addClass('valid-false');
+        $('#mail').removeClass('is-valid').addClass('is-invalid');
+        
     //如果 mail 不合規則
     } else if(re.test(mailObj.value) == false){
-        console.log("mailObj.value = "+mailObj.value)
-        document.getElementById("mailCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入有效的電子信箱";
+        $("#mailCheck").html("請輸入有效的電子信箱").css('color', '#a16468');
+		$("#mailCheck").next().attr("src", '/FinalProject/images/error.png');
+
         flagMail = false;
-        mailObj.classList.add("valid-false");
-//        $('#mail').addClass('valid-false');
+        $('#mail').removeClass('is-valid').addClass('is-invalid');
+
     }else{
-        document.getElementById("mailCheck").innerHTML = "";
+    	$("#mailCheck").html("");
+    	$("#mailCheck").next().attr("src", '');
+    	
         flagMail = true;
-        mailObj.classList.remove("valid-false");
-//        $('#mail').removeClass('valid-false');
+        $('#mail').removeClass('is-invalid').addClass('is-valid');
     }
 }
-document.getElementById("mail").addEventListener('blur',checkMail)
-//$('#mail').on('blur',checkMail);
+$('#mail').on('blur',checkMail);
 
 
 //  tel
@@ -221,21 +286,29 @@ document.getElementById("mail").addEventListener('blur',checkMail)
 function checkTel(){
 
     let telObj = document.getElementById("tel");
-    let re = /^\d{8,12}$/g;
+    let re = /^\d{9,12}$/g;
     // 如果 tel 為空值
     if (telObj.value == ""){
-        document.getElementById("telCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入連絡電話";
+        $("#telCheck").html("請輸入連絡電話").css('color', '#a16468');
+		$("#telCheck").next().attr("src", '/FinalProject/images/error.png');
+        
         flagTel = false;
-        $('#tel').addClass('valid-false');
+        $('#tel').removeClass('is-valid').addClass('is-invalid');
+
     //如果 tel 不合規則
     } else if(re.test(telObj.value) == false){
-        document.getElementById("telCheck").innerHTML = "<img src ='/FinalProject//images/error.png' style='width: 22px'>請輸入有效的電話號碼(9-12碼數字)";
+    	$("#telCheck").html("請輸入有效的電話號碼(9-12碼數字)").css('color', '#a16468');
+		$("#telCheck").next().attr("src", '/FinalProject/images/error.png');
+
         flagTel = false;
-        $('#tel').addClass('valid-false');
+        $('#tel').removeClass('is-valid').addClass('is-invalid');
+
     }else{
-        document.getElementById("telCheck").innerHTML = "";
+        $("#telCheck").html("");
+        $("#telCheck").next().attr("src", '');
+        
         flagTel = true;
-        $('#tel').removeClass('valid-false');
+        $('#tel').removeClass('is-invalid').addClass('is-valid');
     }
 }
 $('#tel').on('blur',checkTel);
@@ -246,10 +319,11 @@ $('#tel').on('blur',checkTel);
 function checkToS(){
 	if($('#ToS').prop("checked")){
 		flagToS = true;
-		$('#ToS').removeClass("valid-false");
+		$('#ToS').removeClass('is-invalid').addClass('is-valid');
+		
 	} else {
 		flagToS = false;
-		$('#ToS').addClass("valid-false");
+		$('#ToS').removeClass('is-valid').addClass('is-invalid');
 	}
 }
 $('#ToS').on('click',checkToS);
@@ -264,6 +338,7 @@ $("#addForm").on('submit', function(e){
 
 function checkAll(){
     checkDate();
+    checkTime();
     checkCarmod();
     checkLoc();
     checkLocsit();
@@ -271,22 +346,20 @@ function checkAll(){
     checkName();
     checkGender();
     checkConTim();
-      checkMail();
+    checkMail();
     checkTel();
     checkToS();
     
-    if (flagDate && flagCarmod && flagLoc && flagLocsit && flagName && flagGender && flagConTim && flagMail && flagTel && flagToS){
-        document.getElementById("subchk").innerHTML = "";
+    if (flagDate && flagTime && flagCarmod && flagLoc && flagLocsit && flagName 
+    && flagGender && flagConTim && flagMail && flagTel && flagToS){
+        document.getElementById("submitcheck").innerHTML = "";
         document.getElementById("addForm").submit();
-        
-//        setTimeout(() => {
-//              document.getElementById("changedForm").submit();
-//          }, 1000);
         
         return true;
     } else{
-        document.getElementById("subchk").innerHTML = "表單資料不齊全或含有無效內容，請重新檢查";
-        Swal.fire('表單資料不齊全或含有無效內容，請重新檢查')        
+        $("#submitcheck").html("表單資料不齊全或含有無效內容，請重新檢查").css('color', '#a16468');
+        Swal.fire('表單資料不齊全或含有無效內容，請重新檢查');
+        
         return false;
     }
 }
@@ -311,11 +384,9 @@ function toLocsit(){
         document.getElementById("opt11").disabled = "";
         document.getElementById("opt12").disabled = "";
 
-
     }else if(locObj.value==document.getElementById("opt2").value){
         document.getElementById("opt21").disabled = "";
         document.getElementById("opt22").disabled = "";
-
 
     }else if(locObj.value==document.getElementById("opt3").value){
         document.getElementById("opt31").disabled = "";
@@ -324,31 +395,46 @@ function toLocsit(){
     }else if(locObj.value==document.getElementById("opt4").value){
         document.getElementById("opt41").disabled = "";
         document.getElementById("opt42").disabled = "";
-
     }
 }
 
+
+// date driveTime連動
+$('#date').on('change',toTime)
+function toTime(){
+	if($('#date').val()){
+		$('#driveTime').prop('disabled',false)
+	} else {
+		$('#driveTime').prop('disabled',true)
+	} 
+}
+
+
 // 畫面載入時先執行一次
  $(document).ready(function(){
-	   toLocsit();
-	    });
-
-
-
-
-//  彈出視窗
-$('#btn_bookf').on('click',function(){
-    Swal.fire({
-        imageUrl: '/FinalProject//images/terms.png',
-        imageHeight: 600,
-        imageAlt: '服務條款與隱私權政策'
-      })
-
-})
+	toLocsit();
+	toTime();
+	
+	$("#date").datepicker({
+    	orientation: "bottom",
+    	format: 'yyyy-mm-dd',
+		startDate: '+1d',
+    });
+    
+    // 顯示 預約頁面，其他隱藏
+    $("#bookformPage").css('display','block'); 
+    $("#booksearchPage").css('display','none'); 
+    
+    //把 修改按鈕 disabled掉
+    $('#update-custom').prop('disabled', true);
+});
 
 
 //  一鍵輸入
 $('#onekey').on('click', function(){
+    $('#date').val('2021-11-02');
+    toTime();
+    $('#driveTime').val('10');
     $('#date').val('2021-11-02');
     $('#carmoddef').next().children(":last").prop('selected',true)
     $('#opt4').prop('selected',true)
@@ -359,9 +445,11 @@ $('#onekey').on('click', function(){
     $('#inlineCheckbox1').prop('checked',true);
     $('#mail').val('eeit2905@gmail.com');
     $('#tel').val('0921222357');
-    $('#comm').val('遇雨取消');
+    $('#comm').val('');
 }).on('dblclick', function(){
-    $('#date').val('2021-12-25');
+    $('#date').val('2021-10-25');
+    toTime();
+    $('#driveTime').val('14');
     $('#carmoddef').next().children(":first").prop('selected',true)
     $('#opt3').prop('selected',true)
    	toLocsit();
@@ -372,80 +460,207 @@ $('#onekey').on('click', function(){
     $('#inlineCheckbox2').prop('checked',true);
     $('#mail').val('eeit2905@gmail.com');
     $('#tel').val('0976212488');
-    $('#comm').val('');
+    $('#comm').val('需要測試兒童安全座椅好不好裝');
 })
 
-// search 送出檢查
-$("#search").on('submit', function(){
+$('#ToS').removeClass('is-invalid').addClass('is-valid');
 
-    console.log(0)
-    if($('#search-input').val().trim().length<8){
-    console.log(1)
-    	$('#search-input').addClass("valid-false");
-    	Swal.fire('請輸入欲查詢表單編號')
-    	return false;
-    } else if($('#search-input').val().trim().length>10){
-    console.log(2)
-    	$('#search-input').removeClass("valid-false");
-//	    $('#search').submit();
-	    return true;
-    }
-});
-$('#search-input').on('blur', checkSearch);
+// 單筆查詢 檢查
 function checkSearch(){
-        console.log(0)
-    if($('#search-input').val().trim().length<8){
-    console.log(1)
-    	$('#search-input').addClass("valid-false");
-    	Swal.fire('請輸入欲查詢表單編號')
+	let searchLength = $('#search-input').val().trim().length;
+    if( 0 < searchLength && searchLength < 11){
+    	$('#search-input').removeClass('is-valid').addClass('is-invalid');
+    	Swal.fire('請輸入完整欲查詢表單編號')
     	return false;
-    } else if($('#search-input').val().trim().length>10){
-    console.log(2)
-    	$('#search-input').removeClass("valid-false");
-//	    $('#search').submit();
+    } else if( $('#search-input').val().trim().length>10){
+    	$('#search-input').removeClass('is-invalid').addClass('is-valid');
 	    return true;
 	}
+}
+// 單筆查詢 onblur時執行檢查
+$('#search-input').on('blur', checkSearch);
+
+// 單筆查詢 送出的Ajax 
+function search(searchFormId){
+	$.ajax({
+		url: "/FinalProject/findByIdTestdriveAPI/" + searchFormId,
+		method: "GET",
+		dataType: "json",
+		success: function (res) {
+			// 還原 單筆查詢 input 為預設值
+			$('#search-input').val('')
+			$('#search-input').removeClass('is-invalid').removeClass('is-valid')
+			
+			$("#bookformPage").css('display','none'); 
+    		$("#booksearchPage").css('display','block'); 
+			
+//	成功的話，將值塞入表中
+	if(res.formId){
+		$("#firstRow :first-child").html(res.formId)
+		$("#firstRow :first-child").next().html(res.driveDate +", "+res.driveTime+"點")
+		$("#firstRow :first-child").next().next().html(res.carMod)
+		$("#firstRow :last-child").prev().prev().html(res.driveLoc)
+		$("#firstRow :last-child").prev().html(res.driveLocSit)
+		$("#firstRow :last-child").html(res.sales)
+		$("#secondRow :first-child").html(res.nameCli)
+		$("#secondRow :first-child").next().html(res.gendCli)
+		$("#secondRow :first-child").next().next().html(res.timCli)
+		$("#secondRow :last-child").prev().prev().html(res.mailCli)
+		$("#secondRow :last-child").prev().html(res.telCli)
+		$("#secondRow :last-child").html(res.remark)
+		$(".formTime").html("填表日期:"+res.formTime)
+		$("#hiddenId").val(res.formId)
+	}
+		
+		},
+		error: function (err) {
+    		Swal.fire('查無資料，請檢查表單編號後再次查詢')
+		}
+	});
+}
+
+// 單筆查詢 送出前檢查 之後呼叫Ajax送出
+$("#searchBtn").click(function(){
+	if(checkSearch()){
+		let searchFormId = $('#search-input').val().trim();
+		search(searchFormId);
+	} 
+});
+
+
+// 返回預約賞車，還原各分頁為預設值
+$("#TestDrive").click(function(){
+	// 顯示 預約頁面，其他隱藏
+    $("#bookformPage").css('display','block'); 
+    $("#booksearchPage").css('display','none'); 
+    
+    //把 修改按鈕 disabled掉
+    $('#update-custom').prop('disabled', true);
+    //把 滑鈕顯現、提示字顯現
+    captcha.removeClass('passed');
+	$('#puzzleHint').css('visibility', 'visible');
+	captcha.css('--moved', '0px');
+});
+
+
+
+// 叫出時間表
+function driveTimeModal(){
+	let theDay = $('#date').val()
+	
+	// 塞入modal header 所選日期
+	$('#modalheader').html($('#date').val());
+	// 清空 modal
+	$('#timeTable tr').removeClass('table-secondary');
+	$('#timeTable').find('tr td:last-child').html('');
+	// Ajax抓當日值
+	$.ajax({
+			url: "/FinalProject/findByDriveDateAPI/" + theDay,
+			method: "GET",
+			dataType: "JSON",
+			success: function (response) {
+	// 值塞入欄位
+				if (response.data == "fail"){
+					return;
+				}
+				let data = response.data;
+				data.forEach(function(item){
+					for(let i=10; i<20; i++){
+						if(item.driveTime == i){
+							$('#Time'+i).html("此時段已被預約").parent().addClass('table-secondary');
+						}
+					}
+				});
+			},
+			error: function (err) {
+				alert(err)
+				
+			}
+		});
+	
+	
+	// show modal
+	$('#driveTimeModal').modal('show');
+	$('#driveTimeModal').css('overflow-y', 'auto');
 }
 
 
 
+//  scroll animation 滾動漸變圖
 
-// 單筆查詢 送出檢查
+let startingPoint
+const header = document.querySelector('header')
 
-$('#queryOneForm').on('submit',function(){
-			console.log($('#queryById').val().trim())
-	if($('#queryById').val().trim() == ""){
-		$('#quechk').text('請輸入欲查詢表單編號');
-			console.log($('#quechk').val())
-		Swal.fire('請輸入欲查詢表單編號')        
-        return false;
-	} else{
-		$('#quechk').text('');
-		$('#queryOneForm').submit();
-		return true;
-	}
+    header.addEventListener('mouseenter',(e) => {
+        startingPoint = e.clientX;
+        header.classList.add('moving');
+    })
+    header.addEventListener('mouseout',(e) => {
+        header.style.setProperty('--percentage', 0);
+        header.classList.remove('moving');
+    })
+
+
+const season = document.getElementById('season')
+let leftEmpty = (window.outerWidth - season.offsetWidth)/2
+
+header.addEventListener('mousemove',(e) => {
+    // let percentage = 2*(e.clientX - startingPoint) / window.outerWidth ;
+    let percentage = Math.abs((e.clientX - startingPoint) / (season.offsetWidth + leftEmpty - startingPoint));
+    // console.log((e.clientX - startingPoint) +"###"+(season.offsetWidth)+"###"+percentage)
+    header.style.setProperty('--percentage', percentage)
+})
+
+let pageH=$('body').height()
+let winH=$(window).height()
+// let footer = $('footer').outerHeight()
+
+$(window).scroll(function(){
+    let winTop=$(this).scrollTop();;
+    let scrollPercent=(winTop/(pageH-winH+178));
+    // 分母要再加上footer的height
+    // console.log(winTop+'**'+pageH+'**'+winH+'**'+(pageH-winH)+'**'+scrollPercent);
+    header.style.setProperty('--percentage', scrollPercent)
 })
 
 
 
-////email檢查
-//var vmmail = new Vue({
-//    el: '#vmmail',
-//    data: {
-//        vuemail: ''
-//    }
-//})
+//  拼圖驗證
 
+let shouldMove = false;
+const captcha = $('#captcha')
+const handle = $('#handle')
+const button = $('#handle span')
 
+button.on('mousedown', function(){
+	shouldMove = true
+})
 
+$(window).on('mousemove', function(e){
+	if(shouldMove){
+	    const offsetLeft = handle[0].getBoundingClientRect().left
+	    const buttonWidth = button[0].getBoundingClientRect().width
+	    // 把變數值設定為: 滑鼠X座標 - hander以左的空白 - 滑鈕一半的寬度
+		captcha.css('--moved', (e.clientX - offsetLeft - buttonWidth/2)+"px")
+	}
+})
 
-
-
-
-
-
-
-
+$(window).on('mouseup', function(e){
+	if(shouldMove){
+		// 滑鼠X座標 - hander以左的空白 = hander移動的距離值
+	    let finalOffset = e.clientX - handle[0].getBoundingClientRect().left
+	    console.log(finalOffset)
+		
+		if(finalOffset >=205 && finalOffset <= 235){ //正確位置為220
+			captcha.addClass('passed');
+			$('#update-custom').prop('disabled', false);
+			$('#puzzleHint').css('visibility', 'hidden');
+		} else {	// 沒成功時，改變變數，彈回原點
+			captcha.css('--moved', '0px');
+		}
+		shouldMove = false
+	}
+})
 
 
 

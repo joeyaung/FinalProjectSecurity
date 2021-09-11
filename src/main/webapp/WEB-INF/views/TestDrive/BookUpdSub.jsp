@@ -1,7 +1,6 @@
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.Arrays"%>
-
+	pageEncoding="UTF-8" import="java.util.Arrays, java.util.ArrayList"%>
+	
 <!DOCTYPE html>
 
 <%
@@ -10,13 +9,14 @@ response.setHeader("Cache-Control", "no-cache"); // HTTP 1.1
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0
 response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 %>
+
 <html lang="zh-TW">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>試駕表單修改</title>
+  <title>Audi - 修改表單</title>
 <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script
@@ -67,16 +67,16 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#about">試駕體驗</a>
+            <a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#projects">最新消息</a>
+            <a class="nav-link" href="/FinalProject/News">最新消息</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">了解車型</a>
+            <a class="nav-link" href="/FinalProject/Model">了解車型</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">活動</a>
+            <a class="nav-link" href="/FinalProject/Events">活動</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#signup">精品商城</a>
@@ -85,7 +85,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
             <a class="nav-link" href="#signup">展示中心</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">會員專區</a>
+            <a class="nav-link" href="/FinalProject/account">會員專區</a>
           </li>
         </ul>
       </div>
@@ -97,15 +97,15 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 
   <section class="about-section text-center bg-gray-custom pd-2rem">
     <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="row gx-4 gx-lg-5 justify-content-center" id="vueAll">
         <div class="col-lg-10 po-re">
 
           <h2 class="h_bookf">賞車/試駕表單修改</h2>
           <!-- 	<form action="ControllerServlet" method="post" id="idfSub"> -->
-          <form action="updateCarFormConfirm" method="post" id="changedForm">
 
-            <jsp:useBean id="oneTestdrive" class="tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment" scope="session" />
 			
+            <jsp:useBean id="oneTestdrive" class="tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment" scope="session" />
+          <form action="updateTestdriveConfirm" method="post" id="changedForm" novalidate="novalidate">
             <table class="table_bookf">
               <tbody>
                 <tr>
@@ -115,16 +115,31 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                       <div class="input-group date" id="datetimepicker1">
                         <input type="text" class="form-control" name="driveDate" id="date" autofocus
                           value="${oneTestdrive.driveDate}" required>
-                        <span class="input-group-addon color-blue">
+                        <span class="input-group-addon color-blue" id="inputAddOnIcon">
                             <span class="glyphicon glyphicon-calendar"
                               ><i class="fas fa-calendar-minus"></i
                             ></span>
                           </span>
                         </div>
                     </div>
-                    <span id="dateCheck"></span>
+                    <span id="dateCheck"></span><img src="">
                   </td>
                 </tr>
+                
+                <tr>
+                    <td><label for="dateTime">賞車時間:</label></td>
+                    <td>
+                      	<input class="form-control" type="text" id="driveTime"
+                      	
+                      		 :value=vueTime value="${oneTestdrive.driveTime}" v-model=vueTime
+  							:run="!vueTime ? vueTime = ${oneTestdrive.driveTime} : true"
+                      	
+                      	aria-label="default input example" maxlength="5"
+                      	onclick="driveTimeModal(date)" name="driveTime">
+                      <span id="driveTimeCheck"></span><img src="">
+                    </td>
+                  </tr>
+                
                 <tr>
                   <td><label for="carmod">試駕車種:</label></td>
                   <td>
@@ -134,7 +149,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                       </option>
                       <optgroup label="A series">
                         <% ArrayList<String> AcarList = new ArrayList<String>(
-                            Arrays.asList("A1","A2","A3","A4","A5","A6","A7","A8"));
+                            Arrays.asList("A3","A4","A5","A6"));
 
                             for (int i=0; i < AcarList.size() ; i++){ out.print("<option");
                               if(request.getAttribute("carMod").equals(AcarList.get(i))){ out.print(" selected"); }
@@ -143,7 +158,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                               %>
                       </optgroup>
                       <optgroup label="Q series">
-                        <% ArrayList<String> QcarList = new ArrayList<String>( Arrays.asList("Q2","Q3","Q5","Q7","Q8"));
+                        <% ArrayList<String> QcarList = new ArrayList<String>( Arrays.asList("Q3","Q5"));
 
                             for (int i=0; i < QcarList.size() ; i++){ out.print("<option");
                               if(request.getAttribute("carMod").equals(QcarList.get(i))){ out.print(" selected"); }
@@ -152,7 +167,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                               %>
                       </optgroup>
                     </select>
-                    <span id="carmodCheck"></span>
+                    <span id="carmodCheck"></span><img src="">
                   </td>
                 </tr>
 
@@ -166,10 +181,9 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                       <% // method 1 // ArrayList<String> cityList = new ArrayList<String>();
                           // cityList.add("台北");cityList.add("桃園");cityList.add("台中");cityList.add("高雄");
                           // method 2
-                          ArrayList<String> cityList = new ArrayList<String>( Arrays.asList("台北", "桃園", "台中", "高雄"));
+                          ArrayList<String> cityList = new ArrayList<String>( Arrays.asList("臺北市", "桃園市", "臺中市", "高雄市"));
 
                               for (int i=0; i<cityList.size() ; i++){ out.print("<option value='"+cityList.get(i)+"'id='opt"+(i+1)+"'");
-// 									if(singleCarFormBeans.getDriveLoc().equals(cityList.get(i))){
 									if(request.getAttribute("driveLoc").equals(cityList.get(i))){ 
 										out.print("selected"); 
 										} 
@@ -177,7 +191,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                                 }
                                 %>
                     </select>
-                    <span id="locCheck"></span>
+                    <span id="locCheck"></span><img src="">
                   </td>
                 </tr>
                 <tr>
@@ -200,7 +214,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                                 %>
                     </select>
 
-                    <span id="locsitCheck"></span>
+                    <span id="locsitCheck"></span><img src="">
                   </td>
                 </tr>
 
@@ -208,12 +222,12 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                   <td><label for="name">姓名:</label></td>
                   <td><input type="text" class="form-control" name="nameCli" aria-label="default input example"
                       size="10" maxlength="10" id="name" value="${oneTestdrive.nameCli}">
-                    <span id="nameCheck"></span>
+                    <span id="nameCheck"></span><img src="">
                   </td>
                 </tr>
 
                 <tr>
-                  <td><label for="gend">性別:</label></td>
+                  <td><label>稱謂:</label></td>
                   <td>
                     <% ArrayList<String> gendList = new ArrayList<String>( Arrays.asList("先生", "小姐", "其他"));
 
@@ -224,7 +238,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
       }
       %>
 
-      <span id="gendCheck"></span>
+      <span id="gendCheck"></span><img src="">
       </td>
       </tr>
 
@@ -250,7 +264,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
             <label class="form-check-label" for="inlineCheckbox3">晚上(18:00-22:00)</label>
           </div>
 
-          <span id="contimCheck"></span>
+          <span id="contimCheck"></span><img src="">
         </td>
       </tr>
 
@@ -260,7 +274,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
           <input class="form-control" type="text" aria-label="default input example" name="mailCli" size="20"
             maxlength="35" id="mail" value="${oneTestdrive.mailCli}" required>
 
-          <span id="mailCheck"></span>
+          <span id="mailCheck"></span><img src="">
         </td>
       </tr>
 
@@ -270,42 +284,105 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
           <input class="form-control" type="text" aria-label="default input example" name="telCli" maxlength="13"
             id="tel" value="${oneTestdrive.telCli}" required>
 
-          <span id="telCheck"></span>
+          <span id="telCheck"></span><img src="">
         </td>
       </tr>
 
       <tr>
         <td><label for="comm">備註:</label></td>
         <td>
-          <textarea class="form-control" id="comm" rows="5" cols="30" name="remark"
+          <textarea class="form-control" id="comm" rows="5" cols="30" name="remark" style="resize: none"
             placeholder="備註200字以內">${oneTestdrive.remark}</textarea>
         </td>
       </tr>
+      <tr>
+        <td colspan="2">
+          <div class="disclaimer_bookf">
+           當您點擊<kbd style="background-color: #64a19d">確認修改</kbd>表示您已閱讀、瞭解並同意接受
+           <a href="./PrivacyPolicy" target="_blank" rel="noopener noreferrer">本公司服務條款</a
+           >之所有內容。您將經由此表單提供您的個人資料給網站，並同意 Audi AG 在遵守本公司<a 
+           id="idPrivate" class="btn_bookf">隱私權政策</a>下，透過您提供的資訊與您聯絡。
+          </div>
+        </td>
+      </tr>
+      
       </tbody>
       </table>
       <div class="div">
-        <span class="errmes_bookf" id="subchk"></span>
+        <span class="errmes_bookf" id="submitcheck"></span>
       </div>
 
       <input type="hidden" name="formId" value="${oneTestdrive.formId}">
       <input type="hidden" name="sales" value="${oneTestdrive.sales}">
       <input type="hidden" name="formTime" value="${oneTestdrive.formTime}">
-      <input type="hidden" name="formId" value="${oneTestdrive.formId}">
       <button class="btn btn-primary wh-40" id="idUpdSub">確認修改</button>
 
 
       </form>
       <form action="TestDrive" method="post">
-
         <button class="btn btn-warning wh-40 back2">返回預約賞車</button>
-
       </form>
     </div>
+    
+          <div class="modal fade" tabindex="-1" role="dialog" id="driveTimeModal">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">請選擇時段</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+										</button></div>
+						<div class="modal-body">
+
+							<table class="dateTimeTable table table-hover" id="timeTable">
+								<thead><tr class="time-window table-primary"><th>時段</th>
+									<th id="modalheader"></th></tr></thead>
+									
+									<tr class="time-window" v-for="(index) in 10">
+									<td>{{ index + 9 }}:00-{{ index + 10}}:00</td>
+									<td @click="setTime(index)" :id="'Time'.concat(index+9)"></td>
+									</tr>
+									
+<!-- 								<tr class="time-window"><td>10:00-11:00</td> -->
+<!-- 									<td @click="setTime('10')" id="Time10"></td></tr> -->
+<!-- 								<tr class="time-window"><td>11:00-12:00</td> -->
+<!-- 									<td @click="setTime('11')" id="Time11"></td></tr> -->
+<!-- 								<tr class="time-window"><td>12:00-13:00</td> -->
+<!-- 									<td @click="setTime('12')" id="Time12"></td></tr> -->
+<!-- 								<tr class="time-window"><td>13:00-14:00</td> -->
+<!-- 									<td @click="setTime('13')" id="Time13"></td></tr> -->
+<!-- 								<tr class="time-window"><td>14:00-15:00</td> -->
+<!-- 									<td @click="setTime('14')" id="Time14"></td></tr> -->
+<!-- 								<tr class="time-window"><td>15:00-16:00</td> -->
+<!-- 									<td @click="setTime('15')" id="Time15"></td></tr> -->
+<!-- 								<tr class="time-window"><td>16:00-17:00</td> -->
+<!-- 									<td @click="setTime('16')" id="Time16"></td></tr> -->
+<!-- 								<tr class="time-window"><td>17:00-18:00</td> -->
+<!-- 									<td @click="setTime('17')" id="Time17"></td></tr> -->
+<!-- 								<tr class="time-window"><td>18:00-19:00</td> -->
+<!-- 									<td @click="setTime('18')" id="Time18"></td></tr> -->
+<!-- 								<tr class="time-window"><td>19:00-20:00</td> -->
+<!-- 									<td @click="setTime('19')" id="Time19"></td></tr> -->
+							</table>
+
+
+						</div>
+						<div class="modal-footer">
+							<button id="" type="button" data-bs-dismiss="modal"
+								class="btn btn-primary">確認</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+    
     </div>
     </div>
   </section>
   
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="./js/editTestdriveValidation.js"></script>
     <!-- 以下不要動 -->
     <!-- Footer-->
@@ -320,6 +397,5 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
     <!-- Core theme JS-->
     <script src="js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    <script src="./js/bookForm.js"></script>
   </body>
 </html>

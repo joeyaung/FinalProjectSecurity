@@ -19,12 +19,10 @@ public class ClientService {
 	@Autowired
 	private ClientRepository clientRepository;
 
-
 	public List<Client> queryClientsByfullName(String queryName) {
 		List<Client> result = clientRepository.findByFullNameLike(queryName);
 		return result;
 	}
-
 
 	public boolean save(Client client) {
 		try {
@@ -36,12 +34,10 @@ public class ClientService {
 		}
 	}
 
-
 	public List<Client> findByEmployee(Employee employee) {
 		List<Client> result = clientRepository.findByInchargedEmployee(employee);
 		return result;
 	}
-
 
 	public Client findById(Long id) {
 		Optional<Client> result = clientRepository.findById(id);
@@ -49,5 +45,24 @@ public class ClientService {
 			return null;
 		}
 		return result.get();
+	}
+
+	public Client findByEmail(String email) {
+		Optional<Client> findByEmail = clientRepository.findByEmail(email);
+		if (findByEmail.isEmpty()) {
+			return null;
+		}
+		return findByEmail.get();
+	}
+	
+	public boolean update(Client client) {
+		
+		try {
+			clientRepository.saveAndFlush(client);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }
