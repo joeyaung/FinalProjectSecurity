@@ -11,7 +11,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Audi - 完成預約</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
@@ -29,6 +29,26 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/bookForm.css" />
+    <style>
+    span {
+    	display: inline-block;
+    	animation: .4s jump ease-in-out;
+    	animation-delay: var(--delay);
+    }
+
+	@keyframes jump {
+		0%, 100%{
+ 			transform: translateY(0px); 
+			color: inherit;
+		}
+		50% {
+ 			transform: translateY(-10px); 
+			color: red;
+		}
+	}
+    
+    </style>
+    
   </head>
 
   <body id="page-top">
@@ -71,7 +91,7 @@
               <a class="nav-link" href="#signup">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
@@ -89,8 +109,8 @@
           <div class="div_bookc"> 
             <h1 class="h_bookc">預約成功</h1><br>
             <div class="po-re">
-            <h3 class="h_bookc dis-ib-custom">您的試駕表單編號為:<strong id="copied">${formId}</strong></h3>
-              <span class="input-group-addon color-blue copy-custom" id="copy" onclick="copyEvent('copied')">
+            <h3 class="h_bookc dis-ib-custom">您的試駕表單編號為:<strong id="copied" style="color:#64A19D">${formId}</strong></h3>
+              <span class="input-group-addon color-blue copy-custom" id="copy" title="複製表單編號" onclick="copyEvent('copied')">
                 <i class="fas fa-clone"></i></span>
 <!--               </span> -->
             <h3 class="h_bookc">試駕表單資訊已寄送至您的E-mail信箱，請於信箱中確認</h3>
@@ -121,10 +141,15 @@
 
     <script>
       function copyEvent(id)
-      {
+      {	  //  複製表單編號
           var str = document.getElementById(id);
           window.getSelection().selectAllChildren(str);
-          document.execCommand("Copy")
+          document.execCommand("Copy");
+          //  製造文字效果: 為每個文字分別加上tag，並設定delay 變數
+          str.innerHTML = str.textContent.replace(/\S/g,"<span>$&</span>");
+          document.querySelectorAll('span').forEach((span, index) => {
+        	  span.style.setProperty('--delay', index*0.1+'s')
+          })
       }
   </script>
   </body>

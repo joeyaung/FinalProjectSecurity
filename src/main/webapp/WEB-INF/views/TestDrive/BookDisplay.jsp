@@ -8,7 +8,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>Audi - 預約試駕</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.png" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
@@ -53,7 +53,7 @@
             <a class="nav-link" href="#signup">精品商城</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">展示中心</a>
+            <a class="nav-link" href="/FinalProject/center">展示中心</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/FinalProject/account">會員專區</a>
@@ -156,7 +156,6 @@
                 <input type="hidden" name="mailCli" value="${newTestdrive.mailCli}">
                 <input type="hidden" name="telCli" value="${newTestdrive.telCli}">
                 <input type="hidden" name="remark" value="${newTestdrive.remark}">
-                <!-- <input type="submit" value="確認" class="btn btn-primary"> -->
                 <button type="submit" class="btn btn-primary wh-40">確認</button>
             </form>
             <form action="TestDrive" method="post">
@@ -170,16 +169,16 @@
   </section>
   
 <!-- reCAP -->
-  <script type="text/javascript"> 
-                function validateForm(){
-                	if(grecaptcha.getResponse()){
-                		return true;
-                	} else{
-                		alert("請點擊[我不是機器人]再點擊確認"")
-                		return false;
-                	}
-                }
-                </script>
+<script type="text/javascript"> 
+function validateForm(){
+	if(grecaptcha.getResponse()){
+		return true;
+	} else{
+		alert("請點擊[我不是機器人]再點擊確認")
+		return false;
+	}
+}
+</script>
 <!-- reCAP --> 
   
 

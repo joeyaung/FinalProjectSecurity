@@ -1,5 +1,4 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
@@ -8,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Audi - 預約試駕</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
@@ -94,7 +93,7 @@
               <a class="nav-link" href="#signup">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
@@ -247,10 +246,7 @@
                         id="name"
                         placeholder="請輸入姓名"
                         required/>
-
-                      <span id="nameCheck"></span><img src="">
-                    </td>
-                  </tr>
+                      <span id="nameCheck"></span><img src=""></td></tr>
 
                   <tr>
                     <td><label>稱謂:</label></td>

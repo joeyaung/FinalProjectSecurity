@@ -10,7 +10,7 @@
   <meta name="author" content="" />
 
   <title>Audi - 試駕表單總覽</title>
-  
+  <link rel="icon" type="image/x-icon" href="images/favicon.png" />
   		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
 		<script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -161,8 +161,8 @@
 				class="fas fa-car"></i> <span>試駕總覽</span></a></li>
 				
 			<!-- Nav Item - 車型總覽 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/model"> <i 
-				class="fas fa-car"></i> <span>車型總覽</span></a></li>		
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/model"> <i
+				class="fas fa-car-side"></i> <span>車型總覽</span></a></li>		
 
 			<!-- Nav Item - 編輯消息 -->
 			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
@@ -426,12 +426,11 @@
 <!--[暫時][測試] 	此行刪除(包含) -->
 
           <!-- Content Row -->
-          
-		  <br/><br/><button id="addTestdriveButton" type="submit" class="btn btn-primary" style="margin-left: 15px;">新增試駕表單</button> 
-          <div class="row" id="Testdrive1">
             <!-- 以下開始替換成你們的內容
                     可放表格, 圖表, 要填的 form 之類的~ -->
-            	<!-- "新增"按鈕 -->
+          <!-- "新增"按鈕 -->          
+		  <br/><br/><button id="addTestdriveButton" type="submit" class="btn btn-primary" style="margin-left: 15px;">新增試駕表單</button> 
+          <div class="row" id="Testdrive1">
             	
 				
 				<!--Data Table -->
@@ -472,13 +471,7 @@
         	</div>
         	<table class="table_calend">
               <thead class="table table-striped thead_calend" id="idThead">
-                <!-- <td>Sun</td>
-                <td>Mon</td>
-                <td>Tue</td>
-                <td>Wed</td>
-                <td>Thu</td>
-                <td>Fri</td>
-                <td>Sat</td> -->
+
               </thead>
               <tbody id="idTbody" class="tbody_calend"></tbody>
         	</table>
@@ -487,13 +480,7 @@
         	  <thead class="theadS_hw5"><tr><th id="titleBE" colspan="7" 
         	  	style="text-align:center"></th></tr></thead>
               <thead class="theadS_hw5" id="idThead">
-                <!-- <td>Sun</td>
-                <td>Mon</td>
-                <td>Tue</td>
-                <td>Wed</td>
-                <td>Thu</td>
-                <td>Fri</td>
-                <td>Sat</td> -->
+
               </thead>
               <tbody id="idTbodyBE" class="tbodyS_hw5"></tbody>
         	</table>
@@ -502,13 +489,7 @@
         	  <thead class="theadS_hw5"><tr><th id="titleAF" colspan="7" 
         	  	style="text-align:center"></th></tr></thead>
               <thead class="theadS_hw5" id="idThead">
-                <!-- <td>Sun</td>
-                <td>Mon</td>
-                <td>Tue</td>
-                <td>Wed</td>
-                <td>Thu</td>
-                <td>Fri</td>
-                <td>Sat</td> -->
+
               </thead>
               <tbody id="idTbodyAF" class="tbodyS_hw5"></tbody>
         	</table>
@@ -556,23 +537,16 @@
 									<td><select class="form-select"
                         						aria-label="Default select example"
                        							name="carMod" id="1carmod" required>
-                        					<option id="1carmoddef" selected disabled>請選擇您想試駕的汽車型號</option>
+                        					<option id="1carmoddef" selected disabled>請選擇客戶想試駕的汽車型號</option>
                         					<optgroup label="A series">
-                         					 <option>A1</option>
-                         					 <option>A2</option>
                          					 <option>A3</option>
                          					 <option>A4</option>
                          					 <option>A5</option>
                          					 <option>A6</option>
-                         					 <option>A7</option>
-                         					 <option>A8</option>
                         					</optgroup>
                         					<optgroup label="Q series">
-                         					 <option>Q2</option>
                          					 <option>Q3</option>
                          					 <option>Q5</option>
-                         					 <option>Q7</option>
-                         					 <option>Q8</option>
                         					</optgroup>
                       					</select><span id="1carmodCheck"></span><img src=""></td></tr>
 									
@@ -610,7 +584,7 @@
 									<td><input class="form-control"
 										       type="text" aria-label="default input example"
                         					   name="nameCli" maxlength="10" id="1name"
-                        					   placeholder="請輸入姓名" required/><span id="1nameCheck"></span><img src=""></td></tr>
+                        					   placeholder="請輸入客戶姓名" required/><span id="1nameCheck"></span><img src=""></td></tr>
 								
 								<tr><td><label>稱謂</label></tr>
 								<tr>
@@ -724,21 +698,14 @@
                        							 name="carMod" id="2carmod" required>
                         					 	<option id="2carmoddef" selected disabled>請選擇您想試駕的汽車型號</option>
                         						<optgroup label="A series">
-                         						 <option>A1</option>
-                         						 <option>A2</option>
                          						 <option>A3</option>
                          						 <option>A4</option>
                          						 <option>A5</option>
                          						 <option>A6</option>
-                         						 <option>A7</option>
-                         						 <option>A8</option>
                         					    </optgroup>
                         					    <optgroup label="Q series">
-                         						 <option>Q2</option>
                          						 <option>Q3</option>
                          						 <option>Q5</option>
-                         						 <option>Q7</option>
-                         						 <option>Q8</option>
                         						</optgroup>
                       						</select><span id="2carmodCheck"></span><img src=""></td></tr>
 									<tr><td><label for="2loc">試駕地區</label></td></tr>
@@ -857,8 +824,8 @@
 							<h4 class="modal-title">Details for test drive form</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span></button></div>
+										
 						<div class="modal-body">
-
 							<table class="dateTimeTable table table-hover" id="recordTable">
 								<tr><td>表單編號:</td>
 									<td id="3formId"></td></tr>
@@ -915,7 +882,7 @@
 										<span aria-hidden="true">&times;</span></button></div>
 						<div class="modal-body">
 
-							<table class="dateTimeTable table table-hover" id="timeTable">
+							<table class="dateTimeTable table table-hover" id="timeTable" style="text-align:center">
 								<thead><tr class="time-window table-primary"><th>時段</th>
 									<th id="modalheader"></th></tr></thead>
 								<tr class="time-window"><td>10:00-11:00</td>
@@ -952,7 +919,51 @@
 			<!-- /.modal -->
           
 
-       
+		  <!-- 天氣預報 Modal -->
+          <div class="modal fade" tabindex="-1" role="dialog" id="weatherModal">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">試駕日天氣預報<img src="/FinalProject/images/cwb_gov.png" height="50px" alt="" /></h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span></button></div>
+										
+						<div class="modal-body" style="font-size: 1.2em">
+							<div class="container-fluid">
+						    	<div class="row">
+      							<div class="col-md-6 column-head">地點</div>
+      							<div class="col-md-6 ml-auto column-head">時間</div>
+      							<div class="col-md-6" id="weather_loc">暫時查無資料</div>
+      							<div class="col-md-6 ml-auto" id="weather_time">暫時查無資料</div>
+    						</div>
+    						<br/>
+						    <div class="row">
+						    	<div class="col-md-12 column-head">降雨機率</div>
+						    	<div class="col-md-6" style="display: flex; align-items: center;" id="weather_rain"></div>
+      							<div class="col-md-6 ml-auto"><img id="weather_rainImg" src="" height="100px" alt="" /></div>
+						    </div>
+						    <div class="row">
+							      <div class="col-md-12 column-head">當日溫度</div>
+							      <div class="col-md-4">最高溫度(°C)</div>
+							      <div class="col-md-4 ml-auto">平均溫度(°C)</div>
+      							  <div class="col-md-4 ml-auto">最低溫度(°C)</div>
+							      <div class="col-md-4" id="weather_tempMax">30度</div>
+							      <div class="col-md-4" id="weather_tempAvg">25度</div>
+      							  <div class="col-md-4 ml-auto" id="weather_tempMin">20度</div>
+						    </div>
+						    <br/>
+							<div class="row" style="margin-bottom: 5%">
+							      <div class="col-md-12 column-head">綜合描述</div>
+							      <div class="col-md-12 ml-auto" id="weather_sum" ></div>
+						    </div>
+
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->		
        
        
        
@@ -1009,7 +1020,6 @@
 
 	
 </body>
-<!-- 	<script src="/FinalProject/js/Formpage.js"></script> -->
 <script>
 
 		var table;
@@ -1120,6 +1130,7 @@
 		$('#addTestdriveButton').click(function (e) {
 			e.preventDefault();
 			$("#form1")[0].reset();// 新增的model清空
+			$("#1submitcheck").html("");
 			$('#addTestdriveModal').modal('show');
 		})		
 		
@@ -1160,13 +1171,11 @@
 		
 		// 啟用"修改"按鈕前置準備，尋找單筆
 		function findById(formId, fillWithOrigin) {
-			console.log("findbyid:  "+formId)
 			$.ajax({
 				url: "/FinalProject/findByIdTestdriveAPI/" + formId,
 				method: "GET",
 				dataType: "json",
 				success: function (res) {
-					console.log("findbyid success")	
 					fillWithOrigin(res)
 				},
 				error: function (err) {
@@ -1232,26 +1241,56 @@
 						method: "GET",
 						dataType: "json",
 						success: function (res) {
-						console.log(res)
-						console.log(res.success)
-						console.log(res.records.locations[0].datasetDescription)
-							alert(res.success + '\n' +  // true
-								  res.records.locations[0].datasetDescription + '\n' +  // 台灣各縣市鄉鎮未來1周竹12小時天氣預報
-								  res.records.locations[0].location[0].locationName + '\n' + // 桃園市
-								  res.records.locations[0].location[0].weatherElement[0].description + '\n' +  // 12小時降雨機率
-								  res.records.locations[0].location[0].weatherElement[0].time[0].startTime + '\n' +
-								  res.records.locations[0].location[0].weatherElement[0].time[0].endTime + '\n' +
-								  res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value + '%\n' 
-								  
-// 								  res.records.locations[0].location[0].weatherElement[10].description + '\n' +  // 降雨機率
-// 								  res.records.locations[0].location[0].weatherElement[0].time[0].startTime + '\n' +
-// 								  res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value + '\n'
-// 							alert(res.cwbopendata.dataset.locations.location[12].locationName + '\n' +
-// 								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].description + '\n' +
-// 								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].time[4].startTime + '\n' +
-// 								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].time[4].endTime + '\n' +
-// 								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].time[4].elementValue.value + '%\n' 
-								 )
+							
+							$('#weather_loc').html(res.records.locations[0].location[0].locationName)
+							$('#weather_time').html(res.records.locations[0].location[0].weatherElement[0].time[0].startTime + ' 至\n' +
+									res.records.locations[0].location[0].weatherElement[0].time[0].endTime)
+							// 降雨機率有值
+							if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value){
+								$('#weather_rain').html(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value + '%')
+								// 一降雨機率 放上圖片
+								if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value < 40){
+									$('#weather_rainImg').attr("src", '/FinalProject/images/weather-sunny.png');
+								} else if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value >= 40 &&
+										res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value < 70) {
+									$('#weather_rainImg').attr("src", '/FinalProject/images/weather-cloudy.png');
+								} else if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value >= 70){
+									$('#weather_rainImg').attr("src", '/FinalProject/imagesweather-rainy.png');
+								}
+							} else {
+								$('#weather_rain').html("暫無資訊")
+							}
+							
+							// 平均溫
+							if(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value){
+								$('#weather_tempAvg').html(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value)
+							} else {
+								$('#weather_tempAvg').html("暫無資訊")
+							}
+							
+							// 最高溫
+							if(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value){
+								$('#weather_tempMax').html(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value)
+							} else {
+								$('#weather_tempMax').html("暫無資訊")
+							}
+							
+							// 最低溫
+							if(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value){
+								$('#weather_tempMin').html(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value)
+							} else {
+								$('#weather_tempMin').html("暫無資訊")
+							}
+							
+							// 綜合描述
+							if(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value){
+								$('#weather_sum').html(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value)
+							} else {
+								$('#weather_sum').html("暫無資訊")
+							}
+							
+							$('#weatherModal').modal('show');
+							
 							table.ajax.reload();
 						},
 						error: function (err) {

@@ -17,7 +17,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>Audi - 修改表單</title>
-<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="images/favicon.png" />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
@@ -82,7 +82,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
             <a class="nav-link" href="#signup">精品商城</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">展示中心</a>
+            <a class="nav-link" href="/FinalProject/center">展示中心</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/FinalProject/account">會員專區</a>
@@ -342,26 +342,6 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 									<td @click="setTime(index)" :id="'Time'.concat(index+9)"></td>
 									</tr>
 									
-<!-- 								<tr class="time-window"><td>10:00-11:00</td> -->
-<!-- 									<td @click="setTime('10')" id="Time10"></td></tr> -->
-<!-- 								<tr class="time-window"><td>11:00-12:00</td> -->
-<!-- 									<td @click="setTime('11')" id="Time11"></td></tr> -->
-<!-- 								<tr class="time-window"><td>12:00-13:00</td> -->
-<!-- 									<td @click="setTime('12')" id="Time12"></td></tr> -->
-<!-- 								<tr class="time-window"><td>13:00-14:00</td> -->
-<!-- 									<td @click="setTime('13')" id="Time13"></td></tr> -->
-<!-- 								<tr class="time-window"><td>14:00-15:00</td> -->
-<!-- 									<td @click="setTime('14')" id="Time14"></td></tr> -->
-<!-- 								<tr class="time-window"><td>15:00-16:00</td> -->
-<!-- 									<td @click="setTime('15')" id="Time15"></td></tr> -->
-<!-- 								<tr class="time-window"><td>16:00-17:00</td> -->
-<!-- 									<td @click="setTime('16')" id="Time16"></td></tr> -->
-<!-- 								<tr class="time-window"><td>17:00-18:00</td> -->
-<!-- 									<td @click="setTime('17')" id="Time17"></td></tr> -->
-<!-- 								<tr class="time-window"><td>18:00-19:00</td> -->
-<!-- 									<td @click="setTime('18')" id="Time18"></td></tr> -->
-<!-- 								<tr class="time-window"><td>19:00-20:00</td> -->
-<!-- 									<td @click="setTime('19')" id="Time19"></td></tr> -->
 							</table>
 
 

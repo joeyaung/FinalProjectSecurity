@@ -13,6 +13,7 @@ var vueAll = new Vue({
    		for (let i = 0; i < $("#timeTable tr").length; i++) {
    			$("#timeTable tr")[i].classList.remove("selected-Time");
    		}
+   		$('#driveTime').change();
    		row.classList.add("selected-Time");
     	this.vueTime=index+9;
    	}   

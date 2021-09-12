@@ -6,7 +6,7 @@ table.dataTable tbody td, thead th {
 	text-align: center; 
 }
 
-#inputAddOnIcon:hover {
+#inputAddOnIcon:hover, #inputAddOnIcon2:hover {
 	cursor: pointer;
 }
 
@@ -27,13 +27,13 @@ body {
 
 /*月曆頁面*/
 
-			.navbar-nav .nav-item + .nav-item {
-    			margin-left: 0rem;
-			}
-			body {
-			    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 
-			    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-			}
+.navbar-nav .nav-item + .nav-item {
+	margin-left: 0rem;
+}
+body {
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 	
 			
 /*月曆格式*/
@@ -70,7 +70,6 @@ body {
 }
 
 .tbody_calend td{
-/*     background-color: #e4e4e4; */
     border: 1px solid #0047AB ;
     padding: 8px;
     font-size: 23px;
@@ -92,7 +91,6 @@ body {
 
 .tbodyS_hw5 tr td{
     border: 1px solid #0047AB ;
-/*     background-color: #f1f1f1; */
 }
 
 .kbd{
@@ -101,9 +99,11 @@ body {
 	color: black;
 }
 
+/*天氣預報*/
 
-
-
+.column-head{
+	background-color: #b8daff;
+}
 
 
 

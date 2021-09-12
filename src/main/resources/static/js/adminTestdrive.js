@@ -1,4 +1,4 @@
-
+// 未成功給 admin 端加上Vue 先comment掉
 //var vueAll = new Vue({
 //    el: '#vueAll',
 //    data: {
@@ -26,7 +26,7 @@ let flagDriveTime1 = true;
 let flagCarmod1 = true;
 let flagLoc1 = true;
 let flagLocsit1 = true;
-// let flagSales = true;
+
 let flagName1 = true;
 let flagGender1 = true;
 let flagConTim1 = true;
@@ -198,15 +198,15 @@ function checkGender() {
 function checkConTim() {
     // 取得timCli的 3個元素群組
     let Total_Obj = document.getElementsByName('timCli');
-    // 是否有input標記，初始為無
+    // 是否有input，flag 初始為無
     flagConTim1 = false;
-    // 迭代 該群組，若有其中一項被勾選(checked)，input標記改為真
+    // 迭代 該群組，若有其中一項被勾選(checked)，flag改為真
     for (let i = 0; i < Total_Obj.length; i++) {
         if (Total_Obj[i].checked) {
             flagConTim1 = true;
         } 
     }
-    // 最終，若input標記為假，不OK；若為真OK
+    // 最終，若flag為假，不OK；若為真OK
     if(flagConTim1 == false) {
     	$("#1contimCheck").html("請選擇聯絡時段").css('color', 'red');
         $("#1contimCheck").next().attr("src", '/FinalProject/images/error.png');
@@ -271,13 +271,13 @@ function checkTel(){
         flagTel1 = true;
     }
 }
-
+$('#1tel').on('blur',checkTel);
 
 
 
 //  一鍵輸入
 $('#1oneKey').on('click', function(){
-    $('#1date').val('2021-12-21');
+    $('#1date').val('2021-11-21');
     $('#1driveTime').val('13');
     $('#1carmoddef').next().children(":last").prev().prop('selected',true)
     $('#1opt2').prop('selected',true)
@@ -321,6 +321,7 @@ function checkAll1(){
     
     if (flagDate1 && flagDriveTime1 && flagCarmod1 && flagLoc1 && flagLocsit1 && flagName1 && 
     	flagGender1 && flagConTim1 && flagMail1 && flagTel1){
+    	document.getElementById("1submitcheck").innerHTML = "";
         return true;
     } else{
         document.getElementById("1submitcheck").innerHTML = "表單資料不齊全或含有無效內容，請重新檢查";
@@ -347,9 +348,9 @@ function addTesdrive(formData){
         processData: false, // NEEDED, DON'T OMIT THIS
         "mimeType": "JSON/form-data",
         success: function (response) {
-            $("#form1")[0].reset();
-            table.ajax.reload();
-            changeComment();
+            $("#form1")[0].reset(); // 新增的model清空
+            table.ajax.reload();	// data table刷新
+            changeComment();		// calender刷新
         },
         error: function (err) {
             console.log(err);
@@ -378,11 +379,9 @@ function toLocsit1(){
         document.getElementById("1opt11").disabled = "";
         document.getElementById("1opt12").disabled = "";
 
-
     }else if(locObj1.value==document.getElementById("1opt2").value){
         document.getElementById("1opt21").disabled = "";
         document.getElementById("1opt22").disabled = "";
-
 
     }else if(locObj1.value==document.getElementById("1opt3").value){
         document.getElementById("1opt31").disabled = "";
@@ -420,10 +419,6 @@ function toLocsit1(){
    //載入時，顯示 data table，隱藏calender
    $("#Testdrive1").css('display','block');
    $("#Testdrive2").css('display','none');
-//   $("#Testdrive1").css('display','none');
-//   $("#Testdrive2").css('display','block');
-   
-   
 });
 
  $('#toggle-event').change(function() {
@@ -633,22 +628,22 @@ function checkGender2() {
 function checkConTim2() {
     // 取得timCli的 3個元素群組
     let Total_Obj = document.getElementsByName('timCli');
-    // 是否有input標記，初始為無
+    // 是否有input，flag 初始為無
     flagConTim2 = false;
-    // 迭代 該群組，若有其中一項被勾選(checked)，input標記改為真
+    // 迭代 該群組，若有其中一項被勾選(checked)，flag 改為真
     for (let i = 0; i < Total_Obj.length; i++) {
         if (Total_Obj[i].checked) {
             flagConTim2 = true;
         } 
     }
-    // 最終，若input標記為假，不OK；若為真OK
+    // 最終，若flag為假，不OK；若為真OK
     if(flagConTim2 == false) {
     	$("#2contimCheck").html("請選擇聯絡時段").css('color', 'red');
         $("#2contimCheck").next().attr("src", '/FinalProject/images/error.png');
 
     }else{
-    	$("#1contimCheck").html("");
-    	$("#1contimCheck").next().attr("src", '');
+    	$("#2contimCheck").html("");
+    	$("#2contimCheck").next().attr("src", '');
     }
 }
 
@@ -717,6 +712,7 @@ $('#2oneKey').on('click', function(){
     $('#2opt3').prop('selected',true)
    	toLocsit2();
     $('#2opt31').prop('selected',true)
+    $('#2sale').val('Alex');
     $('#2name').val('張展航');
     $('#2flexRadio1').prop('checked',true)
     $('#2inlineCheckbox2').prop('checked',true);
@@ -729,7 +725,8 @@ $('#2oneKey').on('click', function(){
     $('#2carmoddef').next().children(":first").next().prop('selected',true)
     $('#2opt1').prop('selected',true)
    	toLocsit2();
-    $('#2opt12').prop('selected',true)
+    $('#2opt12').prop('selected',true);
+    $('#2sale').val('Eric');
     $('#2name').val('林淑惠');
     $('#2flexRadio2').prop('checked',true)
     $('#2inlineCheckbox3').prop('checked',true);
@@ -757,6 +754,7 @@ function checkAll2(){
     if (flagDate2 && flagDriveTime2 && flagCarmod2 && flagLoc2 
     && flagLocsit2 && flagSales2 && flagName2 && flagGender2 && 
     flagConTim2 && flagMail2 && flagTel2){
+    	document.getElementById("2submitcheck").innerHTML = "";
         return true;
     } else{
     	document.getElementById("2submitcheck").innerHTML = "表單資料不齊全或含有無效內容，請重新檢查";
@@ -785,9 +783,9 @@ $("#2submit").click(function (e) {
 			contentType: false,
 			processData: false,
 			success: function (res) {
-				$("#form2")[0].reset();   // 修改的model清空
-				table.ajax.reload();     // data table刷新
-				changeComment();
+				$("#form2")[0].reset();		// 修改的model清空
+				table.ajax.reload();		// data table刷新
+				changeComment();			// calender刷新
 			},
 			error: function (err) {
 				alert('update failed' + err);
@@ -1005,15 +1003,6 @@ function toLocsit2(){
             		}
             		strAF += "</tr>"
             		document.getElementById("idTbodyAF").innerHTML = strAF
-        		
-                    
-                    
-                    		
-                    
-                    
-                    
-                    
-                    
 
 				},
 				error: function (err) {
@@ -1021,41 +1010,7 @@ function toLocsit2(){
 				}
 			});
             
-        }
-
-		
-	function formModal(formId) {
-		
-		$('#form2')[0].reset(); // formModel清空
-
-		let fillWithOrigin = function (res) {
-			$("#2showId").html("表單編號 " + res.formId);
-			$("#2formId").val(res.formId);
-			$("#2formTime").val(res.formTime);
-			$("#2date").val(res.driveDate);
-			$("#2carmod").val(res.carMod);
-			$("#2loc").val(res.driveLoc);
-// 			toLocsit2();
-//				$("#2loc").val(res.driveLoc).change();
-			$("#2locsit").val(res.driveLocSit);
-			$("#2sale").val(res.sales);
-			$("#2name").val(res.nameCli);
-			$("[name=gendCli]").val([res.gendCli]);
-			$("#tdcheckbox > div > input").each(function() {
-				if(res.timCli.includes(this.value)){
-					$(this).prop("checked",true);
-				}
-			});
-			$("#2mail").val(res.mailCli);
-			$("#2tel").val(res.telCli);
-			$("#2comm").val(res.remark);
-		}
-
-		findById(formId, fillWithOrigin)
-		$('#editTestdriveModal').modal('show');
-		$('#editTestdriveModal').css('overflow-y', 'auto');
-		
-	}			
+        }	
 	
 	
 	// 月曆中 單筆資料的model叫出
@@ -1100,25 +1055,7 @@ function toLocsit2(){
 			}
 		});
 	}		
-	
-	
-	
-	// 尋找單筆
-	function findById(formId, fillWithOrigin) {
-		console.log("findbyid:  "+formId)
-		$.ajax({
-			url: "/FinalProject/findByIdTestdriveAPI/" + formId,
-			method: "GET",
-			dataType: "json",
-			success: function (res) {
-				console.log("findbyid success")	
-				fillWithOrigin(res)
-			},
-			error: function (err) {
-				alert(err)
-			}
-		});
-	}		
+		
 			
 	
 	// 叫出時間表
