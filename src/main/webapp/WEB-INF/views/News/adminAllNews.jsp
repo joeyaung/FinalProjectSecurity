@@ -393,7 +393,7 @@
 															id="sp2" style="width: 10px" class="add_span"></span> <img
 															src=""></td>
 												<tr>
-													<td>
+													<td>上傳日期
 												<tr>
 													<td><input class="myitem" id="uploaddate" type="date"
 															name="uploadDate" value="${news.uploadDate}" /> <br /> <span
