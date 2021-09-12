@@ -612,8 +612,8 @@
 								render: function (data) {
 									return '<button id="edit_btn" onclick="editMode('
 										+ data
-										+ ')" data-dismiss="modal" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>Edit</button>'
-										+ '<button id="delete_btn" onclick="deleteNews(' + data + ')" data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>Delete</button>';
+										+ ')" data-dismiss="modal" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>編輯</button>'
+										+ '<button id="delete_btn" onclick="deleteNews(' + data + ')" data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>刪除</button>';
 
 								}
 							}],
