@@ -148,8 +148,7 @@
         success: function (response) {
           var list = "";
           $.each(response, function (index, item) {
-            formid = item.form_id;
-            list += "<tr><th scope='row'></th><td>" + item.form_id + "</td><td>" + item.creation_time + "</td><td>" + item.event.event_title + "</td><td>" + item.event.location + "</td><td>" + item.event.event_date + "</td><td><a href='/FinalProject/Events/OneEvent?event_id=" + item.event.event_id + "'>活動連結</a></td><td>" + item.message + "</td><td>" + item.status + "</td><td><button id='cancelBtn' onClick='cancelRegistration()'><i class='fas fa-trash-alt'></i></button></td></tr>";
+            list += "<tr id='item'><th scope='row'></th><td>" + item.form_id + "</td><td>" + item.creation_time + "</td><td>" + item.event.event_title + "</td><td>" + item.event.location + "</td><td>" + item.event.event_date + "</td><td><a href='/FinalProject/Events/OneEvent?event_id=" + item.event.event_id + "'>活動連結</a></td><td>" + item.message + "</td><td>" + item.status + "</td><td><button id='cancelBtn' onClick='cancelRegistration(" + item.form_id + ")'><i class='fas fa-trash-alt'></i></button></td></tr>";
           })
 
           $("#tbody").html(list);
@@ -162,7 +161,7 @@
 
     });
 
-    function cancelRegistration() {
+    function cancelRegistration(formid) {
       Swal.fire({
         title: '確定取消報名?',
         text: "取消後將無法復原！",
