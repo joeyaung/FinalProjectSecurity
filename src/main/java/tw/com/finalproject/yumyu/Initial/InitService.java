@@ -22,6 +22,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import tw.com.finalproject.naiChuan.Retailer.Retailer;
@@ -81,7 +82,7 @@ public class InitService {
 	@Autowired
 	private EventFormRepository eFormRepository;
 	@Autowired
-	private ApplicationUserRepository applicationuserRepository;
+	private ApplicationUserService applicationUserService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -421,7 +422,7 @@ public class InitService {
 				user.setPhone("0917922" + i);
 			int randomName = new Random().nextInt(name.size());
 			user.setFullName(name.get(randomName));
-			user.setRoles(MEMBER.name());
+			user.setRoles(ApplicationRoles.MEMBER.name());
 			user.setZipCode("105");
 			user.setPassword("asd");
 			user.setCity(city.get(random));
@@ -429,7 +430,7 @@ public class InitService {
 			user.setTown("松山區");
 			users.add(user);
 		}
-		applicationuserRepository.saveAll(users);
+		applicationUserService.saveAll(users);
 	}
 
 	// Defalut EventForm Data
@@ -522,7 +523,7 @@ public class InitService {
 				// set eventform
 
 				EventForm eventForm = new EventForm();
-				ApplicationUser appUser = applicationuserRepository.findById(i).get();
+				ApplicationUser appUser = applicationUserService.findById(i);
 
 				eventForm.setApplicationUser(appUser);
 				eventForm.setCreation_time(randomDateTime);
@@ -543,7 +544,7 @@ public class InitService {
 		ApplicationUser appUser = null;
 		try {
 			event = eventService.findById(1);
-			appUser = applicationuserService.queryByUsername("eeit2905@gmail.com");
+			appUser = applicationUserService.findByUsername("eeit2905@gmail.com");
 
 		} catch (Exception e) {
 			e.printStackTrace();

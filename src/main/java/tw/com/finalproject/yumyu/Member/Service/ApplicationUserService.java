@@ -64,5 +64,13 @@ public class ApplicationUserService implements UserDetailsService {
 			return false;
 		}
 	}
+	
+	public ApplicationUser findById(long id) {
+		Optional<ApplicationUser> result = applicationUserRepository.findById(id);
+		if (result.isEmpty()) {
+			return null;
+		}
+		return result.get();
+	}
 
 }
