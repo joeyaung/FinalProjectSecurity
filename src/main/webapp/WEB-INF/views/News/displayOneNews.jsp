@@ -127,12 +127,9 @@
 
             <div id="container">
               <nav style="margin-top: 100px">
-                <input type="button" id="secondHalfYear" class="2021070120211231"
-                  value="2021年07-12月" style="width: 150px; height: 50px;"> <input type="button"
-                  id="firstHalfYear" class="2021010120210630" value="2021年01-06月"
-                  style="width: 150px; height: 50px;">
-                <input type="button" id="secondHalfYear2020" class="2020070120201231"
-                  value="2020年07-12月" style="width: 150px; height: 50px;">
+                <input type="button" id="secondHalfYear" class="2021070120211231"value="2021年07-12月" style="width: 150px; height: 50px;">
+                <input type="button" id="firstHalfYear" class="2021010120210630" value="2021年01-06月" style="width: 150px; height: 50px;">
+                <input type="button" id="secondHalfYear2020" class="2020070120201231" value="2020年07-12月" style="width: 150px; height: 50px;">
               </nav>
 
               </br> </br>
@@ -207,6 +204,7 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const newsId = urlParams.get('newsId');
+      console.log(queryString)
       $.ajax({
         url: "/FinalProject/findNewsById/" + newsId,
         method: "GET",
@@ -259,18 +257,13 @@
 								var end;
 								start = res.substring(0, 8);
 								end = res.substring(8);
-								$
-									.ajax({
-										url: "/FinalProject/sortByUploadDate/"
-											+ start
-											+ "/"
-											+ end,
+								$.ajax({
+										url: "/FinalProject/sortByUploadDate/" +  start +  "/" + end,
 										method: "GET",
 										dataType: "json",
 										success: function (data) {
 											var list = "";
-											$
-												.each(
+											$.each(
 													data,
 													function (
 														index,
@@ -285,8 +278,7 @@
 															+ item.newsId
 															+ "'>更多資訊<input id='newsId' type='hidden' value=" + item.newsId + "><i class=‘fas fa-angle-right’></i></a></li></br></br>";
 													});
-											$("#user_newslist")
-												.html(list);
+											$("#user_newslist").html(list);
 										},
 										error: function (err) {
 											alert('Cannot find any news uploaded during the period');

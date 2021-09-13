@@ -116,12 +116,9 @@
 
 							<div id="container">
 								<nav style="margin-top: 100px">
-									<input type="button" id="secondHalfYear" class="2021070120211231"
-										value="2021年07-12月" style="width: 150px; height: 50px;"> <input type="button"
-										id="firstHalfYear" class="2021010120210630" value="2021年01-06月"
-										style="width: 150px; height: 50px;">
-									<input type="button" id="secondHalfYear2020" class="2020070120201231"
-										value="2020年07-12月" style="width: 150px; height: 50px;">
+									<input type="button" id="secondHalfYear" class="2021070120211231" value="2021年07-12月" style="width: 150px; height: 50px;">
+									<input type="button" id="firstHalfYear" class="2021010120210630" value="2021年01-06月" style="width: 150px; height: 50px;">
+									<input type="button" id="secondHalfYear2020" class="2020070120201231" value="2020年07-12月" style="width: 150px; height: 50px;">
 								</nav>
 
 								</br> </br>
@@ -142,8 +139,7 @@
 		<!-- 以下不要動 -->
 		<!-- Footer-->
 		<footer class="footer bg-black small text-center text-white-50">
-			<div class="container px-4 px-lg-5">Copyright &copy; 資策會第五組專題報告
-				2021</div>
+			<div class="container px-4 px-lg-5">Copyright &copy; 資策會第五組專題報告2021</div>
 		</footer>
 
 
@@ -153,16 +149,14 @@
 		$(document)
 			.ready(
 				function () {
-					$
-						.ajax({
+					$.ajax({
 							url: "/FinalProject/getAllNews",
 							method: "GET",
 							dataTypte: "json",
 							success: function (data) {
 								var list = "";
 
-								$
-									.each(
+								$.each(
 										data,
 										function (index, item) {
 											list += "<li class='news_li'><img src='data:image/png;base64,"
