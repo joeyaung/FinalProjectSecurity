@@ -12,7 +12,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/template.js"></script>
+    <script src="/FinalProject/js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
@@ -25,15 +25,16 @@
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/index.css" rel="stylesheet" />
+    <link href="/FinalProject/css/index.css" rel="stylesheet" />
     <style>
       .table_booku thead tr th {
         padding: 0rem 0.5rem;
       }
 
       .table_bookf tbody tr td {
-        padding: 0.8rem 0;
-        color: white;
+        /* padding: 0.8rem 0; */
+        padding: 1em;
+        color:black;
         text-align: justify;
       }
 
@@ -50,6 +51,15 @@
         margin: auto;
         text-align: center;
       }
+
+      #container{
+        background-color: #DBD6D6;
+        margin-bottom: 3em;
+      }
+
+    .bg-gray-custom {
+    background: linear-gradient( to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100% );
+}
     </style>
   </head>
 
@@ -89,9 +99,10 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-lg-10 po-re">
 
-            <h2 class="h_bookf" style="color: white;">報名活動</h2>
+            <h2 class="h_bookf">報名活動</h2>
+          </br>
             <!-- 	<form action="ControllerServlet" method="post" id="idfSub"> -->
-
+            <div id='container'>
             <form id="event_form">
               <table class="table_bookf">
                 <tbody>
@@ -168,7 +179,7 @@
           </tr>
 
           <tr>
-            <td><label for="email">Email:</label></td>
+            <td><label for="email">電子信箱:</label></td>
             <td>
               <input class="form-control" type="email" aria-label="default input example" name="email" maxlength="35"
                 id="email" placeholder="請輸入電子信箱" required />
@@ -205,6 +216,8 @@
 
 
       </div>
+
+      </div>
       </div>
       </div>
     </section>
@@ -224,7 +237,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/template.js"></script>
+    <script src="/FinalProject/js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
   <script>
@@ -235,49 +248,51 @@
       const urlParams = new URLSearchParams(queryString);
       const event_id = urlParams.get('event_id');
 
+
       var el = '<input type="hidden" name="event_id" value=' + event_id + '></input>';
       $('#event_form').append(el);
 
-      //Add Event Registration function
+      //撈出會員ID，把會員全部資料自動填到input裏面存到local storage
+      $.ajax({
+        url:"/FinalProject/findUserByUserName",
+        method:"GET",
+        success: function(response){
+          //JSON.parse：把JSON字串轉為物件
+          var userJson = JSON.parse(response);
+          $("#name").val(userJson.fullName);
+          $("#phone").val(userJson.phone);
+          $("#email").val(userJson.username);
+
+          //JSON.stringify：把物件轉為JSON字串
+          var json1 = JSON.stringify(userJson);
+          localStorage.setItem('userInfo', json1);
+         
+        },
+        error: function(err){
+          alert(err);
+        }
+      })
+
+      //送出表單，連結到確認畫面，若有欄位為空alert
       $("#submitid").click(function (e) {
 
-        var formData = new FormData(document.getElementById("event_form"));
+        if($("#name").val() != "" && $("#idnumber").val() != "" && $("#email").val() != "" && $("#phone").val() !=""){
+          var formData = new FormData(document.getElementById("event_form"));
+  
+          var object = {};
+          formData.forEach(function (value, key) {
+            object[key] = value;
+          });
+          var json = JSON.stringify(object);
+          localStorage.setItem('formData', json);
+          window.location.href = "/FinalProject/account/BookEventConfirmation";
 
-        var object = {};
-        formData.forEach(function (value, key) {
-          object[key] = value;
-        });
-        var json = JSON.stringify(object);
+        }else
+        alert('欄位不可為空')
+        return false;
 
-        // console.log(formData)
-        localStorage.setItem('formData', json);
-        window.location.href = "BookEventConfirmation";
 
       });
-
-      //Execute Add Event
-
-      function addevent(formData) {
-        $.ajax({
-          url: "/FinalProject/Events/addEventForm",
-          method: "POST",
-          data: formData,
-          contentType: false, /// NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-          processData: false, // NEEDED, DON'T OMIT THIS
-          "mimeType": "multipart/form-data",
-          success: function (data) {
-            console.log(data);
-          },
-          error: function (err) {
-            console.log(err);
-            alert('Registration failed:' + err);
-          }
-        });
-
-      }
-
-
-
 
       //姓名欄位驗證
       $("#name").blur(function () {
@@ -300,12 +315,11 @@
         if (id == '') {
           $("#idnumber").addClass("form-control is-invalid");
           $("#id_validation").html(warning1);
-
-          console.log('id is blank')
+        
         } else if (checkTwID(id) == false) {
           $("#idnumber").addClass("form-control is-invalid");
           $("#id_validation").html(warning2);
-          // console.log('id wrong format')
+          
         }
         else {
           $("#idnumber").removeClass("form-control is-invalid");
@@ -360,17 +374,15 @@
         .click(
           function () {
 
-            var text1 = "王美麗";
+            var text1 = "王小明";
             text1 = $("#name").val(text1);
-            $('input[name="gender"]')[1].checked = true;
-            var text3 = "B223789765";
+            $('input[name="gender"]')[0].checked = true;
+            var text3 = "Z122338754";
             text3 = $("#idnumber").val(text3);
-            var text4 = "0989876567";
+            var text4 = "0917922177";
             text4 = $("#phone").val(text4);
-
-            var text5 = "Prettywang@yahoo.com";
+            var text5 = "eeit2905@gmail.com";
             text5 = $("#email").val(text5);
-
             var text6 = "我會帶小孩一起去";
             text6 = $("#message").val(text6);
           })

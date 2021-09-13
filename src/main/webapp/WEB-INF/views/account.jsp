@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
     >
       <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="/FinalProject"
-          ><img src="images/audi-logo.png" alt="logo"
+          ><img src="/FinalProject/images/audi-logo.png" alt="logo"
         /></a>
         <button
           class="navbar-toggler navbar-toggler-right"
@@ -76,7 +76,7 @@ pageEncoding="UTF-8"%>
               <a class="nav-link" href="#signup">了解車型</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">活動</a>
+              <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/products">精品商城</a>
@@ -103,6 +103,8 @@ pageEncoding="UTF-8"%>
               <ul>
                 <li><a href="/FinalProject/logout">登出</a></li>
                 <li><a href="/FinalProject/account/setting">設定</a></li>
+                <li><a href="/FinalProject/account/order">訂單管理</a></li>
+                <li><a href="/FinalProject/account/event">活動管理</a></li>
                 <li><a href="/FinalProject/account">首頁</a></li>
               </ul>
             </div>

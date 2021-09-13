@@ -29,9 +29,9 @@
 		<link href="css/index.css" rel="stylesheet" />
 		<style>
 			.news_li {
-				color: white;
+				color: black;
 				list-style-type: none;
-				text-align: left;
+				text-align: center;
 			}
 
 			#title_li {
@@ -40,12 +40,12 @@
 
 			#seemore_btn {
 				background-color: black;
-				color: white;
+				color: black;
 				border: none;
 			}
 
 			.msg_title {
-				color: white;
+				color: black;
 			}
 
 			nav input {
@@ -61,6 +61,11 @@
 				background-color: #fff;
 				border: 2px #003C9D solid;
 			}
+
+			.bg-gray-custom {
+				background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
+			}
+
 		</style>
 	</head>
 
@@ -94,14 +99,14 @@
 		<!-- 以上不要動 -->
 		<!-- 這裡開始加你們的東西 -->
 		<!-- About -->
-		<section class="about-section text-center">
+		<section class="about-section text-center bg-gray-custom pd-2rem">
 			<div class="container px-4 px-lg-5">
 				<div class="row gx-4 gx-lg-5 justify-content-center">
-					<div class="col-lg-8">
-						<h2 class="text-white mb-4">最新消息 Latest News</h2>
+					<div class="col-lg-10 po-re">
+						<h2 class="h_bookf" style="color:black;">最新消息</h2>
 						<p class="text-white-50">
 						<div class="input-group">
-							<div class="input-group rounded">
+							<div class="input-group rounded" style="width: 300px; margin: auto; margin-right: 1px;">
 								<input type="search" class="form-control rounded" placeholder="Search"
 									aria-label="Search" aria-describedby="search-addon" id="search"
 									onsearch="searchNews()" /> <span class="input-group-text border-0"
@@ -131,7 +136,7 @@
 
 					</div>
 				</div>
-				<img class="img-fluid" src="images/audi-etron.png" alt="..." />
+				<!-- <img class="img-fluid" src="images/audi-etron.png" alt="..." /> -->
 		</section>
 
 		<!-- 以下不要動 -->
@@ -200,7 +205,7 @@
 													function (
 														index,
 														item) {
-														list += "<li class='news_li'><img src='data:image/png;base64,"
+														list += "<li class='news_li'><img class='center' src='data:image/png;base64,"
 															+ item.image + "' width='563' height='350' alt='pic cannot be displayed'/></li><li class='news_li' id='title_li'><strong>"
 															+ item.title
 															+ "</strong></li>"
@@ -223,7 +228,6 @@
 
 					//留言板功能未完成
 					msgBoard = function () {
-						// console.log($("#msg_input").val());
 					}
 
 				});
@@ -234,12 +238,12 @@
 				var keywords = $("#search").val()
 				console.log(keywords);
 				$.ajax({
-					url: "/FinalProject/searchNewsByKeywords/"+ keywords,
+					url: "/FinalProject/searchNewsByKeywords/" + keywords,
 					method: "GET",
 					dataType: "json",
 					success: function (data) {
-						var list = ""; 
-					console.log(data)
+						var list = "";
+						console.log(data)
 
 						$.each(
 							data,

@@ -3,40 +3,62 @@
 	<html lang="zh-TW">
 
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<meta name="description" content="" />
-		<meta name="author" content="" />
+		<meta charset="UTF-8">
 		<title>活動</title>
-
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<!-- Bootstrap core JS-->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 		<!-- Core theme JS-->
-		<script src="js/template.js"></script>
+		<script src="../js/template.js"></script>
 		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-		<!-- lightslider JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
 
-		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+		<link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+
+		<!-- Bootstrap 4 message board js-->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+
 		<!-- Font Awesome icons (free version)-->
 		<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-
 		<!-- Google fonts-->
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
 		<link
 			href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 			rel="stylesheet" />
 		<!-- Core theme CSS (includes Bootstrap)-->
-		<link href="css/index.css" rel="stylesheet" />
-		<!-- lightslider css -->
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" />
 
+		<!-- Bootstrap 4 message board css-->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 		<style>
-			@import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
-		</style>
+			.news_li {
+				color: black;
+				list-style-type: none;
+				text-align: left;
+			}
 
+			#title_li {
+				font-size: 20px;
+			}
+
+			#seemore_btn {
+				background-color: black;
+				color: black;
+				border: none;
+			}
+
+			.msg_title {
+				color: black;
+			}
+
+			.bg-gray-custom {
+				background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
+			}
+			
+		</style>
 	</head>
 
 	<body id="page-top">
@@ -70,32 +92,25 @@
 		<!-- 以上不要動 -->
 		<!-- 這裡開始加你們的東西 -->
 		<!-- About -->
-		<section class="about-section text-center">
+		<section class="about-section text-center bg-gray-custom pd-2rem">
 			<div class="container px-4 px-lg-5">
 				<div class="row gx-4 gx-lg-5 justify-content-center">
-					<div class="col-lg-8">
-						<h2 class="text-white mb-4">活動</h2>
+					<div class="col-lg-10 po-re">
+
+						<h2 class="h_bookf">活動</h2>
+
 						<p class="text-white-50">
 						<div id="container">
 
-							<div id="lightSlider">
-								<!-- <li>
-								<h3>First Slide</h3>
-								<p>Lorem ipsum Cupidatat quis pariatur anim.</p>
-							</li>
-							<li>
-								<h3>Second Slide</h3>
-								<p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
-							</li> -->
-							</div>
 
+							<ul id="user_eventlist">
+
+							</ul>
 						</div>
 
 					</div>
-
 				</div>
-			</div>
-			<img class="img-fluid" src="images/audi-etron.png" alt="..." />
+				<!-- <img class="img-fluid" src="../images/audi-etron.png" alt="..." /> -->
 		</section>
 
 		<!-- 以下不要動 -->
@@ -107,71 +122,32 @@
 
 
 	</body>
-	<script type="text/javascript">
+	<script>
+		//display details of the selected news
 		$(document).ready(function () {
-
-			function showdetails(){
-						console.log('Hello');
-					}
-		
-
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const event_id = urlParams.get('event_id');
 			$.ajax({
-				url: "/FinalProject/getAllEvents",
+				url: "/FinalProject/findEventById/" + event_id,
 				method: "GET",
-				dataTypte: "json",
+				dataType: "json",
 				success: function (data) {
 					var list = "";
-
-					$.each(data, function (index, item) {
-
-						list += "<div class='event_div' style='position: relative; width: 563px; height: 350px;'><a href='Events/OneEvent?event_id=" + item.event_id + "'><img class='event_img' src='data:image/png;base64,"
-							+ item.event_img + "' width='563' height='350' alt='pic cannot be displayed' style='border-radius: 10%'';;/><span style='position:absolute; z-index:2; left:150px; top:10px; color:white; font-family: ‘cwTeXFangSong’, serif; font-size: 25px;'>" + item.event_title + "</span></a></div>";
-					});
-
-				
-					$("#lightSlider").html(list);
-
-					
-
-					$("#lightSlider").lightSlider({
-						slideWidth: 320, // 物件寬度
-						speed: 400, // 切換速度
-						pause: 3000, // 當等待時間超過此時，則自動切換
-						auto: true, // 自動切換
-						item: 1, // 顯示數量
-						responsive: [
-							{
-								breakpoint: 960, // 當螢幕大於此寬度時，則啟用此設定值
-								settings: {
-									item: 6, // 顯示數量
-									slideMove: 1 // 一次切換數量
-								}
-							},
-							{
-								breakpoint: 640, // 當螢幕大於此寬度時，則啟用此設定值
-								settings: {
-									item: 1, // 顯示張數
-									slideMove: 1 // 一次切換數量
-								}
-							}
-						]
-
-						
-
-					});
-
-
-
+					list += "<li class='news_li'><h2>" + data.event_uploaddate + "</h2></li><li class='news_li'><h1>"
+						+ data.event_title + "</h1></li></br><li class='news_li'><img src='data:image/png;base64,"
+						+ data.event_img + "' width='563' height='350' alt='pic cannot be displayed'/></li></br><li class='news_li'>"
+						+ data.event_subtitle + "</li></br><li class='news_li'>"
+						+ data.event_content + "</br><h5><i class='fas fa-calendar-alt'></i>  活動日期：" + data.event_date + "</h5><h5><i class='fas fa-fire-alt'></i>  報名期間：" + data.reserve_start_date + "-" + data.reserve_end_date + "</h5><h5><i class='fas fa-location-arrow'></i>  活動地點: " + data.location + "</h5></li></br></br><a class='link' href='/FinalProject/account/BookEvent?event_id=" + event_id + "'><img src='/FinalProject/images/eventIcon.jpg'/></a></br></br></br></br>";
+					$("#user_eventlist").html(list);
 				},
 				error: function (err) {
-					alert('fetch events failed :' + err);
+					alert(err)
 				}
 			});
 
-			
-
-
 		});
+
 	</script>
 
 	</html>
