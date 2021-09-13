@@ -379,9 +379,9 @@
             $('input[name="gender"]')[0].checked = true;
             var text3 = "Z122338754";
             text3 = $("#idnumber").val(text3);
-            var text4 = "0917922177";
+            var text4 = "0954925147";
             text4 = $("#phone").val(text4);
-            var text5 = "eeit2905@gmail.com";
+            var text5 = "member@demo.com";
             text5 = $("#email").val(text5);
             var text6 = "我會帶小孩一起去";
             text6 = $("#message").val(text6);
