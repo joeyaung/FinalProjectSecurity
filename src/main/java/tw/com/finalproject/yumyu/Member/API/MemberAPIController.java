@@ -1,8 +1,12 @@
 package tw.com.finalproject.yumyu.Member.API;
 
 import java.security.Principal;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
 
 import javax.annotation.security.RolesAllowed;
@@ -18,9 +22,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import tw.com.finalproject.Mail.MailService;
 import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
+import tw.com.finalproject.yumyu.Member.PasswordResetToken;
 import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
+import tw.com.finalproject.yumyu.Member.Service.PasswordResetTokenService;
 import tw.com.finalproject.yumyu.Utils.Utils;
 
 @RestController
@@ -29,6 +36,12 @@ public class MemberAPIController {
 
 	@Autowired
 	private ApplicationUserService applicationUserService;
+	
+	@Autowired
+	private PasswordResetTokenService passwordResetTokenService;
+	
+	@Autowired
+	private MailService mailService;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -52,7 +65,7 @@ public class MemberAPIController {
 		ApplicationUser curUser = applicationUserService.findByUsername(username);
 		System.out.println(curUser);
 		if (curUser != null) {
-			
+
 			return "yes";
 		} else {
 			return "no";
@@ -161,6 +174,67 @@ public class MemberAPIController {
 			return "ok";
 		}
 		return "fail";
+	}
+
+	@PostMapping(path = "reset_password", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> generateResetPassword(@RequestBody Map<String, String> data) {
+		final long ONE_MINUTE_IN_MILLIS = 60000;
+
+		Map<String, Object> resultMap = new HashMap<>();
+
+		String username = data.get("username");
+		ApplicationUser member = applicationUserService.findByUsername(username);
+
+		if (member == null) {
+			resultMap.put("status", "MEMBER_NOT_FOUND");
+			return resultMap;
+		}
+		
+		PasswordResetToken findResult = passwordResetTokenService.findByMember(member);
+		String token = UUID.randomUUID().toString();
+		Calendar dateCalendar = Calendar.getInstance();
+		long t = dateCalendar.getTimeInMillis();
+		Date expireDate = new Date(t + (10 * ONE_MINUTE_IN_MILLIS));
+		PasswordResetToken passwordResetToken = new PasswordResetToken();
+		if (findResult == null) {
+			passwordResetToken = PasswordResetToken.builder().member(member).token(token).expiryDate(expireDate).build();
+		} else {
+			passwordResetToken = findResult;
+			passwordResetToken.setToken(token);
+			passwordResetToken.setExpiryDate(expireDate);
+		}
+		
+		boolean result = passwordResetTokenService.save(passwordResetToken);
+		
+		if (result) {
+//			TODO
+			String receipt = member.getUsername();
+			String memberName = member.getFullName();
+			mailService.sendResetPasswordEmail(receipt, token, memberName);
+			resultMap.put("status", "ok");
+			return resultMap;
+		}
+		
+		resultMap.put("status", "fail");
+		return resultMap;
+	}
+	
+	@PostMapping(path = "update_new_password", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> updateNewPasswordForMember(@RequestBody Map<String, String> data){
+		Map<String, Object> resultMap = new HashMap<>();
+		String newPassword = data.get("password");
+		String token = data.get("token");
+		
+		PasswordResetToken findByToken = passwordResetTokenService.findByToken(token);
+		ApplicationUser member = findByToken.getMember();
+		member.setPassword(passwordEncoder.encode(newPassword));
+		boolean result = applicationUserService.save(member);
+		if (result) {
+			resultMap.put("status", "ok");
+			return resultMap;
+		}
+		resultMap.put("status", "fail");
+		return resultMap;
 	}
 
 }

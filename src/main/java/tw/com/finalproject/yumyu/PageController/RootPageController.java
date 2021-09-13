@@ -17,8 +17,13 @@ public class RootPageController {
 //	Login Page
 	@GetMapping("/login")
 	public String logingViewController(HttpServletRequest request) {
-		
 		return "login";
+	}
+	
+//	Forget Password Page
+	@GetMapping("/forget_password")
+	public String forgetPasswordPageController() {
+		return "account/forgetPassword";
 	}
 	
 //	Register Page
@@ -50,6 +55,7 @@ public class RootPageController {
 	public String shoppingCartPageController() {
 		return "Product/ShoppingCartPage";
 	}
+	
 //	
 ////	TODO
 ////	News Page

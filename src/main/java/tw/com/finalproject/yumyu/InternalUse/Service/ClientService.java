@@ -35,6 +35,16 @@ public class ClientService {
 			return false;
 		}
 	}
+	
+	public boolean saveAll(List<Client> clients) {
+		try {
+			clientRepository.saveAll(clients);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 
 	public List<Client> findByEmployee(Employee employee) {
@@ -49,5 +59,20 @@ public class ClientService {
 			return null;
 		}
 		return result.get();
+	}
+	
+	public List<Client> findAll(){
+		List<Client> result = clientRepository.findAll();
+		return result;
+	}
+	
+	public boolean update(Client client) {
+		try {
+			clientRepository.saveAndFlush(client);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

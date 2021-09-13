@@ -46,4 +46,14 @@ public class ProductImageService {
 		}
 		return result.get();
 	}
+	
+	public boolean update(ProductImage productImage) {
+		try {
+			productImageRepository.saveAndFlush(productImage);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

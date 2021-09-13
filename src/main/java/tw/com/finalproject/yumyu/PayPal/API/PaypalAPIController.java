@@ -29,6 +29,8 @@ import tw.com.finalproject.yumyu.MemberOrder.MemberOrder;
 import tw.com.finalproject.yumyu.MemberOrder.OrderDetail;
 import tw.com.finalproject.yumyu.MemberOrder.Service.MemberOrderService;
 import tw.com.finalproject.yumyu.PayPal.Service.PaypalService;
+import tw.com.finalproject.yumyu.Products.Product;
+import tw.com.finalproject.yumyu.Products.Service.ProductService;
 
 @RestController
 public class PaypalAPIController {
@@ -41,6 +43,8 @@ public class PaypalAPIController {
 	private ApplicationUserService applicationUserService;
 	@Autowired
 	private MemberOrderService memberOrderService;
+	@Autowired
+	private ProductService productService;
 
 	@PostMapping(path = "api/v1/paypal/create_order", produces = "application/json;charset=UTF-8")
 	public Map<String, String> createOrderWithPaypal(@RequestBody Map<String, String> data, Principal principal) {
@@ -70,9 +74,13 @@ public class PaypalAPIController {
 
 		List<CartItem> cartItems = cartService.findByMember(member);
 		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+		List<Product> products = new ArrayList<>();
 		for (CartItem cartItem : cartItems) {
 			OrderDetail newOrderDetail = OrderDetail.builder().order(newOrder).product(cartItem.getProduct())
 					.quantity(cartItem.getQuantityInCart()).pricePerUnit(cartItem.getProduct().getCurPrice()).build();
+			Product product = newOrderDetail.getProduct();
+			product.setQuantityInStock(product.getQuantityInStock() - newOrderDetail.getQuantity());
+			products.add(product);
 			orderDetails.add(newOrderDetail);
 		}
 		int totalAmount = 0;
@@ -85,7 +93,8 @@ public class PaypalAPIController {
 		newOrder.setTotalAmount(totalAmount);
 		newOrder.setTotalQuantity(totalQuantity);
 		newOrder.setStage(PREPARED.value());
-
+		
+		productService.saveAll(products);
 		memberOrderService.save(newOrder);
 
 		cartService.deleteAllCartItemByMember(member);

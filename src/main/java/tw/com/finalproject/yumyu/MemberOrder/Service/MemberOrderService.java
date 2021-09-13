@@ -1,6 +1,7 @@
 package tw.com.finalproject.yumyu.MemberOrder.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -46,5 +47,14 @@ public class MemberOrderService {
 	public List<MemberOrder> findAllOrders(){
 		List<MemberOrder> result = memberOrderRepository.findAll();
 		return result;
+	}
+	
+	public MemberOrder findById(long id) {
+		Optional<MemberOrder> result = memberOrderRepository.findById(id);
+		if (result.isEmpty()) {
+			System.out.println("null");
+			return null;
+		}
+		return result.get();
 	}
 }

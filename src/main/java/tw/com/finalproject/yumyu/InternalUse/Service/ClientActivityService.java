@@ -30,4 +30,14 @@ public class ClientActivityService {
 		}
 	}
 	
+	public boolean saveAll(List<ClientActivity> activities) {
+		try {
+			clientActivityRepository.saveAll(activities);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 }

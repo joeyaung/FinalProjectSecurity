@@ -78,4 +78,14 @@ public class EmployeeService implements UserDetailsService {
 		return result;
 	}
 
+	public boolean saveAll(List<Employee> employees) {
+		try {
+			employeeRepository.saveAll(employees);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

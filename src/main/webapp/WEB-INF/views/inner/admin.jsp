@@ -1,47 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
 
-    <title>Audi - 內部</title>
+<title>Audi - 內部</title>
 
-    <!-- Custom fonts for this template-->
-    <link
-      href="/FinalProject/vendor/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
+<!-- Custom fonts for this template-->
+<link href="/FinalProject/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet" />
 
-    <!-- Vue.js 2.6.7 -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
-      integrity="sha512-y/+zR8ZRJXvRWVRuhPbjSpGNIv2yG9hePHeWYEb5RPcciLwlyG0ZGd6JsiT9+sFtTON9FrDs+07ZzepwatYX1Q=="
-      crossorigin="anonymous"
-    ></script>
+<!-- Vue.js 2.6.7 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
+	integrity="sha512-y/+zR8ZRJXvRWVRuhPbjSpGNIv2yG9hePHeWYEb5RPcciLwlyG0ZGd6JsiT9+sFtTON9FrDs+07ZzepwatYX1Q=="
+	crossorigin="anonymous"></script>
 
-    <!-- Vue-chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
-    <!-- Custom styles for this template-->
-    <link href="/FinalProject/css/sb-admin-2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/FinalProject/css/adminDashboard.css" />
-  </head>
+<!-- Vue-chart.js -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+<!-- Custom styles for this template-->
+<link href="/FinalProject/css/sb-admin-2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/FinalProject/css/adminDashboard.css" />
+</head>
 
-  <body id="page-top">
-   <!-- Page Wrapper -->
+<body id="page-top">
+	<!-- Page Wrapper -->
 	<div id="wrapper">
 		<!-- Sidebar -->
 		<ul
@@ -88,8 +81,8 @@
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseUtilities"
-				aria-expanded="true" aria-controls="collapseUtilities">
-					<i class="fas fa-id-card-alt"></i> <span>Employee</span>
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-id-card-alt"></i> <span>Employee</span>
 			</a>
 				<div id="collapseUtilities" class="collapse"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -120,10 +113,16 @@
 			<li class="nav-item"><a class="nav-link"
 				href="/FinalProject/inner/admin/AllNewsPage"> <i
 					class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
-			
+
 			<!-- Nav Item - 編輯商品 -->
 			<li class="nav-item"><a class="nav-link"
-				href="/FinalProject/inner/admin/products"> <i class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
+				href="/FinalProject/inner/admin/products"> <i
+					class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
+
+			<!-- Nav Item - 訂單管理 -->
+			<li class="nav-item"><a class="nav-link"
+				href="/FinalProject/inner/admin/orders"> <i
+					class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block" />
@@ -184,8 +183,7 @@
 						<li class="nav-item dropdown no-arrow d-sm-none"><a
 							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i
-								class="fas fa-search fa-fw"></i>
+							aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
 						</a> <!-- Dropdown - Messages -->
 							<div
 								class="
@@ -214,9 +212,8 @@
 						<li class="nav-item dropdown no-arrow mx-1"><a
 							class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i
-								class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts --> <span
-								class="badge badge-danger badge-counter">3+</span>
+							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
+								<span class="badge badge-danger badge-counter">3+</span>
 						</a> <!-- Dropdown - Alerts -->
 							<div
 								class="
@@ -234,8 +231,8 @@
 									</div>
 									<div>
 										<div class="small text-gray-500">December 12, 2019</div>
-										<span class="font-weight-bold">A
-											new monthly report is ready to download!</span>
+										<span class="font-weight-bold">A new monthly report is
+											ready to download!</span>
 									</div>
 								</a> <a class="dropdown-item d-flex align-items-center" href="#">
 									<div class="mr-3">
@@ -299,457 +296,373 @@
 					</ul>
 				</nav>
 				<!-- End of Topbar -->
-          <!-- Begin Page Content -->
-          <div class="container-fluid" id="app">
-            <!-- Page Heading -->
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-0 text-gray-800">Admin - Dashboard</h1>
-              <a
-                href="#"
-                class="
+				<!-- Begin Page Content -->
+				<div class="container-fluid" id="app">
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Admin - Dashboard</h1>
+						<a href="#"
+							class="
                   d-none d-sm-inline-block
                   btn btn-sm btn-primary
                   shadow-sm
-                "
-                ><i class="fas fa-download fa-sm text-white-50"></i> 下載報表</a
-              >
-            </div>
+                "><i
+							class="fas fa-download fa-sm text-white-50"></i> 下載報表</a>
+					</div>
 
-            <!-- Content Row -->
-            <div class="row">
-              <!-- 員工數量 Card-->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-secondary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="
+					<!-- Content Row -->
+					<div class="row">
+						<!-- 員工數量 Card-->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-secondary shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="
                             text-xs
                             font-weight-bold
                             text-secondary text-uppercase
                             mb-1
-                          "
-                        >
-                          員工數量 (總)
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          {{ topCard.totalEmployee }}
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-id-card-alt fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                          ">
+												員工數量 (總)</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{
+												topCard.totalEmployee }}</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-id-card-alt fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
-              <!-- 顧客數量 (總) Card -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="
+						<!-- 顧客數量 (總) Card -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-success shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="
                             text-xs
                             font-weight-bold
                             text-success text-uppercase
                             mb-1
-                          "
-                        >
-                          顧客數量 (總)
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          {{ topCard.totalClients }}
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-user-circle fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                          ">
+												顧客數量 (總)</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{
+												topCard.totalClients }}</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-user-circle fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
-              <!-- 銷售業績 (商品) Card -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="
+						<!-- 銷售業績 (商品) Card -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-primary shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="
                             text-xs
                             font-weight-bold
                             text-primary text-uppercase
                             mb-1
-                          "
-                        >
-                          銷售業績 (商城商品)
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          {{ totalProfitsFormated }}
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                          ">
+												銷售業績 (商城商品)</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{
+												totalProfitsFormated }}</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
-              <!-- 有效顧客數 Card -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="
+						<!-- 有效顧客數 Card -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-warning shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="
                             text-xs
                             font-weight-bold
                             text-warning text-uppercase
                             mb-1
-                          "
-                        >
-                          有效顧客數
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          {{ topCard.efficientClient }}
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-coins fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                          ">
+												有效顧客數</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{
+												topCard.efficientClient }}</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-coins fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-            <!-- Content Row -->
+					<!-- Content Row -->
 
-            <div class="row">
-              <!-- Area Chart -->
-              <div class="col-xl-8 col-lg-7">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div
-                    class="
+					<div class="row">
+						<!-- Area Chart -->
+						<div class="col-xl-8 col-lg-7">
+							<div class="card shadow mb-4">
+								<!-- Card Header - Dropdown -->
+								<div
+									class="
                       card-header
                       py-3
                       d-flex
                       flex-row
                       align-items-center
                       justify-content-between
-                    "
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      銷售業績(商城)
-                    </h6>
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <div class="chart-area" id="totalProfitsChartContainer">
-                      <totalProfitChart
-                        :dataFromRoot="totalProfitsChartRowData.data"
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    ">
+									<h6 class="m-0 font-weight-bold text-primary">銷售業績(商城)</h6>
+								</div>
+								<!-- Card Body -->
+								<div class="card-body">
+									<div class="chart-area" id="totalProfitsChartContainer">
+										<totalProfitChart
+											:dataFromRoot="totalProfitsChartRowData.data">
+									</div>
+								</div>
+							</div>
+						</div>
 
-              <!-- Pie Chart -->
-              <div class="col-xl-4 col-lg-5">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div
-                    class="
+						<!-- Pie Chart -->
+						<div class="col-xl-4 col-lg-5">
+							<div class="card shadow mb-4">
+								<!-- Card Header - Dropdown -->
+								<div
+									class="
                       card-header
                       py-3
                       d-flex
                       flex-row
                       align-items-center
                       justify-content-between
-                    "
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      顧客階段分布
-                    </h6>
-                    
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                      <clientStageChart
-                        :dataFromRoot="clientStageChartRawData.data"
-                      >
-                    </div>
-                    <div class="mt-4 text-center small">
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-new"></i> New
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-ate"></i> ATE
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-engaged"></i> Engaged
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-test-drive"></i> Test drive
-                      </span>
-                      <br>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-follow-up"></i> Follow up
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-long-term"></i> Long term
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-ordered"></i> Ordered
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-closed-lost"></i> Cloesd lost
-                      </span>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    ">
+									<h6 class="m-0 font-weight-bold text-primary">顧客階段分布</h6>
 
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Content Column -->
-              <div class="col-12">
-                <!-- 員工銷售排行 -->
-                <!-- Bar Chart -->
-                <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">車輛銷售</h6>
-                  </div>
-                  <div class="card-body">
-                    <div class="chart-bar">
-                      <carsalechart :dataFromRoot="carSalesChartRawData.data">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+								</div>
+								<!-- Card Body -->
+								<div class="card-body">
+									<div class="chart-pie pt-4 pb-2">
+										<clientStageChart :dataFromRoot="clientStageChartRawData.data">
+									</div>
+									<div class="mt-4 text-center small">
+										<span class="mr-2"> <i class="fas fa-circle text-new"></i>
+											New
+										</span> <span class="mr-2"> <i class="fas fa-circle text-ate"></i>
+											ATE
+										</span> <span class="mr-2"> <i
+											class="fas fa-circle text-engaged"></i> Engaged
+										</span> <span class="mr-2"> <i
+											class="fas fa-circle text-test-drive"></i> Test drive
+										</span> <br> <span class="mr-2"> <i
+											class="fas fa-circle text-follow-up"></i> Follow up
+										</span> <span class="mr-2"> <i
+											class="fas fa-circle text-long-term"></i> Long term
+										</span> <span class="mr-2"> <i
+											class="fas fa-circle text-ordered"></i> Ordered
+										</span> <span class="mr-2"> <i
+											class="fas fa-circle text-closed-lost"></i> Cloesd lost
+										</span>
 
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Content Column -->
-              <div class="col-lg-6 mb-4">
-                <!-- Project Card Example -->
-                <div class="card shadow mb-4">
-                  <div
-                    class="
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Content Row -->
+					<div class="row">
+						<!-- Content Column -->
+						<div class="col-12">
+							<!-- 員工銷售排行 -->
+							<!-- Bar Chart -->
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">車輛銷售</h6>
+								</div>
+								<div class="card-body">
+									<div class="chart-bar">
+										<carsalechart :dataFromRoot="carSalesChartRawData.data">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Content Row -->
+					<div class="row">
+						<!-- Content Column -->
+						<div class="col-lg-6 mb-4">
+							<!-- Project Card Example -->
+							<div class="card shadow mb-4">
+								<div
+									class="
                       card-header
                       py-3
                       d-flex
                       flex-row
                       align-items-center
                       justify-content-between
-                    "
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      業務業績目標 ( 30 /月)
-                    </h6>
-                    <div class="dropdown no-arrow">
-                      <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i
-                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
-                        ></i>
-                      </a>
-                      <div
-                        class="
+                    ">
+									<h6 class="m-0 font-weight-bold text-primary">業務業績目標 ( 30
+										/月)</h6>
+									<div class="dropdown no-arrow">
+										<a class="dropdown-toggle" href="#" role="button"
+											id="dropdownMenuLink" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">
+											<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+										</a>
+										<div
+											class="
                           dropdown-menu dropdown-menu-right
                           shadow
                           animated--fade-in
                         "
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div class="dropdown-header">分類:</div>
-                        <a class="dropdown-item" href="#">Top 5</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">TAIPEI</a>
-                        <a class="dropdown-item" href="#">TAOYUAN</a>
-                        <a class="dropdown-item" href="#">TAICHUNG</a>
-                        <a class="dropdown-item" href="#">TAINAN</a>
-                        <a class="dropdown-item" href="#">KAOHSIUNG</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <!-- 業務: 王曉明 -->
-                    <h4 class="small font-weight-bold">
-                      王曉明 <span class="float-right">20%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-danger"
-                        role="progressbar"
-                        style="width: 20%"
-                        aria-valuenow="20"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <!-- 業務: 黃大千 -->
-                    <h4 class="small font-weight-bold">
-                      黃大千 <span class="float-right">40%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-warning"
-                        role="progressbar"
-                        style="width: 40%"
-                        aria-valuenow="40"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <!-- 業務: 張學友 -->
-                    <h4 class="small font-weight-bold">
-                      張學友 <span class="float-right">60%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-info"
-                        role="progressbar"
-                        style="width: 60%"
-                        aria-valuenow="60"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <!-- 業務: 孫中山 -->
-                    <h4 class="small font-weight-bold">
-                      孫中山 <span class="float-right">80%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-primary"
-                        role="progressbar"
-                        style="width: 80%"
-                        aria-valuenow="80"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <!-- 業務: 劉德華 -->
-                    <h4 class="small font-weight-bold">
-                      劉德華 <span class="float-right">100%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-success"
-                        role="progressbar"
-                        style="width: 100%"
-                        aria-valuenow="100"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /.container-fluid -->
-        </div>
-        <!-- End of Main Content -->
+											aria-labelledby="dropdownMenuLink">
+											<div class="dropdown-header">分類:</div>
+											<a class="dropdown-item" href="#">Top 5</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="#">TAIPEI</a> <a
+												class="dropdown-item" href="#">TAOYUAN</a> <a
+												class="dropdown-item" href="#">TAICHUNG</a> <a
+												class="dropdown-item" href="#">TAINAN</a> <a
+												class="dropdown-item" href="#">KAOHSIUNG</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<!-- 業務: 王曉明 -->
+									<h4 class="small font-weight-bold">
+										王曉明 <span class="float-right">20%</span>
+									</h4>
+									<div class="progress mb-4">
+										<div class="progress-bar bg-danger" role="progressbar"
+											style="width: 20%" aria-valuenow="20" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									<!-- 業務: 黃大千 -->
+									<h4 class="small font-weight-bold">
+										黃大千 <span class="float-right">40%</span>
+									</h4>
+									<div class="progress mb-4">
+										<div class="progress-bar bg-warning" role="progressbar"
+											style="width: 40%" aria-valuenow="40" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									<!-- 業務: 張學友 -->
+									<h4 class="small font-weight-bold">
+										張學友 <span class="float-right">60%</span>
+									</h4>
+									<div class="progress mb-4">
+										<div class="progress-bar bg-info" role="progressbar"
+											style="width: 60%" aria-valuenow="60" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									<!-- 業務: 孫中山 -->
+									<h4 class="small font-weight-bold">
+										孫中山 <span class="float-right">80%</span>
+									</h4>
+									<div class="progress mb-4">
+										<div class="progress-bar bg-primary" role="progressbar"
+											style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									<!-- 業務: 劉德華 -->
+									<h4 class="small font-weight-bold">
+										劉德華 <span class="float-right">100%</span>
+									</h4>
+									<div class="progress mb-4">
+										<div class="progress-bar bg-success" role="progressbar"
+											style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- End of Main Content -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; 資策會第五組專題報告 2021</span>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-      </div>
-      <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; 資策會第五組專題報告 2021</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+		</div>
+		<!-- End of Content Wrapper -->
+	</div>
+	<!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
 
-    <!-- Logout Modal-->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button
-              class="close"
-              type="button"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Select "Logout" below if you are ready to end your current session.
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-secondary"
-              type="button"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <a class="btn btn-primary" href="./logout">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="./logout">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
-    <script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
+	<script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="/FinalProject/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="/FinalProject/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="/FinalProject/js/sb-admin-2.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="/FinalProject/js/sb-admin-2.js"></script>
 
-    <!-- Page level custom scripts -->
-    <!-- Page level plugins -->
-    <script src="/FinalProject/vendor/chart.js/Chart.min.js"></script>
+	<!-- Page level custom scripts -->
+	<!-- Page level plugins -->
+	<script src="/FinalProject/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <!-- <script src="./js/chart-area-demo.js"></script> -->
-    
-    <script src="/FinalProject/js/inner/chart-area-demo.js"></script>
-    <script src="/FinalProject/js/inner/adminDashboard.js"></script>
-  </body>
+	<!-- Page level custom scripts -->
+	<!-- <script src="./js/chart-area-demo.js"></script> -->
+
+	<script src="/FinalProject/js/inner/chart-area-demo.js"></script>
+	<script src="/FinalProject/js/inner/adminDashboard.js"></script>
+</body>
 </html>

@@ -19,8 +19,8 @@ public class PaypalService {
 	public Order getOrder(String orderID) throws IOException {
 		OrdersGetRequest request = new OrdersGetRequest(orderID);
 		HttpResponse<Order> response = Credentials.client.execute(request);
-		System.out.println("Full response body:");
-		System.out.println(new JSONObject(new Json().serialize(response.result())).toString(4));
+//		System.out.println("Full response body:");
+//		System.out.println(new JSONObject(new Json().serialize(response.result())).toString(4));
 		return response.result();
 	}
 

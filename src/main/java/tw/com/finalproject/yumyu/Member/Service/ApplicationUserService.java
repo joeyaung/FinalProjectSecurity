@@ -54,5 +54,15 @@ public class ApplicationUserService implements UserDetailsService {
 			return false;
 		}
 	}
+	
+	public boolean saveAll(List<ApplicationUser> members) {
+		try {
+			applicationUserRepository.saveAll(members);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }
