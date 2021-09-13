@@ -531,7 +531,7 @@
 						"jsonString": JSON.stringify(idString)
 					},
 					success: function (response) {
-						alert('email has been sent!');
+						alert('Email已成功寄出!');
 						table.ajax.reload();
 						$("#approve_id").prop("checked", true);
 					},
