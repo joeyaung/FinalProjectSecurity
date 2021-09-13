@@ -35,7 +35,7 @@ public class EmployeeCustomAuthenticationProvider implements AuthenticationProvi
 			String encodedPassword = employee.getPassword();
 			if (passwordEncoder.matches(rawPassword, encodedPassword)) {
 				List<GrantedAuthority> authorityList = new ArrayList<>();
-				GrantedAuthority authority = new SimpleGrantedAuthority(employee.getRoles().toUpperCase());
+				GrantedAuthority authority = new SimpleGrantedAuthority(employee.getRoles());
 				authorityList.add(authority);
 
 				return new EmployeeUsernamePasswordAuthenticationToken(username, rawPassword, authorityList);
