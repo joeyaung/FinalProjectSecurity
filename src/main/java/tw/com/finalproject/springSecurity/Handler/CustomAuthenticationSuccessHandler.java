@@ -22,16 +22,17 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		if (session != null) {
 			session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
 		}
-		if (request.getParameter("userType").equals("member")) {
-			response.sendRedirect(request.getContextPath() + "/account");
-			return;
-		} else if (request.getParameter("userType").equals("employee")) {
-			response.sendRedirect(request.getContextPath() + "/inner");
-			return;
-		}
-		
-		response.sendRedirect(request.getContextPath() + "/");
-		return;
+		response.sendRedirect((String) session.getAttribute("from"));
+//		if (request.getParameter("userType").equals("member")) {
+//			response.sendRedirect(request.getContextPath() + "/account");
+//			return;
+//		} else if (request.getParameter("userType").equals("employee")) {
+//			response.sendRedirect(request.getContextPath() + "/inner");
+//			return;
+//		}
+//		
+//		response.sendRedirect(request.getContextPath() + "/");
+//		return;
 	}
 
 }

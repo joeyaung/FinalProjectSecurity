@@ -61,7 +61,8 @@
               <a class="nav-link" href="#signup">了解車型</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">活動</a>
+              <li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a>
+              </li>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/products">精品商城</a>

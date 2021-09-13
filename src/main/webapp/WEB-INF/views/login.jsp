@@ -34,7 +34,7 @@
                 <input id="input-submit" type="submit" value="送出"><br>
             </div>
             <div class="href-forget-passwd">
-                <a href="/FinalProject/forget">忘記密碼?</a>
+                <a href="/FinalProject/forget_password">忘記密碼?</a>
             </div>
         </form>
         <hr class="line-hr">

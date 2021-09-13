@@ -33,6 +33,16 @@ public class ClientService {
 			return false;
 		}
 	}
+	
+	public boolean saveAll(List<Client> clients) {
+		try {
+			clientRepository.saveAll(clients);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	public List<Client> findByEmployee(Employee employee) {
 		List<Client> result = clientRepository.findByInchargedEmployee(employee);
@@ -47,6 +57,7 @@ public class ClientService {
 		return result.get();
 	}
 
+
 	public Client findByEmail(String email) {
 		Optional<Client> findByEmail = clientRepository.findByEmail(email);
 		if (findByEmail.isEmpty()) {
@@ -55,8 +66,13 @@ public class ClientService {
 		return findByEmail.get();
 	}
 	
+	public List<Client> findAll(){
+		List<Client> result = clientRepository.findAll();
+		return result;
+	}
+	
 	public boolean update(Client client) {
-		
+
 		try {
 			clientRepository.saveAndFlush(client);
 			return true;

@@ -1,0 +1,134 @@
+
+
+.wd-100 {
+  width: 100%;
+}
+
+.mg-1 {
+  margin: 1rem;
+}
+
+.ps-modal {
+  position: fixed;
+  width: 700px;
+  height: 800px;
+  top: 50%;
+  left: 50%;
+  margin-top: -400px; /* Negative half of height. */
+  margin-left: -250px; /* Negative half of width. */
+}
+
+.product-input-form {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: rgba(164, 176, 190, 0.5);
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-indent: 1rem;
+}
+
+.sb-btn {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.newProductModal {
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tg-btn {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.tg-btn:hover {
+  cursor: pointer;
+}
+
+.al-center {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.mg-2 {
+  margin-bottom: 1rem;
+}
+
+.mg-l-1 {
+  margin-left: 1rem;
+}
+
+.tag {
+  background-color: rgba(112, 161, 255, 1);
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 1.5rem;
+  color: white;
+  border-radius: 10px;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.remove-tag {
+  margin-left: 0.3rem;
+}
+
+.remove-tag:hover {
+  cursor: pointer;
+}
+
+.image-left-icon {
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.image-right-btn {
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  opacity: 0.3;
+  background: black;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.current {
+  border-radius: 50%;
+}
+
+#productsTable_filter input {
+  border-radius: 5px;
+  height: 1.5rem;
+  outline: none;
+}
+
+#productsTable_wrapper select {
+  height: 2rem;
+  border-radius: 5px;
+}

@@ -1,0 +1,61 @@
+.product-image {
+  width: 450px;
+  height: 300px;
+  object-fit: cover;
+}
+.mg-1 {
+  margin: 1rem;
+}
+
+.right-col {
+  border-left: 1px solid gray;
+}
+
+.tag {
+  background-color: rgba(112, 161, 255, 1);
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 1.5rem;
+  color: white;
+  border-radius: 10px;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.remove-tag {
+  margin-left: 0.3rem;
+}
+
+.remove-tag:hover {
+  cursor: pointer;
+}
+
+.add-tag:hover {
+  cursor: pointer;
+}
+
+.mg-bottom-1 {
+  margin-bottom: 1rem;
+}
+
+.edit-input {
+  border: none;
+  outline: none;
+}
+
+.tag-input {
+  outline: none;
+}
+
+.onSale-icon {
+  font-size: 2rem;
+}
+
+.onSale-icon:hover {
+  cursor: pointer;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}

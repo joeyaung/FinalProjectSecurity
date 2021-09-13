@@ -1,0 +1,122 @@
+.bg-lightgray {
+  background-color: #dfe4ea;
+}
+
+.text-darkgray {
+  color: #2f3542;
+}
+
+.header-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  position: relative;
+}
+
+.ps-absolute {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cart-image-small {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.ps-relative {
+  position: relative;
+}
+
+.jtf-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tx-13rem {
+  font-size: 1rem;
+}
+
+.tx-18rem {
+  font-size: 1.4rem;
+}
+
+.mr-2 {
+  margin-right: 1rem;
+}
+
+.ml-2 {
+  margin-left: 1rem;
+}
+
+.hov-pointer:hover {
+  cursor: pointer;
+}
+
+.mx-6 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.fl-left {
+  float: left;
+}
+
+.dis-flex {
+  display: flex;
+}
+
+.float-right {
+  float: right;
+}
+.wd-250 {
+  width: 300px;
+}
+
+.mg-4 {
+  margin: 1rem 0 1rem 3rem;
+}
+
+.checkout-container {
+  padding-left: 1.5rem;
+  border-left: 1px solid gray;
+}
+
+.btn-wd-100 {
+  width: 100%;
+}
+
+.bgc-primary {
+  background-color: #546de5;
+}
+
+.bgc-paypal {
+  background-color: #00457c;
+}
+
+.hov-float {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hov-float:hover,
+.hov-float:active,
+.hov-float:focus {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
