@@ -1,0 +1,115 @@
+
+
+/*data table頁面*/
+
+table.dataTable tbody td, thead th {
+	text-align: center; 
+}
+
+#inputAddOnIcon:hover, #inputAddOnIcon2:hover {
+	cursor: pointer;
+}
+
+.navbar-nav .nav-item+.nav-item {
+	margin-left: 0rem;
+}
+
+body {
+	font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.red {
+	background-color: red;
+}
+
+
+/*月曆頁面*/
+
+.navbar-nav .nav-item + .nav-item {
+	margin-left: 0rem;
+}
+body {
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+	
+			
+/*月曆格式*/
+
+.div_calend{
+    width: 100%;
+    height: 600px;
+    margin: auto;
+    margin-left: 15px;
+    border: 1px solid black;
+    border-radius: 20px; 
+}
+
+.year_month{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.table_calend{
+    border-collapse: collapse;
+    float:left; 
+    width:70%; 
+    border: 1px solid #0047AB;
+    margin-right: 0;
+    margin-left: 6%;
+    text-align: center;
+}
+
+.thead_calend td{
+    background-color: #6cb2ff;
+    border: 1px solid #0047AB;
+    color: black;
+    width: 140px; 
+}
+
+.tbody_calend td{
+    border: 1px solid #0047AB ;
+    padding: 8px;
+    font-size: 23px;
+}
+
+.tableS_calend{
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: center;
+    padding: 1px;
+    margin-bottom: 2%; 
+    margin-right: 6%;
+}
+
+.tableS_calend thead td{
+    border: 1px solid #0047AB ;
+    background-color: #b8daff;
+}
+
+.tbodyS_hw5 tr td{
+    border: 1px solid #0047AB ;
+}
+
+.kbd{
+	cursor: pointer;
+	background-color: #b8daff;
+	color: black;
+}
+
+/*天氣預報*/
+
+.column-head{
+	background-color: #b8daff;
+}
+
+
+
+
+
+
+
+
+

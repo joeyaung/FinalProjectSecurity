@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
-response.setContentType("text/html;charset=UTF-8");
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
@@ -13,8 +10,8 @@ response.setContentType("text/html;charset=UTF-8");
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>完成預約</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <title>Audi - 完成預約</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
@@ -32,6 +29,26 @@ response.setContentType("text/html;charset=UTF-8");
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/bookForm.css" />
+    <style>
+    span {
+    	display: inline-block;
+    	animation: .4s jump ease-in-out;
+    	animation-delay: var(--delay);
+    }
+
+	@keyframes jump {
+		0%, 100%{
+ 			transform: translateY(0px); 
+			color: inherit;
+		}
+		50% {
+ 			transform: translateY(-10px); 
+			color: red;
+		}
+	}
+    
+    </style>
+    
   </head>
 
   <body id="page-top">
@@ -59,25 +76,25 @@ response.setContentType("text/html;charset=UTF-8");
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#about">試駕體驗</a>
+              <a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#projects">最新消息</a>
+              <a class="nav-link" href="/FinalProject/News">最新消息</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">了解車型</a>
+              <a class="nav-link" href="/FinalProject/Model">了解車型</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">活動</a>
+              <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#signup">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">會員專區</a>
+              <a class="nav-link" href="/FinalProject/account">會員專區</a>
             </li>
           </ul>
         </div>
@@ -92,17 +109,15 @@ response.setContentType("text/html;charset=UTF-8");
           <div class="div_bookc"> 
             <h1 class="h_bookc">預約成功</h1><br>
             <div class="po-re">
-            <h3 class="h_bookc dis-ib-custom">您的試駕表單編號為:<strong id="copied">${formId}</strong></h3>
-              <span class="input-group-addon color-blue copy-custom" id="copy" onclick="copyEvent('copied')">
-<!--                 <span class="copy-custom" > -->
+            <h3 class="h_bookc dis-ib-custom">您的試駕表單編號為:<strong id="copied" style="color:#64A19D">${formId}</strong></h3>
+              <span class="input-group-addon color-blue copy-custom" id="copy" title="複製表單編號" onclick="copyEvent('copied')">
                 <i class="fas fa-clone"></i></span>
-              </span>
+<!--               </span> -->
             <h3 class="h_bookc">試駕表單資訊已寄送至您的E-mail信箱，請於信箱中確認</h3>
             <%session.invalidate();%>
             <form action="TestDrive" method="post">
               <div class="div">
                 <button type="submit" class="btn btn-warning wh-40">返回預約賞車</button>
-                <!-- <input type="submit" value="返回預約賞車"> -->
               </div>
             </form>
           </div>
@@ -124,14 +139,17 @@ response.setContentType("text/html;charset=UTF-8");
     <script src="js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
-    <!--  -->
-    <!--  -->
     <script>
       function copyEvent(id)
-      {
+      {	  //  複製表單編號
           var str = document.getElementById(id);
           window.getSelection().selectAllChildren(str);
-          document.execCommand("Copy")
+          document.execCommand("Copy");
+          //  製造文字效果: 為每個文字分別加上tag，並設定delay 變數
+          str.innerHTML = str.textContent.replace(/\S/g,"<span>$&</span>");
+          document.querySelectorAll('span').forEach((span, index) => {
+        	  span.style.setProperty('--delay', index*0.1+'s')
+          })
       }
   </script>
   </body>
