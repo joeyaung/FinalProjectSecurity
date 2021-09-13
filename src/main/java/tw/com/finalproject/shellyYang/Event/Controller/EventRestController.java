@@ -1,5 +1,6 @@
 package tw.com.finalproject.shellyYang.Event.Controller;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
 import tw.com.finalproject.shellyYang.Event.Event;
 import tw.com.finalproject.shellyYang.Event.Service.EventService;
+import tw.com.finalproject.yumyu.Member.ApplicationUser;
+import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
 
 
 
@@ -21,6 +28,9 @@ public class EventRestController {
 
 	@Autowired
 	private EventService eventService;
+	
+	@Autowired
+	private ApplicationUserService appUserService;
 
 	@GetMapping("/getAllEvents")
 	public List<Event> getAllEvent() {
@@ -47,8 +57,8 @@ public class EventRestController {
 
 		Map<String, String> map = new HashMap<String, String>();
 
-		Integer result = eventService.deleteById(event_id);
-		map.put("msg", "成功刪除id:" + result);
+		eventService.deleteById(event_id);
+		map.put("msg", "成功刪除" );
 
 		return map;
 
@@ -61,7 +71,48 @@ public class EventRestController {
 		return "success";
 
 	}
-
+	/**
+	 * 活動報名表單，自動抓會員資料填入
+	 * @param principal
+	 * @return
+	 * @throws JsonProcessingException
+	 */
+	@GetMapping("/findUserByUserName")
+	public String findUserByUserName(Principal principal) throws JsonProcessingException {
+		
+		String userName = principal.getName();
+		ApplicationUser appUser = appUserService.findByUsername(userName);
+		
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String appUserJson = ow.writeValueAsString(appUser);
+		
+		return appUserJson;
+	}
+	/**
+	 * 找尋各活動報名人數
+	 * @return
+	 */
+	@GetMapping("/findEventRegisteredNumber")
+	public List<Integer> findRegisteredNumber(){
+		return eventService.findReserved_people();
+	}
 	
+	/**
+	 * 找尋各活動報名上限
+	 * @return
+	 */
+	
+	@GetMapping("/findEventRegisteredLimit")
+	public List<Integer> findAttendLimit(){
+		return eventService.findAttend_limit();
+	}
+	
+	@GetMapping("/getAllEventsOrderById")
+	public List<Event> findAllEventOrderById() {
+
+		return eventService.findAllOrderByEvent_id();
+	}
+	
+
 
 }

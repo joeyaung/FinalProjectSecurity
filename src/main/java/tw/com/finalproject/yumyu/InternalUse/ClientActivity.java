@@ -43,6 +43,8 @@ public class ClientActivity {
 	@PrePersist
 	protected void onCreate() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		createdDate = df.format(new Date());
+		String date = df.format(new Date());
+		this.createdDate = date;
+		this.client.setUpdateTime(date);
 	}
 }

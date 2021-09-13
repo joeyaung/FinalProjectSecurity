@@ -51,7 +51,7 @@ public class WebMultiLoginSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 				.antMatchers("/css/**", "/", "/login", "/login_inner", "/register", "/images/**", "/js/**").permitAll()
-				.antMatchers("/account/**")
+				.antMatchers("/account/**", "/product/cart")
 					.hasAuthority(MEMBER.name())
 				.antMatchers("/inner/**")
 					.hasAnyAuthority(ADMIN.name(), SALES.name(), DELIVER.name(), SERVICE.name())

@@ -1,5 +1,7 @@
 package tw.com.finalproject.yumyu.PageController.Internal;
 
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
 import java.security.Principal;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
 import tw.com.finalproject.yumyu.Enums.OfficeLocations;
@@ -19,6 +22,10 @@ import tw.com.finalproject.yumyu.InternalUse.Client;
 import tw.com.finalproject.yumyu.InternalUse.Employee;
 import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
 import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
+import tw.com.finalproject.yumyu.MemberOrder.MemberOrder;
+import tw.com.finalproject.yumyu.MemberOrder.Service.MemberOrderService;
+import tw.com.finalproject.yumyu.Products.Product;
+import tw.com.finalproject.yumyu.Products.Service.ProductService;
 
 @Controller
 public class InternalPageController {
@@ -28,7 +35,13 @@ public class InternalPageController {
 
 	@Autowired
 	private ClientService clientService;
+	
+	@Autowired
+	private ProductService productService;
 
+	@Autowired
+	private MemberOrderService memberOrderService;
+	
 	@GetMapping("/login_inner")
 	public String innerLoginViewController() {
 		return "inner/inner";
@@ -133,6 +146,48 @@ public class InternalPageController {
 		Employee emp = employeeService.findbyUsername(name);
 		request.setAttribute("empName", emp.getFullName());
 		return "inner/AddEmployeePage";
+	}
+	
+	@GetMapping(path = "/inner/admin/products")
+	public String adminProductManagePageController(HttpServletRequest request, Principal principal) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		return "inner/admin/adminProductPage";
+	}
+	
+	@GetMapping(path = "/inner/admin/orders")
+	public String adminOrderManagePageController(HttpServletRequest request, Principal principal) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		return "inner/admin/adminOrderPage";
+	}
+	
+	@GetMapping(path = "/inner/admin/products/edit/{id}")
+	public String adminProductEditPageController(HttpServletRequest request, Principal principal, @PathVariable(name = "id") String productId) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		Product product = productService.findById(Long.valueOf(productId));
+		if (product == null) {
+			throw new ResponseStatusException(NOT_FOUND, "無此產品");
+		}
+		
+		return "inner/admin/adminProductEditPage";
+	}
+	
+	@GetMapping(path = "/inner/admin/order/edit/{id}")
+	public String adminOrderEditPageController(HttpServletRequest request, Principal principal, @PathVariable(name = "id") String orderId) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		MemberOrder order = memberOrderService.findById(Long.valueOf(orderId));
+		if (order == null) {
+			throw new ResponseStatusException(NOT_FOUND, "無此產品");
+		}
+		
+		return "inner/admin/adminOrderEditPage";
 	}
 
 }

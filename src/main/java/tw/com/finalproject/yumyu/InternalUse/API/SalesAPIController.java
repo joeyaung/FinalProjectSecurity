@@ -59,7 +59,11 @@ public class SalesAPIController {
 			clientData.add(curClientInner.getEmail());
 			clientData.add(curClientInner.getPhone());
 			clientData.add(curClientInner.getCity() + curClientInner.getTown());
-			clientData.add("2021-08-01"); // TODO
+			if (curClientInner.getUpdateTime() != null) {
+				clientData.add(curClientInner.getUpdateTime());				
+			} else {
+				clientData.add(curClientInner.getCreateDate());
+			}
 			clientData.add("" + curClientInner.getId());
 			datasetLists.add(clientData);
 		}
@@ -131,7 +135,7 @@ public class SalesAPIController {
 	@PostMapping(path = "/clientActivity/query", produces = "application/json;charset=UTF-8")
 	public List<ClientActivity> queryAllClientActivities(@RequestBody Map<String, String> data) {
 		String clientID = data.get("id");
-		System.out.println(String.format("----------------------------------%s-------------------------------", clientID));
+		
 		Client client = clientService.findById(Long.valueOf(clientID));
 		List<ClientActivity> result = clientActivityService.queryActivitiesByClient(client);
 		return result;
@@ -146,10 +150,13 @@ public class SalesAPIController {
 		String empUsername = principal.getName();
 		Employee employee = employeeService.findbyUsername(empUsername);
 		Client client = clientService.findById(Long.valueOf(clientID));
+		List<ClientActivity> activites = client.getActivities();
 
 		ClientActivity activity = ClientActivity.builder().client(client).employee(employee).title(title)
 				.activityType(type).content(content).build();
-		boolean result = clientActivityService.save(activity);
+		activites.add(activity);
+		client.setActivities(activites);
+		boolean result = clientService.save(client);
 		if (result) {
 			return "ok";
 		}

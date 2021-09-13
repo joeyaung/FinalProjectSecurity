@@ -32,7 +32,7 @@ public class MemberCustomAuthenticationProvider implements AuthenticationProvide
 		String rawPassword = authentication.getCredentials().toString();
 		System.out.println(rawPassword);
 		
-		ApplicationUser user = applicationUserService.queryByUsername(username);
+		ApplicationUser user = applicationUserService.findByUsername(username);
 		System.out.println(user);
 		if (user != null) {
 			String encodedPassword = user.getPassword();

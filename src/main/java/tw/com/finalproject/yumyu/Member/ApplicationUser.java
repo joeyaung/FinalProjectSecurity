@@ -38,5 +38,6 @@ public class ApplicationUser {
 	private String town;
 	private String fullAddress;
 	private String zipCode;
+	
 
 }

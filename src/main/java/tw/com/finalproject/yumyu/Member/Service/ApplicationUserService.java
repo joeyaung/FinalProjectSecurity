@@ -37,7 +37,7 @@ public class ApplicationUserService implements UserDetailsService {
 		return findAll;
 	}
 
-	public ApplicationUser queryByUsername(String username) {
+	public ApplicationUser findByUsername(String username) {
 		Optional<ApplicationUser> findByUsername = applicationUserRepository.findByUsername(username);
 		if (findByUsername.isEmpty()) {
 			return null;
@@ -53,6 +53,24 @@ public class ApplicationUserService implements UserDetailsService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public boolean saveAll(List<ApplicationUser> members) {
+		try {
+			applicationUserRepository.saveAll(members);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public ApplicationUser findById(long id) {
+		Optional<ApplicationUser> result = applicationUserRepository.findById(id);
+		if (result.isEmpty()) {
+			return null;
+		}
+		return result.get();
 	}
 
 }

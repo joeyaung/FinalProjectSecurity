@@ -1,0 +1,63 @@
+.h-2rem {
+  height: 2rem;
+}
+
+.text-2rem {
+  font-size: 1.5rem;
+}
+
+.right-column {
+  border-left: 1px solid gray;
+}
+
+.container {
+  max-width: 1690px;
+}
+
+.img-product {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hr-custom {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid rgba(47, 53, 66, 0.5);
+}
+
+.fs-15 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.mg-1 {
+  margin: 1rem 0;
+}
+
+.select-custom {
+  text-align: center;
+  width: 25%;
+  border: 0;
+  border-bottom: 1px solid gray;
+}
+
+.fl-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-cancel {
+  border-radius: 10px;
+  background-color: rgba(164, 176, 190, 0.5);
+  color: rgba(47, 53, 66, 1);
+  border: none;
+  padding: 0 1rem;
+}

@@ -386,7 +386,6 @@ let profileVM = new Vue({
       let self = this.client;
       let clientID = getCookie("cliID");
       let processDefaultClientActivity = function (data) {
-        console.log(data);
         let newActivities = [];
         for (let i = 0; i < data.length; i++) {
           let curActivity = {
