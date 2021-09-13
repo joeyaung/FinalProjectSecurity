@@ -27,9 +27,6 @@ import org.springframework.stereotype.Component;
 
 import tw.com.finalproject.kevinLai.Center.Center;
 import tw.com.finalproject.kevinLai.Center.Repository.CenterRepository;
-import tw.com.finalproject.kevinLai.Product.Product;
-import tw.com.finalproject.kevinLai.Product.Repository.ProductRepositoy;
-import tw.com.finalproject.kevinLai.Product.Service.ProductService;
 import tw.com.finalproject.naiChuan.Model.Model;
 import tw.com.finalproject.naiChuan.Model.Service.ModelService;
 import tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment;
@@ -43,6 +40,7 @@ import tw.com.finalproject.shellyYang.News.Service.NewsService;
 
 import tw.com.finalproject.yumyu.Products.Product;
 import tw.com.finalproject.yumyu.Products.ProductImage;
+import tw.com.finalproject.yumyu.Products.Repository.ProductRepository;
 import tw.com.finalproject.yumyu.Products.Service.ProductImageService;
 import tw.com.finalproject.yumyu.Products.Service.ProductService;
 
@@ -70,7 +68,9 @@ public class InitService {
 	private ModelService modelService;
 
 	@Autowired
-	private ProductRepositoy productRepository;
+	private ProductRepository productRepository;
+	@Autowired
+	private ProductService productService;
 	@Autowired
 	private CenterRepository centerRepository; 
 	@Autowired
@@ -204,71 +204,71 @@ public class InitService {
 		modelService.createModel(defaultModel2);
 
 		//		Create default Center
-		File Neihujpg = new File("src\\main\\resources\\static\\images\\center\\taipei.jpg");
+		File Neihujpg = new File("src/main/resources/static/images/center/taipei.jpg");
 		FileInputStream Neihujpgg = new FileInputStream(Neihujpg);
 		byte[] byteNeihu = IOUtils.toByteArray(Neihujpgg);
 		Center defaultCenter1 = Center.builder().centerName("內湖展示中心").centerPhone("02-27939191").centerEmail("NeihuCenter@gmail.com").centerLoc("台北市").centerLocSit("內湖區").centerAddress("台北市內湖區新湖三路288號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteNeihu).centerLatitude("25.066693320651687").centerLongitude("121.58241079480605").build();
  
-		File Daanjpg = new File("src\\main\\resources\\static\\images\\center\\taoyuan.jpg");
+		File Daanjpg = new File("src/main/resources/static/images/center/taoyuan.jpg");
 		FileInputStream Daanjpgg = new FileInputStream(Daanjpg);
 		byte[] byteDaan = IOUtils.toByteArray(Daanjpgg);
 		Center defaultCenter2 = Center.builder().centerName("大安展示中心").centerPhone("02-82443207").centerEmail("DaanCenter@gmail.com").centerLoc("台北市").centerLocSit("大安區").centerAddress("台北市大安區四維路208巷10號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteDaan).centerLatitude("25.026287234825105").centerLongitude("121.5474338543234").build();
 		
-		File Xinyijpg = new File("src\\main\\resources\\static\\images\\center\\taichung.jpg");
+		File Xinyijpg = new File("src/main/resources/static/images/center/taichung.jpg");
 		FileInputStream Xinyijpgg = new FileInputStream(Xinyijpg);
 		byte[] byteXinyi = IOUtils.toByteArray(Xinyijpgg);
 		Center defaultCenter3 = Center.builder().centerName("信義展示中心").centerPhone("02-67360223").centerEmail("XinyiCenter@gmail.com").centerLoc("台北市").centerLocSit("信義區").centerAddress("台北市信義區松智路1號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteXinyi).centerLatitude("25.0388559895188").centerLongitude("121.56627022548838").build();
 		
-		File Banqiaojpg = new File("src\\main\\resources\\static\\images\\center\\tainan.jpg");
+		File Banqiaojpg = new File("src/main/resources/static/images/center/tainan.jpg");
 		FileInputStream Banqiaojpgg = new FileInputStream(Banqiaojpg);
 		byte[] byteBanqiao = IOUtils.toByteArray(Banqiaojpgg);
 		Center defaultCenter4 = Center.builder().centerName("板橋展示中心").centerPhone("02-59242558").centerEmail("BanqiaoCenter@gmail.com").centerLoc("新北市").centerLocSit("板橋區").centerAddress("新北市板橋區新府路30號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteBanqiao).centerLatitude("25.011155993514862").centerLongitude("121.46503899665238").build();
 		
-		File Zhonghejpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Zhonghejpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Zhonghejpgg = new FileInputStream(Zhonghejpg);
 		byte[] byteZhonghe = IOUtils.toByteArray(Zhonghejpgg);
 		Center defaultCenter5 = Center.builder().centerName("中和展示中心").centerPhone("02-87823688").centerEmail("ZhongheCenter@gmail.com").centerLoc("新北市").centerLocSit("中和區").centerAddress("新北市中和區建八路63號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteZhonghe).centerLatitude("24.999313397163245").centerLongitude("121.48750046966435").build();
 		
-		File Pingzhenjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Pingzhenjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Pingzhenjpgg = new FileInputStream(Pingzhenjpg);
 		byte[] bytePingzhen = IOUtils.toByteArray(Pingzhenjpgg);
 		Center defaultCenter6 = Center.builder().centerName("平鎮展示中心").centerPhone("03-4158259").centerEmail("PingzhenCenter@gmail.com").centerLoc("桃園市").centerLocSit("平鎮區").centerAddress("桃園市平鎮區南豐路2號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(bytePingzhen).centerLatitude("24.900391473028883").centerLongitude("121.21014419664988").build();
 		
-		File Taoyuanjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Taoyuanjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Taoyuanjpgg = new FileInputStream(Taoyuanjpg);
 		byte[] byteTaoyuan = IOUtils.toByteArray(Taoyuanjpgg);
 		Center defaultCenter7 = Center.builder().centerName("桃園展示中心").centerPhone("03-3394095").centerEmail("TaoyuanCenter@gmail.com").centerLoc("桃園市").centerLocSit("桃園區").centerAddress("桃園市桃園區樹仁三街28號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteTaoyuan).centerLatitude("24.974947886449666").centerLongitude("121.32264789665159").build();
 		
-		File Beitunjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Beitunjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Beitunjpgg = new FileInputStream(Beitunjpg);
 		byte[] byteBeitun = IOUtils.toByteArray(Beitunjpgg);
 		Center defaultCenter8 = Center.builder().centerName("北屯展示中心").centerPhone("04-94698572").centerEmail("BeitunCenter@gmail.com").centerLoc("台中市").centerLocSit("北屯區").centerAddress("台中市北屯區山西路29號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteBeitun).centerLatitude("24.16925613777969").centerLongitude("120.67552299663411").build();
-		File Nantunjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Nantunjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Nantunjpgg = new FileInputStream(Nantunjpg);
 		byte[] byteNantun = IOUtils.toByteArray(Nantunjpgg);
 		Center defaultCenter9 = Center.builder().centerName("南屯展示中心").centerPhone("04-91549841").centerEmail("NantunCenter@gmail.com").centerLoc("台中市").centerLocSit("南屯區").centerAddress("台中市南屯區精科中路18號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteNantun).centerLatitude("24.149299332609868").centerLongitude("120.59763739663363").build();
 		
-		File Anpingjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Anpingjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Anpingjpgg = new FileInputStream(Anpingjpg);
 		byte[] byteAnping = IOUtils.toByteArray(Anpingjpgg);
 		Center defaultCenter10 = Center.builder().centerName("安平展示中心").centerPhone("06-2059627").centerEmail("AnpingCenter@gmail.com").centerLoc("台南市").centerLocSit("安平區").centerAddress("台南市安平區文平路9號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteAnping).centerLatitude("22.983811502039387").centerLongitude("120.17736598311556").build();
 		
-		File Yongkangjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Yongkangjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Yongkangjpgg = new FileInputStream(Yongkangjpg);
 		byte[] byteYongkang = IOUtils.toByteArray(Yongkangjpgg);
 		Center defaultCenter11 = Center.builder().centerName("永康展示中心").centerPhone("06-6915174").centerEmail("YongkangCenter@gmail.com").centerLoc("台南市").centerLocSit("永康區").centerAddress("台南市永康區廣興街33號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteYongkang).centerLatitude("23.01922608496213").centerLongitude("120.27650034078707").build();
 		
-		File Zuoyingjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Zuoyingjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Zuoyingjpgg = new FileInputStream(Zuoyingjpg);
 		byte[] byteZuoying = IOUtils.toByteArray(Zuoyingjpgg);
 		Center defaultCenter12 = Center.builder().centerName("左營展示中心").centerPhone("07-8344778").centerEmail("ZuoyingCenter@gmail.com").centerLoc("高雄市").centerLocSit("左營區").centerAddress("高雄市左營區新莊一路306號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteZuoying).centerLatitude("22.670738986446395").centerLongitude("120.3008856407799").build();
 		
-		File Gushanjpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Gushanjpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Gushanjpgg = new FileInputStream(Gushanjpg);
 		byte[] byteGushan = IOUtils.toByteArray(Gushanjpgg);
 		Center defaultCenter13 = Center.builder().centerName("鼓山展示中心").centerPhone("07-8015406").centerEmail("GushanCenter@gmail.com").centerLoc("高雄市").centerLocSit("鼓山區").centerAddress("高雄市鼓山區龍水一街21號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteGushan).centerLatitude("22.648716879310285").centerLongitude("120.28309893523691").build();
 		
-		File Wujiejpg = new File("src\\main\\resources\\static\\images\\center\\kaohsiung.jpg");
+		File Wujiejpg = new File("src/main/resources/static/images/center/kaohsiung.jpg");
 		FileInputStream Wujiejpgg = new FileInputStream(Wujiejpg);
 		byte[] byteWujie = IOUtils.toByteArray(Wujiejpgg);
 		Center defaultCenter14 = Center.builder().centerName("五結展示中心").centerPhone("03-9571691").centerEmail("WujieCenter@gmail.com").centerLoc("宜蘭縣").centerLocSit("五結鄉").centerAddress("宜蘭縣五結鄉三吉中路34號").centerOpentime("週一至週日 09:00 - 21:00").centerImage(byteWujie).centerLatitude("24.70818759094591").centerLongitude("121.79173311568226").build();
@@ -664,28 +664,33 @@ public class InitService {
 				// set eventform
 
 				EventForm eventForm = new EventForm();
-				ApplicationUser appUser = applicationUserService.findById(i);
-
-				eventForm.setApplicationUser(appUser);
-				eventForm.setCreation_time(randomDateTime);
-				eventForm.setEvent(event);
-				eventForm.setGender(randomGender);
-				eventForm.setId_number(s);
-				eventForm.setStatus("成功");
-
-				forms.add(eventForm);
+				if(i!=101) {
+					ApplicationUser appUser = applicationUserService.findById(i);
+					
+					eventForm.setApplicationUser(appUser);
+					eventForm.setCreation_time(randomDateTime);
+					eventForm.setEvent(event);
+					eventForm.setGender(randomGender);
+					eventForm.setId_number(s);
+					eventForm.setStatus("成功");
+					
+					forms.add(eventForm);
+					
+				}else {
+					System.out.println("skip 王小明");
+				}
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 
-		// Default EvnentForm data Demo專用user_id=1 王小明
+		// Default EvnentForm data Demo專用user_id=101 王小明
 		Event event = null;
 		ApplicationUser appUser = null;
 		try {
 			event = eventService.findById(1);
-			appUser = applicationUserService.findByUsername("eeit2905@gmail.com");
+			appUser = applicationUserService.findByUsername("member@demo.com");
 
 		} catch (Exception e) {
 			e.printStackTrace();
