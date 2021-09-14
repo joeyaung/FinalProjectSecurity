@@ -11,7 +11,7 @@
 
 		<title>編輯展示中心資訊</title>
 
-
+		<link rel="icon" type="image/x-icon" href="images/favicon.png" />
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
@@ -80,7 +80,30 @@
 		<!--buttons css-->
 		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
+		<!--地圖api key-->
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg&callback=initMap&libraries=&v=weekly"
+			async></script>
 
+		<style>
+			#map {
+				width: 500px;
+				height: 500px;
+			}
+
+			#edit_map {
+				width: 500px;
+				height: 500px;
+			}
+
+			.modal {
+				overflow-y: auto;
+			}
+
+			.navbar-nav .nav-item+.nav-item {
+				margin-left: 0rem;
+			}
+		</style>
 	</head>
 
 	<body id="page-top">
@@ -358,7 +381,7 @@
 
 
 							<!-- this is button -->
-							<button id="addCenterButton" type="submit" class="btn btn-primary">增加展示中心資訊</button>
+							<button id="addCenterButton" type="submit" class="btn btn-primary">增加展示中心</button>
 
 
 							<!-- this is datables -->
@@ -466,8 +489,11 @@
 													<td>地址:</td>
 												</tr>
 												<tr>
-													<td><input class="myitem" id="centerAddress" type="text"
+													<td>
+														<input class="myitem" id="centerAddress" type="text"
 															name="centerAddress" value="" style="width: 400px" /> <br />
+														<button id="queryaddr"
+															class="btn btn-secondary btn-sm">座標查詢</button>
 														<span id="sp6" style="width: 10px;" class="add_span"></span>
 														<img src="">
 													</td>
@@ -614,9 +640,13 @@
 												<tr>
 													<td>地址:</td>
 												</tr>
+
 												<tr>
-													<td><input class="myitem" id="edit_centerAddress" type="text"
+													<td>
+														<input class="myitem" id="edit_centerAddress" type="text"
 															name="centerAddress" style="width: 400px"><br />
+														<button id="edit_queryaddr"
+															class="btn btn-secondary btn-sm">座標查詢</button>
 														<span id="editsp6" style="width: 10px" class="add_span"></span>
 														<img src="">
 													</td>
@@ -682,6 +712,96 @@
 							<!-- /.modal-dialog -->
 						</div>
 						<!-- /.modal -->
+
+
+
+
+
+						<!-- 查詢座標的model (增加) -->
+						<div class="modal fade" tabindex="-1" role="dialog" id="queryaddrModel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title">座標</h4>
+									</div>
+									<div class="modal-body">
+
+										<div>
+											<input type="text" id="address" placeholder="台北市內湖區新湖三路288號">
+											<button id="query">查詢</button>
+											<!-- <input type="button" value="定位"> -->
+										</div>
+
+										<div id="lat"></div>
+										<div id="lng"></div>
+
+										<!--The div element for the map -->
+										<div id="map"></div>
+
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+										<button id="submitquery" type="button" data-dismiss="modal"
+											class="btn btn-primary">送出</button>
+										<!-- <button id="onekey" type="button" class="btn btn-primary">一鍵輸入</button> -->
+									</div>
+
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal-dialog -->
+						</div>
+						<!-- /.modal -->
+
+
+						<!-- 查詢座標的model (查詢) -->
+						<div class="modal fade" tabindex="-1" role="dialog" id="edit_queryaddrModel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title">座標</h4>
+									</div>
+									<div class="modal-body">
+
+										<div>
+											<input type="text" id="address" placeholder="請輸入地點" value="台北市內湖區新湖三路288號">
+											<button id="query">查詢</button>
+											<!-- <input type="button" value="定位"> -->
+										</div>
+
+										<div id="lat"></div>
+										<div id="lng"></div>
+
+										<!--The div element for the map -->
+										<div id="edit_map"></div>
+
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+										<button id="submitquery" type="button" data-dismiss="modal"
+											class="btn btn-primary">送出</button>
+										<!-- <button id="onekey" type="button" class="btn btn-primary">一鍵輸入</button> -->
+									</div>
+
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal-dialog -->
+						</div>
+						<!-- /.modal -->
+
+
+
+
+
 						<!-- /.container-fluid -->
 						<!-- 結束內容 -->
 
@@ -794,7 +914,7 @@
 						"display": $.fn.dataTable.Responsive.display.modal({
 							"header": function (row) {
 								var data = row.data();
-								return 'Details for product';
+								return '展示中心';
 							}
 						}),
 						"renderer": $.fn.dataTable.Responsive.renderer.tableAll({
@@ -1098,8 +1218,8 @@
 			$('#centerLoc').val('宜蘭縣');
 			$('#centerLocSit').val('蘇澳鎮');
 			$('#centerAddress').val('宜蘭縣蘇澳鎮蘇新路81號');
-			$('#centerLatitude').val('24.621283017256804');
-			$('#centerLongitude').val('121.81510130879394');
+			// $('#centerLatitude').val('24.621283017256804');
+			// $('#centerLongitude').val('121.81510130879394');
 			$('#centerOpentime').val('週一至週日 09:00 - 21:00');
 
 		})
@@ -1116,7 +1236,6 @@
 			$('#edit_centerLatitude').val('23.479852741798684');
 			$('#edit_centerLongitude').val('120.45410245480764');
 			$('#edit_centerOpentime').val('週一至週日 09:00 - 21:00');
-			$('#edit_centerService').val('銷售.保養');
 		})
 
 
@@ -1333,6 +1452,139 @@
 			})
 
 		}
+
+
+
+		//binding 查詢座標的按鈕 (增加)
+		$('#queryaddr').click(function (e) {
+			$('#queryaddrModel').modal('show');  //顯示增加展示中心的model
+			e.preventDefault();
+		})
+
+		//查詢座標的function
+		function initMap() {
+			geocoder = new google.maps.Geocoder();
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 15,
+				center: { lat: 25.0338, lng: 121.5648 },
+			});
+
+
+			$('#query').click(function () {
+				// 取得使用者輸入的地址
+				var address = $('#address').val();
+				if (address == '') return; // 若為空字串則返回
+
+
+				// 用使用者輸入的地址查詢
+				geocoder.geocode({ 'address': address }, function (results, status) {
+					if (status == 'OK') {  // 確認 OK
+						var latlng = results[0].geometry.location;
+						//  取得查詢結果第0筆中的經緯度物件
+						map.setCenter(latlng); //將查詢結果設為地圖的中心
+						$('#lat').text(latlng.lat()); //顯示經度
+						$('#lng').text(latlng.lng()); //顯示緯度
+
+						// (放置marker) The marker, positioned at Taoyuanaudi 
+						const marker = new google.maps.Marker({
+							position: { lat: latlng.lat(), lng: latlng.lng() },
+							map: map,
+						});
+
+					} else {
+						console.log(status);
+					}
+
+					//查詢座標的送出  V
+					$('#submitquery').click(function (e) {
+						initMap();
+						$('#centerLatitude').val(latlng.lat());
+						$('#centerLongitude').val(latlng.lng());
+
+					});
+				});
+			});
+
+
+			// 設定輸入欄位按鍵放開的事件處理函式
+			$('#address').keypress(function (e) {
+				if (e.which == 13) // 按下/放開 Enter 鍵 
+					$('#query').click();
+			});
+		}
+
+
+		// //binding 查詢座標的按鈕 (修改)
+		// $('#edit_queryaddr').click(function (e) {
+		// 	$('#edit_queryaddrModel').modal('show');  //顯示增加展示中心的model
+		// 	e.preventDefault();
+		// })
+
+
+		// //查詢座標的function(修改)
+		// function edit_initMap() {
+		// 	edit_geocoder = new google.maps.Geocoder();
+		// 	edit_map = new google.maps.Map(document.getElementById('edit_map'), {
+		// 		zoom: 15,
+		// 		center: { lat: 25.0338, lng: 121.5648 },
+		// 	});
+
+
+		// 	$('#query').click(function () {
+		// 		// 取得使用者輸入的地址
+		// 		var address = $('#address').val();
+		// 		if (address == '') return; // 若為空字串則返回
+
+
+
+		// 		// 用使用者輸入的地址查詢
+		// 		edit_geocoder.geocode({ 'address': address }, function (results, status) {
+		// 			if (status == 'OK') {  // 確認 OK
+		// 				var latlng = results[0].geometry.location;
+		// 				//  取得查詢結果第0筆中的經緯度物件
+		// 				edit_map.setCenter(latlng); //將查詢結果設為地圖的中心
+		// 				$('#lat').text(latlng.lat()); //顯示經度
+		// 				$('#lng').text(latlng.lng()); //顯示緯度
+
+		// 				// (放置marker) The marker, positioned at Taoyuanaudi 
+		// 				const marker = new google.maps.Marker({
+		// 					position: { lat: latlng.lat(), lng: latlng.lng() },
+		// 					map: this.edit_map,
+		// 				});
+
+
+		// 			} else {
+		// 				console.log(status);
+		// 			}
+
+
+		// 			//查詢座標的送出  V
+		// 			$('#submitquery').click(function (e) {
+		// 				edit_initMap();
+		// 				$('#centerLatitude').val(latlng.lat());
+		// 				$('#centerLongitude').val(latlng.lng());
+
+
+		// 			});
+
+
+
+
+		// 		});
+		// 	});
+
+
+		// 	// 設定輸入欄位按鍵放開的事件處理函式
+		// 	$('#address').keypress(function (e) {
+		// 		if (e.which == 13) // 按下/放開 Enter 鍵 
+		// 			$('#query').click();
+		// 	});
+
+
+
+		// }
+
+
 
 	</script>
 
