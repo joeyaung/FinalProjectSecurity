@@ -76,7 +76,8 @@ pageEncoding="UTF-8"%>
               ><button class="btn-register" @click="registerRouter($event)">
                 註冊帳戶
               </button></a
-            >
+            ><br />
+            <span @click="autocompleteMember">一鍵登入</span>
           </div>
         </div>
       </form>
