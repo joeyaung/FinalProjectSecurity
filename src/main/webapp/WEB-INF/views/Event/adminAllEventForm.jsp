@@ -507,8 +507,8 @@
 		function approveFunction() {
 
 			var checkBoxes = $("#approve_id");
-			checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-			if (checkBoxes.prop("checked")) {
+		 	checkBoxes.prop("checked", !checkBoxes.prop("checked")); 
+			if (!checkBoxes.is(':checked')) {
 				var object = {};
 				formData.forEach(function (value, key) {
 					object[key] = value;
