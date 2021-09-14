@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
       rel="stylesheet"
     />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/index.css" rel="stylesheet" />
+    <link href="/FinalProject/css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="/FinalProject/css/account.css" />
     <!-- Page Level js lib -->
     <script
@@ -103,7 +103,6 @@ pageEncoding="UTF-8"%>
               <ul>
                 <li><a href="/FinalProject/logout">登出</a></li>
                 <li><a href="/FinalProject/account/setting">設定</a></li>
-                <li><a href="/FinalProject/account/order">訂單管理</a></li>
                 <li><a href="/FinalProject/account/event">活動管理</a></li>
                 <li><a href="/FinalProject/account">首頁</a></li>
               </ul>
@@ -168,7 +167,7 @@ pageEncoding="UTF-8"%>
                     </div>
                     <div class="col-4">
                       <a
-                        :href="'/FinalProject/account?id='+order.order_id"
+                        :href="'/FinalProject/account/order/'+order.order_id"
                         class="nav-link-custom"
                         >訂單操作</a
                       >
