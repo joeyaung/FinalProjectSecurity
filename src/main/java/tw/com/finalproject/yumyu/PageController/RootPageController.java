@@ -56,6 +56,18 @@ public class RootPageController {
 		return "Product/ShoppingCartPage";
 	}
 	
+//	Error Page 403
+	@GetMapping("/403")
+	public String ErrorPageController403() {
+		return "errorPage/403";
+	}
+	
+//	Error Page 404
+	@GetMapping("/404")
+	public String ErrorPageController404() {
+		return "errorPage/404";
+	}
+	
 //	
 ////	TODO
 ////	News Page
