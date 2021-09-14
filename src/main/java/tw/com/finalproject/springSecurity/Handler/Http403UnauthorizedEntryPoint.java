@@ -16,6 +16,7 @@ public class Http403UnauthorizedEntryPoint implements AuthenticationEntryPoint {
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
+		System.out.println("In Error Handler");
 		String path = request.getServletPath();
 		request.getSession().setAttribute("from", request.getRequestURI());
 		if (path.startsWith("/account")) {
@@ -26,7 +27,8 @@ public class Http403UnauthorizedEntryPoint implements AuthenticationEntryPoint {
 			response.sendRedirect(request.getContextPath() + "/login_inner");
 			return;
 		}
-		response.sendRedirect(request.getContextPath() + "/");
+		
+		
 	}
 
 }
