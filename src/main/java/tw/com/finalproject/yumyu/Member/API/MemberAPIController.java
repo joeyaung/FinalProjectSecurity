@@ -24,6 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tw.com.finalproject.Mail.MailService;
 import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
+import tw.com.finalproject.yumyu.Enums.SalesStages;
+import tw.com.finalproject.yumyu.InternalUse.Client;
+import tw.com.finalproject.yumyu.InternalUse.Employee;
+import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
+import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
 import tw.com.finalproject.yumyu.Member.PasswordResetToken;
 import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
@@ -39,6 +44,12 @@ public class MemberAPIController {
 	
 	@Autowired
 	private PasswordResetTokenService passwordResetTokenService;
+	
+	@Autowired
+	private ClientService clientService;
+	
+	@Autowired
+	private EmployeeService employeeService;
 	
 	@Autowired
 	private MailService mailService;
@@ -59,17 +70,17 @@ public class MemberAPIController {
 	}
 
 //	Check if User Exits By UserName
-	@GetMapping(path = "isExits/{username}", produces = "plain/text;charset=UTF-8")
-	public String queryByID(@PathVariable(name = "username") String username) {
-		System.out.println(username);
+	@GetMapping(path = "isExits/{username}", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> queryByID(@PathVariable(name = "username") String username) {
+		Map<String, Object> resultMap = new HashMap<>();
 		ApplicationUser curUser = applicationUserService.findByUsername(username);
-		System.out.println(curUser);
+		
 		if (curUser != null) {
-
-			return "yes";
+			resultMap.put("status", "USERNAME_OK");
 		} else {
-			return "no";
+			resultMap.put("status", "USERNAME_NOT_EXITS");			
 		}
+		return resultMap;
 	}
 
 //	Profile Changing Auth
@@ -171,6 +182,11 @@ public class MemberAPIController {
 
 		boolean result = applicationUserService.save(newUser);
 		if (result) {
+			Employee employee = employeeService.findbyUsername("sales@demo.com");
+			Client client = Client.builder().fullName(fullName).city(city).town(town).fullAddress(fullAddress).zipCode(zipCode).email(username).phone(phone).inchargedEmployee(employee)
+					.salesStage(SalesStages.NEW.name())
+					.build();
+			clientService.save(client);
 			return "ok";
 		}
 		return "fail";

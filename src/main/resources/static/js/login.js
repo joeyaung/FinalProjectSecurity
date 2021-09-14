@@ -1,35 +1,52 @@
-$("#clientInputEmail").change(function () {
-  $("#emailBlock > span").remove();
-  let inputNode = $("#clientInputEmail");
-  let hasEmail = isEmailExits(inputNode.val());
-});
-
-// Check if email exits
-function isEmailExits(email) {
-  let url = `http://localhost:8080/FinalProject/api/v1/member/isExits/${email}`;
-
-  $.ajax({
-    url: url,
-    success: function (res) {
-      if (res == "no") {
-        failHandler();
-      }
+let loginVM = new Vue({
+  el: "#app",
+  data: {
+    member: {
+      username: "",
+      password: "",
+      isValidate: false,
     },
-    error: function () {
-      failHandler();
+    error_node: {
+      show: false,
+      msg: "",
     },
-  });
-}
-
-function failHandler() {
-  let errNode = document.createElement("span");
-  errNode.innerText = "查無此用戶, 請確認電子郵件";
-  errNode.style.color = "#ff4757";
-  $("#clientInputEmail").css("border", "1px solid #ff4757");
-  $("#emailBlock").append(errNode);
-}
-
-$(".btn-register").on("click", function (event) {
-  event.preventDefault();
-  window.location="http://localhost:8080/FinalProject/register";
+  },
+  methods: {
+    isEmailExits(email) {
+      let urlAPI = `/FinalProject/api/v1/member/isExits/${email}`;
+      let self = this;
+      $.ajax({
+        url: urlAPI,
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          if (response.status == "USERNAME_OK") {
+            self.member.isValidate = true;
+            self.error_node.show = false;
+            self.error_node.msg = "";
+          }
+          if (response.status == "USERNAME_NOT_EXITS") {
+            self.member.isValidate = false;
+            self.error_node.show = true;
+            self.error_node.msg = "此用戶並不存在";
+          }
+        },
+      });
+    },
+    registerRouter(event) {
+      event.preventDefault();
+      window.location = "http://localhost:8080/FinalProject/register";
+    },
+    autocomplete() {
+      this.member.username = "joe120106@gmail.com";
+      this.member.password = "password";
+    },
+  },
+  mounted: function () {
+    this.$watch("member.username", function (newValue, oldValue) {
+      this.isEmailExits(newValue);
+    }),
+      { deep: true };
+  },
 });

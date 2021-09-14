@@ -27,9 +27,6 @@ import org.springframework.stereotype.Component;
 
 import tw.com.finalproject.kevinLai.Center.Center;
 import tw.com.finalproject.kevinLai.Center.Repository.CenterRepository;
-import tw.com.finalproject.kevinLai.Product.Product;
-import tw.com.finalproject.kevinLai.Product.Repository.ProductRepositoy;
-import tw.com.finalproject.kevinLai.Product.Service.ProductService;
 import tw.com.finalproject.naiChuan.Model.Model;
 import tw.com.finalproject.naiChuan.Model.Service.ModelService;
 import tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment;
@@ -68,15 +65,14 @@ public class InitService {
 	private TestDriveApointmentService testdriveApointmentService;
 	@Autowired
 	private ModelService modelService;
-
-	@Autowired
-	private ProductRepositoy productRepository;
 	@Autowired
 	private CenterRepository centerRepository; 
 	@Autowired
 	private NewsService newsService;
 	@Autowired
 	private EventService eventService;
+	@Autowired
+	private ProductService productService;
 	@Autowired
 	private ProductImageService productImageService;
 	@Autowired
