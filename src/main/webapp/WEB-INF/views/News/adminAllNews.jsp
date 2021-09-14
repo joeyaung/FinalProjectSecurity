@@ -885,7 +885,7 @@
 					$("#sp1").next().attr("src", "../../images/error.png");
 				} else if (title != "") {
 					$("#sp1").html("");
-					$("#sp1").next().attr("src", "../../images/greencheck.jpg");
+					$("#sp1").next().attr("src", "../../images/check.png");
 				}
 
 			})
@@ -897,7 +897,7 @@
 					$("#sp2").next().attr("src", "../../images/error.png");
 				} else if (subtitle != "") {
 					$("#sp2").html("");
-					$("#sp2").next().attr("src", "../../images/greencheck.jpg");
+					$("#sp2").next().attr("src", "../../images/check.png");
 				}
 			})
 
@@ -909,7 +909,7 @@
 					$("#sp3").next().attr("src", "../../images/error.png");
 				} else if (uploaddate != "") {
 					$("#sp3").html("");
-					$("#sp3").next().attr("src", "../../images/greencheck.jpg");
+					$("#sp3").next().attr("src", "../../images/check.png");
 				}
 			})
 
@@ -921,7 +921,7 @@
 					$("#sp4").next().attr("src", "../../images/error.png");
 				} else if (content != "") {
 					$("#sp4").html("");
-					$("#sp4").next().attr("src", "../../images/greencheck.jpg");
+					$("#sp4").next().attr("src", "../../images/check.png");
 				}
 			})
 
@@ -933,7 +933,7 @@
 					$("#sp5").next().attr("src", "../../images/error.png");
 				} else if (content != "") {
 					$("#sp5").html("");
-					$("#sp5").next().attr("src", "../../images/greencheck.jpg");
+					$("#sp5").next().attr("src", "../../images/check.png");
 				}
 			})
 
