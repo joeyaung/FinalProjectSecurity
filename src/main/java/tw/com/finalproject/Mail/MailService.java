@@ -30,6 +30,7 @@ public class MailService {
 
 //	velocity template engine
 	public void sendResetPasswordEmail(String recipient, String token, String memberName) {
+		System.out.println("email begin sending.");
 		VelocityContext model = new VelocityContext();
 		model.put("memberName", memberName);
 		model.put("token", token);
