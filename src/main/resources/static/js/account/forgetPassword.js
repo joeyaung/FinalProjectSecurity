@@ -7,6 +7,7 @@ let forgetPasswordVM = new Vue({
       msg: "查無此用戶, 請重新輸入",
     },
     tokenStatus: false,
+    isSend: false,
   },
   computed: {
     encodingEmail() {
@@ -25,6 +26,7 @@ let forgetPasswordVM = new Vue({
   methods: {
     submit(event) {
       event.preventDefault();
+      this.isSend = true;
       let formData = {
         username: this.email,
       };
@@ -48,12 +50,16 @@ let forgetPasswordVM = new Vue({
           if (response.status == "ok") {
             self.error_node.show = false;
             self.tokenStatus = true;
+            this.isSend = false;
           }
         },
         error: function (error) {
           console.log(error);
         },
       });
+    },
+    autoComplete() {
+      this.email = "joe120106@gmail.com";
     },
   },
 });

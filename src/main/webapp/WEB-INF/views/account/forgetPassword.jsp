@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
     /></a>
     <div id="app">
       <div class="form-container" v-show="!tokenStatus">
-        <h1>忘記密碼?</h1>
+        <h1 @click="autoComplete">忘記密碼?</h1>
         <form id="login-form">
           <div class="lab-input-container">
             <div class="lab-input-container" id="emailBlock">
@@ -53,7 +53,15 @@ pageEncoding="UTF-8"%>
                 type="submit"
                 value="送出"
                 @click="submit($event)"
+                v-show="!isSend"
               /><br />
+            </div>
+            <div class="loading-container" v-if="isSend">
+              <img
+                src="/FinalProject/images/loading.gif"
+                class="loading-gif"
+                alt=""
+              />
             </div>
           </div>
         </form>

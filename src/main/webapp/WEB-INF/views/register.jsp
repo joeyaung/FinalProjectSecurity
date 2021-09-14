@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
       ><img class="img-logo" src="./images/audi-logo.png" alt="logo"
     /></a>
     <div class="form-container" id="app">
-      <h1>建立帳戶</h1>
+      <h1 @click="autoComplete">建立帳戶</h1>
       <form name="registerForm">
         <div class="lab-input-container">
           <label for="fullname">姓名</label>
@@ -121,7 +121,7 @@ pageEncoding="UTF-8"%>
           /><br />
         </div>
         <div class="href-forget-passwd">
-          <a href="#">忘記密碼?</a>
+          <a href="/FinalProject/forget_password">忘記密碼?</a>
         </div>
       </form>
       <hr class="line-hr" />

@@ -10,20 +10,28 @@ let registerVM = new Vue({
     fullAddress: "",
   },
   methods: {
-    checkIsEmailExits() {
+    autoComplete() {
+      this.fullName = "游聿民";
+      this.username = "joe120106@gmail.com";
+      this.password = "password";
+      this.phone = "0917922177";
+      this.city = "桃園市";
+      this.town = "中壢區";
+      this.fullAddress = "中大路300號";
+    },
+    checkIsEmailExits(email) {
       let imageNode = $("#label-email > img");
       let spanNode = $(".lab-input-container > span");
       imageNode.remove();
       spanNode.remove();
-      let url = "/FinalProject/api/v1/member/isExits/" + this.username;
+      let url = "/FinalProject/api/v1/member/isExits/" + email;
 
-      fetch(url, {
+      $.ajax({
+        url: url,
         method: "GET",
-      })
-        .then((response) => response.text())
-        .then(function (res) {
-          // N
-          if (res == "yes") {
+        dataType: "json",
+        success: function (response) {
+          if (response.status == "USERNAME_OK") {
             let errNode = document.createElement("span");
             errNode.innerText = "此電子郵件已被使用過, 請嘗試別的信箱";
             errNode.style.color = "#ff4757";
@@ -38,7 +46,8 @@ let registerVM = new Vue({
             $("#label-email").append(correctNode);
             $("#input-submit").removeAttr("disabled");
           }
-        });
+        },
+      });
     },
     submitRegiser(e) {
       e.preventDefault();
@@ -66,5 +75,11 @@ let registerVM = new Vue({
         },
       });
     },
+  },
+  mounted: function () {
+    this.$watch("username", function (newValue, oldValue) {
+      this.checkIsEmailExits(newValue);
+    }),
+      { deep: true };
   },
 });
