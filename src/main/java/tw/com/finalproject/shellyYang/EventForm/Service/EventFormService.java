@@ -312,4 +312,9 @@ public class EventFormService {
 		
 	}
 	
+	public List<EventForm> findByStatus(String status){
+		List<EventForm> list = new ArrayList<EventForm>();
+		return eFormRepository.findByStatus(status);
+	}
+	
 }

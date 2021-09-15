@@ -343,8 +343,8 @@
 							<table id="newslist" class="table table-striped table-bordered nowrap" style="width: 100%">
 								<thead>
 									<tr>
-										<th>新聞編號</th>
-										<th>標題</th>
+										<th width="50%">新聞編號</th>
+										<th width="50%">標題</th>
 										<th>副標題</th>
 										<th>上傳日期</th>
 										<th>內文</th>
@@ -586,14 +586,13 @@
 			table = $('#newslist')
 				.DataTable(
 					{
-						"responsive": true,
-
 						"ajax": {
 							"dataSrc": "",
 							"url": "/FinalProject/getAllNews"
 						},
 						"rowId": "newsId",
 						"columnDefs": [
+
 							{
 								targets: 6,
 								render: function (data) {
@@ -618,9 +617,9 @@
 								}
 							}],
 						"columns": [{
-							data: "newsId"
+							data: "newsId",
 						}, {
-							data: "title"
+							data: "title",
 						}, {
 							data: "subtitle"
 						}, {

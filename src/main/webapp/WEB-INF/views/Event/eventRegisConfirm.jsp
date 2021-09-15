@@ -151,6 +151,7 @@
     $(document).ready(function () {
 
       var formData = JSON.parse(localStorage.getItem('formData'));
+      console.log(formData.event_id);
 
       if (formData !== undefined) {
         $.ajax({

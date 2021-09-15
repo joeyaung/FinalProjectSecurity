@@ -23,5 +23,6 @@ public interface EventFormRepository extends JpaRepository<EventForm, Integer> {
 	@Query(value="delete from eventform where event_id = ?1",nativeQuery=true)
 	@Modifying
 	void deleteByEvent_eventid(Integer eventId);
+	List<EventForm> findByStatus(String status);
 	
 }
