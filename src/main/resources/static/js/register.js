@@ -82,8 +82,7 @@ let registerVM = new Vue({
     }),
       { deep: true };
   },
-<<<<<<< HEAD
+
 });
-=======
-});
->>>>>>> branch 'master' of https://github.com/joeyaung/FinalProjectSercurity.git
+
+
