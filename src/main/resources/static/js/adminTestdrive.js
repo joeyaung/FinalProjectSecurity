@@ -366,30 +366,28 @@ let locObj1 = document.getElementById("1loc");
 
 locObj1.addEventListener("change",toLocsit1)
 function toLocsit1(){
-	document.getElementById("1opt11").disabled = "true";
-	document.getElementById("1opt12").disabled = "true";
-	document.getElementById("1opt21").disabled = "true";
-	document.getElementById("1opt22").disabled = "true";
-	document.getElementById("1opt31").disabled = "true";
-	document.getElementById("1opt32").disabled = "true";
-	document.getElementById("1opt41").disabled = "true";
-	document.getElementById("1opt42").disabled = "true";
 
-    if(locObj1.value==document.getElementById("1opt1").value){
-        document.getElementById("1opt11").disabled = "";
-        document.getElementById("1opt12").disabled = "";
+	$("#1locsitdef").nextAll().css('display','none');
+	
+	if( $("#1loc").val() == $("#1opt1").val() ){
+        $("#1opt11").css('display','block');
+        $("#1opt12").css('display','block');
 
-    }else if(locObj1.value==document.getElementById("1opt2").value){
-        document.getElementById("1opt21").disabled = "";
-        document.getElementById("1opt22").disabled = "";
+    } else if ( $("#1loc").val() == $("#1opt2").val() ){
+        $("#1opt21").css('display','block');
+        $("#1opt22").css('display','block');
 
-    }else if(locObj1.value==document.getElementById("1opt3").value){
-        document.getElementById("1opt31").disabled = "";
-        document.getElementById("1opt32").disabled = "";
+    } else if ( $("#1loc").val() == $("#1opt3").val() ){
+        $("#1opt31").css('display','block');
+        $("#1opt32").css('display','block');
 
-    }else if(locObj1.value==document.getElementById("1opt4").value){
-        document.getElementById("1opt41").disabled = "";
-        document.getElementById("1opt42").disabled = "";
+    } else if ( $("#1loc").val() == $("#1opt4").val() ){
+        $("#1opt41").css('display','block');
+        $("#1opt42").css('display','block');
+        
+    } else if ( $("#1loc").val() == $("#1opt5").val() ){
+        $("#1opt51").css('display','block');
+        $("#1opt52").css('display','block');
     }
 }
 
@@ -800,30 +798,28 @@ let locObj2 = document.getElementById("2loc");
 
 locObj2.addEventListener("change",toLocsit2)
 function toLocsit2(){
-	document.getElementById("2opt11").disabled = "true";
-	document.getElementById("2opt12").disabled = "true";
-	document.getElementById("2opt21").disabled = "true";
-	document.getElementById("2opt22").disabled = "true";
-	document.getElementById("2opt31").disabled = "true";
-	document.getElementById("2opt32").disabled = "true";
-	document.getElementById("2opt41").disabled = "true";
-	document.getElementById("2opt42").disabled = "true";
 
-    if(locObj2.value==document.getElementById("2opt1").value){
-        document.getElementById("2opt11").disabled = "";
-        document.getElementById("2opt12").disabled = "";
+	$("#2locsitdef").nextAll().css('display','none');
+	
+	if( $("#2loc").val() == $("#2opt1").val() ){
+        $("#2opt11").css('display','block');
+        $("#2opt12").css('display','block');
 
-    }else if(locObj2.value==document.getElementById("2opt2").value){
-        document.getElementById("2opt21").disabled = "";
-        document.getElementById("2opt22").disabled = "";
+    } else if ( $("#2loc").val() == $("#2opt2").val() ){
+        $("#2opt21").css('display','block');
+        $("#2opt22").css('display','block');
 
-    }else if(locObj2.value==document.getElementById("2opt3").value){
-        document.getElementById("2opt31").disabled = "";
-        document.getElementById("2opt32").disabled = "";
+    } else if ( $("#2loc").val() == $("#2opt3").val() ){
+        $("#2opt31").css('display','block');
+        $("#2opt32").css('display','block');
 
-    }else if(locObj2.value==document.getElementById("2opt4").value){
-        document.getElementById("2opt41").disabled = "";
-        document.getElementById("2opt42").disabled = "";
+    } else if ( $("#2loc").val() == $("#2opt4").val() ){
+        $("#2opt41").css('display','block');
+        $("#2opt42").css('display','block');
+        
+    } else if ( $("#2loc").val() == $("#2opt5").val() ){
+        $("#2opt51").css('display','block');
+        $("#2opt52").css('display','block');
     }
 }
 
