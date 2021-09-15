@@ -88,7 +88,7 @@
               <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">精品商城</a>
+              <a class="nav-link" href="/FinalProject/products">精品商城</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/center">展示中心</a>
@@ -106,20 +106,26 @@
     <section class="about-section text-center bg-gray-custom pd-2rem">
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="div_bookc"> 
-            <h1 class="h_bookc">預約成功</h1><br>
+        
+          <div class="col-lg-10 image-holder-custom" style="top:-50px">
+            <img src="images/17.jpg" alt="" style="height:330px">
+            <h3>BOOK A TEST DRIVE</h3>
+          </div>
+          
+          <div style="margin-top:1%; height: 5%"> 
+            <h1>預約成功</h1><br>
             <div class="po-re">
-            <h3 class="h_bookc dis-ib-custom">您的試駕表單編號為:<strong id="copied" style="color:#64A19D">${formId}</strong></h3>
-              <span class="input-group-addon color-blue copy-custom" id="copy" title="複製表單編號" onclick="copyEvent('copied')">
-                <i class="fas fa-clone"></i></span>
-<!--               </span> -->
-            <h3 class="h_bookc">試駕表單資訊已寄送至您的E-mail信箱，請於信箱中確認</h3>
-            <%session.invalidate();%>
-            <form action="TestDrive" method="post">
-              <div class="div">
-                <button type="submit" class="btn btn-warning wh-40">返回預約賞車</button>
-              </div>
-            </form>
+            	<h3 class="h_bookc dis-ib-custom">您的試駕表單編號為:<strong id="copied" style="color:#64A19D">${formId}</strong></h3>
+              	<span class="input-group-addon color-blue copy-custom" id="copy" title="複製表單編號" onclick="copyEvent('copied')">
+                <i class="fas fa-clone"></i></span><br/>
+            	<h3 class="h_bookc">試駕表單資訊已寄送至您的E-mail信箱，請於信箱中確認</h3><br/><br/><br/>
+            	<%session.invalidate();%>
+              <form action="TestDrive" method="post">
+				<div class="div">
+                	<button type="submit" class="btn btn-warning wh-40">返回預約賞車</button>
+              	</div><br/><br/>
+              </form>
+            </div>
           </div>
         </div>
       </div>

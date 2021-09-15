@@ -86,4 +86,5 @@ public class WebMultiLoginSecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManager();
 	}
 
+
 }

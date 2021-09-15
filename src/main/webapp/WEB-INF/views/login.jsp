@@ -85,4 +85,8 @@ pageEncoding="UTF-8"%>
     <script src="/FinalProject/js/jquery-3.6.0.js"></script>
     <script src="/FinalProject/js/login.js"></script>
   </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> branch 'master' of https://github.com/joeyaung/FinalProjectSercurity.git

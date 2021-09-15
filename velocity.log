@@ -166,4 +166,8 @@
 2021-09-14 11:40:13,011 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
 2021-09-14 11:40:13,011 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
 2021-09-14 11:40:13,011 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+<<<<<<< HEAD
 2021-09-14 11:40:13,026 - ResourceManager : found /templates/resetPassword.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+=======
+2021-09-14 11:40:13,026 - ResourceManager : found /templates/resetPassword.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+>>>>>>> branch 'master' of https://github.com/joeyaung/FinalProjectSercurity.git
