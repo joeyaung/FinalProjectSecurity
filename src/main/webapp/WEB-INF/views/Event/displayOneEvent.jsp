@@ -135,6 +135,9 @@
 							method: "GET",
 							dataType: "json",
 							success: function (data) {
+								var eventInfo = JSON.stringify(data);
+								localStorage.setItem("eventInfo", eventInfo);
+								
 								var list = "";
 								list += "<li class='news_li'><h2>"
 									+ data.event_uploaddate

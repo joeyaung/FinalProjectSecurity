@@ -151,30 +151,18 @@
     $(document).ready(function () {
 
       var formData = JSON.parse(localStorage.getItem('formData'));
-      console.log(formData.event_id);
+      // Retrieve the object from storage
+      var retrievedObject = localStorage.getItem('eventInfo');
+      var eventInfoJson = JSON.parse(retrievedObject);
 
-      if (formData !== undefined) {
-        $.ajax({
-          url: '/FinalProject/findEventById/' + formData.event_id,
-          method: 'GET',
-          success: function (data) {
-            var eventInfo = JSON.stringify(data);
-            localStorage.setItem("eventInfo", eventInfo);
+      if (formData !== undefined) {   
 
-            $("#tbody").append("<tr><td>活動名稱:</td><td>" + data.event_title + "</td></tr><tr><td>活動日期:</td><td>" + data.event_date + "</td></tr><tr><td>活動地點:</td><td>" + data.location + "</td></tr><tr><td>姓名:</td><td>" + formData.name + "</td></tr><tr><td>性別:</td><td>" + formData.gender + "</td></tr><tr><td>身分證字號: </td><td>" + formData.id_number + "</td></tr><tr><td>行動電話:</td><td>" + formData.phone +
+            $("#tbody").append("<tr><td>活動名稱:</td><td>" + eventInfoJson.event_title + "</td></tr><tr><td>活動日期:</td><td>" + eventInfoJson.event_date + "</td></tr><tr><td>活動地點:</td><td>" + eventInfoJson.location + "</td></tr><tr><td>姓名:</td><td>" + formData.name + "</td></tr><tr><td>性別:</td><td>" + formData.gender + "</td></tr><tr><td>身分證字號: </td><td>" + formData.id_number + "</td></tr><tr><td>行動電話:</td><td>" + formData.phone +
               "</td></tr><tr><td>Email:</td><td>" + formData.email + "</td></tr><tr><td>備註:</td><td>" + formData.message + "</td></tr><input type='hidden' id='id_number' name='id_number' value='" + formData.id_number + "'><input type='hidden' id='gender' name='gender' value='" + formData.gender + "'>"
               + "<input type='hidden' id='message' name='message' value='" + formData.message + "'></br></br>");
             $(".table_bookd tbody tr td").css('padding-bottom', '1em');
 
             $("#edit_btn").click(function () {
-
-
-              localStorage.getItem("eventInfo", eventInfo)
-
-              // Retrieve the object from storage
-              var retrievedObject = localStorage.getItem('eventInfo');
-
-              var eventInfoJson = JSON.parse(retrievedObject);
 
               var content = "<h2 class='h_bookd' style='color: black' ; padding-bottom: 5em';>報名活動資料修改</h2></br><h5 style='color: black';>您報名的活動名稱：" + eventInfoJson.event_title + "</h5></br><h5 style='color: black';>您報名的活動日期：" + eventInfoJson.event_date + "</h5></br><h5 style='color: black';>您報名的活動地點：" + eventInfoJson.location + "</h5></br>"
                 + "<form id='new_event_form'><table class='table_bookf' style='margin: auto;text-align: center;'><tbody id='tbody'><tr><td><label for='name'>姓名:</label></td><td><div class='form-group'><input class='form-control' type='text' aria-label='default input example' name='name' maxlength='10' id='name' placeholder='請輸入姓名' value='" + formData.name + "'required>"
@@ -196,12 +184,8 @@
               $("input[name='gender'][value=" + value + "]").prop('checked', true);
 
 
-            });
-          },
-          error: function (err) {
-            console.log(err);
-            alert('Registration failed:' + err);
-          }
+            
+         
         });
 
       }
