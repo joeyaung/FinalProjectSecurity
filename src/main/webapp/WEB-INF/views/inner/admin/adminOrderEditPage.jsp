@@ -433,8 +433,21 @@ pageEncoding="UTF-8"%>
                     class="btn-cancel"
                     :disabled="backend_order_info.stage == '訂單已取消'"
                     @click="cancelOrder"
+                    v-show="!isSendingCancel"
                   >
                     取消訂單<i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button
+                    class="btn-cancel"
+                    :disabled="backend_order_info.stage == '訂單已取消'"
+                    @click="cancelOrder"
+                    v-show="isSendingCancel"
+                  >
+                    <img
+                      src="/FinalProject/images/loading.gif"
+                      height="40px"
+                      alt="loading"
+                    />
                   </button>
                 </div>
               </div>

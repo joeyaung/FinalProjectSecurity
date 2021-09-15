@@ -18,6 +18,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
 import tw.com.finalproject.yumyu.InternalUse.Employee;
+import tw.com.finalproject.yumyu.MemberOrder.MemberOrder;
 
 @Service
 public class MailService {
@@ -27,6 +28,46 @@ public class MailService {
 
 	@Autowired
 	private VelocityEngine velocityEngine;
+
+//	Send order status change email.
+	public boolean sendOrderStatusChangeMail(String email, MemberOrder order) {
+		VelocityContext model = new VelocityContext();
+		model.put("orderId", order.getId());
+		model.put("memberName", order.getMember().getFullName());
+		model.put("orderStatus", order.getStage());
+		Resource logoResource = new ClassPathResource("static/images/audi-logo.png");
+		Resource iconResource = new ClassPathResource("static/images/order-icon.png");
+		MimeMessage mimeMessage = mailSender.createMimeMessage();
+
+		try {
+			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+
+			mimeMessageHelper.setSubject("訂單狀態變更通知");
+			mimeMessageHelper.setFrom("carmotorcomp@gmail.com");
+			mimeMessageHelper.setTo(email);
+			String content = getContentFromTemplateStatusChange(model);
+			mimeMessageHelper.setText(content, true);
+			mimeMessageHelper.addInline("logo", logoResource.getFile());
+			mimeMessageHelper.addInline("icon", iconResource.getFile());
+
+			mailSender.send(mimeMessageHelper.getMimeMessage());
+			System.out.println("Change Status Email Sended!");
+		} catch (MessagingException | IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+
+	}
+
+//	Get template content (Change Status)
+	public String getContentFromTemplateStatusChange(VelocityContext model) {
+		StringWriter stringWriter = new StringWriter();
+
+		velocityEngine.mergeTemplate("/templates/orderStatusChangeMail.vm", "UTF-8", model, stringWriter);
+		return stringWriter.toString();
+
+	}
 
 //	velocity template engine
 	public void sendResetPasswordEmail(String recipient, String token, String memberName) {

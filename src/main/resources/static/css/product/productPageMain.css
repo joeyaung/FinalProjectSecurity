@@ -1,0 +1,57 @@
+.tag-label-container {
+  display: flex;
+}
+
+.tags {
+  display: flex;
+  background-color: rgba(30, 144, 255, 0.5);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 600;
+  margin: 0.5rem 0.2rem;
+  padding: 2px 5px;
+}
+
+.tags:hover {
+  cursor: pointer;
+}
+
+.text-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-container > label {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.search-container > input {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid gray;
+  text-indent: 3px;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+}
+
+.tag-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sort-container > select {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid gray;
+}

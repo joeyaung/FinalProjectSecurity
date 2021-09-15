@@ -3,6 +3,9 @@ let productPageVM = new Vue({
   data: {
     products: [],
     cartItem: [],
+    sortMethod: "",
+    displayTags: [],
+    queryString: "",
   },
   methods: {
     dollorFormated(price) {
@@ -68,6 +71,47 @@ let productPageVM = new Vue({
         },
       });
     },
+    mergeLowToHigh(left, right) {
+      var result = [];
+      while (left.length > 0 && right.length > 0) {
+        if (left[0].curPrice < right[0].curPrice) {
+          result.push(left.shift());
+        } else {
+          result.push(right.shift());
+        }
+      }
+      return result.concat(left, right);
+    },
+    mergeHighToLow(left, right) {
+      var result = [];
+      while (left.length > 0 && right.length > 0) {
+        if (left[0].curPrice > right[0].curPrice) {
+          result.push(left.shift());
+        } else {
+          result.push(right.shift());
+        }
+      }
+      return result.concat(left, right);
+    },
+    mergeSort(arr, type) {
+      if (arr.length <= 1) {
+        return arr;
+      }
+      var middle = Math.floor(arr.length / 2);
+      var left = arr.slice(0, middle);
+      var right = arr.slice(middle);
+      if (type == "greater") {
+        return this.mergeLowToHigh(
+          this.mergeSort(left, type),
+          this.mergeSort(right, type)
+        );
+      } else {
+        return this.mergeHighToLow(
+          this.mergeSort(left, type),
+          this.mergeSort(right, type)
+        );
+      }
+    },
   },
   computed: {
     cart_item_total_quantity() {
@@ -76,6 +120,16 @@ let productPageVM = new Vue({
         total += this.cartItem[i].quantityInCart;
       }
       return total;
+    },
+    displayCartItem() {
+      let query = this.queryString;
+      let sortMethod = this.sortMethod;
+
+      let displayTags = this.displayTags;
+      let rowData = this.products;
+
+      // 先排序
+      return this.mergeSort(rowData, sortMethod);
     },
   },
   mounted: function () {
