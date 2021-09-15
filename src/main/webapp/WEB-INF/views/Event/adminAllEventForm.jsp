@@ -518,7 +518,7 @@
 
 			var checkBoxes = $("#approve_id");
 			checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-			if (!checkBoxes.is(':checked')) {
+			if (checkBoxes.is(':checked')) {
 				console.log(!checkBoxes.is(':checked'))
 				console.log("enter function");
 				var object = {};
@@ -544,8 +544,9 @@
 					},
 					success: function (response) {
 						alert('Email已成功寄出!');
+						sortByStatusTable.ajax.reload();
 						table.ajax.reload();
-						$("#approve_id").prop("checked", true);
+						// $("#approve_id").prop("checked", true);
 					},
 					error: function (err) {
 						alert('failed!')

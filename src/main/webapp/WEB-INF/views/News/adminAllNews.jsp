@@ -73,7 +73,7 @@
 
 		<!--buttons css-->
 		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-
+		
 
 	</head>
 
@@ -343,14 +343,14 @@
 							<table id="newslist" class="table table-striped table-bordered nowrap" style="width: 100%">
 								<thead>
 									<tr>
-										<th width="50%">新聞編號</th>
-										<th width="50%">標題</th>
+										<th>新聞編號</th>
+										<th>標題</th>
 										<th>副標題</th>
 										<th>上傳日期</th>
 										<th>內文</th>
 										<th>備註</th>
 										<th>圖片</th>
-										<th></th>
+										<th>
 
 									</tr>
 
@@ -617,9 +617,9 @@
 								}
 							}],
 						"columns": [{
-							data: "newsId",
+							data: "newsId"
 						}, {
-							data: "title",
+							data: "title"
 						}, {
 							data: "subtitle"
 						}, {
@@ -630,9 +630,10 @@
 							data: "remarks"
 						}, {
 							data: "base64Image"
-						}, {
-							data: "newsId"
 						}
+						 , {
+						 	data: "newsId"
+						 }
 
 						],
 
