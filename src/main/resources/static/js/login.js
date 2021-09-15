@@ -42,6 +42,10 @@ let loginVM = new Vue({
       this.member.username = "joe120106@gmail.com";
       this.member.password = "password";
     },
+    autocompleteMember() {
+      this.member.username = "member@demo.com";
+      this.member.password = "password";
+    },
   },
   mounted: function () {
     this.$watch("member.username", function (newValue, oldValue) {

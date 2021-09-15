@@ -9,6 +9,8 @@
     <meta name="author" content="" />
     <title>展示中心</title>
 
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+
     <!-- Google Map API -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jquery安裝 -->
@@ -113,16 +115,18 @@
                     <div class="card-body p-4">
                       <div class="text-center">
                         <!-- Product name-->
-                        <h3 class="fw-bolder product-title">{{ item.centerName }}</h3>
-                        <li class="product_li">地址:{{ item.centerAddress }}</li>
+                        <button type="button" class="btn btn-outline-secondary"
+                          @click="openInfoWindows(item.centerName)">{{ item.centerName }}</button>
+                        <!-- <li class="product_li">地址:{{ item.centerAddress }}</li>
                         <li class="product_li">連絡電話:{{ item.centerPhone }}</li>
                         <li class="product_li">E-mail:{{ item.centerEmail }}</li>
+                        <li class="product_li">營業時間:{{ item.centerOpentime }}</li>
+                        <li class="product_li"></li>電話號碼 <a :href="'tel:'+ item.centerPhone">撥打電話</a> -->
                         <li class="product_li">{{ item.curdistance_text }}</li>
                         <li class="product_li">{{ item.curdistance_time }}</li>
 
 
-                        <a
-                          :href="'http://localhost:8080/FinalProject/center/location?centerId='+ item.centerId">Link</a>
+                        <!-- <a v-bind:href="'http://localhost:8080/FinalProject/center/location?centerId='+ item.centerId"  target = '_blank' rel = 'noreferrer noopener' >詳細介紹</a> -->
                       </div>
                     </div>
                   </div>
@@ -168,7 +172,10 @@
       data: {
         centers: [],  //所有展示中心的點
         map: null,
+        markers: [], // 存入每一個marker上的info windows
+        infoWindows: [],
       },
+
       computed: {
         locations() { //各個展示中心的位置
           let locs = [];
@@ -177,6 +184,10 @@
             curLocation.push(this.centers[i].centerName);
             curLocation.push(this.centers[i].centerLatitude);
             curLocation.push(this.centers[i].centerLongitude);
+            curLocation.push(this.centers[i].centerId);
+            curLocation.push(this.centers[i].centerAddress);
+            curLocation.push(this.centers[i].centerEmail);
+            curLocation.push(this.centers[i].centerOpentime);
             locs.push(curLocation);
           }
           return locs;
@@ -196,6 +207,7 @@
           },
         });
       },
+
       methods: {
         // init google map
         initMap() {
@@ -211,46 +223,98 @@
           });
 
           // 放置marker
-          var marker1;  //marker1:每個展示中心的位置
-          var marker2;  //marker2:web抓的現在位置
+          // var marker1;  //marker1:每個展示中心的位置
+          // var marker2;  //marker2:web抓的現在位置
 
           //marker1:每個展示中心的位置
           for (let i = 0; i < this.locations.length; i++) {
-            marker1 = new google.maps.Marker({
+            let marker1 = new google.maps.Marker({
               position: new google.maps.LatLng(this.locations[i][1], this.locations[i][2]),
               map: this.map,
               title: this.locations[i][0],
               icon: 'https://i.imgur.com/Z1H7jQI.jpg',
               animation: google.maps.Animation.DROP,
             });
-          };
 
-          //marker2:web抓的現在位置
-          navigator.geolocation.getCurrentPosition((position) => {
-            var curlat = position.coords.latitude;
-            var curlng = position.coords.longitude;
-            marker2 = new google.maps.Marker({
-              position: new google.maps.LatLng(curlat, curlng),
-              map: this.map,
-              animation: google.maps.Animation.BOUNCE,
-              zIndex: 1, //重疊狀況下排在第x順位
+            // info window
+            var contentinfo = "<h5>" + this.locations[i][0]
+              + "<h5> <li class='product_li'>地址:"
+              + this.locations[i][4] + "</li><li class='product_li'>連絡電話:"
+              + this.locations[i][5] + "</li><li class='product_li'>營業時間:"
+              + this.locations[i][6] + "</li>"
+              + "<a href=\"http://localhost:8080/FinalProject/center/location?centerId=" + this.locations[i][3] + "\" target='_blank' rel = 'noreferrer noopener' >詳細介紹</a>";
+            let infowindow = new google.maps.InfoWindow({  //每個點上都放上資訊視窗
+              content: contentinfo,
+              title: this.locations[i][0],
             });
-          });
+            
+
+            // 監聽 marker click 事件
+            marker1.addListener('click', function (e) {  //每個都要監聽,按下click產生事件,事件內容為在這個map點到marker就打開資訊視窗
+              infowindow.open(this.map, marker1);
+              // this.map.setZoom(10)  //點擊該marker後就放大到10
+              console.log(marker1)
+            });
+
+            this.markers.push(marker1);
+            this.infoWindows.push(infowindow);
+
+
+            // 加一個open的method，就可由外部按鈕開啟
+            
+            // this.infowindowAll = {
+            //   open: function () {
+            //     infowindow.open(this.map, marker1);
+            //   }
+
+            // };
+
+          };
         },
+
+        // 由外部按鈕開啟info windows
+        openInfoWindows(centerTitle) {
+          let resultMarker = Object;
+          let resultInfo = Object;
+          for (let i = 0; i < this.markers.length; i ++){
+            if (this.markers[i].title == centerTitle){
+              // console.log(this.markers[i].title);
+              resultMarker = this.markers[i];
+            }
+          }
+
+          for (let j = 0; j < this.infoWindows.length; j++){
+            if (this.infoWindows[j].title == centerTitle){
+              // console.log(this.infoWindows[j].title);
+              // console.log(this.infoWindows[j].content);
+              resultInfo = this.infoWindows[j];
+            }
+          }
+          resultInfo.open(this.map, resultMarker);
+        },
+
+
 
         // 使用者與其他地區的距離
         getCurrent() {
           const _this = this;
-          console.log(_this)
 
           // 先確認使用者裝置能不能抓地點
           if (navigator.geolocation) {
             function success(position) {
-              alert('定位成功');
+              alert('定位成功,已將最近距離的展示中心放在最上層');
               console.log(position)
 
               // 將目前所在地設成比較的點
               let originPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+              //marker2:web抓的現在位置
+              let marker2 = new google.maps.Marker({
+                position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                map: _this.map,
+                animation: google.maps.Animation.BOUNCE,
+                zIndex: 1, //重疊狀況下排在第x順位
+              });
 
               // 把要計算的點存成陣列
               let destinations = [];
@@ -269,9 +333,9 @@
                 avoidTolls: true // 是否避開收費路線
               }, callback);
               function callback(response, status) {
-                var curdistance = ''
-                var curdistance_text = ''
-                var curdistance_time = ''
+                var curdistance = ''  //與目前位置之間的距離
+                var curdistance_text = ''  //與目前位置之間的距離(公里)
+                var curdistance_time = ''  //與目前位置之間的開車時間
                 for (let i = 0, len = _this.centers.length; i < len; i++) {
                   _this.centers[i].curdistance = response.rows[0].elements[i].distance.value;
                   _this.centers[i].curdistance_text = response.rows[0].elements[i].distance.text;
@@ -294,7 +358,18 @@
 
         },
 
+
+
+
+
       },
+
+
+
+
+
+
+
     });
   </script>
   </body>
