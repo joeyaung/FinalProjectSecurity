@@ -180,7 +180,7 @@ public class TestDrivePageController {
 				+ "<br/><a style='font-size:20px' href=\'http://localhost:8080/FinalProject/TestDrive'>Audi AG 於此檢查預約詳情</a>"
 				+ "<br/>期待您的蒞臨~";
 				// 暫時comment 避免一直送email。不要不小心刪了
-//			mailService.prepareAndSendImg(mailCli, "[奧迪車業]試駕體驗預約 修改 通知", textString);
+			mailService.prepareAndSendImg(mailCli, "[奧迪車業]試駕體驗預約 修改 通知", textString);
 		} catch (Exception e) {
 			System.out.println("Send Mail Fail.");
 			e.printStackTrace();
@@ -341,7 +341,7 @@ public class TestDrivePageController {
 					+ "<br/><a style='font-size:20px' href=\'http://localhost:8080/FinalProject/TestDrive'>Audi AG 於此檢查預約詳情</a>"
 					+ "<br/>期待您的蒞臨~";
 			// 暫時comment 避免一直送email。不要不小心刪了
-//			mailService.prepareAndSendImg(mailCli, "[奧迪車業]試駕體驗預約 成功 通知", textString);
+			mailService.prepareAndSendImg(mailCli, "[奧迪車業]試駕體驗預約 成功 通知", textString);
 		} catch (Exception e2) {
 			System.out.println("Send Mail Fail.");
 			e2.printStackTrace();

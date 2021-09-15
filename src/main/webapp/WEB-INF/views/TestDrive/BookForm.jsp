@@ -24,7 +24,7 @@
     />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/index.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/bookForm.css" />
+    <link rel="stylesheet" href="/FinalProject/css/bookForm.css" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -42,14 +42,8 @@
       integrity="sha512-Fppbdpv9QhevzDE+UHmdxL4HoW8HantO+rC8oQB2hCofV+dWV2hePnP5SgiWR1Y1vbJeYONZfzQc5iII6sID2Q=="
       crossorigin="anonymous"/>
       
-      
-      
     <style>
-
-    
-    
     </style>
-
       
   </head>
 
@@ -90,7 +84,7 @@
               <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">精品商城</a>
+              <a class="nav-link" href="/FinalProject/products">精品商城</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/center">展示中心</a>
@@ -193,11 +187,9 @@
                           <option>A3</option>
                           <option>A4</option>
                           <option>A5</option>
-                          <option>A6</option>
                         </optgroup>
                         <optgroup label="Q series">
                           <option>Q3</option>
-                          <option>Q5</option>
                         </optgroup>
                       </select><span id="carmodCheck"></span><img src=""></td></tr>
 
@@ -215,6 +207,7 @@
                         <option value="桃園市" id="opt2">桃園市</option>
                         <option value="臺中市" id="opt3">臺中市</option>
                         <option value="高雄市" id="opt4">高雄市</option>
+                        <option value="宜蘭市" id="opt5">宜蘭市</option>
                       </select><span id="locCheck"></span><img src=""></td></tr>
                       
                   <tr>
@@ -226,14 +219,16 @@
                         name="driveLocSit"
                         id="locsit">
                         <option id="locsitdef" selected disabled>請選擇據點</option>
-                        <option value="內湖" id="opt11">內湖服務站</option>
-                        <option value="大安" id="opt12">大安服務站</option>
-                        <option value="中壢" id="opt21">中壢服務站</option>
-                        <option value="八德" id="opt22">八德服務站</option>
-                        <option value="大里" id="opt31">大里服務站</option>
-                        <option value="七期" id="opt32">七期服務站</option>
-                        <option value="鼓山" id="opt41">鼓山服務站</option>
-                        <option value="左營" id="opt42">左營服務站</option>
+                        <option value="內湖" id="opt11">內湖展示中心</option>
+                        <option value="大安" id="opt12">大安展示中心</option>
+                        <option value="平鎮" id="opt21">平鎮展示中心</option>
+                        <option value="桃園" id="opt22">桃園展示中心</option>
+                        <option value="北屯" id="opt31">北屯展示中心</option>
+                        <option value="南屯" id="opt32">南屯展示中心</option>
+                        <option value="左營" id="opt41">左營展示中心</option>
+                        <option value="鼓山" id="opt42">鼓山展示中心</option>
+                        <option value="五結" id="opt51">五結展示中心</option>
+                        <option value="羅東" id="opt52">羅東展示中心</option>
                       </select><span id="locsitCheck"></span><img src=""></td></tr>
 
                   <tr>
