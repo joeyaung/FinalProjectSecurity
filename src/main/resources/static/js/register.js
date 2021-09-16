@@ -82,4 +82,7 @@ let registerVM = new Vue({
     }),
       { deep: true };
   },
+
 });
+
+

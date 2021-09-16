@@ -81,7 +81,9 @@ public class EventRestController {
 	public String findUserByUserName(Principal principal) throws JsonProcessingException {
 		
 		String userName = principal.getName();
+		System.out.println("userName=" + userName);
 		ApplicationUser appUser = appUserService.findByUsername(userName);
+		System.out.println("appUser" + appUser);
 		
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 		String appUserJson = ow.writeValueAsString(appUser);

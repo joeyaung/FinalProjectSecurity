@@ -419,11 +419,17 @@
 						<p class="mb-4">活動表單編輯</p>
 
 						<!-- Content Row -->
-						<div class="row">
+						<div class="row" id='rowdiv'>
 							<!-- 以下開始替換成你們的內容
                         可放表格, 圖表, 要填的 form 之類的~ -->
-
+							<select id="status">
+								<option value="全部">全部</option>
+								<option value="成功">成功</option>
+								<option value="待審核">待審核</option>
+								<option value="報名取消">報名取消</option>
+							</select>
 							<!-- this is datables -->
+						
 							<table id="eventFormList" class="table table-striped table-bordered nowrap"
 								style="width: 100%">
 								<thead>
@@ -435,13 +441,9 @@
 								<tbody>
 
 
-
-
-
-
 								</tbody>
 							</table>
-
+						
 						</div>
 
 
@@ -498,9 +500,17 @@
 		var table;
 		var formData = new FormData();
 		var switchStatus = false;
+		var sortByStatusTable;
 		$(document).ready(function () {
-
 			createdatatable();
+			$("#status").change(function () {
+				var status = $(this).val();
+				if(status=='全部'){
+					createdatatable();
+				}else{
+					sortByStatus(status);
+				}
+			});
 
 		})
 
@@ -508,7 +518,9 @@
 
 			var checkBoxes = $("#approve_id");
 			checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-			if (checkBoxes.prop("checked")) {
+			if (checkBoxes.is(':checked')) {
+				console.log(!checkBoxes.is(':checked'))
+				console.log("enter function");
 				var object = {};
 				formData.forEach(function (value, key) {
 					object[key] = value;
@@ -532,8 +544,9 @@
 					},
 					success: function (response) {
 						alert('Email已成功寄出!');
+						sortByStatusTable.ajax.reload();
 						table.ajax.reload();
-						$("#approve_id").prop("checked", true);
+						// $("#approve_id").prop("checked", true);
 					},
 					error: function (err) {
 						alert('failed!')
@@ -543,6 +556,8 @@
 
 
 			} else {
+				console.log(!checkBoxes.is(':checked'))
+				console.log("didn't enter function");
 				alert('err!');
 			}
 
@@ -550,6 +565,119 @@
 
 		}
 
+		function sortByStatus(status){
+			$('#eventFormList').DataTable().destroy();
+				mytable = null;
+				$('#eventFormList').empty();
+			console.log(status);
+			sortByStatusTable = $("#eventFormList")
+				.DataTable(
+					{
+						"ajax": {
+							"dataSrc": "",
+							"url": "/FinalProject/findByStatus",
+							"method":"POST",
+							"data":{
+								"status": status
+							},
+						},
+						"rowId": "form_id",
+						"columns": [
+							{
+								data: "form_id",
+								title: "表單編號"
+							},
+							{
+								data: "event.event_id",
+								title: "活動編號"
+
+							},
+							{
+								data: "applicationUser.id",
+								title: "會員ID"
+							},
+							{
+								data: "creation_time",
+								title: "表單建立時間"
+							},
+							{
+								data: "applicationUser.fullName",
+								title: "姓名"
+							},
+							{
+								data: "gender",
+								title: "性別"
+							},
+							{
+								data: "id_number",
+								title: "身分證字號"
+							},
+							{
+								data: "applicationUser.phone",
+								title: "聯絡電話"
+							},
+							{
+								data: "applicationUser.username",
+								title: "電子郵件"
+							},
+							{
+								data: "applicationUser.fullAddress",
+								title: "地址"
+							},
+							{
+								data: "status",
+								title: "狀態"
+							},
+							{
+								data: "message",
+								title: "備註"
+							},
+							{
+								data: null,
+								title: "審核",
+								render: function (data, type, row) {
+									if (row['status'] == "成功") {
+										return "<label class='switch'><input id='approve_id' type='checkbox' onChange='approveFunction()' checked><span class='slider round'> <span class='on'>ON</span>"
+											+ "<span class='off'>OFF</span</span></label>";
+									} else
+										return "<label class='switch'><input id='approve_id' type='checkbox' onChange='approveFunction()'><span class='slider round'> <span class='on'>ON</span>"
+											+ "<span class='off'>OFF</span</span></label>";
+								}
+							}],
+
+						"responsive": {
+							"details": {
+								"display": $.fn.dataTable.Responsive.display
+									.modal({
+										"header": function (row) {
+											var data = row.data();
+											formData.append("form_id",
+												data.form_id);
+											formData
+												.append(
+													"event_id",
+													data.event.event_id);
+											formData
+												.append(
+													"user_id",
+													data.applicationUser.id);
+											return '表單報名詳細資訊';
+										}
+									}),
+								"renderer": $.fn.dataTable.Responsive.renderer
+									.tableAll({
+										tableClass: 'table'
+									})
+
+							}
+
+						},
+					});
+	
+		}
+			
+		
+		
 		//datatable 
 		function createdatatable() {
 
@@ -657,7 +785,7 @@
 							}
 
 						},
-					})
+					});
 
 		}
 	</script>

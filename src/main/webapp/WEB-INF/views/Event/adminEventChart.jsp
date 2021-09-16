@@ -496,7 +496,7 @@
 								labels: chartlabels,
 								datasets: [
 									{
-										label: '# 報名人數統計表',
+										label: '# 目前已報名人數',
 										data: registeredNumber,
 
 										backgroundColor: [
