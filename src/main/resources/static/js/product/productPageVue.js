@@ -6,8 +6,16 @@ let productPageVM = new Vue({
     sortMethod: "",
     displayTags: [],
     queryString: "",
+    showCartItem: false,
   },
   methods: {
+    hoverToggleShowCartItem(type) {
+      if (type == "show") {
+        this.showCartItem = true;
+      } else if (type == "hide") {
+        this.showCartItem = false;
+      }
+    },
     dollorFormated(price) {
       var formatter = new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -31,9 +39,9 @@ let productPageVM = new Vue({
       this.popularTags[index].selected = !this.popularTags[index].selected;
       console.log("end selecting tag");
     },
-    addToCart(index, event) {
+    addToCartBottom(index, event) {
       event.preventDefault();
-      let selectProduct = this.products[index];
+      let selectProduct = this.displayCartItem[index];
       let self = this;
       $.ajax({
         url: `/FinalProject/api/v1/cart/add_to_cart/${selectProduct.id}`,
@@ -46,6 +54,45 @@ let productPageVM = new Vue({
           }
           if (res == "ok") {
             self.fetchMemberCartItem();
+          } else {
+            console.log(res);
+          }
+        },
+      });
+    },
+    addToCart(index) {
+      let selectProduct = this.cartItem[index].product;
+      let self = this;
+      $.ajax({
+        url: `/FinalProject/api/v1/cart/add_to_cart/${selectProduct.id}`,
+        type: "POST",
+        dataType: "text",
+        success: function (res) {
+          if (res == "unauthorized") {
+            window.location = "/FinalProject/login";
+            return;
+          }
+          if (res == "ok") {
+            self.fetchMemberCartItem();
+          } else {
+            console.log(res);
+          }
+        },
+      });
+    },
+    removeFromCart(index) {
+      let selectProduct = this.cartItem[index];
+      let self = this;
+      $.ajax({
+        url: `/FinalProject/api/v1/cart/remove_to_cart/${selectProduct.id}`,
+        type: "POST",
+        dataType: "text",
+        success: function (res) {
+          if (res == "ok") {
+            selectProduct.quantityInCart -= 1;
+            if (selectProduct.quantityInCart == 0) {
+              self.cartItem.splice(index, 1);
+            }
           } else {
             console.log(res);
           }

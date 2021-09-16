@@ -87,9 +87,8 @@ public class InitService {
 	@Autowired
 	private DefaultClientActivity clientActivity;
 	@Autowired
-
 	private DefaultProduct defaultProduct;
-
+	@Autowired
 	private DefaultEvent event;
 	@Autowired
 	private DefaultEventForm eventForm;
@@ -358,96 +357,7 @@ public class InitService {
 		centerRepository.save(defaultCenter13);
 		centerRepository.save(defaultCenter14);
 
-//		boolean saveProductsResult = createDefaultProducts();
-//		if (saveProductsResult) {
-//			System.out.println("Products Init Complete.");
-//		} else {
-//			System.out.println("Products Init Error!");
-//		}
-
+		System.out.println("Init Completed!");
 }
 	
-//
-//	private boolean saveDefaultProductImage(List<Product> products) throws IOException {
-//		Product product1 = products.get(0);
-//		FileInputStream inputStream = new FileInputStream(new File("src/main/resources/static/images/products/1.png"));
-//		byte[] image1 = new byte[inputStream.available()];
-//		inputStream.read(image1);
-//		ProductImage productImage1 = ProductImage.builder().product(product1).image(image1).build();
-//		Product product2 = products.get(1);
-//		FileInputStream inputStream2 = new FileInputStream(new File("src/main/resources/static/images/products/2.png"));
-//		byte[] image2 = new byte[inputStream2.available()];
-//		inputStream2.read(image2);
-//		ProductImage productImage2 = ProductImage.builder().product(product2).image(image2).build();
-//		Product product3 = products.get(2);
-//		FileInputStream inputStream3 = new FileInputStream(new File("src/main/resources/static/images/products/3.png"));
-//		byte[] image3 = new byte[inputStream3.available()];
-//		inputStream3.read(image3);
-//		ProductImage productImage3 = ProductImage.builder().product(product3).image(image3).build();
-//		Product product4 = products.get(3);
-//		FileInputStream inputStream4 = new FileInputStream(new File("src/main/resources/static/images/products/4.png"));
-//		byte[] image4 = new byte[inputStream4.available()];
-//		inputStream4.read(image4);
-//		ProductImage productImage4 = ProductImage.builder().product(product4).image(image4).build();
-//
-//		List<ProductImage> productImages = List.of(productImage1, productImage2, productImage3, productImage4);
-//		boolean result = productImageService.saveAll(productImages);
-//		if (result) {
-//			return true;
-//		}
-//		return false;
-//
-//	}
-
-//	Default Cart Data
-//	private boolean createDefaultCartItem(ApplicationUser member) {
-//		CartItem cart1 = CartItem.builder().member(member).product(productService.findById(1L)).quantityInCart(2)
-//				.build();
-//		CartItem cart2 = CartItem.builder().member(member).product(productService.findById(4L)).quantityInCart(1)
-//				.build();
-//		CartItem cart3 = CartItem.builder().member(member).product(productService.findById(2L)).quantityInCart(2)
-//				.build();
-//		boolean result = cartService.saveAll(List.of(cart1, cart2, cart3));
-//		return result;
-//	}
-
-//	Default MemberOrder & OrderDetail
-//	private boolean createDefaultOrder(ApplicationUser member) throws IOException {
-//		String orderId = "5EK74526RB316204L";
-//		Order order = paypalService.getOrder(orderId);
-//		if (!orderId.equals(order.id())) {
-//			return false;
-//		}
-//		if (order.updateTime() == null) {
-//			return false;
-//		}
-//
-//		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
-//		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-//		LocalDateTime date = LocalDateTime.parse(order.updateTime(), inputFormatter);
-//		LocalDateTime dateFormate = date.plusHours(8L);
-//		String formattedDate = outputFormatter.format(dateFormate);
-//
-//		MemberOrder newOrder = MemberOrder.builder().method("paypal").paypalOrderId(orderId).member(member).stage(PREPARED.value())
-//				.createDate(formattedDate).build();
-//		List<CartItem> cartItems = cartService.findByMember(member);
-//		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
-//		for (CartItem cartItem : cartItems) {
-//			OrderDetail newOrderDetail = OrderDetail.builder().order(newOrder).product(cartItem.getProduct())
-//					.quantity(cartItem.getQuantityInCart()).pricePerUnit(cartItem.getProduct().getCurPrice()).build();
-//			orderDetails.add(newOrderDetail);
-//		}
-//		int totalAmount = 0;
-//		int totalQuantity = 0;
-//		for (OrderDetail detail : orderDetails) {
-//			totalAmount += detail.getQuantity() * detail.getPricePerUnit();
-//			totalQuantity += detail.getQuantity();
-//		}
-//		newOrder.setOrderDetail(orderDetails);
-//		newOrder.setTotalAmount(totalAmount);
-//		newOrder.setTotalQuantity(totalQuantity);
-//
-//		memberOrderService.save(newOrder);
-//		return true;
-//	}
 }
