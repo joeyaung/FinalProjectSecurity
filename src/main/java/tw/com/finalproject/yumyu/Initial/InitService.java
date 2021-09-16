@@ -3,18 +3,6 @@ package tw.com.finalproject.yumyu.Initial;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javax.transaction.Transactional;
 
@@ -22,7 +10,6 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import tw.com.finalproject.kevinLai.Center.Center;
@@ -31,32 +18,6 @@ import tw.com.finalproject.naiChuan.Model.Model;
 import tw.com.finalproject.naiChuan.Model.Service.ModelService;
 import tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment;
 import tw.com.finalproject.naiChuan.TestDrive.Service.TestDriveApointmentService;
-import tw.com.finalproject.shellyYang.Event.Event;
-import tw.com.finalproject.shellyYang.Event.Service.EventService;
-import tw.com.finalproject.shellyYang.EventForm.EventForm;
-import tw.com.finalproject.shellyYang.EventForm.Repository.EventFormRepository;
-import tw.com.finalproject.shellyYang.News.News;
-import tw.com.finalproject.shellyYang.News.Service.NewsService;
-
-import tw.com.finalproject.yumyu.Products.Product;
-import tw.com.finalproject.yumyu.Products.ProductImage;
-import tw.com.finalproject.yumyu.Products.Repository.ProductRepository;
-import tw.com.finalproject.yumyu.Products.Service.ProductImageService;
-import tw.com.finalproject.yumyu.Products.Service.ProductService;
-
-import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
-import tw.com.finalproject.yumyu.Enums.ClientActivityType;
-import tw.com.finalproject.yumyu.Enums.OfficeLocations;
-import tw.com.finalproject.yumyu.Enums.SalesStages;
-import tw.com.finalproject.yumyu.InternalUse.Client;
-import tw.com.finalproject.yumyu.InternalUse.ClientActivity;
-import tw.com.finalproject.yumyu.InternalUse.Employee;
-import tw.com.finalproject.yumyu.InternalUse.Service.ClientActivityService;
-import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
-import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
-import tw.com.finalproject.yumyu.Member.ApplicationUser;
-import tw.com.finalproject.yumyu.Member.Repository.ApplicationUserRepository;
-import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
 
 @Component
 @Transactional
@@ -71,14 +32,6 @@ public class InitService {
 	@Autowired
 	private CenterRepository centerRepository; 
 	@Autowired
-	private NewsService newsService;
-	@Autowired
-	private EventService eventService;
-	@Autowired
-	private ProductService productService;
-	@Autowired
-	private ProductImageService productImageService;
-	@Autowired
 	private DefaultMember member;
 	@Autowired
 	private DefaultEmployee employee;
@@ -89,17 +42,13 @@ public class InitService {
 	@Autowired
 	private DefaultProduct defaultProduct;
 	@Autowired
+	private DefaultOrder defaultOrder;
+	@Autowired
 	private DefaultEvent event;
 	@Autowired
 	private DefaultEventForm eventForm;
 	@Autowired
 	private DefaultNews news;
-	@Autowired
-	private EventFormRepository eFormRepository;
-	@Autowired
-	private ApplicationUserService applicationUserService;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
 
 	@EventListener(ApplicationReadyEvent.class)
@@ -147,7 +96,14 @@ public class InitService {
 			System.out.printf("-- Created %d default Products ---\r\n", productCount);
 		} else {
 			System.out.printf("-- ERROR: Failed to created %d Products ---\r\n", productCount);
-	
+		}
+		
+//		Create default Order
+		boolean resultOrder = defaultOrder.create();
+		if (resultOrder) {
+			System.out.printf("-- Created %d default Orders ---\r\n", memberCount);
+		} else {
+			System.out.printf("-- ERROR: Failed to created %d Orders ---\r\n", memberCount);
 		}
 		
 
