@@ -111,8 +111,7 @@ public class DefaultNews {
 		byte[] b7 = IOUtils.toByteArray(is7);
 
 		News defaultNews7 = News.builder()
-				.title("四環科技｜人車溝通一手掌握 – 尖端方向盤演進"
-						+ "Audi 原廠技術工程團隊不斷進行創新演進，對應每款車型不同個性搭配合適的轉向輔助系統，完美融入動態操控性與舒適性，打造獨特的操控感受。")
+				.title("四環科技｜人車溝通一手掌握 – 尖端方向盤演進")
 				.subtitle("Audi 原廠技術工程團隊不斷進行創新演進，對應每款車型不同個性搭配合適的轉向輔助系統，完美融入動態操控性與舒適性，打造獨特的操控感受。")
 				.uploadDate("2021-07-02")
 				.content(
