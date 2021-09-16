@@ -1,0 +1,216 @@
+
+
+.bg-gray-custom {
+  background: linear-gradient(
+    to bottom,
+    #ced6e0 0%,
+    rgba(206, 214, 224, 0.4) 75%,
+    rgba(206, 214, 224, 0.6) 100%
+  );
+}
+
+.po-re {
+  position: relative;
+  /* border: 1px solid blue; */
+}
+
+.pd-2rem {
+  padding: 10rem 0 2rem 0;
+}
+
+
+
+.object-fit{
+/* 	height: 700px; */
+/* 	overflow: hidden;  */
+/* 	object-fit: none; */
+/* 	display: flex; */
+/* 	align-items: center; */
+
+}
+
+.object-fit-out {
+	height: 550px;
+	overflow: hidden; 
+	object-fit: none;
+	display: flex;
+/* 	align-items: end; */
+	align-items: center;
+}
+
+
+.marginBut-custom{
+	
+/* 	margin-bottom: 1rem; */
+}
+
+
+ul-custom {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul-custom li{
+	display: inline;
+}
+
+.li-custom{
+	display: inline;
+}
+
+lia-custom{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+lia-custom:hover {
+  background-color: #111111;
+}
+
+.form-inline{
+	display: inline-block;
+}
+
+
+
+
+/*360 animation 360漸變圖 Start */
+header {
+  height: 506px;
+  position: relative;
+  overflow: hidden;
+  --percentage: 0;
+}
+
+header .season, header .car {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header img{
+  position: absolute;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+header .an1{
+  z-index: 70;
+/*   opacity: calc(1 - (var(--percentage) - 0.05) / 0.22); */
+  opacity: calc(1 - (var(--percentage) - 0.11) / 0.001);
+}
+header .an4{
+  z-index: 60;
+/*   opacity: calc(1 - (var(--percentage) - 0.34) / 0.22); */
+  opacity: calc(1 - (var(--percentage) - 0.22) / 0.001);
+}
+header .an7{
+  z-index: 50;
+/*   opacity: calc(1 - (var(--percentage) - 0.79) / 0.22); */
+  opacity: calc(1 - (var(--percentage) - 0.33) / 0.001);
+}
+header .an10{
+  z-index: 40;
+  opacity: calc(1 - (var(--percentage) - 0.44) / 0.001);
+}
+header .an13{
+  z-index: 30;
+  opacity: calc(1 - (var(--percentage) - 0.55) / 0.001);
+}
+header .an16{
+  z-index: 20;
+  opacity: calc(1 - (var(--percentage) - 0.66) / 0.001);
+}
+header .an19{
+/*   z-index: 10; */
+  opacity: 1;
+}
+
+
+header .season,
+header .car,
+header .an1,
+header .an4,
+header .an7,
+header .an10{
+/*   transition: .5s all ease-in; */
+}
+
+header.moving .season,
+header.moving .car,
+header.moving .an1,
+header.moving .an4,
+header.moving .an7,
+header.moving .an10{
+  transition: none;
+}
+/*360 animation 360漸變圖 End */
+
+
+/* .main1, .main2, .main3 { */
+#container  .main {
+/* 	height: 33%; */
+	height: 120vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3em;
+}
+
+#container a {
+	font-size: 4em;
+	margin-bottom: 0;
+	color: white;
+	text-shadow: 1px 1px 5px black;
+}
+
+#container a:hover {
+	color: lightblue;
+}
+
+.main3{
+/* 	background-size: 100%; */
+	background-image: url("/FinalProject/images/model/A3_bg.jpg");
+/* 	background-position: 500px -300px; */
+	background-position: 600px -300px;
+/* 	overflow: hidden; */
+/* 	object-fit: none; */
+	text-shadow: 1px 1px 5px white;
+}
+
+.main4{
+	background-image: url("/FinalProject/images/model/A4_bg.jpg");
+	background-position: -700px -300px;
+/* 	overflow: hidden; */
+/* 	object-fit: none; */
+	text-shadow: 1px 1px 5px white;
+}
+
+.main5{
+/* 	overflow: hidden; */
+/* 	object-fit: none; */
+	text-shadow: 1px 1px 5px white;
+}
+
+
+.lf-10{
+	margin-left: 15px;
+    height: 50px;
+    width: 10em;
+}
+
+.btn-custom{
+	font-size: 20px;
+	line-height: .7;
+}
+
