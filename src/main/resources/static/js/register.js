@@ -10,15 +10,6 @@ let registerVM = new Vue({
     fullAddress: "",
   },
   methods: {
-    autoComplete() {
-      this.fullName = "游聿民";
-      this.username = "joe120106@gmail.com";
-      this.password = "password";
-      this.phone = "0917922177";
-      this.city = "桃園市";
-      this.town = "中壢區";
-      this.fullAddress = "中大路300號";
-    },
     checkIsEmailExits(email) {
       let imageNode = $("#label-email > img");
       let spanNode = $(".lab-input-container > span");
@@ -74,6 +65,15 @@ let registerVM = new Vue({
           console.log(err);
         },
       });
+    },
+    autoComplete() {
+      this.fullName = "游聿民";
+      this.username = "joe120106@gmail.com";
+      this.password = "password";
+      this.phone = "0917922177";
+      this.city = "桃園市";
+      this.town = "中壢區";
+      this.fullAddress = "中大路300號";
     },
   },
   mounted: function () {

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
@@ -44,6 +44,10 @@
       crossorigin="anonymous"
     ></script>
     <!-- Page Level css stylesheet -->
+    <link
+      rel="stylesheet"
+      href="/FinalProject/css/product/productPageMain.css"
+    />
   </head>
 
   <body id="page-top">
@@ -95,7 +99,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/FinalProject/product/cart"
                   >購物車<i class="fas fa-shopping-cart"></i>
-                  <span v-if="cart_item_total_quantity != 0">{{ cart_item_total_quantity }}</span>
+                  <span v-if="cart_item_total_quantity != 0">{{
+                    cart_item_total_quantity
+                  }}</span>
                 </a>
               </li>
             </ul>
@@ -120,6 +126,40 @@
 
       <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
+          <div class="row mb-3">
+            <div class="col-6">
+              <div class="row">
+                <div class="col-8 tag-container">
+                  <span>熱門標籤: </span>
+                  <div class="tag-label-container">
+                    <div
+                      class="tags"
+                      v-for="(tag, index) in popularTags"
+                      @click="selectTag(index)"
+                      :class="tag.selected ? 'tag-selected': ''"
+                    >
+                      <span>{{ tag.tagName }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4 sort-container">
+                  <span>排序:</span>
+                  <select v-model="sortMethod">
+                    <option value="greater">依價格低到高</option>
+                    <option value="less">依價格高到低</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 search-main-container">
+              <div class="row">
+                <div class="col-12 text-right search-container">
+                  <label for="search">搜尋</label>
+                  <input type="text" v-model="queryString" />
+                </div>
+              </div>
+            </div>
+          </div>
           <div
             class="
               row
@@ -128,7 +168,7 @@
               justify-content-center
             "
           >
-            <div class="col mb-5" v-for="(item, index) in products">
+            <div class="col mb-5" v-for="(item, index) in displayCartItem">
               <div class="card h-100">
                 <!-- Sale badge-->
                 <div
@@ -143,6 +183,7 @@
                   class="card-img-top"
                   :src="item.imgPath"
                   :alt="item.name"
+                  loading="lazy"
                 />
                 <!-- Product details-->
                 <div class="card-body p-4">
@@ -169,9 +210,9 @@
                     <span
                       class="text-muted text-decoration-line-through"
                       v-if="item.isOnSale"
-                      >{{dollorFormated(item.originPrice)}}</span
+                      >{{ dollorFormated(item.originPrice) }}</span
                     >
-                    {{dollorFormated(item.curPrice)}}
+                    {{ dollorFormated(item.curPrice) }}
                   </div>
                 </div>
                 <!-- Product actions-->

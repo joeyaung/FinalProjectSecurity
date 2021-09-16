@@ -87,6 +87,9 @@ public class InitService {
 	@Autowired
 	private DefaultClientActivity clientActivity;
 	@Autowired
+
+	private DefaultProduct defaultProduct;
+
 	private DefaultEvent event;
 	@Autowired
 	private DefaultEventForm eventForm;
@@ -137,6 +140,18 @@ public class InitService {
 		} else {
 			System.out.printf("-- ERROR: Failed to created %i Client Activity ---\r\n", memberCount);
 		}
+    
+//		Create default Products
+		boolean resultProduct = defaultProduct.create();
+		int productCount = 30;
+		if (resultProduct) {
+			System.out.printf("-- Created %d default Products ---\r\n", productCount);
+		} else {
+			System.out.printf("-- ERROR: Failed to created %d Products ---\r\n", productCount);
+	
+		}
+		
+
 //	    Create default Event 
 		event.createDefaultEventData();
 		System.out.printf("-- Created default Event ---\r\n");
@@ -343,74 +358,46 @@ public class InitService {
 		centerRepository.save(defaultCenter13);
 		centerRepository.save(defaultCenter14);
 
-		boolean saveProductsResult = createDefaultProducts();
-		if (saveProductsResult) {
-			System.out.println("Products Init Complete.");
-		} else {
-			System.out.println("Products Init Error!");
-		}
+//		boolean saveProductsResult = createDefaultProducts();
+//		if (saveProductsResult) {
+//			System.out.println("Products Init Complete.");
+//		} else {
+//			System.out.println("Products Init Error!");
+//		}
 
 }
-
-
-
-//	Default Product Data
-	private boolean createDefaultProducts() {
-		String imageUrl = "/FinalProject/api/v1/product/image/";
-		Product product1 = Product.builder().name("男仕圓領T恤(白)").curPrice(300).originalPrice(300).isOnSale(false)
-				.quantityInStock(10).imgPath(imageUrl + "1").tags(List.of("服飾", "男")).build();
-
-		Product product2 = Product.builder().name("男仕圓領T恤(深藍)").curPrice(240).originalPrice(300).isOnSale(true)
-				.quantityInStock(15).imgPath(imageUrl + "2").tags(List.of("服飾", "男")).build();
-
-		Product product3 = Product.builder().name("男仕POLO衫(深藍)").curPrice(450).originalPrice(450).isOnSale(false)
-				.quantityInStock(5).imgPath(imageUrl + "3").tags(List.of("服飾", "男")).build();
-
-		Product product4 = Product.builder().name("男仕外套夾克").curPrice(1750).originalPrice(1750).isOnSale(false)
-				.quantityInStock(20).imgPath(imageUrl + "4").tags(List.of("服飾", "男", "外套")).build();
-
-		List<Product> products = List.of(product1, product2, product3, product4);
-		boolean saveResult = productService.saveAll(products);
-		try {
-			saveDefaultProductImage(products);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return saveResult;
-	}
 	
-
-	private boolean saveDefaultProductImage(List<Product> products) throws IOException {
-		Product product1 = products.get(0);
-		FileInputStream inputStream = new FileInputStream(new File("src/main/resources/static/images/products/1.png"));
-		byte[] image1 = new byte[inputStream.available()];
-		inputStream.read(image1);
-		ProductImage productImage1 = ProductImage.builder().product(product1).image(image1).build();
-		Product product2 = products.get(1);
-		FileInputStream inputStream2 = new FileInputStream(new File("src/main/resources/static/images/products/2.png"));
-		byte[] image2 = new byte[inputStream2.available()];
-		inputStream2.read(image2);
-		ProductImage productImage2 = ProductImage.builder().product(product2).image(image2).build();
-		Product product3 = products.get(2);
-		FileInputStream inputStream3 = new FileInputStream(new File("src/main/resources/static/images/products/3.png"));
-		byte[] image3 = new byte[inputStream3.available()];
-		inputStream3.read(image3);
-		ProductImage productImage3 = ProductImage.builder().product(product3).image(image3).build();
-		Product product4 = products.get(3);
-		FileInputStream inputStream4 = new FileInputStream(new File("src/main/resources/static/images/products/4.png"));
-		byte[] image4 = new byte[inputStream4.available()];
-		inputStream4.read(image4);
-		ProductImage productImage4 = ProductImage.builder().product(product4).image(image4).build();
-
-		List<ProductImage> productImages = List.of(productImage1, productImage2, productImage3, productImage4);
-		boolean result = productImageService.saveAll(productImages);
-		if (result) {
-			return true;
-		}
-		return false;
-
-	}
+//
+//	private boolean saveDefaultProductImage(List<Product> products) throws IOException {
+//		Product product1 = products.get(0);
+//		FileInputStream inputStream = new FileInputStream(new File("src/main/resources/static/images/products/1.png"));
+//		byte[] image1 = new byte[inputStream.available()];
+//		inputStream.read(image1);
+//		ProductImage productImage1 = ProductImage.builder().product(product1).image(image1).build();
+//		Product product2 = products.get(1);
+//		FileInputStream inputStream2 = new FileInputStream(new File("src/main/resources/static/images/products/2.png"));
+//		byte[] image2 = new byte[inputStream2.available()];
+//		inputStream2.read(image2);
+//		ProductImage productImage2 = ProductImage.builder().product(product2).image(image2).build();
+//		Product product3 = products.get(2);
+//		FileInputStream inputStream3 = new FileInputStream(new File("src/main/resources/static/images/products/3.png"));
+//		byte[] image3 = new byte[inputStream3.available()];
+//		inputStream3.read(image3);
+//		ProductImage productImage3 = ProductImage.builder().product(product3).image(image3).build();
+//		Product product4 = products.get(3);
+//		FileInputStream inputStream4 = new FileInputStream(new File("src/main/resources/static/images/products/4.png"));
+//		byte[] image4 = new byte[inputStream4.available()];
+//		inputStream4.read(image4);
+//		ProductImage productImage4 = ProductImage.builder().product(product4).image(image4).build();
+//
+//		List<ProductImage> productImages = List.of(productImage1, productImage2, productImage3, productImage4);
+//		boolean result = productImageService.saveAll(productImages);
+//		if (result) {
+//			return true;
+//		}
+//		return false;
+//
+//	}
 
 //	Default Cart Data
 //	private boolean createDefaultCartItem(ApplicationUser member) {

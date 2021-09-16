@@ -81,13 +81,32 @@ body {
 }
 
 .footer-custom {
-  position: absolute;
   bottom: 0%;
   padding: 1.5rem;
   width: 100%;
 }
 
 .pd-bottom-2rem {
-	padding-bottom:2rem;
-  height: 100%;
+  padding-bottom: 2rem;
+  height: auto;
+  min-height: 100%;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.pd-0 {
+  padding: 6px 12px;
+}
+
+.mg-top-1 {
+  margin-top: 1rem;
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
