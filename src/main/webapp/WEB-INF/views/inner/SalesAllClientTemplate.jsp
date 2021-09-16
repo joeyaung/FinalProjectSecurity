@@ -30,6 +30,10 @@
     
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
     
+
+    <link rel="stylesheet" href="/FinalProject/css/inner/sales/salesMain.css">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js' integrity='sha512-y/+zR8ZRJXvRWVRuhPbjSpGNIv2yG9hePHeWYEb5RPcciLwlyG0ZGd6JsiT9+sFtTON9FrDs+07ZzepwatYX1Q==' crossorigin='anonymous'></script>
     
   </head>
 
@@ -189,18 +193,26 @@
                 navbar-search
               "
             >
-              <div class="input-group">
+              <div class="input-group" id="app">
                 <input
                   type="text"
                   class="form-control bg-light border-0 small"
                   placeholder="Search for..."
                   aria-label="Search"
                   aria-describedby="basic-addon2"
+                  v-model="queryString"
                 />
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button">
                     <i class="fas fa-search fa-sm"></i>
                   </button>
+                </div>
+                <div class="container ps-absolute">
+                  <div class="row pd-t-1-custom" v-for="(client, index) in queryClient" v-if="showDropDown">
+                    <div class="col-12">
+                      <a :href="'/FinalProject/inner/sales/ClientInfo?cli='+client.id" target="_blank">{{ client.name }}</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
@@ -230,22 +242,22 @@
                   "
                   aria-labelledby="searchDropdown"
                 >
-                  <form class="form-inline mr-auto w-100 navbar-search">
+                  <input type="text" v-model="queryString">
                     <div class="input-group">
                       <input
                         type="text"
                         class="form-control bg-light border-0 small"
                         placeholder="Search for..."
-                        aria-label="Search"
-                        aria-describedby="basic-addon2"
+                       
+                        v-model="queryString"
                       />
                       <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-primary" type="button" @click="query">
                           <i class="fas fa-search fa-sm"></i>
                         </button>
                       </div>
                     </div>
-                  </form>
+                  
                 </div>
               </li>
 

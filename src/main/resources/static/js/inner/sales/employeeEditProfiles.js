@@ -24,6 +24,7 @@ let addEmpVM = new Vue({
         success: function (response) {
           if (response.status == "ok") {
             _this.employeeInput = response.data;
+            _this.employeeInput.password = "";
           } else {
             console.log(response.error);
           }
@@ -45,7 +46,7 @@ let addEmpVM = new Vue({
         contentType: "application/json;charset=UTF-8",
         data: JSON.stringify(formData),
         success: function (response) {
-          console.log(response);
+          alert(response.status);
           _this.isSending = false;
         },
         error: function (error) {

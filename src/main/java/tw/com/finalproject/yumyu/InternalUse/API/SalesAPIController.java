@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +41,8 @@ public class SalesAPIController {
 
 	@Autowired
 	private ClientActivityService clientActivityService;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping(path = "/clients/query", produces = "application/json;charset=UTF-8")
 	public Map<String, ArrayList<ArrayList<String>>> queryClientWithStage(@RequestParam("stage") String stage,
@@ -117,8 +120,8 @@ public class SalesAPIController {
 			client.setZipCode(zipCode);
 		}
 //		inchargeEmployee
-		if (data.get("inchargedEmployee") != null) {
-			Employee employee = employeeService.findById(Long.valueOf(data.get("inchargedEmployee")));
+		if (data.get("inchargeEmployeeID") != null) {
+			Employee employee = employeeService.findById(Long.valueOf(data.get("inchargeEmployeeID")));
 			client.setInchargedEmployee(employee);
 		}
 //		stage
@@ -186,25 +189,63 @@ public class SalesAPIController {
 		return resultMap;
 
 	}
-	
+
 	@PutMapping(path = "/profile", produces = "application/json; charset=UTF-8")
-	public Map<String, Object> updateEmployeeProfile(@RequestBody Map<String, String> data, Principal principal){
+	public Map<String, Object> updateEmployeeProfile(@RequestBody Map<String, String> data, Principal principal) {
 		Map<String, Object> resultMap = new HashMap<>();
-		
+
 		String name = principal.getName();
 		Employee employee = employeeService.findbyUsername(name);
 		employee.setFullName(data.get("fullName"));
 		employee.setLocation(data.get("location"));
 		employee.setPhone(data.get("phone"));
 		employee.setTitle(data.get("title"));
+		if (data.get("password") != null) {
+			employee.setPassword(passwordEncoder.encode(data.get("password")));
+		}
 		boolean result = employeeService.save(employee);
 		if (result) {
 			resultMap.put("status", "ok");
 		} else {
 			resultMap.put("status", "fail");
 		}
-		
+
 		return resultMap;
-		
-	}	
+
+	}
+
+	@PostMapping(path = "/query/client", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> queryClietnSearch(@RequestBody Map<String, String> data) {
+		Map<String, Object> resultMap = new HashMap<>();
+
+		String queryString = data.get("queryString");
+		List<Client> clients = clientService.queryClientsByfullName(queryString);
+		List<Map<String, Object>> resultList = new ArrayList<>();
+		if (clients != null) {
+			if (clients.size() >= 5) {
+				for (int i = 0; i < 5; i++) {
+					Client client = clients.get(i);
+					Map<String, Object> tempMap = new HashMap<>();
+					tempMap.put("name", client.getFullName());
+					tempMap.put("id", client.getId());
+					resultList.add(tempMap);
+				}
+			} else {
+				for (int i = 0; i < clients.size(); i++) {
+					Client client = clients.get(i);
+					Map<String, Object> tempMap = new HashMap<>();
+					tempMap.put("name", client.getFullName());
+					tempMap.put("id", client.getId());
+					resultList.add(tempMap);
+				}
+			}
+		}
+
+		if (resultList != null) {
+			resultMap.put("status", "ok");
+			resultMap.put("data", resultList);
+		}
+
+		return resultMap;
+	}
 }

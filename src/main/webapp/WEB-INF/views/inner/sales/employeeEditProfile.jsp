@@ -516,6 +516,18 @@ prefix="c"%>
                     </div>
                   </div>
                   <div class="row text-center mg-1r">
+                    <div class="col-12 mb-3 mb-sm-0">
+                      <label for="password" class="text-lg">重設密碼</label
+                      ><br />
+                      <input
+                        type="password"
+                        name="password"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.password"
+                      /><br />
+                    </div>
+                  </div>
+                  <div class="row text-center mg-1r">
                     <div class="col-12">
                       <hr class="sidebar-dividor" />
                       <button
