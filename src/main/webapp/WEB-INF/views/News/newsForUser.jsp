@@ -7,7 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<meta name="description" content="" />
 		<meta name="author" content="" />
-		<title>最新消息</title>
+		<title>Audi - 最新消息</title>
+		<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png" />
 
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<!-- Bootstrap core JS-->
@@ -15,8 +16,6 @@
 		<!-- Core theme JS-->
 		<script src="js/template.js"></script>
 		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 		<!-- Font Awesome icons (free version)-->
 		<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
 
@@ -65,7 +64,6 @@
 			.bg-gray-custom {
 				background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
 			}
-
 		</style>
 	</head>
 
@@ -84,7 +82,8 @@
 					<ul class="navbar-nav ms-auto">
 						<li class="nav-item"><a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a></li>
 						<li class="nav-item"><a class="nav-link" href="/FinalProject/News">最新消息</a></li>
-						<li class="nav-item"><a class="nav-link" href="#signup">了解車型</a>
+						<li class="nav-item">
+							<a class="nav-link" href="/FinalProject/Model">了解車型</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a></li>
 						<li class="nav-item"><a class="nav-link" href="#signup">精品商城</a>
@@ -103,7 +102,7 @@
 			<div class="container px-4 px-lg-5">
 				<div class="row gx-4 gx-lg-5 justify-content-center">
 					<div class="col-lg-10 po-re">
-						<h2 class="h_bookf" style="color:black;">最新消息</h2>
+						<h2 class="h_bookf" style="color: black;">最新消息</h2>
 						<p class="text-white-50">
 						<div class="input-group">
 							<div class="input-group rounded" style="width: 300px; margin: auto; margin-right: 1px;">
@@ -116,9 +115,12 @@
 
 							<div id="container">
 								<nav style="margin-top: 100px">
-									<input type="button" id="secondHalfYear" class="2021070120211231" value="2021年07-12月" style="width: 150px; height: 50px;">
-									<input type="button" id="firstHalfYear" class="2021010120210630" value="2021年01-06月" style="width: 150px; height: 50px;">
-									<input type="button" id="secondHalfYear2020" class="2020070120201231" value="2020年07-12月" style="width: 150px; height: 50px;">
+									<input type="button" id="secondHalfYear" class="2021070120211231"
+										value="2021年07-12月" style="width: 150px; height: 50px;"> <input type="button"
+										id="firstHalfYear" class="2021010120210630" value="2021年01-06月"
+										style="width: 150px; height: 50px;">
+									<input type="button" id="secondHalfYear2020" class="2020070120201231"
+										value="2020年07-12月" style="width: 150px; height: 50px;">
 								</nav>
 
 								</br> </br>
@@ -139,7 +141,8 @@
 		<!-- 以下不要動 -->
 		<!-- Footer-->
 		<footer class="footer bg-black small text-center text-white-50">
-			<div class="container px-4 px-lg-5">Copyright &copy; 資策會第五組專題報告2021</div>
+			<div class="container px-4 px-lg-5">Copyright &copy;
+				資策會第五組專題報告2021</div>
 		</footer>
 
 
@@ -149,14 +152,16 @@
 		$(document)
 			.ready(
 				function () {
-					$.ajax({
+					$
+						.ajax({
 							url: "/FinalProject/getAllNews",
 							method: "GET",
 							dataTypte: "json",
 							success: function (data) {
 								var list = "";
 
-								$.each(
+								$
+									.each(
 										data,
 										function (index, item) {
 											list += "<li class='news_li'><img src='data:image/png;base64,"
@@ -219,7 +224,6 @@
 									});
 							});
 
-
 					//留言板功能未完成
 					msgBoard = function () {
 					}
@@ -231,43 +235,41 @@
 			if ($("#search").val() != "") {
 				var keywords = $("#search").val()
 				console.log(keywords);
-				$.ajax({
-					url: "/FinalProject/searchNewsByKeywords/" + keywords,
-					method: "GET",
-					dataType: "json",
-					success: function (data) {
-						var list = "";
-						console.log(data)
+				$
+					.ajax({
+						url: "/FinalProject/searchNewsByKeywords/" + keywords,
+						method: "GET",
+						dataType: "json",
+						success: function (data) {
+							var list = "";
+							console.log(data)
 
-						$.each(
-							data,
-							function (index,
-								item) {
-								list += "<li class='news_li'><img src='data:image/png;base64,"
-									+ item.image + "' width='563' height='350' alt='pic cannot be displayed'/></li><li class='news_li' id='title_li'><strong>"
-									+ item.title
-									+ "</strong></li>"
-									+ "<li class='news_li'>"
-									+ item.subtitle
-									+ "...<a href='News/OneNews?newsId="
-									+ item.newsId
-									+ "'>更多資訊<input id='newsId' type='hidden' value=" + item.newsId + "><i class=‘fas fa-angle-right’></i></a></li></br></br>";
-							});
-						$("#user_newslist").html(list);
+							$
+								.each(
+									data,
+									function (index, item) {
+										list += "<li class='news_li'><img src='data:image/png;base64,"
+											+ item.image + "' width='563' height='350' alt='pic cannot be displayed'/></li><li class='news_li' id='title_li'><strong>"
+											+ item.title
+											+ "</strong></li>"
+											+ "<li class='news_li'>"
+											+ item.subtitle
+											+ "...<a href='News/OneNews?newsId="
+											+ item.newsId
+											+ "'>更多資訊<input id='newsId' type='hidden' value=" + item.newsId + "><i class=‘fas fa-angle-right’></i></a></li></br></br>";
+									});
+							$("#user_newslist").html(list);
 
-					},
-					error: function (err) {
-						alert('Cannot find any news which include the keywords');
-					}
+						},
+						error: function (err) {
+							alert('Cannot find any news which include the keywords');
+						}
 
-				});
+					});
 
 			}
 
 		}
-
-
-
 	</script>
 
 	</html>

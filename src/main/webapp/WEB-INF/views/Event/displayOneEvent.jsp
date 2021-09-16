@@ -4,15 +4,14 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>活動</title>
+		<title>Audi - 活動內容</title>
+		<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png" />
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<!-- Bootstrap core JS-->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 		<!-- Core theme JS-->
 		<script src="../js/template.js"></script>
 		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-		<link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
 
 		<!-- Bootstrap 4 message board js-->
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -57,7 +56,6 @@
 			.bg-gray-custom {
 				background: linear-gradient(to bottom, #ced6e0 0%, rgba(206, 214, 224, 0.4) 75%, rgba(206, 214, 224, 0.6) 100%);
 			}
-			
 		</style>
 	</head>
 
@@ -76,10 +74,10 @@
 					<ul class="navbar-nav ms-auto">
 						<li class="nav-item"><a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a></li>
 						<li class="nav-item"><a class="nav-link" href="/FinalProject/News">最新消息</a></li>
-						<li class="nav-item"><a class="nav-link" href="#signup">了解車型</a>
+						<li class="nav-item">
+							<a class="nav-link" href="/FinalProject/Model">了解車型</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a></li>
 						<li class="nav-item"><a class="nav-link" href="#signup">精品商城</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#signup">展示中心</a>
@@ -124,30 +122,51 @@
 	</body>
 	<script>
 		//display details of the selected news
-		$(document).ready(function () {
-			const queryString = window.location.search;
-			const urlParams = new URLSearchParams(queryString);
-			const event_id = urlParams.get('event_id');
-			$.ajax({
-				url: "/FinalProject/findEventById/" + event_id,
-				method: "GET",
-				dataType: "json",
-				success: function (data) {
-					var list = "";
-					list += "<li class='news_li'><h2>" + data.event_uploaddate + "</h2></li><li class='news_li'><h1>"
-						+ data.event_title + "</h1></li></br><li class='news_li'><img src='data:image/png;base64,"
-						+ data.event_img + "' width='563' height='350' alt='pic cannot be displayed'/></li></br><li class='news_li'>"
-						+ data.event_subtitle + "</li></br><li class='news_li'>"
-						+ data.event_content + "</br><h5><i class='fas fa-calendar-alt'></i>  活動日期：" + data.event_date + "</h5><h5><i class='fas fa-fire-alt'></i>  報名期間：" + data.reserve_start_date + "-" + data.reserve_end_date + "</h5><h5><i class='fas fa-location-arrow'></i>  活動地點: " + data.location + "</h5></li></br></br><a class='link' href='/FinalProject/account/BookEvent?event_id=" + event_id + "'><img src='/FinalProject/images/eventIcon.jpg'/></a></br></br></br></br>";
-					$("#user_eventlist").html(list);
-				},
-				error: function (err) {
-					alert(err)
-				}
-			});
+		$(document)
+			.ready(
+				function () {
+					const queryString = window.location.search;
+					const urlParams = new URLSearchParams(queryString);
+					const event_id = urlParams.get('event_id');
+					$
+						.ajax({
+							url: "/FinalProject/findEventById/"
+								+ event_id,
+							method: "GET",
+							dataType: "json",
+							success: function (data) {
+								var eventInfo = JSON.stringify(data);
+								localStorage.setItem("eventInfo", eventInfo);
+								
+								var list = "";
+								list += "<li class='news_li'><h2>"
+									+ data.event_uploaddate
+									+ "</h2></li><li class='news_li'><h1>"
+									+ data.event_title
+									+ "</h1></li></br><li class='news_li'><img src='data:image/png;base64,"
+									+ data.event_img + "' width='563' height='350' alt='pic cannot be displayed'/></li></br><li class='news_li'>"
+									+ data.event_subtitle
+									+ "</li></br><li class='news_li'>"
+									+ data.event_content
+									+ "</br><h5><i class='fas fa-calendar-alt'></i>  活動日期："
+									+ data.event_date
+									+ "</h5><h5><i class='fas fa-fire-alt'></i>  報名期間："
+									+ data.reserve_start_date
+									+ "-"
+									+ data.reserve_end_date
+									+ "</h5><h5><i class='fas fa-location-arrow'></i>  活動地點: "
+									+ data.location
+									+ "</h5></li></br></br><a class='link' href='/FinalProject/account/BookEvent?event_id="
+									+ event_id
+									+ "'><img src='/FinalProject/images/eventIcon.jpg'/></a></br></br></br></br>";
+								$("#user_eventlist").html(list);
+							},
+							error: function (err) {
+								alert(err)
+							}
+						});
 
-		});
-
+				});
 	</script>
 
 	</html>

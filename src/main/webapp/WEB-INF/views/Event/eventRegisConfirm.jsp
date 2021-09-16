@@ -7,15 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>活動報名資訊確認</title>
+    <title>Audi - 活動報名確認</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="../js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
 
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -77,7 +76,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a></li>
             <li class="nav-item"><a class="nav-link" href="/FinalProject/News">最新消息</a></li>
-            <li class="nav-item"><a class="nav-link" href="#signup">了解車型</a>
+            <li class="nav-item">
+              <a class="nav-link" href="/FinalProject/Model">了解車型</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
@@ -111,10 +111,10 @@
                 </table>
 
             </div>
-        
 
-           
-        
+
+
+
 
             <input class="btn btn-primary" id='submitId' type="submit" value="確認送出">
             <button type="button" id='edit_btn' class="btn btn-secondary">編輯資料</button>
@@ -151,29 +151,18 @@
     $(document).ready(function () {
 
       var formData = JSON.parse(localStorage.getItem('formData'));
+      // Retrieve the object from storage
+      var retrievedObject = localStorage.getItem('eventInfo');
+      var eventInfoJson = JSON.parse(retrievedObject);
 
-      if (formData !== undefined) {
-        $.ajax({
-          url: '/FinalProject/findEventById/' + formData.event_id,
-          method: 'GET',
-          success: function (data) {
-            var eventInfo = JSON.stringify(data);
-            localStorage.setItem("eventInfo", eventInfo);
+      if (formData !== undefined) {   
 
-            $("#tbody").append("<tr><td>活動名稱:</td><td>" + data.event_title + "</td></tr><tr><td>活動日期:</td><td>" + data.event_date + "</td></tr><tr><td>活動地點:</td><td>" + data.location + "</td></tr><tr><td>姓名:</td><td>" + formData.name + "</td></tr><tr><td>性別:</td><td>" + formData.gender + "</td></tr><tr><td>身分證字號: </td><td>" + formData.id_number + "</td></tr><tr><td>行動電話:</td><td>" + formData.phone +
+            $("#tbody").append("<tr><td>活動名稱:</td><td>" + eventInfoJson.event_title + "</td></tr><tr><td>活動日期:</td><td>" + eventInfoJson.event_date + "</td></tr><tr><td>活動地點:</td><td>" + eventInfoJson.location + "</td></tr><tr><td>姓名:</td><td>" + formData.name + "</td></tr><tr><td>性別:</td><td>" + formData.gender + "</td></tr><tr><td>身分證字號: </td><td>" + formData.id_number + "</td></tr><tr><td>行動電話:</td><td>" + formData.phone +
               "</td></tr><tr><td>Email:</td><td>" + formData.email + "</td></tr><tr><td>備註:</td><td>" + formData.message + "</td></tr><input type='hidden' id='id_number' name='id_number' value='" + formData.id_number + "'><input type='hidden' id='gender' name='gender' value='" + formData.gender + "'>"
-            +"<input type='hidden' id='message' name='message' value='" + formData.message + "'></br></br>");
+              + "<input type='hidden' id='message' name='message' value='" + formData.message + "'></br></br>");
             $(".table_bookd tbody tr td").css('padding-bottom', '1em');
 
             $("#edit_btn").click(function () {
-
-
-              localStorage.getItem("eventInfo", eventInfo)
-
-              // Retrieve the object from storage
-              var retrievedObject = localStorage.getItem('eventInfo');
-
-              var eventInfoJson = JSON.parse(retrievedObject);
 
               var content = "<h2 class='h_bookd' style='color: black' ; padding-bottom: 5em';>報名活動資料修改</h2></br><h5 style='color: black';>您報名的活動名稱：" + eventInfoJson.event_title + "</h5></br><h5 style='color: black';>您報名的活動日期：" + eventInfoJson.event_date + "</h5></br><h5 style='color: black';>您報名的活動地點：" + eventInfoJson.location + "</h5></br>"
                 + "<form id='new_event_form'><table class='table_bookf' style='margin: auto;text-align: center;'><tbody id='tbody'><tr><td><label for='name'>姓名:</label></td><td><div class='form-group'><input class='form-control' type='text' aria-label='default input example' name='name' maxlength='10' id='name' placeholder='請輸入姓名' value='" + formData.name + "'required>"
@@ -195,12 +184,8 @@
               $("input[name='gender'][value=" + value + "]").prop('checked', true);
 
 
-            });
-          },
-          error: function (err) {
-            console.log(err);
-            alert('Registration failed:' + err);
-          }
+            
+         
         });
 
       }
@@ -240,8 +225,8 @@
 
 
         var eventRegisForm = { "user_id": userId, "event_id": eventId, "user_gender": gender, "user_id_number": id_number, "user_message": message };
-        
-       
+
+
 
         addEventForm(eventRegisForm);
 
@@ -250,16 +235,16 @@
 
 
       function addEventForm(eventRegisForm) {
-        
+
         $.ajax({
           url: "/FinalProject/addEventForm",
           method: "POST",
-          data: {"json" : JSON.stringify(eventRegisForm)},
+          data: { "json": JSON.stringify(eventRegisForm) },
           // contentType:"application/json",
           success: function (response) {
             if (response != undefined) {
               alert(response);
-              window.location.href="/FinalProject/Events";
+              window.location.href = "/FinalProject/Events";
             }
 
           },

@@ -9,6 +9,8 @@
     <meta name="author" content="" />
     <title>展示中心</title>
 
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -141,10 +143,14 @@
               <a href="http://localhost:8080/FinalProject/TestDrive" class="btn btn-primary btn-lg active" role="button"
                 aria-pressed="true">預約試駕</a>
 
+                <!-- <h3>平鎮展示中心</h3>
+                <a href='https://www.google.com/maps/place/"+centeraddress+"' target = '_blank' rel = 'noreferrer noopener' >路線規劃<i class="fas fa-map-marker-alt"></i> -->
+                  
+
               </br></br></br>
               <!--The div element for the map -->
               <div id="map">
-
+                
               </div>
 
               <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
@@ -186,9 +192,12 @@
           var list = "";
           var latitude = parseFloat(data.centerLatitude)
           var longitude = parseFloat(data.centerLongitude)
+          var centername = data.centerName
+          var centeraddress = data.centerAddress
+          var centerphone = data.centerPhone
 
           list += "<li class='news_li'><h2>" + data.centerName + "</h2></li><li class='news_li'>連絡電話:"
-            + data.centerPhone + "</li><li class='news_li'中心地址:>"
+            + data.centerPhone + "</li><li class='news_li'>中心地址:"
             + data.centerAddress + "</li><li class='news_li'>E-mail:"
             + data.centerEmail + "</li><li class='news_li'>營業時間:"
             + data.centerOpentime + "</li><li class='news_li'><img src='data:image/png;base64,"
@@ -197,7 +206,7 @@
           $("#centerdata").html(list)
 
           //執行地圖function
-          initMap(latitude, longitude);
+          initMap(latitude, longitude, centername ,centeraddress ,centerphone);
         },
         error: function (err) {
           console.log("沒抓到id")
@@ -209,7 +218,7 @@
     });
     // Initialize and add the map
 
-    function initMap(latitude, longitude) {
+    function initMap(latitude, longitude, centername, centeraddress, centerphone) {
 
       // 展示中心的座標
       const location = {
@@ -232,6 +241,22 @@
         icon: 'https://i.imgur.com/Z1H7jQI.jpg',
         animation: google.maps.Animation.BOUNCE
       });
+
+      var cont = "<h5><a href='https://www.google.com/maps/place/"
+                  +centeraddress+"' target = '_blank' rel = 'noreferrer noopener'><i class='fas fa-map-marker-alt'></i>路線規劃</h5>"
+                  +"<h5><a href=\"tel:"+centerphone+"\"><i class=\"fas fa-phone-square\"></i>撥打電話</a></h5>"
+
+      var infowindow = new google.maps.InfoWindow({
+        content: cont,
+        position: location,
+        maxWidth:200,
+        // pixelOffset: new google.maps.Size(100, -20) 
+        });
+      infowindow.open(map,marker);
+
+
+
+
     }
 
   </script>
