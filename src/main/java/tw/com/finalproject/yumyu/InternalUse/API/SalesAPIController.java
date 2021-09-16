@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,7 +61,7 @@ public class SalesAPIController {
 			clientData.add(curClientInner.getPhone());
 			clientData.add(curClientInner.getCity() + curClientInner.getTown());
 			if (curClientInner.getUpdateTime() != null) {
-				clientData.add(curClientInner.getUpdateTime());				
+				clientData.add(curClientInner.getUpdateTime());
 			} else {
 				clientData.add(curClientInner.getCreateDate());
 			}
@@ -135,7 +136,7 @@ public class SalesAPIController {
 	@PostMapping(path = "/clientActivity/query", produces = "application/json;charset=UTF-8")
 	public List<ClientActivity> queryAllClientActivities(@RequestBody Map<String, String> data) {
 		String clientID = data.get("id");
-		
+
 		Client client = clientService.findById(Long.valueOf(clientID));
 		List<ClientActivity> result = clientActivityService.queryActivitiesByClient(client);
 		return result;
@@ -162,10 +163,48 @@ public class SalesAPIController {
 		}
 		return "fail";
 	}
-	
+
 	@GetMapping(path = "/employee/query/{role}", produces = "application/json;charset=UTF-8")
-	public List<Employee> queryAllEmployeeIsSales(@PathVariable(name = "role") String role){
+	public List<Employee> queryAllEmployeeIsSales(@PathVariable(name = "role") String role) {
 		List<Employee> resultList = employeeService.findbyRole(role);
 		return resultList;
 	}
+
+	@GetMapping(path = "/profile", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> queryProfileInfo(Principal principal) {
+		Map<String, Object> resultMap = new HashMap<>();
+		String name = principal.getName();
+		Employee employee = employeeService.findbyUsername(name);
+		if (employee != null) {
+			resultMap.put("status", "ok");
+			resultMap.put("data", employee);
+		} else {
+			resultMap.put("status", "fail");
+			resultMap.put("error", "Opps, something went wrong.");
+		}
+
+		return resultMap;
+
+	}
+	
+	@PutMapping(path = "/profile", produces = "application/json; charset=UTF-8")
+	public Map<String, Object> updateEmployeeProfile(@RequestBody Map<String, String> data, Principal principal){
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		String name = principal.getName();
+		Employee employee = employeeService.findbyUsername(name);
+		employee.setFullName(data.get("fullName"));
+		employee.setLocation(data.get("location"));
+		employee.setPhone(data.get("phone"));
+		employee.setTitle(data.get("title"));
+		boolean result = employeeService.save(employee);
+		if (result) {
+			resultMap.put("status", "ok");
+		} else {
+			resultMap.put("status", "fail");
+		}
+		
+		return resultMap;
+		
+	}	
 }

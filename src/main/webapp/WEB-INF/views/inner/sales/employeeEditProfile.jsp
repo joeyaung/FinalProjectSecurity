@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
@@ -25,12 +26,16 @@
       rel="stylesheet"
     />
 
+    <!-- Vue.js 2.6.7 -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
+      integrity="sha512-y/+zR8ZRJXvRWVRuhPbjSpGNIv2yG9hePHeWYEb5RPcciLwlyG0ZGd6JsiT9+sFtTON9FrDs+07ZzepwatYX1Q=="
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Custom styles for this template-->
     <link href="/FinalProject/css/sb-admin-2.min.css" rel="stylesheet" />
-    
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
-    
-    
+    <link rel="stylesheet" href="/FinalProject/css/addEmployeePage.css" />
   </head>
 
   <body id="page-top">
@@ -89,15 +94,51 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">顧客:</h6>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/All">All</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/New">New</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/Attempt to Engaged">Attempt to Engage</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/Engaged">Engaged</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/Test Drive">Test Drive</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/Follow up">Follow up</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/Long Term">Long Term</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/Ordered">Ordered</a>
-              <a class="collapse-item" href="/FinalProject/inner/sales/Clients/Closed Lost">Closed Lost</a>
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Clients/All"
+                >All</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Clients/New"
+                >New</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Attempt to Engaged"
+                >Attempt to Engage</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Clients/Engaged"
+                >Engaged</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Clients/Test Drive"
+                >Test Drive</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Clients/Follow up"
+                >Follow up</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Clients/Long Term"
+                >Long Term</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Clients/Ordered"
+                >Ordered</a
+              >
+              <a
+                class="collapse-item"
+                href="/FinalProject/inner/sales/Closed Lost"
+                >Closed Lost</a
+              >
             </div>
           </div>
         </li>
@@ -318,9 +359,6 @@
                 </div>
               </li>
 
-              
-              </li>
-
               <div class="topbar-divider d-none d-sm-block"></div>
 
               <!-- Nav Item - User Information -->
@@ -351,7 +389,7 @@
                   "
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="/FinalProject/inner/profile/${empId}">
+                  <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
@@ -366,7 +404,7 @@
                   <div class="dropdown-divider"></div>
                   <a
                     class="dropdown-item"
-                    href="/FinalProject/logout"
+                    href="#"
                     data-toggle="modal"
                     data-target="#logoutModal"
                   >
@@ -382,29 +420,120 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
-          <div class="container-fluid">
+          <div class="container-fluid" id="app">
             <!-- Page Heading -->
-            <h1 class="h3 text-gray-800">顧客列表 - ${ stage }</h1>
+            <h1 class="h3 text-gray-800">員工資料</h1>
             <hr class="sidebar-divider" />
 
-            
+            <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-body">
-                <table id="allClients" class="table table-striped" style="width:100%">
-                  <thead>
-                    <tr class="text-lg">
-                        <th>銷售階段</th>
-                        <th>姓名</th>
-                        <th>電子信箱</th>
-                        <th>電話</th>
-                        <th>地區</th>
-                        <th>最後更新時間</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                 
-              </table>
-                  
+                <form>
+                  <div class="row text-center mg-1r">
+                    <div class="col-6 mb-3 mb-sm-0">
+                      <label for="fullname" class="text-lg">姓名</label><br />
+                      <input
+                        type="text"
+                        name="fullname"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.fullName"
+                      /><br />
+                    </div>
+                    <div class="col-6 mb-3 mb-sm-0">
+                      <label for="empemail" class="text-lg">公司郵件</label
+                      ><br />
+                      <input
+                        type="email"
+                        name="empemail"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.username"
+                        disabled
+                      /><br />
+                    </div>
+                  </div>
+                  <div class="row text-center mg-1r">
+                    <div class="col-6 mb-3 mb-sm-0">
+                      <label for="empphone" class="text-lg">電話</label><br />
+                      <input
+                        type="text"
+                        name="empphone"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.phone"
+                      /><br />
+                    </div>
+                    <div class="col-6 mb-3 mb-sm-0">
+                      <label for="emptitle" class="text-lg">職稱</label><br />
+                      <input
+                        type="text"
+                        name="emptitle"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.title"
+                      /><br />
+                    </div>
+                  </div>
+                  <div class="row text-center mg-1r">
+                    <div class="col-12 mb-3 mb-sm-0">
+                      <label for="department" class="text-lg">部門</label><br />
+                      <select
+                        name="department"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.department"
+                        disabled
+                      >
+                        <option value="Sales">業務</option>
+                        <option value="Delivery">交車</option>
+                        <option value="Service">客服</option>
+                        <option value="Admin">總部</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row text-center mg-1r">
+                    <div class="col-6 mb-3 mb-sm-0">
+                      <label for="location" class="text-lg">工作地點</label
+                      ><br />
+                      <select
+                        name="location"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.location"
+                      >
+                        <option value="" disabled selected>
+                          Please select one Location.
+                        </option>
+                        <c:forEach items="${locations}" var="list">
+                          <option value="${list}">${list}</option>
+                        </c:forEach>
+                      </select>
+                    </div>
+                    <div class="col-6 mb-3 mb-sm-0">
+                      <label for="sal" class="text-lg">薪資/月</label><br />
+                      <input
+                        type="text"
+                        name="sal"
+                        class="form-control form-control-user"
+                        v-model="employeeInput.salary"
+                        disabled
+                      /><br />
+                    </div>
+                  </div>
+                  <div class="row text-center mg-1r">
+                    <div class="col-12">
+                      <hr class="sidebar-dividor" />
+                      <button
+                        class="btn btn-block btn-primary text-lg"
+                        id="addEmpSubmitbtn"
+                        @click="submitUpdateProfile($event)"
+                      >
+                        <span v-show="!isSending"> 修改 </span>
+                        <img
+                          src="/FinalProject/images/loading.gif"
+                          alt=""
+                          v-if="isSending"
+                          width="30px"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -482,45 +611,6 @@
     <script src="/FinalProject/js/sb-admin-2.js"></script>
 
     <!-- Page level custom scripts -->
-    
-    <%
-        String stage = (String) request.getAttribute("stage");
-
-        switch(stage) {
-            case "All":
-                out.println("<script src='/FinalProject/js/inner/SalesAllClient.js'></script>");
-                break;
-            case "New":
-                out.println("<script src='/FinalProject/js/inner/SalesNewClient.js'></script>");
-                break;
-            case "Attempt to Engaged":
-                out.println("<script src='/FinalProject/js/inner/SalesATEClient.js'></script>");
-                break;
-            case "Engaged":
-                out.println("<script src='/FinalProject/js/inner/SalesEngagedClient.js'></script>");
-                break;
-            case "Test Drive":
-                out.println("<script src='/FinalProject/js/inner/SalesTDClient.js'></script>");
-                break;
-            case "Follow up":
-                out.println("<script src='/FinalProject/js/inner/SalesFUClient.js'></script>");
-                break;
-            case "Long Term":
-                out.println("<script src='/FinalProject/js/inner/SalesLTClient.js'></script>");
-                break;
-            case "Ordered":
-                out.println("<script src='/FinalProject/js/inner/SalesOrderClient.js'></script>");
-                break;
-            case "Closed Lost":
-                out.println("<script src='/FinalProject/js/inner/SalesCLClient.js'></script>");
-                break;
-            default:
-            	out.println("<script src='/FinalProject/js/inner/SalesAllClient.js'></script>");
-        }
-    %>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <script src="/FinalProject/js/inner/sales/employeeEditProfiles.js"></script>
   </body>
 </html>
