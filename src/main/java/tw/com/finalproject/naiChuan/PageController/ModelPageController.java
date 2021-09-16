@@ -26,9 +26,16 @@ public class ModelPageController {
 	@Autowired
 	private EmployeeService employeeService;
 	
+	// 訪客端主頁面
 	@GetMapping("/Model")
 	public String reEnterModel() {
 		return "model/modelAllPage";
+	}
+	
+	// 訪客端，單一Model頁面
+	@GetMapping("/Model/model")
+	public String modelTypePage() {
+		return "model/displayOneModel";
 	}
 	
 	// admin 進入 model

@@ -62,7 +62,7 @@
 		<!-- Page level plugins -->
 		<link rel="stylesheet" href="/FinalProject/css/adminTestdrive.css"/>
 		<!-- Page level custom scripts -->	
-<!-- 		toggleButton	 -->
+		<!-- toggleButton -->
 		<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 		
@@ -167,14 +167,22 @@
 			<!-- Nav Item - 編輯消息 -->
 			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
 				class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
-			
-			<!-- Nav Item - 編輯活動 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i
-				class="fas fa-rss-square"></i> <span>編輯活動</span></a></li>
-			
+
+			<!-- Nav Item - 活動表單 -->
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
+				class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
+
+			<!-- Nav Item - 活動報名統計-->
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i
+				class="fas fa-rss-square"></i> <span>活動報名統計</span></a></li>
+
 			<!-- Nav Item - 編輯商品 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/products"> <i
-				class="fas fa-gifts"></i> <span>編輯商品</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i
+				class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
+
+			<!-- Nav Item - 訂單管理 -->
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i
+				class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block" />
@@ -210,32 +218,7 @@
             </button>
 
             <!-- Topbar Search -->
-            <form
-              class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
-            >
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control bg-light border-0 small"
-                  placeholder="Search for..."
-                  aria-label="Search"
-                  aria-describedby="basic-addon2"
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -429,7 +412,7 @@
             <!-- 以下開始替換成你們的內容
                     可放表格, 圖表, 要填的 form 之類的~ -->
           <!-- "新增"按鈕 -->          
-		  <br/><br/><button id="addTestdriveButton" type="submit" class="btn btn-primary" style="margin-left: 15px;">新增試駕表單</button> 
+		  <br/><br/><button id="addTestdriveButton" type="submit" class="btn btn-primary" >新增試駕表單</button> 
           <div class="row" id="Testdrive1">
             	
 				
@@ -542,11 +525,9 @@
                          					 <option>A3</option>
                          					 <option>A4</option>
                          					 <option>A5</option>
-                         					 <option>A6</option>
                         					</optgroup>
                         					<optgroup label="Q series">
                          					 <option>Q3</option>
-                         					 <option>Q5</option>
                         					</optgroup>
                       					</select><span id="1carmodCheck"></span><img src=""></td></tr>
 									
@@ -560,6 +541,7 @@
 										  <option value="桃園市" id="1opt2">桃園市</option>
 										  <option value="臺中市" id="1opt3">臺中市</option>
 										  <option value="高雄市" id="1opt4">高雄市</option>
+										  <option value="宜蘭縣" id="1opt5">宜蘭縣</option>
 										</select><span id="1locCheck"></span><img src=""></td></tr>
 								
 								<tr><td><label for="1locsit">試駕據點</label></td></tr>
@@ -568,14 +550,16 @@
 												aria-label="Default select example"
 												name="driveLocSit" id="1locsit">
 										  <option id="1locsitdef" selected disabled>請選擇據點</option>
-										  <option value="內湖" id="1opt11">內湖服務站</option>
-										  <option value="大安" id="1opt12">大安服務站</option>
-										  <option value="中壢" id="1opt21">中壢服務站</option>
-										  <option value="八德" id="1opt22">八德服務站</option>
-										  <option value="大里" id="1opt31">大里服務站</option>
-										  <option value="七期" id="1opt32">七期服務站</option>
-										  <option value="鼓山" id="1opt41">鼓山服務站</option>
-										  <option value="左營" id="1opt42">左營服務站</option>
+										  <option value="內湖" id="1opt11">內湖展示中心</option>
+										  <option value="大安" id="1opt12">大安展示中心</option>
+										  <option value="平鎮" id="1opt21">平鎮展示中心</option>
+										  <option value="桃園" id="1opt22">桃園展示中心</option>
+										  <option value="北屯" id="1opt31">北屯展示中心</option>
+										  <option value="南屯" id="1opt32">南屯展示中心</option>
+										  <option value="左營" id="1opt41">左營展示中心</option>
+										  <option value="鼓山" id="1opt42">鼓山展示中心</option>
+										  <option value="五結" id="1opt51">五結展示中心</option>
+										  <option value="羅東" id="1opt52">羅東展示中心</option>
 										</select><span id="1locsitCheck"></span><img src=""></td></tr>
                   
 
@@ -701,11 +685,9 @@
                          						 <option>A3</option>
                          						 <option>A4</option>
                          						 <option>A5</option>
-                         						 <option>A6</option>
                         					    </optgroup>
                         					    <optgroup label="Q series">
                          						 <option>Q3</option>
-                         						 <option>Q5</option>
                         						</optgroup>
                       						</select><span id="2carmodCheck"></span><img src=""></td></tr>
 									<tr><td><label for="2loc">試駕地區</label></td></tr>
@@ -719,6 +701,7 @@
 											  <option value="桃園市" id="2opt2">桃園市</option>
 											  <option value="臺中市" id="2opt3">臺中市</option>
 											  <option value="高雄市" id="2opt4">高雄市</option>
+											  <option value="宜蘭縣" id="2opt5">宜蘭縣</option>
 											</select><span id="2locCheck"></span><img src=""></td></tr>
 									<tr><td><label for="2locsit">試駕據點</label></td></tr>
 									<tr>
@@ -727,14 +710,16 @@
 											  aria-label="Default select example"
 											  name="driveLocSit" id="2locsit">
 											  <option id="2locsitdef" selected disabled>請選擇據點</option>
-											  <option value="內湖" id="2opt11">內湖服務站</option>
-											  <option value="大安" id="2opt12">大安服務站</option>
-											  <option value="中壢" id="2opt21">中壢服務站</option>
-											  <option value="八德" id="2opt22">八德服務站</option>
-											  <option value="大里" id="2opt31">大里服務站</option>
-											  <option value="七期" id="2opt32">七期服務站</option>
-											  <option value="鼓山" id="2opt41">鼓山服務站</option>
-											  <option value="左營" id="2opt42">左營服務站</option>
+											  <option value="內湖" id="2opt11">內湖展示中心</option>
+											  <option value="大安" id="2opt12">大安展示中心</option>
+											  <option value="平鎮" id="2opt21">平鎮展示中心</option>
+											  <option value="桃園" id="2opt22">桃園展示中心</option>
+											  <option value="北屯" id="2opt31">北屯展示中心</option>
+											  <option value="南屯" id="2opt32">南屯展示中心</option>
+											  <option value="左營" id="2opt41">左營展示中心</option>
+											  <option value="鼓山" id="2opt42">鼓山展示中心</option>
+											  <option value="五結" id="2opt51">五結展示中心</option>
+											  <option value="羅東" id="2opt52">羅東展示中心</option>
 											</select><span id="2locsitCheck"></span><img src=""></td></tr>
                   
 									<tr><td><label for="2sale">業務人員</label></td></tr>
@@ -1232,7 +1217,6 @@
 			driveDate=data.slice(4)
 			console.log(driveLoc);
 			console.log(encodeURI(driveLoc));
-			console.log(encodeURIComponent(driveLoc));
 			console.log(driveDate);
 			let westherUri="https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-62E818DB-3A6D-494E-B2DB-59F163F487C7&locationName="+encodeURI(driveLoc)+"&timeFrom="+driveDate+"T00%3A00%3A00";
 			console.log(westherUri);
@@ -1241,12 +1225,12 @@
 						method: "GET",
 						dataType: "json",
 						success: function (res) {
-							
+							console.log(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value.trim() != "")
 							$('#weather_loc').html(res.records.locations[0].location[0].locationName)
 							$('#weather_time').html(res.records.locations[0].location[0].weatherElement[0].time[0].startTime + ' 至\n' +
 									res.records.locations[0].location[0].weatherElement[0].time[0].endTime)
 							// 降雨機率有值
-							if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_rain').html(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value + '%')
 								// 一降雨機率 放上圖片
 								if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value < 40){
@@ -1255,35 +1239,36 @@
 										res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value < 70) {
 									$('#weather_rainImg').attr("src", '/FinalProject/images/weather-cloudy.png');
 								} else if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value >= 70){
-									$('#weather_rainImg').attr("src", '/FinalProject/imagesweather-rainy.png');
+									$('#weather_rainImg').attr("src", '/FinalProject/images/weather-rainy.png');
 								}
 							} else {
 								$('#weather_rain').html("暫無資訊")
+								$('#weather_rainImg').attr("src", '');
 							}
 							
 							// 平均溫
-							if(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_tempAvg').html(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value)
 							} else {
 								$('#weather_tempAvg').html("暫無資訊")
 							}
 							
 							// 最高溫
-							if(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_tempMax').html(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value)
 							} else {
 								$('#weather_tempMax').html("暫無資訊")
 							}
 							
 							// 最低溫
-							if(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_tempMin').html(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value)
 							} else {
 								$('#weather_tempMin').html("暫無資訊")
 							}
 							
 							// 綜合描述
-							if(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_sum').html(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value)
 							} else {
 								$('#weather_sum').html("暫無資訊")
