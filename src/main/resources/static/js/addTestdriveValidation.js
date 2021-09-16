@@ -372,31 +372,30 @@ let locObj = document.getElementById("loc");
 
 locObj.addEventListener("change",toLocsit)
 function toLocsit(){
-	document.getElementById("opt11").disabled = "true";
-	document.getElementById("opt12").disabled = "true";
-	document.getElementById("opt21").disabled = "true";
-	document.getElementById("opt22").disabled = "true";
-	document.getElementById("opt31").disabled = "true";
-	document.getElementById("opt32").disabled = "true";
-	document.getElementById("opt41").disabled = "true";
-	document.getElementById("opt42").disabled = "true";
+	
+	$("#locsitdef").nextAll().css('display','none');
+	$("#locsit").val($("#locsitdef").val()) ;
+	if( $("#loc").val() == $("#opt1").val() ){
+        $("#opt11").css('display','block');
+        $("#opt12").css('display','block');
 
-    if(locObj.value==document.getElementById("opt1").value){
-        document.getElementById("opt11").disabled = "";
-        document.getElementById("opt12").disabled = "";
+    } else if ( $("#loc").val() == $("#opt2").val() ){
+        $("#opt21").css('display','block');
+        $("#opt22").css('display','block');
 
-    }else if(locObj.value==document.getElementById("opt2").value){
-        document.getElementById("opt21").disabled = "";
-        document.getElementById("opt22").disabled = "";
+    } else if ( $("#loc").val() == $("#opt3").val() ){
+        $("#opt31").css('display','block');
+        $("#opt32").css('display','block');
 
-    }else if(locObj.value==document.getElementById("opt3").value){
-        document.getElementById("opt31").disabled = "";
-        document.getElementById("opt32").disabled = "";
-
-    }else if(locObj.value==document.getElementById("opt4").value){
-        document.getElementById("opt41").disabled = "";
-        document.getElementById("opt42").disabled = "";
+    } else if ( $("#loc").val() == $("#opt4").val() ){
+        $("#opt41").css('display','block');
+        $("#opt42").css('display','block');
+        
+    } else if ( $("#loc").val() == $("#opt5").val() ){
+        $("#opt51").css('display','block');
+        $("#opt52").css('display','block');
     }
+	
 }
 
 

@@ -30,6 +30,8 @@ public class Model {
 	private String torque;
 	private String consumption;
 	private String seat;
+	@Column(name = "subtitle", columnDefinition = "VARCHAR(MAX) NOT NULL")
+	private String subtitle;
 	@Column(name = "description", columnDefinition = "VARCHAR(MAX) NOT NULL")
 	private String description;
 	
