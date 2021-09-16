@@ -16,6 +16,21 @@ let productPageVM = new Vue({
       });
       return formatter.format(price);
     },
+    selectTag(index) {
+      console.log("selecting tag");
+      let tag = this.popularTags[index];
+
+      if (tag.selected) {
+        let indexOfDisplay = this.displayTags.indexOf(tag.tagName);
+        console.log(indexOfDisplay);
+        this.displayTags.splice(indexOfDisplay, 1);
+      } else {
+        this.displayTags.push(tag.tagName);
+      }
+
+      this.popularTags[index].selected = !this.popularTags[index].selected;
+      console.log("end selecting tag");
+    },
     addToCart(index, event) {
       event.preventDefault();
       let selectProduct = this.products[index];
@@ -52,6 +67,7 @@ let productPageVM = new Vue({
             newProduct.curPrice = res[i].curPrice;
             newProduct.originPrice = res[i].originalPrice;
             newProduct.imgPath = res[i].imgPath;
+            newProduct.tags = res[i].tags;
             self.products.push(newProduct);
           }
         },
@@ -112,6 +128,27 @@ let productPageVM = new Vue({
         );
       }
     },
+    queryMethod(arr, query) {
+      let foudedData = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].name.includes(query)) {
+          foudedData.push(arr[i]);
+        }
+      }
+      return foudedData;
+    },
+    findTagData(arr, tags) {
+      let foudedData = [];
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < tags.length; j++) {
+          if (arr[i].tags.includes(tags[j])) {
+            foudedData.push(arr[i]);
+            break;
+          }
+        }
+      }
+      return foudedData;
+    },
   },
   computed: {
     cart_item_total_quantity() {
@@ -127,9 +164,70 @@ let productPageVM = new Vue({
 
       let displayTags = this.displayTags;
       let rowData = this.products;
+      let result = [];
 
       // 先排序
-      return this.mergeSort(rowData, sortMethod);
+
+      let sortedData = this.mergeSort(rowData, sortMethod);
+      result = sortedData;
+
+      // 關鍵字
+      if (query != "") {
+        let queryedData = this.queryMethod(sortedData, query);
+        result = queryedData;
+      }
+
+      // 標籤
+      if (displayTags.length > 0) {
+        let tagsData = this.findTagData(result, displayTags);
+        result = tagsData;
+      }
+
+      return result;
+    },
+    popularTags() {
+      let rowData = this.products;
+      let allTags = [];
+      for (let i = 0; i < rowData.length; i++) {
+        for (let j = 0; j < rowData[i].tags.length; j++) {
+          allTags.push(rowData[i].tags[j]);
+        }
+      }
+      let uniqueTags = [...new Set(allTags)];
+
+      let index = [];
+      for (let k = 0; k < uniqueTags.length; k++) {
+        let count = 0;
+        for (let i = 0; i < allTags.length; i++) {
+          if (uniqueTags[k] == allTags[i]) {
+            count += 1;
+          }
+        }
+        index.push(count);
+      }
+      let resultMap = [];
+      for (let i = 0; i < uniqueTags.length; i++) {
+        let curData = {
+          tagName: uniqueTags[i],
+          count: index[i],
+          selected: false,
+        };
+        resultMap.push(curData);
+      }
+
+      resultMap.sort(function (a, b) {
+        var countA = a.count;
+        var countB = b.count;
+        if (countA < countB) {
+          return 1;
+        }
+        if (countA > countB) {
+          return -1;
+        }
+        return 0;
+      });
+
+      return resultMap.slice(0, 5);
     },
   },
   mounted: function () {

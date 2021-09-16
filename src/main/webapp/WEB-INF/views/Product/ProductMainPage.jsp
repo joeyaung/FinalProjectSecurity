@@ -129,21 +129,20 @@ pageEncoding="UTF-8"%>
           <div class="row mb-3">
             <div class="col-6">
               <div class="row">
-                <div class="col-6 tag-container">
+                <div class="col-8 tag-container">
                   <span>熱門標籤: </span>
                   <div class="tag-label-container">
-                    <div class="tags">
-                      <span>小孩</span>
-                    </div>
-                    <div class="tags">
-                      <span>服飾</span>
-                    </div>
-                    <div class="tags">
-                      <span>包包</span>
+                    <div
+                      class="tags"
+                      v-for="(tag, index) in popularTags"
+                      @click="selectTag(index)"
+                      :class="tag.selected ? 'tag-selected': ''"
+                    >
+                      <span>{{ tag.tagName }}</span>
                     </div>
                   </div>
                 </div>
-                <div class="col-6 sort-container">
+                <div class="col-4 sort-container">
                   <span>排序:</span>
                   <select v-model="sortMethod">
                     <option value="greater">依價格低到高</option>
@@ -156,7 +155,7 @@ pageEncoding="UTF-8"%>
               <div class="row">
                 <div class="col-12 text-right search-container">
                   <label for="search">搜尋</label>
-                  <input type="text" />
+                  <input type="text" v-model="queryString" />
                 </div>
               </div>
             </div>
