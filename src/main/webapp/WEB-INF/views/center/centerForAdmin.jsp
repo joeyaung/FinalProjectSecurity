@@ -11,7 +11,8 @@
 
 		<title>編輯展示中心資訊</title>
 
-		<link rel="icon" type="image/x-icon" href="images/favicon.png" />
+		<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
+		
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
@@ -80,10 +81,7 @@
 		<!--buttons css-->
 		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
-		<!--地圖api key-->
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg&callback=initMap&libraries=&v=weekly"
-			async></script>
+
 
 		<style>
 			#map {
@@ -173,26 +171,26 @@
 				<!-- Heading -->
 				<div class="sidebar-heading">FUNCTIONS</div>
 
-				<!-- Nav Item - 新增員工 -->
-				<li class="nav-item">
-					<a class="nav-link" href="/FinalProject/inner/admin/addEmployee">
-						<i class="fas fa-user-plus"></i>
-						<span>新增員工</span></a>
-				</li>
-
-				<!-- Nav Item - 試駕總覽 -->
-				<li class="nav-item">
-					<a class="nav-link" href="/FinalProject/admin/edit/testdrive">
-						<i class="fas fa-car"></i>
-						<span>試駕總覽</span></a>
-				</li>
-
-				<!-- Nav Item - 編輯消息 -->
-				<li class="nav-item">
-					<a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage">
-						<i class="fas fa-rss-square"></i>
-						<span>編輯消息</span></a>
-				</li>
+                <!-- Nav Item - 新增員工 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/addEmployee"> <i class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
+                <!-- Nav Item - 試駕總覽 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/testdrive"> <i class="fas fa-car"></i> <span>試駕總覽</span></a></li>
+                <!-- Nav Item - 車型總覽 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/model"> <i class="fas fa-car-side"></i> <span>車型總覽</span></a></li>
+                <!-- Nav Item - 編輯消息 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
+                <!-- Nav Item - 編輯活動 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i class="fas fa-snowboarding"></i></i> <span>編輯活動</span></a></li>
+                <!-- Nav Item - 活動報名表單 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i class="fas fa-file-signature"></i> <span>活動報名表單</span></a></li>
+                <!-- Nav Item - 活動報名統計 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i class="fas fa-signal"></i> <span>活動報名統計</span></a></li>
+                <!-- Nav Item - 商品管理 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
+                <!-- Nav Item - 訂單管理 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
+                <!-- Nav Item - 編輯展示中心 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/center"> <i class="fas fa-landmark"></i> <span>編輯展示中心</span></a></li>
 
 				<!-- Divider -->
 				<hr class="sidebar-divider d-none d-md-block" />
@@ -701,9 +699,9 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
+											data-dismiss="modal">關閉</button>
 										<button id="edit_submit" data-dismiss="modal" type="button"
-											class="btn btn-primary">Submit</button>
+											class="btn btn-primary">送出</button>
 										<button id="edit_onekey" type="button" class="btn btn-primary">一鍵輸入</button>
 									</div>
 								</div>
@@ -730,7 +728,7 @@
 									<div class="modal-body">
 
 										<div>
-											<input type="text" id="address" placeholder="台北市內湖區新湖三路288號">
+											<input type="text" id="address" placeholder="請輸入地點">
 											<button id="query">查詢</button>
 											<!-- <input type="button" value="定位"> -->
 										</div>
@@ -758,7 +756,7 @@
 						<!-- /.modal -->
 
 
-						<!-- 查詢座標的model (查詢) -->
+						<!-- 查詢座標的model (修改) -->
 						<div class="modal fade" tabindex="-1" role="dialog" id="edit_queryaddrModel">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
@@ -771,13 +769,13 @@
 									<div class="modal-body">
 
 										<div>
-											<input type="text" id="address" placeholder="請輸入地點" value="台北市內湖區新湖三路288號">
-											<button id="query">查詢</button>
+											<input type="text" id="edit_address" placeholder="請輸入地點">
+											<button id="edit_query">查詢</button>
 											<!-- <input type="button" value="定位"> -->
 										</div>
 
-										<div id="lat"></div>
-										<div id="lng"></div>
+										<div id="edit_lat"></div>
+										<div id="edit_lng"></div>
 
 										<!--The div element for the map -->
 										<div id="edit_map"></div>
@@ -786,7 +784,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-										<button id="submitquery" type="button" data-dismiss="modal"
+										<button id="edit_submitquery" type="button" data-dismiss="modal"
 											class="btn btn-primary">送出</button>
 										<!-- <button id="onekey" type="button" class="btn btn-primary">一鍵輸入</button> -->
 									</div>
@@ -902,8 +900,8 @@
 						defaultContent: "",
 						width: "10%",
 						render: function (data) {
-							return '<button id="edit_btn" onclick="editMode(' + data + ')" data-dismiss="modal" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>Edit</button>'
-								+ '<button id="delete_btn" onclick="deleteCenter(' + data + ')" data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>Delete</button>';
+							return '<button id="edit_btn" onclick="editMode(' + data + ')" data-dismiss="modal" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>修改</button>'
+								+ '<button id="delete_btn" onclick="deleteCenter(' + data + ')" data-dismiss="modal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>刪除</button>';
 
 						}
 					}
@@ -1143,8 +1141,7 @@
 				$("#edit_centerLatitude").val(res.centerLatitude);
 				$("#edit_centerLongitude").val(res.centerLongitude);
 				$("#edit_centerOpentime").val(res.centerOpentime);
-				// $("#edit_preview_img").attr("src",'data:image/png;base64,' + res.centerBase64Image);
-				// $("#edit_centerFile").val(res.centerFile);
+
 			}
 			findById(centerId, aftersuccess)  //帶入id資料function
 			$('#editCenterModal').modal('show');
@@ -1212,14 +1209,12 @@
 
 		//一鍵輸入(增加)
 		$('#onekey').on('click', function () {
-			$('#centerName').val('蘇澳展示中心');
-			$('#centerPhone').val('03-9220319');
-			$('#centerEmail').val('YilanCenter@gmail.com');
-			$('#centerLoc').val('宜蘭縣');
-			$('#centerLocSit').val('蘇澳鎮');
-			$('#centerAddress').val('宜蘭縣蘇澳鎮蘇新路81號');
-			// $('#centerLatitude').val('24.621283017256804');
-			// $('#centerLongitude').val('121.81510130879394');
+			$('#centerName').val('阿里山展示中心');
+			$('#centerPhone').val('05-2679917');
+			$('#centerEmail').val('AlishanCenter@gmail.com');
+			$('#centerLoc').val('嘉義縣');
+			$('#centerLocSit').val('阿里山鄉');
+			$('#centerAddress').val('嘉義縣阿里山鄉59號');
 			$('#centerOpentime').val('週一至週日 09:00 - 21:00');
 
 		})
@@ -1227,14 +1222,14 @@
 
 		//一鍵輸入(修改)
 		$('#edit_onekey').on('click', function () {
-			$('#edit_centerName').val('嘉義展示中心');
-			$('#edit_centerPhone').val('05-2227669');
-			$('#edit_centerEmail').val('ChiayiCenter@gmail.com');
-			$('#edit_centerLoc').val('嘉義市');
-			$('#edit_centerLocSit').val('東區');
-			$('#edit_centerAddress').val('嘉義市東區公明路197號');
-			$('#edit_centerLatitude').val('23.479852741798684');
-			$('#edit_centerLongitude').val('120.45410245480764');
+			$('#edit_centerName').val('墾丁展示中心');
+			$('#edit_centerPhone').val('08-8861165');
+			$('#edit_centerEmail').val('KentingCenter@gmail.com');
+			$('#edit_centerLoc').val('屏東縣');
+			$('#edit_centerLocSit').val('恆春鎮');
+			$('#edit_centerAddress').val('屏東縣恆春鎮墾丁路342號');
+			$('#edit_centerLatitude').val('');
+			$('#edit_centerLongitude').val('');
 			$('#edit_centerOpentime').val('週一至週日 09:00 - 21:00');
 		})
 
@@ -1461,8 +1456,18 @@
 			e.preventDefault();
 		})
 
+		//binding 查詢座標的按鈕 (修改)
+		$('#edit_queryaddr').click(function (e) {
+			$('#edit_queryaddrModel').modal('show');  //顯示增加展示中心的model
+			e.preventDefault();
+		})
+
+
+
 		//查詢座標的function
 		function initMap() {
+
+			//座標地圖(增加的)
 			geocoder = new google.maps.Geocoder();
 			map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 15,
@@ -1495,7 +1500,7 @@
 						console.log(status);
 					}
 
-					//查詢座標的送出  V
+					//查詢座標的送出
 					$('#submitquery').click(function (e) {
 						initMap();
 						$('#centerLatitude').val(latlng.lat());
@@ -1511,81 +1516,73 @@
 				if (e.which == 13) // 按下/放開 Enter 鍵 
 					$('#query').click();
 			});
+
+
+			//座標地圖(修改的)
+			edit_geocoder = new google.maps.Geocoder();
+			edit_map = new google.maps.Map(document.getElementById('edit_map'), {
+				zoom: 15,
+				center: { lat: 25.0338, lng: 121.5648 },
+			});
+
+			$('#edit_query').click(function () {
+				// 取得使用者輸入的地址
+				var edit_address = $('#edit_address').val();
+				if (edit_address == '') return; // 若為空字串則返回
+
+
+
+				// 用使用者輸入的地址查詢
+				edit_geocoder.geocode({ 'address': edit_address }, function (results, status) {
+					if (status == 'OK') {  // 確認 OK
+						var edit_latlng = results[0].geometry.location;
+						//  取得查詢結果第0筆中的經緯度物件
+						edit_map.setCenter(edit_latlng); //將查詢結果設為地圖的中心
+						$('#edit_lat').text(edit_latlng.lat()); //顯示經度
+						$('#edit_lng').text(edit_latlng.lng()); //顯示緯度
+
+						// (放置marker) The marker, positioned at Taoyuanaudi 
+						const edit_marker = new google.maps.Marker({
+							position: { lat: edit_latlng.lat(), lng: edit_latlng.lng() },
+							map: this.edit_map,
+						});
+
+
+					} else {
+						console.log(status);
+					}
+
+
+					//查詢座標的送出  V
+					$('#edit_submitquery').click(function (e) {
+						initMap();
+						$('#edit_centerLatitude').val(edit_latlng.lat());
+						$('#edit_centerLongitude').val(edit_latlng.lng());
+
+
+					});
+
+
+
+
+				});
+			});
+
+			$('#edit_address').keypress(function (e) {
+				if (e.which == 13) // 按下/放開 Enter 鍵 
+					$('#edit_query').click();
+			});
+
+
+
 		}
 
 
-		// //binding 查詢座標的按鈕 (修改)
-		// $('#edit_queryaddr').click(function (e) {
-		// 	$('#edit_queryaddrModel').modal('show');  //顯示增加展示中心的model
-		// 	e.preventDefault();
-		// })
-
-
-		// //查詢座標的function(修改)
-		// function edit_initMap() {
-		// 	edit_geocoder = new google.maps.Geocoder();
-		// 	edit_map = new google.maps.Map(document.getElementById('edit_map'), {
-		// 		zoom: 15,
-		// 		center: { lat: 25.0338, lng: 121.5648 },
-		// 	});
-
-
-		// 	$('#query').click(function () {
-		// 		// 取得使用者輸入的地址
-		// 		var address = $('#address').val();
-		// 		if (address == '') return; // 若為空字串則返回
-
-
-
-		// 		// 用使用者輸入的地址查詢
-		// 		edit_geocoder.geocode({ 'address': address }, function (results, status) {
-		// 			if (status == 'OK') {  // 確認 OK
-		// 				var latlng = results[0].geometry.location;
-		// 				//  取得查詢結果第0筆中的經緯度物件
-		// 				edit_map.setCenter(latlng); //將查詢結果設為地圖的中心
-		// 				$('#lat').text(latlng.lat()); //顯示經度
-		// 				$('#lng').text(latlng.lng()); //顯示緯度
-
-		// 				// (放置marker) The marker, positioned at Taoyuanaudi 
-		// 				const marker = new google.maps.Marker({
-		// 					position: { lat: latlng.lat(), lng: latlng.lng() },
-		// 					map: this.edit_map,
-		// 				});
-
-
-		// 			} else {
-		// 				console.log(status);
-		// 			}
-
-
-		// 			//查詢座標的送出  V
-		// 			$('#submitquery').click(function (e) {
-		// 				edit_initMap();
-		// 				$('#centerLatitude').val(latlng.lat());
-		// 				$('#centerLongitude').val(latlng.lng());
-
-
-		// 			});
-
-
-
-
-		// 		});
-		// 	});
-
-
-		// 	// 設定輸入欄位按鍵放開的事件處理函式
-		// 	$('#address').keypress(function (e) {
-		// 		if (e.which == 13) // 按下/放開 Enter 鍵 
-		// 			$('#query').click();
-		// 	});
-
-
-
-		// }
-
-
-
 	</script>
+
+	<!--地圖api key-->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg&callback=initMap&libraries=&v=weekly&language=zh-TW"
+		async></script>
 
 	</html>
