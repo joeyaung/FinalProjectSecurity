@@ -58,17 +58,16 @@
               <a class="nav-link" href="/FinalProject/News">最新消息</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">了解車型</a>
+              <a class="nav-link" href="/FinalProject/Model">了解車型</a>
             </li>
             <li class="nav-item">
-              <li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a>
-              </li>
+              <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/products">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
@@ -112,7 +111,7 @@
               您的生活，將因為純電而更美好。 純電 Audi e-tron
               讓您像使用手機一般，回到家就能充電。
               出門在外，充電設施遍及全台，有完善的快速充電與公共充電可運用。即使只是一頓飯的時間，也能隨即充電，讓您生活更加自在盡興！
-              <a href="https://startbootstrap.com/theme/grayscale/"
+              <a href="/FinalProject/Model"
                 >了解車款更多資訊</a
               >
             </p>
