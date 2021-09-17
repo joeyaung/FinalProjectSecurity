@@ -166,7 +166,9 @@
 2021-09-14 11:40:13,011 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
 2021-09-14 11:40:13,011 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
 2021-09-14 11:40:13,011 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+
 2021-09-14 11:40:13,026 - ResourceManager : found /templates/resetPassword.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+
 2021-09-14 22:07:18,011 - Log4JLogChute initialized using file 'velocity.log'
 2021-09-14 22:07:18,024 - Initializing Velocity, Calling init()...
 2021-09-14 22:07:18,024 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
@@ -365,3 +367,6 @@
 2021-09-15 16:31:10,859 - ResourceManager : found /templates/orderStatusChangeMail.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 2021-09-15 16:33:13,405 - ResourceManager : found /templates/orderStatusChangeMail.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 2021-09-15 16:33:40,904 - ResourceManager : found /templates/orderStatusChangeMail.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+
+2021-09-14 11:40:13,026 - ResourceManager : found /templates/resetPassword.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+

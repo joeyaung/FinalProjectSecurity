@@ -12,6 +12,7 @@ import tw.com.finalproject.yumyu.InternalUse.Employee;
 @Service
 public interface ClientRepository extends JpaRepository<Client, Long> {
 	public List<Client> findByFullNameLike(String queryName);
+	List<Client> findByFullNameContains(String queryName);
 	public List<Client> findByInchargedEmployee(Employee employee);
 	public Optional<Client> findByEmail(String email);
 }

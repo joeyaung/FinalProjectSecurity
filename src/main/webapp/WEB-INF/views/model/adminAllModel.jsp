@@ -9,8 +9,8 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Audi - 車型總覽</title>
-  
+  <title>Audi - 車型管理</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.png" />
   		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
 		<script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -64,6 +64,7 @@
 		<link rel="stylesheet"
 			href="https://www.ksia.or.kr/plugin/DataTables-1.10.15/extensions/Responsive/css/responsive.bootstrap4.css">
 		
+		
 		<!--font awesome-->
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 			integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
@@ -71,43 +72,10 @@
 
 		<!--buttons css-->
 		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-			
-		<!-- date picker -->
-		<script
-      		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"
-      		integrity="sha512-D7wym1iXOnyjJbX5hKh84TRFqnXTd7Qc0biqMOmoKgTRRZjUznfgM4Fk8Ta7x8Wp3o8HyKLb3A2kgxq1S6/4fA=="
-      		crossorigin="anonymous"></script>
-    	<link
-     		rel="stylesheet"
-      		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
-      		integrity="sha512-Fppbdpv9QhevzDE+UHmdxL4HoW8HantO+rC8oQB2hCofV+dWV2hePnP5SgiWR1Y1vbJeYONZfzQc5iII6sID2Q=="
-      		crossorigin="anonymous"/>
       		
+		<!-- Page level plugins -->
+		<link rel="stylesheet" href="/FinalProject/css/adminModel.css"/>
 		<style type="text/css">
-		
-			table.dataTable tbody td, thead th {
-  				vertical-align: middle;
-				text-align: center; 
-			}
-			
-			table.dataTable tbody td:before {
-    			top: 50% !important;
-     			transform: translateY(-50%);
-				text-align: center; 
-			}
-			
-			
-			.navbar-nav .nav-item + .nav-item {
-    			margin-left: 0rem;
-			}
-			body {
-			    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 
-			    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-			}
-			
-			.red{
-				background-color: red;
-			}
 			
 		</style>
 	</head>
@@ -187,19 +155,28 @@
 				
 			<!-- Nav Item - 車型總覽 -->
 			<li class="nav-item active"><a class="nav-link" href="/FinalProject/admin/edit/model"> <i 
-				class="fas fa-car"></i> <span>車型總覽</span></a></li>	
+				class="fas fa-car-side"></i> <span>車型總覽</span></a></li>	
 
 			<!-- Nav Item - 編輯消息 -->
 			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
 				class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
-			
-			<!-- Nav Item - 編輯活動 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i
-				class="fas fa-rss-square"></i> <span>編輯活動</span></a></li>
-			
+
+			<!-- Nav Item - 活動表單 -->
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
+				class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
+
+			<!-- Nav Item - 活動報名統計-->
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i
+				class="fas fa-rss-square"></i> <span>活動報名統計</span></a></li>
+
 			<!-- Nav Item - 編輯商品 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/products"> <i
-				class="fas fa-gifts"></i> <span>編輯商品</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i
+				class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
+
+			<!-- Nav Item - 訂單管理 -->
+			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i
+				class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
+
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block" />
@@ -235,32 +212,7 @@
             </button>
 
             <!-- Topbar Search -->
-            <form
-              class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
-            >
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control bg-light border-0 small"
-                  placeholder="Search for..."
-                  aria-label="Search"
-                  aria-describedby="basic-addon2"
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -449,7 +401,8 @@
             <!-- 以下開始替換成你們的內容
                     可放表格, 圖表, 要填的 form 之類的~ -->
             	<!-- "新增"按鈕 -->
-				<button id="addTestdriveButton" type="submit" class="btn btn-primary" style="margin-left: 15px;">新增車型</button> 
+				<button id="addModelButton" type="submit" class="btn btn-primary" style="margin-left: 15px;"
+					>新增車型</button> 
 				
 				<!--Data Table -->
             	<table id="ModelList" class="table table-striped table-bordered nowrap" style="width: 100%">
@@ -466,6 +419,7 @@
                         <th>扭力</th>
                         <th>油耗</th>
                         <th>乘坐人數</th>
+                        <th>標語</th>
                         <th>描述</th>
                         <th>angle_1</th>
                         <th>angle_4</th>
@@ -484,254 +438,416 @@
 		  </div>
           <!-- End of Content Row -->
           
-          
-          
-          <!-- "新增表單"的互動視窗 Modal -->
-						<div class="modal fade" tabindex="-1" role="dialog" id="addTestdriveModal">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title">新增車型</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-
-										<form id="form1">
-
-											<table class="box">
-												<tr><td><label for="1modelType">車型</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="text" aria-label="default input example"
-                        							  name="modelType" maxlength="10" id="1modelType"
-                        							  placeholder="請輸入車型" required/><span id="1modelTypeCheck"></span><img src=""></td></tr>
-												
-												<tr><td><label for="1price">參考售價</label></td>
-												<tr>
-                      								<td><input class="form-control"
-													  type="text" aria-label="default input example"
-                        							  name="price" maxlength="10" id="1price"
-                        							  placeholder="請輸入參考售價" required/><span id="1priceCheck"></span><img src=""></td></tr>
-                        						<tr><td><label for="1engineType">引擎動力</label></td>
-												<tr>
-                      								<td><input class="form-control"
-													  type="text" aria-label="default input example"
-                        							  name="engineType" maxlength="10" id="1engineType"
-                        							  placeholder="請輸入引擎類型" required/><span id="1engineTypeCheck"></span><img src=""></td></tr>
-                        						<tr><td><label for="1displacement">排氣量</label></td>
-												<tr>
-													<td><input class="form-control"
-													  type="text" aria-label="default input example"
-                        							  name="engineDisplacement" maxlength="10" id="1displacement"
-                        							  placeholder="請輸入排氣量" required/><span id="1displacementCheck"></span><img src=""></td></tr>
-												<tr>
-													<td>
-														<div class="image" id=preview_img0>
-															<img class="myitem" id="preview_img" width="200" height="200" />
-														</div> 
-														<input id="file" type="file" name="file" /> 
-														<span class="add_span" id="sp4" style="width: 10px;"></span> <img src="">
-													</td>
-												</tr>
-												
-												<tr><td><label for="1comm">備註</label></td></tr>
-												<tr>
-													<td><textarea class="form-control" style="resize: none" maxlength="200"
-													id="1comm" rows="5" cols="30" name="remark" placeholder="備註200字以內">
-													</textarea><span style="left: auto" id="1submitcheck"></span></td></tr>
-											</table>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">關閉</button>
-										<button id="1submit" type="button" data-dismiss="modal"
-											class="btn btn-primary">送出</button>
-										<button id="1oneKey" type="button" class="btn btn-secondary">一鍵輸入</button>
-									</div>
-								</div>
-								<!-- /.modal-content -->
-							</div>
-							<!-- /.modal-dialog -->
+        
+    	    <!-- "新增車型"的互動視窗 Modal -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="addModelModal">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">新增車型</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
 						</div>
-						<!-- /.modal -->
+						<div class="modal-body">
+
+							<form id="form1">
+
+								<table class="box add-edit-ModelTable">
+<!-- 									<tr><td colspan="2"><label for="1modelType">車型</label></td></tr> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 											<input class="form-control" size="60" -->
+<!-- 												  type="text" aria-label="default input example" -->
+<!--                        							  name="modelType" maxlength="10" id="1modelType" -->
+<!--                        							  placeholder="請輸入車型" required/><span id="1modelTypeCheck"></span><img src=""></td></tr> -->
+											
+<!-- 									<tr><td colspan="2"><br/><label for="1price">參考售價</label></td> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 											<input class="form-control" -->
+<!-- 												  type="text" aria-label="default input example" -->
+<!--                   								  name="price" maxlength="10" id="1price" -->
+<!--                    								  placeholder="請輸入參考售價" required/><span id="1priceCheck"></span><img src=""></td></tr> -->
+                        			
+									<tr><td><label for="1modelType">車型</label></td>
+									    <td><label for="1price">參考售價</label></td>
+									<tr>
+										<td><input class="form-control" size="60"
+												  type="text" aria-label="default input example"
+                       							  name="modelType" maxlength="10" id="1modelType"
+                       							  placeholder="請輸入車型" required/><span id="1modelTypeCheck"></span><img src=""></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                  								  name="price" maxlength="10" id="1price"
+                   								  placeholder="請輸入參考售價" required/><span id="1priceCheck"></span><img src=""></td></tr>
+                        			
+<!--                   					<tr><td colspan="2"><br/><label for="1engineType">引擎動力</label></td></tr> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 											<input class="form-control" -->
+<!-- 												  type="text" aria-label="default input example" -->
+<!--                         						  name="engineType" maxlength="10" id="1engineType" -->
+<!--                         						  placeholder="請輸入引擎類型" required/><span id="1engineTypeCheck"></span><img src=""></td></tr> -->
+                        						
+<!--                         			<tr><td colspan="2"><br/><label for="1displacement">排氣量</label></td> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 											<input class="form-control" -->
+<!-- 												  type="text" aria-label="default input example" -->
+<!--                         						  name="engineDisplacement" maxlength="10" id="1displacement" -->
+<!--                         						  placeholder="請輸入排氣量" required/><span id="1displacementCheck"></span><img src=""></td></tr> -->
+
+									<tr><td><br/><label for="1engineType">引擎動力</label></td>
+									    <td><br/><label for="1displacement">引擎排氣量</label></td></tr>
+									<tr>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="engineType" maxlength="10" id="1engineType"
+                        						  placeholder="請輸入引擎類型" required/><span id="1engineTypeCheck"></span><img src=""></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="engineDisplacement" maxlength="10" id="1displacement"
+                        						  placeholder="請輸入引擎排氣量" required/><span id="1displacementCheck"></span><img src=""></td></tr>
+
+<!--                         			<tr><td colspan="2"><br/><label for="1power">馬力</label></td> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 											<input class="form-control" -->
+<!-- 												  type="text" aria-label="default input example" -->
+<!--                         						  name="power" maxlength="10" id="1power" -->
+<!--                         						  placeholder="請輸入馬力" required/><span id="1powerCheck"></span><img src=""></td></tr> -->
+
+<!--                         			<tr><td colspan="2"><br/><label for="1torque">扭力</label></td> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 											<input class="form-control" -->
+<!-- 												  type="text" aria-label="default input example" -->
+<!--                         						  name="torque" maxlength="10" id="1torque" -->
+<!--                         						  placeholder="請輸入扭力" required/><span id="1torqueCheck"></span><img src=""></td></tr> -->
+
+									<tr><td><br/><label for="1power">馬力</label></td>
+									    <td><br/><label for="1torque">扭力</label></td></tr>
+									<tr><td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="power" maxlength="10" id="1power"
+                        						  placeholder="請輸入馬力" required/><span id="1powerCheck"></span><img src=""></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="torque" maxlength="10" id="1torque"
+                        						  placeholder="請輸入扭力" required/><span id="1torqueCheck"></span><img src=""></td></tr>
+
+
+									<tr><td><br/><label for="1consumption">油耗</label></td>
+									    <td><br/><label for="1seat">乘坐人數</label></td></tr>
+									<tr><td><input class="form-control"
+											   type="text" aria-label="default input example"
+                        					   name="consumption" maxlength="10" id="1consumption"
+                        					   placeholder="請輸入油耗" required/><span id="1consumptionCheck"></span><img src=""></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="seat" maxlength="10" id="1seat"
+                        						  placeholder="請輸入乘坐人數" required/><span id="1seatCheck"></span><img src=""></td></tr>
+
+
+<!--                         			<tr><td colspan="2"><br/><label for="1consumption">油耗</label></td> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 										<input class="form-control" -->
+<!-- 											   type="text" aria-label="default input example" -->
+<!--                         					   name="consumption" maxlength="10" id="1consumption" -->
+<!--                         					   placeholder="請輸入油耗" required/><span id="1consumptionCheck"></span><img src=""></td></tr> -->
+
+<!--                         			<tr><td colspan="2"><br/><label for="1seat">乘坐人數</label></td> -->
+<!-- 									<tr><td colspan="2"> -->
+<!-- 											<input class="form-control" -->
+<!-- 												  type="text" aria-label="default input example" -->
+<!--                         						  name="seat" maxlength="10" id="1seat" -->
+<!--                         						  placeholder="請輸入乘坐人數" required/><span id="1seatCheck"></span><img src=""></td></tr> -->
+                        						
+                        			<tr><td colspan="2"><br/><label for="1subtitle">標語</label></td></tr>
+									<tr><td colspan="2">
+											<textarea class="form-control" style="resize: none" maxlength="50" id="1subtitle" rows="5" cols="30" name="subtitle" 
+													placeholder="標語字數限制50字" required></textarea><span style="left:auto; color:red" id="1subtitleCheck"></span><img src=""></td></tr>
+									
+									<tr><td colspan="2"><br/><label for="1description">描述</label></td></tr>
+									<tr><td colspan="2">
+											<textarea class="form-control" style="resize: none" maxlength="200" id="1description" rows="5" cols="30" name="description" 
+													placeholder="備註字數限制200字" required></textarea><span style="left:auto; color:red" id="1descriptionCheck"></span><img src=""></td></tr>
+										
+									<tr><td><label for="1outer">外觀</label></td>
+									    <td><label for="1inner">內裝</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="1preview_outer" width="200" height="200" />
+											</div> 
+											<input id="1outer" type="file" name="outerFile" /> 
+											<span id="1outerCheck" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="1preview_inner" width="200" height="200" />
+											</div> 
+											<input id="1inner" type="file" name="innerFile" /> 
+											<span id="1innerCheck" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+                        					
+                        			<tr class="border-top"><td><label for="1bg">背景</label></td>
+                        				<td><label for="1an1">angle_1</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="1preview_bg" width="200" height="200" />
+											</div> 
+											<input id="1bg" type="file" name="backgroundFile" /> 
+											<span id="1bgCheck" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="1preview_an1" width="200" height="200" />
+											</div> 
+											<input id="1an1" type="file" name="angle1File" /> 
+											<span id="1an1Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+												
+														
+                        			<tr class="border-top"><td><label for="1an4">angle_4</label></td>
+                        				<td><label for="1an7">angle_7</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="1preview_an4" width="200" height="200" />
+											</div> 
+											<input id="1an4" type="file" name="angle4File" /> 
+											<span id="1an4Check" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="1preview_an7" width="200" height="200" />
+											</div> 
+											<input id="1an7" type="file" name="angle7File" /> 
+											<span id="1an7Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+														
+														
+                        			<tr class="border-top"><td><label for="1an10">angle_10</label></td>
+                        				<td><label for="1an13">angle_13</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="1preview_an10" width="200" height="200" />
+											</div> 
+											<input id="1an10" type="file" name="angle10File" /> 
+											<span id="1an10Check" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="1preview_an13" width="200" height="200" />
+											</div> 
+											<input id="1an13" type="file" name="angle13File" /> 
+											<span id="1an13Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+														
+														
+                        			<tr class="border-top"><td><label for="1an16">angle_16</label></td>
+                        				<td><label for="1an19">angle_19</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="1preview_an16" width="200" height="200" />
+											</div> 
+											<input id="1an16" type="file" name="angle16File" /> 
+											<span id="1an16Check" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="1preview_an19" width="200" height="200" />
+											</div> 
+											<input id="1an19" type="file" name="angle19File" /> 
+											<span id="1an19Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>						
+										
+									<tr><td><span style="left: auto;color:red" id="1submitcheck"></span></td></tr>
+																							
+								</table>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+									data-dismiss="modal">關閉</button>
+							<button id="1submit" type="button" data-dismiss="modal"
+									class="btn btn-primary">送出</button>
+							<button id="1oneKey" type="button" class="btn btn-secondary">一鍵輸入</button>
+						</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
             
 
-          <!-- "修改表單"的互動視窗 Modal -->
-						<div class="modal fade" tabindex="-1" role="dialog" id="editTestdriveModal">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title">修改車型</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-
-										<form id="form2">
-
-											<table class="box">
-												<input type="hidden" id="2formId" name="formId">
-												<input type="hidden" id="2formTime" name="formTime">
-												<tr><td><label id="2showId"></label></td></tr>
-												<tr><td><label for="2date">賞車日期</label></td></tr>
-												<tr>
-													<td><div class="input-group date" id="2datetimepicker">
-                          							  <input type="text" class="form-control" name="driveDate" id="2date"/>
-                          								<span class="input-group-addon color-blue" id="inputAddOnIcon2">
-                            							  <span class="glyphicon glyphicon-calendar">
-                              							    <i class="fas fa-calendar-minus"></i></span>
-                          								</span></div><span id="2dateCheck"></span><img src=""></td></tr>
-																								
-												<tr><td><label for="dateTime">賞車時間:</label></td>
-												<tr>
-													<td>
-                      								  <input class="form-control" type="text" aria-label="default input example" 
-                      								  maxlength="5" id="2driveTime" onclick="driveTimeModal2(date)" 
-                      								  name="driveTime" :value=vueTime2>
-                      								  <span id="2driveTimeCheck"></span><img src=""></td></tr>
-												
-												<tr><td><label for="2carmod">試駕車種</label></td></tr>
-												<tr>
-													<td><select
-                        								 class="form-select"
-                        								 aria-label="Default select example"
-                       									 name="carMod" id="2carmod" required>
-                        							 	<option id="2carmoddef" selected disabled>請選擇您想試駕的汽車型號</option>
-                        								<optgroup label="A series">
-                         								 <option>A1</option>
-                         								 <option>A2</option>
-                         								 <option>A3</option>
-                         								 <option>A4</option>
-                         								 <option>A5</option>
-                         								 <option>A6</option>
-                         								 <option>A7</option>
-                         								 <option>A8</option>
-                        							    </optgroup>
-                        							    <optgroup label="Q series">
-                         								 <option>Q2</option>
-                         								 <option>Q3</option>
-                         								 <option>Q5</option>
-                         								 <option>Q7</option>
-                         								 <option>Q8</option>
-                        								</optgroup>
-                      								</select><span id="2carmodCheck"></span><img src=""></td></tr>
-												<tr><td><label for="2loc">試駕地區</label></td></tr>
-												<tr>
-													<td><select
-													  class="form-select"
-													  aria-label="Default select example"
-													  name="driveLoc" id="2loc" required>
-													  <option id="2locdef" selected disabled>請選擇地區</option>
-													  <option value="台北" id="2opt1">台北</option>
-													  <option value="桃園" id="2opt2">桃園</option>
-													  <option value="台中" id="2opt3">台中</option>
-													  <option value="高雄" id="2opt4">高雄</option>
-													</select><span id="2locCheck"></span><img src=""></td></tr>
-												<tr><td><label for="2locsit">試駕據點</label></td></tr>
-												<tr>
-													<td><select
-													  class="form-select"
-													  aria-label="Default select example"
-													  name="driveLocSit" id="2locsit">
-													  <option id="2locsitdef" selected disabled>請選擇據點</option>
-													  <option value="內湖" id="2opt11">內湖服務站</option>
-													  <option value="大安" id="2opt12">大安服務站</option>
-													  <option value="中壢" id="2opt21">中壢服務站</option>
-													  <option value="八德" id="2opt22">八德服務站</option>
-													  <option value="大里" id="2opt31">大里服務站</option>
-													  <option value="七期" id="2opt32">七期服務站</option>
-													  <option value="鼓山" id="2opt41">鼓山服務站</option>
-													  <option value="左營" id="2opt42">左營服務站</option>
-													</select><span id="2locsitCheck"></span><img src=""></td></tr>
-                  
-												<tr><td><label for="2sale">業務人員</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="text" aria-label="default input example"
-													  name="sales" maxlength="10" id="2sale"
-													  required /><span id="2saleCheck"></span><img src=""></td></tr>
-												<tr><td><label for="2name">姓名</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="text" aria-label="default input example"
-                        							  name="nameCli" maxlength="10" id="2name" placeholder="請輸入姓名" 
-                        							  required /><span id="2nameCheck"></span><img src=""></td></tr>
-												<tr><td><label>稱謂</label></tr>
-												<tr>
-													<td><div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio" name="gendCli"
-													  id="2flexRadio1" value="先生"/>
-													  <label class="form-check-label" for="2flexRadio1">先生</label></div>
-													<div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio"
-													  name="gendCli" id="2flexRadio2" value="小姐" />
-													  <label class="form-check-label" for="2flexRadio2">小姐</label></div>
-													<div class="form-check form-check-inline">
-													  <input class="form-check-input" type="radio" name="gendCli"
-													  id="2flexRadio3" value="其他" />
-													  <label class="form-check-label" for="2flexRadio3">其他</label></div>
-													  <span id="2gendCheck"></span><img src=""></td></tr>
-													  
-												<tr><td><label>客戶方便的聯絡時間</label></tr>
-												<tr>
-													<td id="tdcheckbox"><div class="form-check form-check-inline">
-                        							  <input class="form-check-input" type="checkbox"
-                          							  id="2inlineCheckbox1" value="早" name="timCli"/>
-                        							  <label class="form-check-label" for="2inlineCheckbox1">
-                      								  早上(8:00-12:00)</label></div>
-                      								  <div class="form-check form-check-inline">
-                      								<input class="form-check-input" type="checkbox"
-                      								  id="2inlineCheckbox2" value="午" name="timCli"/>
-                      								  <label class="form-check-label" for="2inlineCheckbox2">
-                      								  下午(13:00-17:00)</label></div>
-                    								  <div class="form-check form-check-inline">
-                      								<input class="form-check-input" type="checkbox"
-                        							  id="2inlineCheckbox3" value="晚" name="timCli"/>
-                      								  <label class="form-check-label" for="2inlineCheckbox3">
-                      								  晚上(18:00-22:00)</label></div><span id="2contimCheck"></span><img src=""></td></tr>
-                      							<tr><td><label for="2mail">E-mail</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													  type="email" aria-label="default input example"
-													  name="mailCli" maxlength="35" id="2mail" placeholder="請輸入電子信箱"
-													  required/><span id="2mailCheck"></span><img src=""></td></tr>
-												<tr><td><label for="2tel">聯絡電話</label></td></tr>
-												<tr>
-													<td><input class="form-control"
-													type="text" aria-label="default input example"
-													name="telCli" maxlength="13" id="2tel"
-													placeholder="請輸入連絡電話" required/><span id="2telCheck"></span><img src=""></td></tr>
-												<tr><td><label for="2comm">備註</label></td></tr>
-												<tr>
-													<td><textarea class="form-control" style="resize: none" maxlength="200"
-													id="2comm" rows="5" cols="30" name="remark" placeholder="備註200字以內">
-													</textarea><span style="left: auto" id="2submitcheck"></td></tr>
-											</table>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">關閉</button>
-										<button id="2submit" type="button" data-dismiss="modal"
-											class="btn btn-primary">確認修改</button>
-										<button id="2oneKey" type="button" class="btn btn-secondary">一鍵輸入</button>
-									</div>
-								</div>
-								<!-- /.modal-content -->
-							</div>
-							<!-- /.modal-dialog -->
+          <!-- "修改車型"的互動視窗 Modal -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="editModelModal">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">修改車型資訊</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
 						</div>
-						<!-- /.modal -->
+						<div class="modal-body">
 
-       
-       
-       
-       
-       
+							<form id="form2">
+
+								<table class="box add-edit-ModelTable">
+                        			
+									<tr><td><label id="2modelType">車型</label><input type="hidden" name="modelType" id="2hideId" value=""></td>
+									    <td><label for="2price">參考售價</label></td>
+									<tr><td><label id="2showId" style="font-size: large"></label></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                  								  name="price" maxlength="10" id="2price"
+                   								  placeholder="請輸入參考售價" required/><span id="2priceCheck"></span><img src=""></td></tr>
+                        			
+									<tr><td><br/><label for="2engineType">引擎動力</label></td>
+									    <td><br/><label for="2displacement">引擎排氣量</label></td></tr>
+									<tr><td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="engineType" maxlength="10" id="2engineType"
+                        						  placeholder="請輸入引擎類型" required/><span id="2engineTypeCheck"></span><img src=""></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="engineDisplacement" maxlength="10" id="2displacement"
+                        						  placeholder="請輸入引擎排氣量" required/><span id="2displacementCheck"></span><img src=""></td></tr>
+
+									<tr><td><br/><label for="2power">馬力</label></td>
+									    <td><br/><label for="2torque">扭力</label></td></tr>
+									<tr><td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="power" maxlength="10" id="2power"
+                        						  placeholder="請輸入馬力" required/><span id="2powerCheck"></span><img src=""></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="torque" maxlength="10" id="2torque"
+                        						  placeholder="請輸入扭力" required/><span id="2torqueCheck"></span><img src=""></td></tr>
+
+
+									<tr><td><br/><label for="2consumption">油耗</label></td>
+									    <td><br/><label for="2seat">乘坐人數</label></td></tr>
+									<tr><td><input class="form-control"
+											   type="text" aria-label="default input example"
+                        					   name="consumption" maxlength="10" id="2consumption"
+                        					   placeholder="請輸入油耗" required/><span id="2consumptionCheck"></span><img src=""></td>
+										<td><input class="form-control"
+												  type="text" aria-label="default input example"
+                        						  name="seat" maxlength="10" id="2seat"
+                        						  placeholder="請輸入乘坐人數" required/><span id="2seatCheck"></span><img src=""></td></tr>
+                        						
+                        			<tr><td colspan="2"><br/><label for="2subtitle">標語</label></td></tr>
+									<tr><td colspan="2">
+											<textarea class="form-control" style="resize: none" maxlength="50" id="2subtitle" rows="5" cols="30" name="subtitle" 
+													placeholder="標語字數限制50字" required></textarea><span style="left:auto; color:red" id="2subtitleCheck"></span><img src=""></td></tr>
+									
+									<tr><td colspan="2"><br/><label for="2description">描述</label></td></tr>
+									<tr><td colspan="2">
+											<textarea class="form-control" style="resize: none" maxlength="200" id="2description" rows="5" cols="30" name="description" 
+													placeholder="備註字數限制200字" required></textarea><span style="left:auto; color:red" id="2descriptionCheck"></span><img src=""></td></tr>
+									
+									
+									<tr><td colspan="2" style="text-align:center"><br/><label>圖片修改僅選擇需修改的圖片上傳即可</label></td></tr>
+									
+									
+									<tr><td><label for="2outer">外觀</label></td>
+									    <td><label for="2inner">內裝</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="2preview_outer" width="200" height="200" />
+											</div> 
+											<input id="2outer" type="file" name="outerFile" /> 
+											<span id="2outerCheck" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="2preview_inner" width="200" height="200" />
+											</div> 
+											<input id="2inner" type="file" name="innerFile" /> 
+											<span id="2innerCheck" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+                        					
+                        			<tr class="border-top"><td><label for="2bg">背景</label></td>
+                        				<td><label for="2an1">angle_1</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="2preview_bg" width="200" height="200" />
+											</div> 
+											<input id="2bg" type="file" name="backgroundFile" /> 
+											<span id="2bgCheck" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="2preview_an1" width="200" height="200" />
+											</div> 
+											<input id="2an1" type="file" name="angle1File" /> 
+											<span id="2an1Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+												
+														
+                        			<tr class="border-top"><td><label for="2an4">angle_4</label></td>
+                        				<td><label for="2an7">angle_7</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="2preview_an4" width="200" height="200" />
+											</div> 
+											<input id="2an4" type="file" name="angle4File" /> 
+											<span id="2an4Check" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="2preview_an7" width="200" height="200" />
+											</div> 
+											<input id="2an7" type="file" name="angle7File" /> 
+											<span id="2an7Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+														
+														
+                        			<tr class="border-top"><td><label for="2an10">angle_10</label></td>
+                        				<td><label for="2an13">angle_13</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="2preview_an10" width="200" height="200" />
+											</div> 
+											<input id="2an10" type="file" name="angle10File" /> 
+											<span id="2an10Check" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="2preview_an13" width="200" height="200" />
+											</div> 
+											<input id="2an13" type="file" name="angle13File" /> 
+											<span id="2an13Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
+														
+														
+                        			<tr class="border-top"><td><label for="2an16">angle_16</label></td>
+                        				<td><label for="2an19">angle_19</label></td></tr>
+									<tr>
+										<td>
+											<div class="image">
+												<img class="myitem" id="2preview_an16" width="200" height="200" />
+											</div> 
+											<input id="2an16" type="file" name="angle16File" /> 
+											<span id="2an16Check" style="width: 10px;"></span> <img src=""></td>
+										<td>
+											<div class="image w210">
+												<img class="myitem" id="2preview_an19" width="200" height="200" />
+											</div> 
+											<input id="2an19" type="file" name="angle19File" /> 
+											<span id="2an19Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>						
+										
+									<tr><td><span style="left: auto;color:red" id="2submitcheck"></span></td></tr>
+																							
+								</table>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+									data-dismiss="modal">關閉</button>
+							<button id="2submit" type="button" data-dismiss="modal"
+									class="btn btn-primary">送出</button>
+							<button id="2oneKey" type="button" class="btn btn-secondary">一鍵輸入</button>
+						</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+           
+
+
+
         </div>
         <!-- /.container-fluid -->
         <!-- 結束內容 -->
@@ -824,6 +940,7 @@
 					{data: "torque", responsivePriority:11},
 					{data: "consumption", responsivePriority:9},
 					{data: "seat"},
+					{data: "subtitle"},
 					{data: "description"},
 					{data: "angle1Base64Image", width: 40,
 						render: function (data) {
@@ -859,7 +976,7 @@
 				
 				columnDefs:[
 					{className: "dt-center", "targets": "_all"},
-					{targets: 19,
+					{targets: 20,
 					orderable: false, // 禁用排序
 					defaultContent: "",
 					width: "10%",
@@ -887,7 +1004,7 @@
 						display: $.fn.dataTable.Responsive.display.modal({
 								header: function (row) {
 									var data = row.data();
-									return 'Details for car model form';
+									return 'Details for car model';
 								}
 						}),
 						renderer: $.fn.dataTable.Responsive.renderer.tableAll({
@@ -903,52 +1020,91 @@
 				
 				
 		// "新增"按鈕叫出 Modal
-		$('#addTestdriveButton').click(function (e) {
+		$('#addModelButton').click(function (e) {
+			cleanModel() // 清空Model的勾勾叉叉和註解
+			$("#form1")[0].reset(); // 新增的model清空
+// 			previewImg();	// 啟動 "丟圖秀出預覽圖" function
+			$('#addModelModal').modal('show');
 			e.preventDefault();
-			$("#form1")[0].reset();// 新增的model清空
-			$('#addTestdriveModal').modal('show');
 		})		
 		
-		// 1送出前總檢查 2一鍵輸入  3送出  寫在 adminTestdrive.js裡
+		// "新增"Model 的預覽圖 function
+		function previewImg() {
+			if (this.files && this.files[0]) {
+				let reader = new FileReader();
+				// 讀取指定的binary(Blob或File)，將其編碼為base64的data url。讀取操作完成會觸發loadend事件
+				reader.readAsDataURL(this.files[0]);
+				let prevImg = $(this).prev().children("img")
+				reader.onload = function (e) {
+					prevImg.prop('src',e.target.result);
+				}
+			}
+		}		
+		$("input:file").on('change',previewImg);
 		
+		
+		// 清空 "新增""修改"Model的勾勾叉叉和註解
+		function cleanModel(){
+			$("table").find("span").html("")
+			$("table").find("span").next().prop("src","")
+			$("div.image > img").prop("src","")
+		}
+		
+		// 1送出前總檢查  2送出  3一鍵輸入  寫在 adminModel.js裡
+
+
 		
 		// "修改"按鈕抓出資料，叫出 Modal
-		function editModal(formId) {
+		function editModal(modelType) {
+			cleanModel()
 			$('#form2')[0].reset(); // 修改的model清空
 
 			let fillWithOrigin = function (res) {
-				$("#2showId").html("表單編號    " + res.formId);
-				$("#2formId").val(res.formId);
-				$("#2formTime").val(res.formTime);
-				$("#2date").val(res.driveDate);
-				$("#2driveTime").val(res.driveTimeDate);
-				$("#2carmod").val(res.carMod);
-				$("#2loc").val(res.driveLoc);
-				toLocsit2();
-				$("#2locsit").val(res.driveLocSit);
-				$("#2sale").val(res.sales);
-				$("#2name").val(res.nameCli);
-				$("[name=gendCli]").val([res.gendCli]);
-				$("#tdcheckbox > div > input").each(function() {
-					if(res.timCli.includes(this.value)){
-						$(this).prop("checked",true);
-					}
-				});
-				$("#2mail").val(res.mailCli);
-				$("#2tel").val(res.telCli);
-				$("#2comm").val(res.remark);
+				$("#2hideId").val(res.modelType);
+				$("#2showId").html(res.modelType);
+				$("#2price").val(res.price);
+				$("#2engineType").val(res.engineType);
+				$("#2displacement").val(res.engineDisplacement);
+				$("#2power").val(res.power);
+				$("#2torque").val(res.torque);
+				$("#2consumption").val(res.consumption);
+				$("#2seat").val(res.seat);
+				$("#2subtitle").val(res.subtitle);
+				$("#2description").val(res.description);
+				
+				$("#2preview_outer").prop("src",'data:image/png;base64,' + res.exterior);
+				$("#2outer").val(res.outerFile);
+				$("#2preview_inner").prop("src",'data:image/png;base64,' + res.interior);
+				$("#2inner").val(res.innerFile);
+				$("#2preview_bg").prop("src",'data:image/png;base64,' + res.background);
+				$("#2bg").val(res.backgroundFile);
+				
+				$("#2preview_an1").prop("src",'data:image/png;base64,' + res.angle1);
+				$("#2an1").val(res.angle1File);
+				$("#2preview_an4").prop("src",'data:image/png;base64,' + res.angle4);
+				$("#2an4").val(res.angle4File);
+				$("#2preview_an7").prop("src",'data:image/png;base64,' + res.angle7);
+				$("#2an7").val(res.angle7File);
+				$("#2preview_an10").prop("src",'data:image/png;base64,' + res.angle10);
+				$("#2an10").val(res.angle10File);
+				$("#2preview_an13").prop("src",'data:image/png;base64,' + res.angle13);
+				$("#2an13").val(res.angle13File);
+				$("#2preview_an16").prop("src",'data:image/png;base64,' + res.angle16);
+				$("#2an16").val(res.angle16File);
+				$("#2preview_an19").prop("src",'data:image/png;base64,' + res.angle19);
+				$("#2an19").val(res.angle19File);
 			}
 
-			findById(formId, fillWithOrigin)
-			$('#editTestdriveModal').modal('show');
-			$('#editTestdriveModal').css('overflow-y', 'auto');
+			findById(modelType, fillWithOrigin)
+			$('#editModelModal').modal('show');
+			$('#editModelModal').css('overflow-y', 'auto');
 		}			
 		
 		// 啟用"修改"按鈕前置準備，尋找單筆
-		function findById(formId, fillWithOrigin) {
-			console.log("findbyid:  "+formId)
+		function findById(modelType, fillWithOrigin) {
+			console.log("findbyid:  "+modelType)
 			$.ajax({
-				url: "/FinalProject/findByIdTestdriveAPI/" + formId,
+				url: "/FinalProject/findByIdModelAPI/" + modelType,
 				method: "GET",
 				dataType: "json",
 				success: function (res) {
@@ -961,12 +1117,12 @@
 			});
 		}		
 				
-		// 1送出前總檢查  2一鍵輸入  3確認修改  寫在 adminTestdrive.js裡
+		// 1送出前總檢查  2一鍵輸入  3確認修改  寫在 adminModel.js裡
 		
 
 		// "刪除"按鈕按下後執行
-		function deleteModal(formId) {
-			console.log('delete id=' + formId);
+		function deleteModal(modelType) {
+			console.log('delete id=' + modelType);
 			Swal.fire({
 				title: '您確定要刪除嗎?',
 				text: "資料將被刪除，此動作無法回復",
@@ -979,7 +1135,7 @@
 			}).then((result) => {
 				if (result.isConfirmed) {
 					$.ajax({
-						url: "/FinalProject/deleteByIdTestdriveAPI/" + formId,
+						url: "/FinalProject/deleteByIdModel/" + modelType,
 						method: "POST",
 						dataType: "json",
 						success: function (res) {
@@ -992,40 +1148,17 @@
 					});
 					Swal.fire(
 						'已刪除!',
-						'這筆表單已經被刪除',
+						'此車型資料已經被刪除',
 						'success',
 					)
 				}
 			})
 		}
-		
-		
-		// "天氣預報"按鈕按下後執行
-		function forecast( date , loc ) {
-			console.log();
-					$.ajax({
-						url: "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-D0047-091?Authorization=CWB-62E818DB-3A6D-494E-B2DB-59F163F487C7&format=JSON",
-						method: "GET",
-						dataType: "json",
-						success: function (res) {
-							console.log('success');
-							alert(res.cwbopendata.dataset.locations.location[12].locationName + '\n' +
-								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].description + '\n' +
-								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].time[4].startTime + '\n' +
-								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].time[4].endTime + '\n' +
-								  res.cwbopendata.dataset.locations.location[12].weatherElement[9].time[4].elementValue.value + '%\n' 
-								 )
-							table.ajax.reload();
-						},
-						error: function (err) {
-							alert('Get Weather Forecast failed' +err)
-						}
-					});
-				}
+
 	
 
 
 			
 </script>
-<script src="/FinalProject/js/adminTestdrive.js"></script>
+<script src="/FinalProject/js/adminModel.js"></script>
 </html>

@@ -55,3 +55,56 @@
   border: none;
   border-bottom: 1px solid gray;
 }
+
+.tag-selected {
+  background-color: rgba(255, 99, 72, 0.5);
+  color: rgba(255, 255, 255, 1);
+}
+
+.ps-relative {
+  position: relative;
+}
+
+.ps-absolute {
+  position: absolute;
+}
+
+.cart-div {
+  width: 350px;
+  right: 0%;
+  background-color: rgba(223, 228, 234, 1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.ds-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fs-2-custom {
+  font-size: 15px;
+}
+
+.mg-r-1 {
+  margin-right: 8px;
+}
+
+.mg-l-1 {
+  margin-left: 8px;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.fs-3-custom {
+  font-size: 25px;
+}
+
+.fs-1-custome {
+  font-size: 13px;
+}

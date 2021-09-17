@@ -28,6 +28,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="/FinalProject/css/modelAllPage.css" />
+<!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
 
     <style>
       .news_li {
@@ -113,53 +115,116 @@
     <!-- About -->
     <section class="about-section text-center bg-gray-custom pd-2rem">
       <div class="container px-4 px-lg-5">
+      
+      	<nav style="margin-top: -3%">
+           <ul class="ul-custom" id="model-href">
+           </ul>
+        </nav><br/>
+      
         <div class="row gx-4 gx-lg-5 justify-content-center">
-              <nav style="margin-top: -3%">
+        
+        
+<!--               <nav style="margin-top: -3%"> -->
               	
-              	<form class="form-inline" action="https://google.com">
-              		<input type="button" id="secondHalfYear" class=""
-                  value="A3" style="width: 150px; height: 50px;"> 
-				</form>
+<!--               	<form class="form-inline" action="https://google.com"> -->
+<!--               		<input type="button" id="secondHalfYear" class="" -->
+<!--                   value="A3" style="width: 150px; height: 50px;">  -->
+<!-- 				</form> -->
               	
-              	<form class="form-inline" action="https://google.com">
-              		<input type="button" id="secondHalfYear" class=""
-                  value="A3" style="width: 150px; height: 50px;"> 
-				</form>
+<!--               	<form class="form-inline" action="https://google.com"> -->
+<!--               		<input type="button" id="secondHalfYear" class="" -->
+<!--                   value="A3" style="width: 150px; height: 50px;">  -->
+<!-- 				</form> -->
               
-              </nav>
-          <div class="col-lg-8">
-            <h2 class="mb-4">Audi AG 旗艦不凡</h2>
-
-            <div id="container">
-
+<!--               </nav> -->
+<!--           <div class="col-lg-8"> -->
+          <div class="col-lg-12">
+            <h2 class="mb-4" style="margin-top:50px; font-size: 4em">The Audi <span id="title"></span> 耀眼登場</h2>
+            
+            
+            
+            <br/>
+            <div class="container">
+				  <span id="subtitle"></span>
+			</div><br/>
+			
+			
+			
+            <div>
+			
+      			<div class="container">
+				  <div class="row" style="margin-top:60px; font-size: 2.2em">
+				    <div style="border-right:3px #cccccc solid"" class="col">排氣量 (cc)<br><span id="displacement"></span></div>
+				    <div class="col">最大馬力 (hp/rpm)<br><span id="power"></span></div>
+				    <div style="border-left:3px #cccccc solid"" class="col">最大扭力 (Nm/rpm)<br><span id="torque"></span></div>
+				  </div>
+				</div>
+      			
               <br/>
+			  <div id="divimage"><img id="" src='' width="70%" height="auto" alt=""></div>
+              <br/><br/>
+			
+			
+			
+			<div class="container">
+				  <h4 id="description"></h4>
+			</div><br/>
+			
+			
 
-              <ul id="modeldata">
-                <li class='news_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="沒圖片"></li>
-              </ul>
-                <br/><br/><br/>
-			
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-    			<label class="btn btn-primary"><input type="radio" name="IO" id="showOuter" value="outer"> 外觀 </label>
-				<label class="btn btn-secondary"><input type="radio" name="IO" id="showInner" value="inner"> 內裝 </label>
+    			<label class="btn btn-light"><input type="radio" name="IO" id="showOuter" value="outer" checked> 外觀 </label>
+				<label class="btn btn-dark"><input type="radio" name="IO" id="showInner" value="inner"> 內裝 </label>
 			</div>
-			<div id="divInnerOuter"><img id="" src='' width="70%" height="auto" alt=""></div>
+			<div id="divInnerOuter" style="display: flex; justify-content: center;"><img id="" src='' width="70%" height="auto" alt=""></div>
 			
-			<div class="col-lg-10 image-holder-custom">
-            <header>
+<!-- 			<ul id="modeldata"> -->
+<!--                <li class='news_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="沒圖片"></li> -->
+<!--             </ul> -->
+            <br/>
+						
+						
+			
+			<div class="container">
+				  <div class="row" style="margin:70px 0; font-size: 2em">
+				    <div style="border-right:3px #cccccc solid"" class="col">引擎動力類型<br><span style="font-size: .8em" id="engineType"></span></div>
+				    <div style="border-right:3px #cccccc solid"" class="col">油耗 (km/L)<br><span id="consumption"></span></div>
+				    <div class="col">乘座人數 (cc)<br><span id="seat"></span></div>
+				    <div style="border-left:3px #cccccc solid"" class="col">參考售價 (NT)<br><span id="price"></span></div>
+				  </div>
+			</div>
+			
+			
+						
+
+            <header style="cursor: grabbing">
             	<div class="season" id='season'>
-            	  <img src="" class="spring" alt="" id="an1">
-            	  <img src="" class="summer" alt="" id="an4">
-            	  <img src="" class="autumn" alt="" id="an7">
-            	  <img src="" class="winter" alt="" id="an10">
-            	  <img src="" class="winter" alt="" id="an13">
-            	  <img src="" class="winter" alt="" id="an16">
-            	  <img src="" class="winter" alt="" id="an19">
+            	  <img src="/FinalProject/images/model/blank2.jpg" class="an1" alt="">
+            	  <img src="/FinalProject/images/model/blank2.jpg" class="an4" alt="">
+            	  <img src="/FinalProject/images/model/blank2.jpg" class="an7" alt="">
+            	  <img src="/FinalProject/images/model/blank2.jpg" class="an10" alt="">
+            	  <img src="/FinalProject/images/model/blank2.jpg" class="an13" alt="">
+            	  <img src="/FinalProject/images/model/blank2.jpg" class="an16" alt="">
+            	  <img src="/FinalProject/images/model/blank2.jpg" class="an19" alt="">
+              </div>
+              <div class="car">
+            	  <img src="/FinalProject/images/model/A3_angle1.png"  class="an1" id="an1" alt="">
+            	  <img src="/FinalProject/images/model/A3_angle4.png" class="an4" id="an4" alt="">
+            	  <img src="/FinalProject/images/model/A3_angle7.png" class="an7" id="an7" alt="">
+            	  <img src="/FinalProject/images/model/A3_angle10.png" class="an10" id="an10" alt="">
+            	  <img src="/FinalProject/images/model/A3_angle13.png" class="an13" id="an13" alt="">
+            	  <img src="/FinalProject/images/model/A3_angle16.png" class="an16" id="an16" alt="">
+            	  <img src="/FinalProject/images/model/A3_angle19.png" class="an19" id="an19" alt="">
               </div>
             </header>
-          	</div>
 
-            <br/><a href="/FinalProject/TestDrive" class="btn btn-primary btn-lg active" role="button"
+<!--           </div> -->
+
+			
+
+
+
+            <br/><a href="/FinalProject/TestDrive" class="btn btn-primary btn-lg" role="button"
                 aria-pressed="true">預約試駕</a>
 
 			  </div>
@@ -184,19 +249,28 @@
   <script>
     //search by id
     $(document).ready(function () {
-		$.ajax({
-			url: "/FinalProject/getAllModel",
-			method: "GET",
-			dataTypte: "json",
-			success: function (data) {
+
+      
+	  $.ajax({
+		url: "/FinalProject/getAllModel",
+		method: "GET",
+		dataTypte: "json",
+		success: function (data) {
 				
-				let href = "";
+		let href = "";
 				
-				$.each(data, function (index, item) {
-					href += `<li class="li-custom"><a class="" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
-					
-				});
-			}
+		// 處理 carousel-inner
+		$.each(data, function (index, item) {
+			href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10 btn-custom" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
+		});
+		
+		$("#model-href").html(href);
+		},
+		error: function (err) {
+			alert('Ajax Error:' + err);
+		}
+	});
+      
     	
     	
     	
@@ -208,18 +282,6 @@
         method: "GET",
         dataType: "json",
         success: function (data) {
-          let str = "";
-          str += "<li class='news_li'><h2>" + data.modelType + 
-          	"</h2></li><li class='news_li'>建議售價:" + data.price + 
-          	"</li><li class='news_li'>引擎類型:" + data.engineType + 
-          	"</li><li class='news_li'>排氣量:" + data.engineDisplacement + 
-          	"</li><li class='news_li'>馬力:" + data.power + 
-          	"</li><li class='news_li'>扭力:" + data.torque + 
-          	"</li><li class='news_li'>油耗:" + data.consumption + 
-          	"</li><li class='news_li'>乘坐人數:" + data.seat + 
-          	"</li><li class='news_li'><img src='data:image/png;base64," + data.background + 
-          	"'width='800px' height='600px' alt='車型圖片'></li>" + "<br/><br/><br/>" + data.description;
-          $("#modeldata").html(str)
 		
           let innerOuter="";
           innerOuter += "<img id='imgInn' src='data:image/png;base64," + data.interior + "'width='800px' height='600px' alt='車型圖片'></li>" + 
@@ -228,6 +290,31 @@
           $("#divInnerOuter").html(innerOuter)
           
           $("#imgInn").css('display','none');
+          		
+          		
+          $("#divimage").html("<img src='data:image/png;base64," + data.background + "'width='800px' height='600px' alt='車型圖片'>")
+          		
+          $("#title").html(data.modelType);
+          $("#subtitle").html(data.subtitle);
+		  $("#displacement").html(data.engineDisplacement);  
+		  $("#power").html(data.power);  
+		  $("#torque").html(data.torque); 
+		  
+		  $("#engineType").html(data.engineType);
+		  $("#consumption").html(data.consumption);
+		  $("#seat").html(data.seat);
+		  $("#price").html(data.price);
+		  
+		  
+		  
+          $("#an1").prop("src","/FinalProject/images/model/"+data.modelType+"_angle1.png")
+          $("#an4").prop("src","/FinalProject/images/model/"+data.modelType+"_angle4.png")
+          $("#an7").prop("src","/FinalProject/images/model/"+data.modelType+"_angle7.png")
+          $("#an10").prop("src","/FinalProject/images/model/"+data.modelType+"_angle10.png")
+          $("#an13").prop("src","/FinalProject/images/model/"+data.modelType+"_angle13.png")
+          $("#an16").prop("src","/FinalProject/images/model/"+data.modelType+"_angle16.png")
+          $("#an19").prop("src","/FinalProject/images/model/"+data.modelType+"_angle19.png")
+          		
         },
         error: function (err) {
           console.log("沒抓到id")
@@ -247,6 +334,34 @@
     	    		$("#imgInn").css('display','block');
     	        }
     	    });
-  </script>
+</script>
+<script>
+// 360 animation 360漸變圖
+let startingPoint
+const header = document.querySelector('header')
 
-  </html>
+    header.addEventListener('mouseenter',(e) => {
+        startingPoint = e.clientX;
+        header.classList.add('moving');
+    })
+let still = 0;
+    header.addEventListener('mouseout',(e) => {
+//         header.style.setProperty('--percentage', 0);
+        header.classList.remove('moving');
+    })
+
+
+const season = document.getElementById('season')
+let leftEmpty = (window.outerWidth - season.offsetWidth)/2
+header.addEventListener('mousemove',(e) => {
+    // let percentage = 2*(e.clientX - startingPoint) / window.outerWidth ;
+    let percentage = -(e.clientX - startingPoint) / (season.offsetWidth + leftEmpty - (window.outerWidth - startingPoint));
+    console.log((e.clientX - startingPoint) +"###"+(season.offsetWidth)+"###"+percentage)
+    header.style.setProperty('--percentage',  percentage)
+    
+})
+
+
+
+</script>
+</html>

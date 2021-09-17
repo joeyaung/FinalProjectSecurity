@@ -31,7 +31,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="/FinalProject/css/modelAllPage.css" />
-    
+
 	<!-- Page Customed - Carousel  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -101,7 +101,6 @@
     
 
       
-      
       <div id="carouselExampleIndicators" class="carousel slide object-fit-out" data-ride="carousel">
   		<ol class="carousel-indicators" id="carousel_olli">
   		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -141,17 +140,15 @@
     			<span class="carousel-control-next-icon" aria-hidden="true"></span>
     			<span class="sr-only">Next</span>
   			</a>
-		</div>
-       </div>   
-      
-      
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="po-re">
-            <h1 class="h_bookc">找到屬於你的專屬汽車</h1><br>
-            
-            
-            
-            
+
+		</div><br/><br/>
+          
+        
+        </div>
+      	<div id="container" style=" overflow:auto ; width:100%">
+            <div class="main main3"><a href="/FinalProject/Model/model?modelType=A3">A3</a></div>
+            <div class="main main4"><a href="/FinalProject/Model/model?modelType=A4">A4</a></div>
+
         </div>
       </div>
     </section>
@@ -170,12 +167,16 @@
     <!--  -->
     
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
     <script>
     $('.carousel').carousel({
     	  interval: 3000
     })
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+
 	<!--  Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<!--  Core theme JS -->
@@ -204,8 +205,11 @@
 // 						href += `<li class="li-custom"><form class="form-inline" action="/FinalProject/Model/model?modelType=` + item.modelType + 
 // 								`"><input type="button" id="secondHalfYear" class="" value="` + item.modelType + `" style="width: 150px; height: 50px;">`
                  		
-						href += `<li class="li-custom"><a class="" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
-						
+
+						href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
+								
+								
+
 						if(index==0){
 							divCarou += `<div class="carousel-item active">`
 						} else {
@@ -239,6 +243,69 @@
 
 
 		});
+
+	
+        let index = 2;
+        let modellist=['A3','A4','A5','Q3',"etron"]
+        
+	window.addEventListener("scroll", function(){
+		let pageY = window.pageYOffset;
+		let main2 = document.querySelector(".main2");
+// 		console.log(pageY+"**"+  +"**");
+		$('.main3').css('background-position', -pageY*.3+'px '+'-300px');
+// 		main2.style.backgroundPosition = -(pageY * .25)+`px -600px`
+		$('.main4').css('background-position', (pageY*.3-700)+'px '+'-300px');
+		
+        let pageH=$('body').height()
+        let winH=$(window).height()
+        let winTop=$(this).scrollTop();
+        let scrollPercent = (winTop/(pageH-winH));
+        if( scrollPercent > 0.98){
+        	
+        	console.log(index+"**"+modellist[index])
+            $.ajax({
+                url: "/FinalProject/findByIdModelAPI/" + modellist[index],
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                	
+                	console.log("data.modelType="+data.modelType +"***modellist="+modellist[index])
+                	
+		        	$("#container").append(`<div class="main main5" id="`+modellist[index]+`" style="background-image:'/FinalProject/images/model/` +modellist[index]+ 
+		        	`_bg.jpg; background-position:` + pageY*.3 +`px -300px;")><a href="/FinalProject/Model/model?modelType=`+ modellist[index]+`">`+ modellist[index]+`</a></div>`)
+		        	$("#"+modellist[index]).css('background-image', `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`);
+        			
+        			
+       			 	console.log(data.modelType +"=data.modelType"+"***"+modellist[index])
+       			 	var elem = document.getElementById(modellist[index]);
+		        	console.log(elem)
+		        	
+       			 	elem.style.backgroundPosition = `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`;
+//        			 	elem.css('background-image', `url('/FinalProject/images/model/` + data.modelType + `_bg.jpg')`);
+       			 			
+//        			 	$('myObject').css('background-image', 'url(' + imageUrl + ')');
+
+       			 	
+		        	index++;
+//         			console.log(index)
+       			 	console.log("modellist[index]:"+modellist[index])
+       			 	console.log("---------------------------")
+		        	setTimeout(function(){;}, 1000);
+                  
+                },
+                error: function (err) {
+                	
+                }
+              });
+        $("#"+modellist[index]).css('background-position', +pageY*.3+'px '+'-300px');	
+        	
+
+        }    
+		
+		
+		
+	})
+
   </script>
   </body>
 </html>

@@ -416,6 +416,33 @@ let profileVM = new Vue({
         },
       });
     },
+    checkEmployeeName() {
+      if (this.clientForm.showEmployeeName) {
+        autocomplete(
+          document.getElementById("myInput"),
+          this.inputSearch.employeeAllSales
+        );
+      } else {
+        let salesList = this.inputSearch.employeeAllSales;
+        let result = "fail";
+        for (let i = 0; i < salesList.length; i++) {
+          if (
+            this.client.inchargeEmployeeName.toLowerCase() ==
+              salesList[i].fullName.toLowerCase() ||
+            this.client.inchargeEmployeeName == "" ||
+            this.client.includes(this.client.inchargeEmployeeName)
+          ) {
+            result = "ok";
+          }
+        }
+
+        if (result == "fail") {
+          this.clientForm.showError = true;
+        } else {
+          this.clientForm.showError = false;
+        }
+      }
+    },
     toShowEmployeeError() {
       let curInput = this.client.inchargeEmployeeName;
       let options = this.inputOptions;
@@ -443,8 +470,13 @@ let profileVM = new Vue({
       self.client.address = data.fullAddress;
       self.client.city = data.city;
       self.client.email = data.email;
-      self.client.inchargeEmployeeID = data.inchargedEmployee.id;
-      self.client.inchargeEmployeeName = data.inchargedEmployee.fullName;
+      if (data.inchargedEmployee != null) {
+        self.client.inchargeEmployeeID = data.inchargedEmployee.id;
+        self.client.inchargeEmployeeName = data.inchargedEmployee.fullName;
+      } else {
+        self.client.inchargeEmployeeID = "";
+        self.client.inchargeEmployeeName = "";
+      }
       self.client.name = data.fullName;
       self.client.phone = data.phone;
       self.client.stage = data.salesStage;
@@ -473,29 +505,10 @@ let profileVM = new Vue({
       },
     });
   },
-  beforeUpdate: function () {
-    if (this.clientForm.showEmployeeName) {
-      autocomplete(
-        document.getElementById("myInput"),
-        this.inputSearch.employeeAllSales
-      );
-    } else {
-      let salesList = this.inputSearch.employeeAllSales;
-      let result = "fail";
-      for (let i = 0; i < salesList.length; i++) {
-        if (
-          this.client.inchargeEmployeeName.toLowerCase() ==
-          salesList[i].fullName.toLowerCase()
-        ) {
-          result = "ok";
-        }
-      }
-
-      if (result == "fail") {
-        this.clientForm.showError = true;
-      } else {
-        this.clientForm.showError = false;
-      }
-    }
+  updated: function () {
+    this.checkEmployeeName();
+  },
+  mounted: function () {
+    this.checkEmployeeName();
   },
 });

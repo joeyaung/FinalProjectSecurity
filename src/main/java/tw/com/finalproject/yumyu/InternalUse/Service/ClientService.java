@@ -20,7 +20,7 @@ public class ClientService {
 	private ClientRepository clientRepository;
 
 	public List<Client> queryClientsByfullName(String queryName) {
-		List<Client> result = clientRepository.findByFullNameLike(queryName);
+		List<Client> result = clientRepository.findByFullNameContains(queryName);
 		return result;
 	}
 
@@ -81,4 +81,6 @@ public class ClientService {
 			return false;
 		}
 	}
+	
+
 }

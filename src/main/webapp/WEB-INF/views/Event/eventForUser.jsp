@@ -7,7 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<meta name="description" content="" />
 		<meta name="author" content="" />
-		<title>活動</title>
+		<title>Audi - 活動總覽</title>
+		<link rel="icon" type="image/x-icon" href="images/favicon.png" />
 
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<!-- Bootstrap core JS-->
@@ -17,8 +18,6 @@
 		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 		<!-- lightslider JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
-
-		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 		<!-- Font Awesome icons (free version)-->
 		<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
 
@@ -295,10 +294,10 @@
 					<ul class="navbar-nav ms-auto">
 						<li class="nav-item"><a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a></li>
 						<li class="nav-item"><a class="nav-link" href="/FinalProject/News">最新消息</a></li>
-						<li class="nav-item"><a class="nav-link" href="#signup">了解車型</a>
+						<li class="nav-item">
+							<a class="nav-link" href="/FinalProject/Model">了解車型</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="/FinalProject/Events">活動</a></li>
 						<li class="nav-item"><a class="nav-link" href="#signup">精品商城</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#signup">展示中心</a>
@@ -315,13 +314,11 @@
 			<div class="container px-4 px-lg-5">
 				<div class="row gx-4 gx-lg-5 justify-content-center">
 					<div class="col-lg-10 po-re">
-						<h2 class="h_bookf" style="color:black;">活動</h2>
+						<h2 class="h_bookf" style="color: black;">活動</h2>
 						<p class="text-white-50">
 						<div id="container">
 
-							<div id="lightSlider">
-
-							</div>
+							<div id="lightSlider"></div>
 
 							<section class="scroll-container">
 								<div class="scroll-element js-scroll fade-in">
@@ -330,9 +327,7 @@
 								</div>
 								<div class="scroll-caption">
 									長久以來致力於推廣兒童交通安全教育的Audi，不僅持續耕耘交通安全教育的推廣與知識傳播，更持續舉辦Audi Kids
-									Campus超過10年以上，落實公益、實踐企業社會責任。
-									</br>
-									<a href="Events/OneEvent?event_id=5">更多資訊</a>
+									Campus超過10年以上，落實公益、實踐企業社會責任。 </br> <a href="Events/OneEvent?event_id=5">更多資訊</a>
 								</div>
 							</section>
 							<section class="scroll-container">
@@ -341,9 +336,8 @@
 										src="/FinalProject/images/eventsphotos/event_img5.jpg" />
 								</div>
 								<div class="scroll-caption">
-									台灣奧迪自創立以來，始終秉持以人為本的設計理念，持續突破、創新，致力於打造人性化的未來移動空間。
-									</br>
-									<a href="Events/OneEvent?event_id=4">更多資訊</a>
+									台灣奧迪自創立以來，始終秉持以人為本的設計理念，持續突破、創新，致力於打造人性化的未來移動空間。 </br> <a
+										href="Events/OneEvent?event_id=4">更多資訊</a>
 								</div>
 							</section>
 							<section class="scroll-container">
@@ -352,9 +346,8 @@
 										src="/FinalProject/images/eventsphotos/event_img4.jpg" />
 								</div>
 								<div class="scroll-caption">
-									台灣奧迪自 2005 年成立以來，連年舉辦 Audi quattro Cup 車主杯高爾夫球賽。
-									</br>
-									<a href="Events/OneEvent?event_id=3">更多資訊</a>
+									台灣奧迪自 2005 年成立以來，連年舉辦 Audi quattro Cup 車主杯高爾夫球賽。 </br> <a
+										href="Events/OneEvent?event_id=3">更多資訊</a>
 								</div>
 							</section>
 							<section class="scroll-container">
@@ -363,11 +356,9 @@
 										src="/FinalProject/images/eventsphotos/event_img2.jpg" />
 								</div>
 								<div class="scroll-caption">
-									Audi 首款純電 SUV，以無比的安全性與性能表現，滿足您輕鬆邁向純電未來的日常通勤所需。
-									具備最大 408 匹馬力輸出，續航里程可達 436 公里。
-									駕駛 Audi e-tron，即刻創見純電移動的精彩未來。
-									</br>
-									<a href="Events/OneEvent?event_id=2">更多資訊</a>
+									Audi 首款純電 SUV，以無比的安全性與性能表現，滿足您輕鬆邁向純電未來的日常通勤所需。 具備最大 408
+									匹馬力輸出，續航里程可達 436 公里。 駕駛 Audi e-tron，即刻創見純電移動的精彩未來。 </br> <a
+										href="Events/OneEvent?event_id=2">更多資訊</a>
 								</div>
 							</section>
 
@@ -377,9 +368,8 @@
 										src="/FinalProject/images/eventsphotos/event_img1.jpeg" />
 								</div>
 								<div class="scroll-caption">
-									把握天氣微涼的暮春之際，Audi於10月25日在台中麗寶落羽松林大草皮舉辦「Touring Festival」。
-									</br>
-									<a href="Events/OneEvent?event_id=1">更多資訊</a>
+									把握天氣微涼的暮春之際，Audi於10月25日在台中麗寶落羽松林大草皮舉辦「Touring Festival」。 </br> <a
+										href="Events/OneEvent?event_id=1">更多資訊</a>
 								</div>
 							</section>
 						</div>
