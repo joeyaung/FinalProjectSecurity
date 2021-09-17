@@ -196,7 +196,7 @@ pageEncoding="UTF-8"%>
       	el: "#app",
       	data:{
       		username: "",
-      		password:"",
+      		password: "",
       		counter = 0,
       		timer = null,
       	},
