@@ -141,7 +141,6 @@ public class InitService {
 		TestDriveApointment defaulTestdrive6 = TestDriveApointment.builder().formId("RWgq2G82695").driveDate("2021-09-28")
 				.driveTime("13").carMod("A3").driveLoc("高雄市").driveLocSit("左營").sales("Eric Yu").formTime("2021/09/14 11:12:42")
 				.nameCli("林婉柔").gendCli("小姐").timCli("晚").mailCli("jjwwo@gmail.com").telCli("0923456987").remark("").build();
-				.nameCli("陳綱政").gendCli("先生").timCli("午").mailCli("cccc@gmail.com").telCli("0923456789").remark("").build();
 	
 		
 		testdriveApointmentService.createTestdrive(defaulTestdrive1);
