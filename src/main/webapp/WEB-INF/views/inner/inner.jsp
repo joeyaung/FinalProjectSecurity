@@ -197,25 +197,24 @@ pageEncoding="UTF-8"%>
       	data:{
       		username: "",
       		password: "",
-      		counter = 0,
-      		timer = null,
+      		counter : 0,
+      		timer : null,
       	},
       	methods: {
       		autocomplete(event){
       			var self = this
-                this.counter++
+                this.counter++;
                 if(this.counter == 1) {
                     this.timer = setTimeout(function() {
                         // DO NOTHING BUT RESET IN CASE THERES JUST ONE CLICK
-						            this.username = "admin@demo.com";
-						            this.password = "asd";
+						            self.username = "admin@demo.com";
+						            self.password = "asd";
                         self.counter = 0
                     }, 500);  // increase delay as you like
-                }else{
+                } else {
                     clearTimeout(this.timer);
-                    this.username = "admin@demo.com";
+                    this.username = "sales@demo.com";
 					this.password = "asd";
-                    self.counter = 0
                     self.counter = 0;
                 }
       		},

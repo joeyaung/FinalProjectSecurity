@@ -21,18 +21,19 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		HttpSession session = request.getSession();
 		if (session != null) {
 			session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+			
 		}
-		response.sendRedirect((String) session.getAttribute("from"));
-//		if (request.getParameter("userType").equals("member")) {
-//			response.sendRedirect(request.getContextPath() + "/account");
-//			return;
-//		} else if (request.getParameter("userType").equals("employee")) {
-//			response.sendRedirect(request.getContextPath() + "/inner");
-//			return;
-//		}
-//		
-//		response.sendRedirect(request.getContextPath() + "/");
-//		return;
+
+		if (request.getParameter("userType").equals("member")) {
+			response.sendRedirect(request.getContextPath() + "/account");
+			return;
+		} else if (request.getParameter("userType").equals("employee")) {
+			response.sendRedirect(request.getContextPath() + "/inner");
+			return;
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/");
+		return;
 	}
 
 }
