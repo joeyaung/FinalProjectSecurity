@@ -1217,7 +1217,6 @@
 			driveDate=data.slice(4)
 			console.log(driveLoc);
 			console.log(encodeURI(driveLoc));
-			console.log(encodeURIComponent(driveLoc));
 			console.log(driveDate);
 			let westherUri="https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-62E818DB-3A6D-494E-B2DB-59F163F487C7&locationName="+encodeURI(driveLoc)+"&timeFrom="+driveDate+"T00%3A00%3A00";
 			console.log(westherUri);
@@ -1226,12 +1225,12 @@
 						method: "GET",
 						dataType: "json",
 						success: function (res) {
-							
+							console.log(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value.trim() != "")
 							$('#weather_loc').html(res.records.locations[0].location[0].locationName)
 							$('#weather_time').html(res.records.locations[0].location[0].weatherElement[0].time[0].startTime + ' 至\n' +
 									res.records.locations[0].location[0].weatherElement[0].time[0].endTime)
 							// 降雨機率有值
-							if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_rain').html(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value + '%')
 								// 一降雨機率 放上圖片
 								if(res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value < 40){
@@ -1244,31 +1243,32 @@
 								}
 							} else {
 								$('#weather_rain').html("暫無資訊")
+								$('#weather_rainImg').attr("src", '');
 							}
 							
 							// 平均溫
-							if(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_tempAvg').html(res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value)
 							} else {
 								$('#weather_tempAvg').html("暫無資訊")
 							}
 							
 							// 最高溫
-							if(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_tempMax').html(res.records.locations[0].location[0].weatherElement[12].time[0].elementValue[0].value)
 							} else {
 								$('#weather_tempMax').html("暫無資訊")
 							}
 							
 							// 最低溫
-							if(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_tempMin').html(res.records.locations[0].location[0].weatherElement[8].time[0].elementValue[0].value)
 							} else {
 								$('#weather_tempMin').html("暫無資訊")
 							}
 							
 							// 綜合描述
-							if(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value){
+							if(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value.trim() != ""){
 								$('#weather_sum').html(res.records.locations[0].location[0].weatherElement[10].time[0].elementValue[0].value)
 							} else {
 								$('#weather_sum').html("暫無資訊")

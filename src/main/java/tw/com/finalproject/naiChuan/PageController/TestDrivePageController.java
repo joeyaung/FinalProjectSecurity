@@ -66,7 +66,7 @@ public class TestDrivePageController {
 	
 	
 	// admin 進入 testdrive
-	@GetMapping("/admin/edit/testdrive")
+	@GetMapping("inner/admin/edit/testdrive")
 	public String enterInnerTestdrive(HttpServletRequest request, HttpServletResponse response, Model m, Principal principal) {
 
 		String empName = principal.getName();
@@ -84,11 +84,11 @@ public class TestDrivePageController {
 		return "TestDrive/BookUpdate";
 	}
 
-	// 暫時 adminTD導向日曆檢視
-	@GetMapping("/admin/edit/adminAllTestdriveCal")
-	public String tempRetailer(HttpServletRequest request, HttpServletResponse response, Model m) {
-		return "TestDrive/adminAllTestdriveCal";
-	}
+//	// 暫時 adminTD導向日曆檢視
+//	@GetMapping("/admin/edit/adminAllTestdriveCal")
+//	public String tempRetailer(HttpServletRequest request, HttpServletResponse response, Model m) {
+//		return "TestDrive/adminAllTestdriveCal";
+//	}
 
 //	// 刪除 改由APIcontroller處理
 //	@PostMapping("/admin/edit/delCarFormById")
@@ -107,6 +107,7 @@ public class TestDrivePageController {
 		TestDriveApointment tesdrive = tdriveService.findByIdTestdrive(formId);
 
 		request.setAttribute("oneTestdrive", tesdrive);
+		request.setAttribute("formId", tesdrive.getFormId());
 		request.setAttribute("carMod", tesdrive.getCarMod());
 		request.setAttribute("driveLoc", tesdrive.getDriveLoc());
 		request.setAttribute("driveLocSit", tesdrive.getDriveLocSit());

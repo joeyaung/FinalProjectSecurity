@@ -573,13 +573,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="1preview_outer" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_outer" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_outer" height="150" />
 											</div> 
 											<input id="1outer" type="file" name="outerFile" /> 
 											<span id="1outerCheck" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="1preview_inner" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_inner" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_inner" height="150" />
 											</div> 
 											<input id="1inner" type="file" name="innerFile" /> 
 											<span id="1innerCheck" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -589,13 +591,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="1preview_bg" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_bg" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_bg" height="150" />
 											</div> 
 											<input id="1bg" type="file" name="backgroundFile" /> 
 											<span id="1bgCheck" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="1preview_an1" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_an1" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_an1" height="150" />
 											</div> 
 											<input id="1an1" type="file" name="angle1File" /> 
 											<span id="1an1Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -606,13 +610,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="1preview_an4" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_an4" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_an4" height="150" />
 											</div> 
 											<input id="1an4" type="file" name="angle4File" /> 
 											<span id="1an4Check" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="1preview_an7" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_an7" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_an7" height="150" />
 											</div> 
 											<input id="1an7" type="file" name="angle7File" /> 
 											<span id="1an7Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -623,13 +629,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="1preview_an10" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_an10" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_an10" height="150" />
 											</div> 
 											<input id="1an10" type="file" name="angle10File" /> 
 											<span id="1an10Check" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="1preview_an13" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_an13" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_an13" height="150" />
 											</div> 
 											<input id="1an13" type="file" name="angle13File" /> 
 											<span id="1an13Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -640,13 +648,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="1preview_an16" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_an16" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_an16" height="150" />
 											</div> 
 											<input id="1an16" type="file" name="angle16File" /> 
 											<span id="1an16Check" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="1preview_an19" width="200" height="200" />
+<!-- 												<img class="myitem" id="1preview_an19" width="200" height="200" /> -->
+												<img class="myitem" id="1preview_an19" height="150" />
 											</div> 
 											<input id="1an19" type="file" name="angle19File" /> 
 											<span id="1an19Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>						
@@ -748,13 +758,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="2preview_outer" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_outer" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_outer" height="150" />
 											</div> 
 											<input id="2outer" type="file" name="outerFile" /> 
 											<span id="2outerCheck" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="2preview_inner" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_inner" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_inner" height="150" />
 											</div> 
 											<input id="2inner" type="file" name="innerFile" /> 
 											<span id="2innerCheck" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -764,13 +776,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="2preview_bg" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_bg" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_bg" height="150" />
 											</div> 
 											<input id="2bg" type="file" name="backgroundFile" /> 
 											<span id="2bgCheck" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="2preview_an1" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_an1" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_an1" height="150" />
 											</div> 
 											<input id="2an1" type="file" name="angle1File" /> 
 											<span id="2an1Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -781,13 +795,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="2preview_an4" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_an4" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_an4" height="150" />
 											</div> 
 											<input id="2an4" type="file" name="angle4File" /> 
 											<span id="2an4Check" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="2preview_an7" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_an7" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_an7" height="150" />
 											</div> 
 											<input id="2an7" type="file" name="angle7File" /> 
 											<span id="2an7Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -798,13 +814,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="2preview_an10" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_an10" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_an10" height="150" />
 											</div> 
 											<input id="2an10" type="file" name="angle10File" /> 
 											<span id="2an10Check" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="2preview_an13" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_an13" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_an13" height="150" />
 											</div> 
 											<input id="2an13" type="file" name="angle13File" /> 
 											<span id="2an13Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>
@@ -815,13 +833,15 @@
 									<tr>
 										<td>
 											<div class="image">
-												<img class="myitem" id="2preview_an16" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_an16" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_an16" height="150" />
 											</div> 
 											<input id="2an16" type="file" name="angle16File" /> 
 											<span id="2an16Check" style="width: 10px;"></span> <img src=""></td>
 										<td>
 											<div class="image w210">
-												<img class="myitem" id="2preview_an19" width="200" height="200" />
+<!-- 												<img class="myitem" id="2preview_an19" width="200" height="200" /> -->
+												<img class="myitem" id="2preview_an19" height="150" />
 											</div> 
 											<input id="2an19" type="file" name="angle19File" /> 
 											<span id="2an19Check" style="width: 10px;"></span> <img src=""></td></tr><tr></tr>						
@@ -923,15 +943,15 @@
 					{data: "modelType", responsivePriority:1},
 					{data: "outerBase64Image", responsivePriority:2, width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' alt='pic cannot be displayed'/>"
 						}},
 					{data: "innerBase64Image", responsivePriority:3, width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' alt='pic cannot be displayed'/>"
 						}},
 					{data: "backgroundBase64Image", responsivePriority:3, width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' alt='pic cannot be displayed'/>"
 						}},
 					{data: "price", responsivePriority:7},
 					{data: "engineType", responsivePriority:5},
@@ -944,31 +964,31 @@
 					{data: "description"},
 					{data: "angle1Base64Image", width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' loading='lazy'  alt='pic cannot be displayed'/>"
 						}},
 					{data: "angle4Base64Image", width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' loading='lazy'  alt='pic cannot be displayed'/>"
 						}},
 					{data: "angle7Base64Image", width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' loading='lazy'  alt='pic cannot be displayed'/>"
 						}},
 					{data: "angle10Base64Image", width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' loading='lazy'  alt='pic cannot be displayed'/>"
 						}},
 					{data: "angle13Base64Image", width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' loading='lazy'  alt='pic cannot be displayed'/>"
 						}},
 					{data: "angle16Base64Image", width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' loading='lazy'  alt='pic cannot be displayed'/>"
 						}},
 					{data: "angle19Base64Image", width: 40,
 						render: function (data) {
-							return "<img src='data:image/png;base64," + data + "' width='100' height='100' alt='pic cannot be displayed'/>"
+							return "<img src='data:image/png;base64," + data + "' width='120' loading='lazy'  alt='pic cannot be displayed'/>"
 						}},
 					{data: "modelType", responsivePriority:4}
 				],

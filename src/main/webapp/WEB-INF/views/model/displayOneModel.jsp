@@ -30,7 +30,10 @@
     <link rel="stylesheet" href="/FinalProject/css/modelAllPage.css" />
 <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     <style>
       .news_li {
         color: black;
@@ -173,6 +176,7 @@
 			
 
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+<<<<<<< Updated upstream
     			<label class="btn btn-light"><input type="radio" name="IO" id="showOuter" value="outer" checked> 外觀 </label>
 				<label class="btn btn-dark"><input type="radio" name="IO" id="showInner" value="inner"> 內裝 </label>
 			</div>
@@ -181,6 +185,13 @@
 <!-- 			<ul id="modeldata"> -->
 <!--                <li class='news_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="沒圖片"></li> -->
 <!--             </ul> -->
+=======
+    			<label class="btn btn-light" style="font-size: 25px"><input type="radio" name="IO" id="showOuter" value="outer" checked> 外觀 </label>
+				<label class="btn btn-dark" style="font-size: 25px"><input type="radio" name="IO" id="showInner" value="inner"> 內裝 </label>
+			</div>
+			<div id="divInnerOuter" style="display: flex; justify-content: center;"><img id="" src='' width="70%" height="auto" alt=""></div>
+			
+>>>>>>> Stashed changes
             <br/>
 						
 						
@@ -249,7 +260,11 @@
   <script>
     //search by id
     $(document).ready(function () {
+<<<<<<< Updated upstream
 
+=======
+		
+>>>>>>> Stashed changes
       
 	  $.ajax({
 		url: "/FinalProject/getAllModel",
@@ -274,6 +289,10 @@
     	
     	
     	
+<<<<<<< Updated upstream
+=======
+    	
+>>>>>>> Stashed changes
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const modelType = urlParams.get('modelType');
@@ -282,6 +301,19 @@
         method: "GET",
         dataType: "json",
         success: function (data) {
+<<<<<<< Updated upstream
+=======
+//           let str = "";
+//           str += "<li class='news_li'><h2>" + data.modelType + 
+//           	"</h2></li><li class='news_li'>建議售價:" + data.price + 
+//           	"</li><li class='news_li'>引擎類型:" + data.engineType + 
+//           	"</li><li class='news_li'>排氣量:" + data.engineDisplacement + 
+//           	"</li><li class='news_li'>馬力:" + data.power + 
+//           	"</li><li class='news_li'>扭力:" + data.torque + 
+//           	"</li><li class='news_li'>油耗:" + data.consumption + 
+//           	"</li><li class='news_li'>乘坐人數:" + data.seat;
+//           $("#modeldata").html(str)
+>>>>>>> Stashed changes
 		
           let innerOuter="";
           innerOuter += "<img id='imgInn' src='data:image/png;base64," + data.interior + "'width='800px' height='600px' alt='車型圖片'></li>" + 
@@ -303,7 +335,22 @@
 		  $("#engineType").html(data.engineType);
 		  $("#consumption").html(data.consumption);
 		  $("#seat").html(data.seat);
+<<<<<<< Updated upstream
 		  $("#price").html(data.price);
+=======
+		  
+		   function dollorFormated(price) {
+		        let formatter = new Intl.NumberFormat("en-US", {
+		          style: "currency",
+		          currency: "TWD",
+		          minimumFractionDigits: 0,
+		        });
+		        return formatter.format(price);
+		    }
+		      
+		  
+		  $("#price").html(dollorFormated(data.price));
+>>>>>>> Stashed changes
 		  
 		  
 		  
@@ -315,6 +362,10 @@
           $("#an16").prop("src","/FinalProject/images/model/"+data.modelType+"_angle16.png")
           $("#an19").prop("src","/FinalProject/images/model/"+data.modelType+"_angle19.png")
           		
+<<<<<<< Updated upstream
+=======
+          		
+>>>>>>> Stashed changes
         },
         error: function (err) {
           console.log("沒抓到id")
@@ -322,6 +373,10 @@
           console.log(err)
         }
       });
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
     });
 	
     $('input:radio[name="IO"]').change(
@@ -364,4 +419,8 @@ header.addEventListener('mousemove',(e) => {
 
 
 </script>
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+>>>>>>> Stashed changes

@@ -351,7 +351,10 @@ function toLocsit(){
 	
 	$("#locsitdef").nextAll().css('display','none');
 	$("#locsit").val($("#locsitdef").val()) ;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	if( $("#loc").val() == $("#opt1").val() ){
         $("#opt11").css('display','block');
         $("#opt12").css('display','block');

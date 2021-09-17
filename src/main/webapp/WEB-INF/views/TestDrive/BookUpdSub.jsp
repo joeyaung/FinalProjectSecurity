@@ -198,6 +198,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                   <td><label for="locsit">試駕據點:</label></td>
                   <td>
                     <select class="form-select" aria-label="Default select example" name="driveLocSit" id="locsit">
+<<<<<<< Updated upstream
                       <option id="locsitdef" disabled>
                         請選擇據點
                       </option>
@@ -212,6 +213,19 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 						out.print(">"+SiteList.get(i)+"展示中心"+"</option>");
                                 }
                                 %>
+=======
+                      <option id="locsitdef" disabled>請選擇據點</option>
+                      <option value="內湖" id="opt11">內湖展示中心</option>
+					  <option value="大安" id="opt12">大安展示中心</option>
+					  <option value="平鎮" id="opt21">平鎮展示中心</option>
+					  <option value="桃園" id="opt22">桃園展示中心</option>
+					  <option value="北屯" id="opt31">北屯展示中心</option>
+					  <option value="南屯" id="opt32">南屯展示中心</option>
+					  <option value="左營" id="opt41">左營展示中心</option>
+					  <option value="鼓山" id="opt42">鼓山展示中心</option>
+					  <option value="五結" id="opt51">五結展示中心</option>
+					  <option value="羅東" id="opt52">羅東展示中心</option>
+>>>>>>> Stashed changes
                     </select>
 
                     <span id="locsitCheck"></span><img src="">
@@ -312,7 +326,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
         <span class="errmes_bookf" id="submitcheck"></span>
       </div>
 
-      <input type="hidden" name="formId" value="${oneTestdrive.formId}">
+      <input type="hidden" name="formId" id="formId" value="${oneTestdrive.formId}">
       <input type="hidden" name="sales" value="${oneTestdrive.sales}">
       <input type="hidden" name="formTime" value="${oneTestdrive.formTime}">
       <button class="btn btn-primary wh-40" id="idUpdSub">確認修改</button>
@@ -377,5 +391,21 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
     <!-- Core theme JS-->
     <script src="js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script>
+    $(document).ready(function () {
+    	let formId = $("#formId").val()
+		$.ajax({
+			url: "/FinalProject/findByIdTestdriveAPI/" + formId,
+			method: "GET",
+			dataType: "json",
+			success: function (res) {
+				$("#locsit").val(res.driveLocSit)
+			},
+			error: function (err) {
+				alert(err)
+			}
+		});
+    })
+    </script>
   </body>
 </html>

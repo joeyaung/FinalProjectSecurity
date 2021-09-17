@@ -26,7 +26,11 @@ public class ModelPageController {
 	@Autowired
 	private EmployeeService employeeService;
 	
+<<<<<<< Updated upstream
 	// 訪客端主頁面
+=======
+	// 訪客端，主頁面
+>>>>>>> Stashed changes
 	@GetMapping("/Model")
 	public String reEnterModel() {
 		return "model/modelAllPage";
@@ -39,7 +43,7 @@ public class ModelPageController {
 	}
 	
 	// admin 進入 model
-	@GetMapping("/admin/edit/model")
+	@GetMapping("inner/admin/edit/model")
 	public String enterInner(HttpServletRequest request, HttpServletResponse response, Model m, Principal principal) {
 
 		String empName = principal.getName();

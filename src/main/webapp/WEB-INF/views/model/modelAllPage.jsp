@@ -47,9 +47,7 @@
       id="mainNav"
     >
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#page-top"
-          ><img src="images/audi-logo.png" alt="logo"
-        /></a>
+        <a class="navbar-brand" href="/FinalProject/"><img src="/FinalProject/images/audi-logo.png" alt="logo" /></a>
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -140,7 +138,10 @@
     			<span class="carousel-control-next-icon" aria-hidden="true"></span>
     			<span class="sr-only">Next</span>
   			</a>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 		</div><br/><br/>
           
         
@@ -148,7 +149,10 @@
       	<div id="container" style=" overflow:auto ; width:100%">
             <div class="main main3"><a href="/FinalProject/Model/model?modelType=A3">A3</a></div>
             <div class="main main4"><a href="/FinalProject/Model/model?modelType=A4">A4</a></div>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         </div>
       </div>
     </section>
@@ -167,16 +171,23 @@
     <!--  -->
     
 
+<<<<<<< Updated upstream
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
+=======
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+>>>>>>> Stashed changes
     <script>
     $('.carousel').carousel({
     	  interval: 3000
     })
     </script>
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 	<!--  Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<!--  Core theme JS -->
@@ -185,7 +196,11 @@
     
     <script>
 	$(document).ready(function () {
+<<<<<<< Updated upstream
 
+=======
+		
+>>>>>>> Stashed changes
 		function showdetails(){
 			console.log('Hello');
 		}
@@ -205,11 +220,17 @@
 // 						href += `<li class="li-custom"><form class="form-inline" action="/FinalProject/Model/model?modelType=` + item.modelType + 
 // 								`"><input type="button" id="secondHalfYear" class="" value="` + item.modelType + `" style="width: 150px; height: 50px;">`
                  		
+<<<<<<< Updated upstream
 
 						href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
 								
 								
 
+=======
+						href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
+								
+								
+>>>>>>> Stashed changes
 						if(index==0){
 							divCarou += `<div class="carousel-item active">`
 						} else {
@@ -243,7 +264,10 @@
 
 
 		});
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	
         let index = 2;
         let modellist=['A3','A4','A5','Q3',"etron"]
@@ -261,13 +285,20 @@
         let winTop=$(this).scrollTop();
         let scrollPercent = (winTop/(pageH-winH));
         if( scrollPercent > 0.98){
+<<<<<<< Updated upstream
         	
         	console.log(index+"**"+modellist[index])
+=======
+//         	console.log(index+"**"+modellist[index])
+
+          if(index <5){
+>>>>>>> Stashed changes
             $.ajax({
                 url: "/FinalProject/findByIdModelAPI/" + modellist[index],
                 method: "GET",
                 dataType: "json",
                 success: function (data) {
+<<<<<<< Updated upstream
                 	
                 	console.log("data.modelType="+data.modelType +"***modellist="+modellist[index])
                 	
@@ -279,6 +310,18 @@
        			 	console.log(data.modelType +"=data.modelType"+"***"+modellist[index])
        			 	var elem = document.getElementById(modellist[index]);
 		        	console.log(elem)
+=======
+//                 	console.log("data.modelType="+data.modelType +"***modellist="+modellist[index])
+                	
+		        	$("#container").append(`<div class="main main5" id="`+modellist[index]+`" style="background-image:'/FinalProject/images/model/` +modellist[index]+ 
+		        	`_bg.jpg; background-position:` + pageY*.3 +`px -300px")><a href="/FinalProject/Model/model?modelType=`+ modellist[index]+`">`+ modellist[index]+`</a></div>`)
+		        	$("#"+modellist[index]).css('background-image', `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`);
+        			
+        			
+//        			 	console.log(data.modelType +"=data.modelType"+"***"+modellist[index])
+       			 	var elem = document.getElementById(modellist[index]);
+// 		        	console.log(elem)
+>>>>>>> Stashed changes
 		        	
        			 	elem.style.backgroundPosition = `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`;
 //        			 	elem.css('background-image', `url('/FinalProject/images/model/` + data.modelType + `_bg.jpg')`);
@@ -288,24 +331,41 @@
        			 	
 		        	index++;
 //         			console.log(index)
+<<<<<<< Updated upstream
        			 	console.log("modellist[index]:"+modellist[index])
        			 	console.log("---------------------------")
+=======
+//        			 	console.log("modellist[index]:"+modellist[index])
+//        			 	console.log("---------------------------")
+>>>>>>> Stashed changes
 		        	setTimeout(function(){;}, 1000);
                   
                 },
                 error: function (err) {
+<<<<<<< Updated upstream
                 	
                 }
               });
         $("#"+modellist[index]).css('background-position', +pageY*.3+'px '+'-300px');	
         	
 
+=======
+                }
+              });
+        	$("#"+modellist[index]).css('background-position', +pageY*.3+'px '+'-800px');	
+          } else if(index >5){
+        	  console.log("--------"+index)
+          }
+>>>>>>> Stashed changes
         }    
 		
 		
 		
 	})
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   </script>
   </body>
 </html>
