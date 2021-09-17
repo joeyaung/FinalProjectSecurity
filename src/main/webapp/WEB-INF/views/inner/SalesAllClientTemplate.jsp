@@ -210,8 +210,9 @@
                 >
                   <a class="dropdown-item" href="/FinalProject/inner/profile/${empId}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    個人資料
+                    Profile
                   </a>
+                  
                   <div class="dropdown-divider"></div>
                   <a
                     class="dropdown-item"
@@ -222,7 +223,7 @@
                     <i
                       class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
                     ></i>
-                    登出
+                    Logout
                   </a>
                 </div>
               </li>
@@ -293,7 +294,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">是否確定登出?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
             <button
               class="close"
               type="button"
@@ -304,7 +305,7 @@
             </button>
           </div>
           <div class="modal-body">
-            確定登出請點選登出
+            Select "Logout" below if you are ready to end your current session.
           </div>
           <div class="modal-footer">
             <button
@@ -312,9 +313,9 @@
               type="button"
               data-dismiss="modal"
             >
-             取消
+              Cancel
             </button>
-            <a class="btn btn-primary" href="/FinalProject/logout">登出</a>
+            <a class="btn btn-primary" href="/FinalProject/logout">Logout</a>
           </div>
         </div>
       </div>
