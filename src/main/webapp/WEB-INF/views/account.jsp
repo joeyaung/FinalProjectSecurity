@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
       rel="stylesheet"
     />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/index.css" rel="stylesheet" />
+    <link href="/FinalProject/css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="/FinalProject/css/account.css" />
     <!-- Page Level js lib -->
     <script
@@ -103,7 +103,6 @@ pageEncoding="UTF-8"%>
               <ul>
                 <li><a href="/FinalProject/logout">登出</a></li>
                 <li><a href="/FinalProject/account/setting">設定</a></li>
-                <li><a href="/FinalProject/account/order">訂單管理</a></li>
                 <li><a href="/FinalProject/account/event">活動管理</a></li>
                 <li><a href="/FinalProject/account">首頁</a></li>
               </ul>
@@ -115,7 +114,16 @@ pageEncoding="UTF-8"%>
           <div class="col-12">
             <div class="card card-shadow">
               <div class="card-header text-left">
-                訂單編號: # {{ order.order_id }}
+                <div class="container">
+                  <div class="row">
+                    <div class="col-6">
+                      <span> 訂單編號: # {{ order.order_id }} </span>
+                    </div>
+                    <div class="col-6 text-right">
+                      <span> 訂單狀態: {{ order.order_stage }} </span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
                 <h5 class="card-title">訂單詳情</h5>
@@ -170,8 +178,17 @@ pageEncoding="UTF-8"%>
                       <a
                         :href="'/FinalProject/account?id='+order.order_id"
                         class="nav-link-custom"
+                        v-show="!order.showAction"
+                        @click="toggleShowAction(index, $event)"
                         >訂單操作</a
                       >
+                      <a
+                        :href="'/FinalProject/account?id='+order.order_id"
+                        class="nav-link-custom"
+                        v-show="order.showAction"
+                        @click="toggleShowAction(index, $event)"
+                        ><i class="fas fa-times"></i
+                      ></a>
                     </div>
                     <div class="col-4">
                       <span
@@ -179,9 +196,41 @@ pageEncoding="UTF-8"%>
                       >
                     </div>
                   </div>
+                  <transition name="fade">
+                    <div class="row mg-top-1" v-show="order.showAction">
+                      <div class="col-12">
+                        <button
+                          class="btn btn-primary pd-0"
+                          v-if="order.order_stage=='準備中'"
+                          @click="cancelOrder(index)"
+                        >
+                          取消訂單
+                        </button>
+                        <button
+                          class="btn btn-primary pd-0"
+                          v-if="!order.isSub"
+                          @click="changeSubStatus(index, true)"
+                        >
+                          訂閱通知
+                        </button>
+                        <button
+                          class="btn btn-primary pd-0"
+                          v-if="order.isSub"
+                          @click="changeSubStatus(index, false)"
+                        >
+                          取消訂閱
+                        </button>
+                      </div>
+                    </div>
+                  </transition>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row row-pd-1" v-if="orders.length==0">
+          <div class="col-12">
+            <span>目前尚無訂單</span>
           </div>
         </div>
       </div>

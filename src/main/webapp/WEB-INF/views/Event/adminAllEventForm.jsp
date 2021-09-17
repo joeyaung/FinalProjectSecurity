@@ -159,6 +159,11 @@
 			input:checked+.slider .off {
 				display: none;
 			}
+			
+		.navbar-nav .nav-item + .nav-item {
+margin-left: 0rem;
+}
+	
 		</style>
 
 	</head>
@@ -175,81 +180,29 @@
 					</div>
 				</a>
 
-				<!-- Divider -->
-				<hr class="sidebar-divider my-0" />
-
-				<!-- Nav Item - Dashboard -->
-				<li class="nav-item active"><a class="nav-link" href="/FinalProject/inner"> <i
-							class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-
-				<!-- Divider -->
-				<hr class="sidebar-divider" />
-
-				<!-- Heading -->
-				<div class="sidebar-heading">Analytics</div>
-
-				<!-- Nav Item - Pages Collapse Menu -->
-				<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse"
-						data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i
-							class="fas fa-users"></i> <span>Client</span>
-					</a>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Clients:</h6>
-							<a class="collapse-item" href="buttons.html">Overview</a> <a class="collapse-item"
-								href="cards.html">Curent Stage</a>
-						</div>
-					</div>
-				</li>
-
-				<!-- Nav Item - Utilities Collapse Menu -->
-				<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse"
-						data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities"> <i
-							class="fas fa-id-card-alt"></i> <span>Employee</span>
-					</a>
-					<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-						data-parent="#accordionSidebar">
-						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Employee:</h6>
-							<a class="collapse-item" href="utilities-color.html">Overview</a>
-							<a class="collapse-item" href="utilities-border.html">Sales</a>
-						</div>
-					</div>
-				</li>
-
-				<!-- Divider -->
-				<hr class="sidebar-divider" />
-
 				<!-- Heading -->
 				<div class="sidebar-heading">FUNCTIONS</div>
 
-				<!-- Nav Item - 新增員工 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/addEmployee"> <i
-							class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
-
-				<!-- Nav Item - 試駕總覽 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/testdrive"> <i
-							class="fas fa-car"></i>
-						<span>試駕總覽</span></a></li>
-				<!-- Nav Item - 編輯商品 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/products"> <i
-							class="fas fa-rss-square"></i> <span>編輯商品</span></a></li>
-
-				<!-- Nav Item - 編輯消息 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
-							class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
-
-				<!-- Nav Item - 編輯活動 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i
-							class="fas fa-rss-square"></i> <span>編輯活動</span></a></li>
-
-				<!-- Nav Item - 活動表單 -->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
-							class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
-
-				<!-- Nav Item - 活動報名統計-->
-				<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i
-							class="fas fa-rss-square"></i> <span>活動報名統計</span></a></li>
+				  <!-- Nav Item - 新增員工 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/addEmployee"> <i class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
+                <!-- Nav Item - 試駕總覽 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/testdrive"> <i class="fas fa-car"></i> <span>試駕總覽</span></a></li>
+                <!-- Nav Item - 車型總覽 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/model"> <i class="fas fa-car-side"></i> <span>車型總覽</span></a></li>
+                <!-- Nav Item - 編輯消息 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
+                <!-- Nav Item - 編輯活動 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i class="fas fa-snowboarding"></i></i> <span>編輯活動</span></a></li>
+                <!-- Nav Item - 活動報名表單 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i class="fas fa-file-signature"></i> <span>活動報名表單</span></a></li>
+                <!-- Nav Item - 活動報名統計 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i class="fas fa-signal"></i> <span>活動報名統計</span></a></li>
+                <!-- Nav Item - 商品管理 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
+                <!-- Nav Item - 訂單管理 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
+                <!-- Nav Item - 編輯展示中心 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/center"> <i class="fas fa-landmark"></i> <span>編輯展示中心</span></a></li>
 
 				<!-- Divider -->
 				<hr class="sidebar-divider d-none d-md-block" />
@@ -279,26 +232,6 @@
 							<i class="fa fa-bars"></i>
 						</button>
 
-						<!-- Topbar Search -->
-						<form class="
-                    d-none d-sm-inline-block
-                    form-inline
-                    mr-auto
-                    ml-md-3
-                    my-2 my-md-0
-                    mw-100
-                    navbar-search
-                  ">
-							<div class="input-group">
-								<input type="text" class="form-control bg-light border-0 small"
-									placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-								<div class="input-group-append">
-									<button class="btn btn-primary" type="button">
-										<i class="fas fa-search fa-sm"></i>
-									</button>
-								</div>
-							</div>
-						</form>
 
 						<!-- Topbar Navbar -->
 						<ul class="navbar-nav ml-auto">
@@ -327,56 +260,6 @@
 									</form>
 								</div>
 							</li>
-
-							<!-- Nav Item - Alerts -->
-							<li class="nav-item dropdown no-arrow mx-1"><a class="nav-link dropdown-toggle" href="#"
-									id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
-									<span class="badge badge-danger badge-counter">3+</span>
-								</a> <!-- Dropdown - Alerts -->
-								<div class="
-                        dropdown-list dropdown-menu dropdown-menu-right
-                        shadow
-                        animated--grow-in
-                      " aria-labelledby="alertsDropdown">
-									<h6 class="dropdown-header">Alerts Center</h6>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="mr-3">
-											<div class="icon-circle bg-primary">
-												<i class="fas fa-file-alt text-white"></i>
-											</div>
-										</div>
-										<div>
-											<div class="small text-gray-500">December 12, 2019</div>
-											<span class="font-weight-bold">A new monthly report is
-												ready to download!</span>
-										</div>
-									</a> <a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="mr-3">
-											<div class="icon-circle bg-success">
-												<i class="fas fa-donate text-white"></i>
-											</div>
-										</div>
-										<div>
-											<div class="small text-gray-500">December 7, 2019</div>
-											$290.29 has been deposited into your account!
-										</div>
-									</a> <a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="mr-3">
-											<div class="icon-circle bg-warning">
-												<i class="fas fa-exclamation-triangle text-white"></i>
-											</div>
-										</div>
-										<div>
-											<div class="small text-gray-500">December 2, 2019</div>
-											Spending Alert: We've noticed unusually high spending for your
-											account.
-										</div>
-									</a> <a class="dropdown-item text-center small text-gray-500" href="#">Show All
-										Alerts</a>
-								</div>
-							</li>
-
 							<div class="topbar-divider d-none d-sm-block"></div>
 
 							<!-- Nav Item - User Information -->
@@ -392,14 +275,8 @@
                     shadow
                     animated--grow-in
                   " aria-labelledby="userDropdown">
-									<a class="dropdown-item" href="#"> <i
+									<a class="dropdown-item" href="/FinalProject/inner/profile/${empId}"> <i
 											class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-									</a> <a class="dropdown-item" href="#"> <i
-											class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-										Settings
-									</a> <a class="dropdown-item" href="#"> <i
-											class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-										Activity Log
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
@@ -419,11 +296,17 @@
 						<p class="mb-4">活動表單編輯</p>
 
 						<!-- Content Row -->
-						<div class="row">
+						<div class="row" id='rowdiv'>
 							<!-- 以下開始替換成你們的內容
                         可放表格, 圖表, 要填的 form 之類的~ -->
-
+							<select id="status">
+								<option value="全部">全部</option>
+								<option value="成功">成功</option>
+								<option value="待審核">待審核</option>
+								<option value="報名取消">報名取消</option>
+							</select>
 							<!-- this is datables -->
+						
 							<table id="eventFormList" class="table table-striped table-bordered nowrap"
 								style="width: 100%">
 								<thead>
@@ -435,13 +318,9 @@
 								<tbody>
 
 
-
-
-
-
 								</tbody>
 							</table>
-
+						
 						</div>
 
 
@@ -498,9 +377,17 @@
 		var table;
 		var formData = new FormData();
 		var switchStatus = false;
+		var sortByStatusTable;
 		$(document).ready(function () {
-
 			createdatatable();
+			$("#status").change(function () {
+				var status = $(this).val();
+				if(status=='全部'){
+					createdatatable();
+				}else{
+					sortByStatus(status);
+				}
+			});
 
 		})
 
@@ -508,7 +395,9 @@
 
 			var checkBoxes = $("#approve_id");
 			checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-			if (checkBoxes.prop("checked")) {
+			if (checkBoxes.is(':checked')) {
+				console.log(!checkBoxes.is(':checked'))
+				console.log("enter function");
 				var object = {};
 				formData.forEach(function (value, key) {
 					object[key] = value;
@@ -532,8 +421,9 @@
 					},
 					success: function (response) {
 						alert('Email已成功寄出!');
+						sortByStatusTable.ajax.reload();
 						table.ajax.reload();
-						$("#approve_id").prop("checked", true);
+						// $("#approve_id").prop("checked", true);
 					},
 					error: function (err) {
 						alert('failed!')
@@ -543,6 +433,8 @@
 
 
 			} else {
+				console.log(!checkBoxes.is(':checked'))
+				console.log("didn't enter function");
 				alert('err!');
 			}
 
@@ -550,6 +442,119 @@
 
 		}
 
+		function sortByStatus(status){
+			$('#eventFormList').DataTable().destroy();
+				mytable = null;
+				$('#eventFormList').empty();
+			console.log(status);
+			sortByStatusTable = $("#eventFormList")
+				.DataTable(
+					{
+						"ajax": {
+							"dataSrc": "",
+							"url": "/FinalProject/findByStatus",
+							"method":"POST",
+							"data":{
+								"status": status
+							},
+						},
+						"rowId": "form_id",
+						"columns": [
+							{
+								data: "form_id",
+								title: "表單編號"
+							},
+							{
+								data: "event.event_id",
+								title: "活動編號"
+
+							},
+							{
+								data: "applicationUser.id",
+								title: "會員ID"
+							},
+							{
+								data: "creation_time",
+								title: "表單建立時間"
+							},
+							{
+								data: "applicationUser.fullName",
+								title: "姓名"
+							},
+							{
+								data: "gender",
+								title: "性別"
+							},
+							{
+								data: "id_number",
+								title: "身分證字號"
+							},
+							{
+								data: "applicationUser.phone",
+								title: "聯絡電話"
+							},
+							{
+								data: "applicationUser.username",
+								title: "電子郵件"
+							},
+							{
+								data: "applicationUser.fullAddress",
+								title: "地址"
+							},
+							{
+								data: "status",
+								title: "狀態"
+							},
+							{
+								data: "message",
+								title: "備註"
+							},
+							{
+								data: null,
+								title: "審核",
+								render: function (data, type, row) {
+									if (row['status'] == "成功") {
+										return "<label class='switch'><input id='approve_id' type='checkbox' onChange='approveFunction()' checked><span class='slider round'> <span class='on'>ON</span>"
+											+ "<span class='off'>OFF</span</span></label>";
+									} else
+										return "<label class='switch'><input id='approve_id' type='checkbox' onChange='approveFunction()'><span class='slider round'> <span class='on'>ON</span>"
+											+ "<span class='off'>OFF</span</span></label>";
+								}
+							}],
+
+						"responsive": {
+							"details": {
+								"display": $.fn.dataTable.Responsive.display
+									.modal({
+										"header": function (row) {
+											var data = row.data();
+											formData.append("form_id",
+												data.form_id);
+											formData
+												.append(
+													"event_id",
+													data.event.event_id);
+											formData
+												.append(
+													"user_id",
+													data.applicationUser.id);
+											return '表單報名詳細資訊';
+										}
+									}),
+								"renderer": $.fn.dataTable.Responsive.renderer
+									.tableAll({
+										tableClass: 'table'
+									})
+
+							}
+
+						},
+					});
+	
+		}
+			
+		
+		
 		//datatable 
 		function createdatatable() {
 
@@ -657,7 +662,7 @@
 							}
 
 						},
-					})
+					});
 
 		}
 	</script>

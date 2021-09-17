@@ -79,7 +79,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
             <a class="nav-link" href="/FinalProject/Events">活動</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">精品商城</a>
+            <a class="nav-link" href="/FinalProject/products">精品商城</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/FinalProject/center">展示中心</a>
@@ -149,7 +149,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                       </option>
                       <optgroup label="A series">
                         <% ArrayList<String> AcarList = new ArrayList<String>(
-                            Arrays.asList("A3","A4","A5","A6"));
+                            Arrays.asList("A3","A4","A5"));
 
                             for (int i=0; i < AcarList.size() ; i++){ out.print("<option");
                               if(request.getAttribute("carMod").equals(AcarList.get(i))){ out.print(" selected"); }
@@ -158,7 +158,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                               %>
                       </optgroup>
                       <optgroup label="Q series">
-                        <% ArrayList<String> QcarList = new ArrayList<String>( Arrays.asList("Q3","Q5"));
+                        <% ArrayList<String> QcarList = new ArrayList<String>( Arrays.asList("Q3"));
 
                             for (int i=0; i < QcarList.size() ; i++){ out.print("<option");
                               if(request.getAttribute("carMod").equals(QcarList.get(i))){ out.print(" selected"); }
@@ -181,7 +181,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                       <% // method 1 // ArrayList<String> cityList = new ArrayList<String>();
                           // cityList.add("台北");cityList.add("桃園");cityList.add("台中");cityList.add("高雄");
                           // method 2
-                          ArrayList<String> cityList = new ArrayList<String>( Arrays.asList("臺北市", "桃園市", "臺中市", "高雄市"));
+                          ArrayList<String> cityList = new ArrayList<String>( Arrays.asList("臺北市", "桃園市", "臺中市", "高雄市","宜蘭縣"));
 
                               for (int i=0; i<cityList.size() ; i++){ out.print("<option value='"+cityList.get(i)+"'id='opt"+(i+1)+"'");
 									if(request.getAttribute("driveLoc").equals(cityList.get(i))){ 
@@ -202,14 +202,14 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
                         請選擇據點
                       </option>
                       <% ArrayList<String> SiteList = new ArrayList<String>(
-                          Arrays.asList("內湖","大安","中壢","八德","大里","七期","鼓山","左營"));
+                          Arrays.asList("內湖","大安","平鎮","桃園","北屯","南屯","左營","鼓山","五結","羅東"));
                           ArrayList<String> SiteId = new ArrayList<String>(
-                              Arrays.asList("11","12","21","22","31","32","41","42"));
+                              Arrays.asList("11","12","21","22","31","32","41","42","51","52"));
                               for (int i=0; i<SiteList.size() ; i++){ out.print("<option value='"+SiteList.get(i)+"'id='opt"+SiteId.get(i)+"'");
 						if(request.getAttribute("driveLocSit").equals(SiteList.get(i))){ 
 							out.print(" selected"); 
 							} 
-						out.print(">"+SiteList.get(i)+"服務站"+"</option>");
+						out.print(">"+SiteList.get(i)+"展示中心"+"</option>");
                                 }
                                 %>
                     </select>

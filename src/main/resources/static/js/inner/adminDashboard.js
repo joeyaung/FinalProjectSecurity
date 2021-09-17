@@ -1,16 +1,3 @@
-// let totalProfitChart = Vue.component("totalProfitChart", {
-//   props: ["data", "options"],
-//   template: "<canvas id='totalProfitsChart'></canvas>",
-//   mounted: function () {
-//     var ctx = document.getElementById("totalProfitsChart");
-//     new Chart(ctx, {
-//       type: "line",
-//       data: this.data,
-//       option: this.options,
-//     });
-//   },
-// });
-
 let adminDashboardVM = new Vue({
   el: "#app",
   data: {
@@ -20,44 +7,6 @@ let adminDashboardVM = new Vue({
       totalProfits: 400000,
       efficientClient: 42,
     },
-    totalProfitsChartRowData: {
-      data: {
-        labels: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ],
-        datasets: [
-          {
-            label: "Earnings",
-            lineTension: 0.3,
-            backgroundColor: "rgba(78, 115, 223, 0.05)",
-            borderColor: "rgba(78, 115, 223, 1)",
-            pointRadius: 3,
-            pointBackgroundColor: "rgba(78, 115, 223, 1)",
-            pointBorderColor: "rgba(78, 115, 223, 1)",
-            pointHoverRadius: 3,
-            pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-            pointHitRadius: 10,
-            pointBorderWidth: 2,
-            data: [
-              0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000,
-              25000, 40000,
-            ],
-          },
-        ],
-      },
-    },
     clientStageChartRawData: {
       data: {
         labels: [
@@ -66,7 +15,7 @@ let adminDashboardVM = new Vue({
           "ENGAGED",
           "TEST_DRIVE",
           "FOLLOW_UP",
-          "LONG_TREM",
+          "LONG_TERM",
           "ORDERED",
           "CLOSED_LOST",
         ],
@@ -98,122 +47,9 @@ let adminDashboardVM = new Vue({
         ],
       },
     },
-    carSalesChartRawData: {
-      data: {
-        labels: ["TAIPEI", "TAOYUAN", "TAICHUNG", "TAINAN", "KAOHISUNG"],
-        datasets: [
-          {
-            label: "Sold",
-            backgroundColor: "#4e73df",
-            hoverBackgroundColor: "#2e59d9",
-            borderColor: "#4e73df",
-            data: [30, 21, 32, 18, 29],
-          },
-        ],
-      },
-    },
+    topSalesProducts: [],
   },
   components: {
-    totalprofitchart: {
-      props: ["datafromroot"],
-      data() {
-        return {
-          componentKey: 0,
-          chartObject: Object,
-        };
-      },
-      methods: {
-        forceRender() {
-          this.componentKey += 1;
-          this.chartObject.update();
-          console.log("Hi");
-        },
-      },
-      template: "<canvas id='totalProfitsChart'></canvas>",
-      mounted: function () {
-        (Chart.defaults.global.defaultFontFamily = "Nunito"),
-          '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-        Chart.defaults.global.defaultFontColor = "#858796";
-        var ctx = document.getElementById("totalProfitsChart");
-        this.chartObject = new Chart(ctx, {
-          type: "line",
-          data: this.datafromroot,
-          options: {
-            maintainAspectRatio: false,
-            layout: {
-              padding: {
-                left: 10,
-                right: 25,
-                top: 25,
-                bottom: 0,
-              },
-            },
-            scales: {
-              xAxes: [
-                {
-                  time: {
-                    unit: "date",
-                  },
-                  gridLines: {
-                    display: false,
-                    drawBorder: false,
-                  },
-                  ticks: {
-                    maxTicksLimit: 7,
-                  },
-                },
-              ],
-              yAxes: [
-                {
-                  ticks: {
-                    maxTicksLimit: 5,
-                    padding: 10,
-                    // Include a dollar sign in the ticks
-                    callback: function (value, index, values) {
-                      return "$" + number_format(value);
-                    },
-                  },
-                  gridLines: {
-                    color: "rgb(234, 236, 244)",
-                    zeroLineColor: "rgb(234, 236, 244)",
-                    drawBorder: false,
-                    borderDash: [2],
-                    zeroLineBorderDash: [2],
-                  },
-                },
-              ],
-            },
-            legend: {
-              display: false,
-            },
-            tooltips: {
-              backgroundColor: "rgb(255,255,255)",
-              bodyFontColor: "#858796",
-              titleMarginBottom: 10,
-              titleFontColor: "#6e707e",
-              titleFontSize: 14,
-              borderColor: "#dddfeb",
-              borderWidth: 1,
-              xPadding: 15,
-              yPadding: 15,
-              displayColors: false,
-              intersect: false,
-              mode: "index",
-              caretPadding: 10,
-              callbacks: {
-                label: function (tooltipItem, chart) {
-                  var datasetLabel =
-                    chart.datasets[tooltipItem.datasetIndex].label || "";
-                  return (
-                    datasetLabel + ": $" + number_format(tooltipItem.yLabel)
-                  );
-                },
-              },
-            },
-          },
-        });
-      },
-    },
     clientstagechart: {
       props: ["datafromroot"],
       template: "<canvas id='clientStageChart'></canvas>",
@@ -245,46 +81,6 @@ let adminDashboardVM = new Vue({
         });
       },
     },
-    carsalechart: {
-      props: ["datafromroot"],
-      template: "<canvas id='carSaleChart'></canvas>",
-      mounted: function () {
-        (Chart.defaults.global.defaultFontFamily = "Nunito"),
-          '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-        Chart.defaults.global.defaultFontColor = "#858796";
-        var ctx = document.getElementById("carSaleChart");
-        this.chartObject = new Chart(ctx, {
-          type: "bar",
-          data: this.datafromroot,
-          options: {
-            maintainAspectRatio: false,
-            layout: {
-              padding: {
-                left: 10,
-                right: 25,
-                top: 25,
-                bottom: 0,
-              },
-            },
-            scales: {
-              yAxes: [
-                {
-                  display: true,
-                  ticks: {
-                    suggestedMin: 0, // minimum will be 0, unless there is a lower value.
-                    // OR //
-                    beginAtZero: true, // minimum value will be 0.
-                  },
-                },
-              ],
-            },
-            legend: {
-              display: false,
-            },
-          },
-        });
-      },
-    },
   },
   computed: {
     totalProfitsFormated() {
@@ -296,7 +92,17 @@ let adminDashboardVM = new Vue({
       });
       return formatter.format(profits);
     },
-    profitChartDataMonth() {},
+    maxSaleProducts() {
+      let data = this.topSalesProducts;
+      let max = -1;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].quantity > max) {
+          max = data[i].quantity;
+        }
+      }
+
+      return max;
+    },
   },
   methods: {
     number_format(number, decimals, dec_point, thousands_sep) {
@@ -323,5 +129,78 @@ let adminDashboardVM = new Vue({
       }
       return s.join(dec);
     },
+    fetchTopCard() {
+      let _this = this;
+      $.ajax({
+        url: `/FinalProject/inner/admin/api/v1/dashboard/topcard`,
+        dataType: "json",
+        method: "GET",
+        success: function (res) {
+          if (res.status == "ok") {
+            _this.topCard.totalEmployee = res.totalEmployee;
+            _this.topCard.totalClients = res.totalClients;
+            _this.topCard.totalProfits = res.totalProfits;
+            _this.topCard.efficientClient = res.efficientClient;
+          } else {
+            console.log(res.err);
+          }
+        },
+        error: function (err) {
+          console.log(err);
+        },
+      });
+    },
+    fetchClientStage() {
+      let _this = this;
+      $.ajax({
+        url: `/FinalProject/inner/admin/api/v1/dashboard/client_stage`,
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+          if (response.status == "ok") {
+            _this.clientStageChartRawData.data.datasets[0].data = response.data;
+          } else {
+            console.log(response.error);
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    },
+    fetchTopSalesItem() {
+      let _this = this;
+      $.ajax({
+        url: `/FinalProject/inner/admin/api/v1/dashboard/top_sale_products`,
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+          if (response.status == "ok") {
+            _this.topSalesProducts = response.data;
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    },
+    computedWidth(product) {
+      let quantity = product.quantity;
+      let result = {
+        width: "20%",
+      };
+      let max = this.maxSaleProducts;
+
+      let percent = (quantity / max).toFixed(2) * 100;
+
+      let percentString = percent + "%";
+      result.width = percentString;
+      return result;
+    },
+  },
+  beforeMount: function () {
+    this.fetchTopCard();
+    this.fetchClientStage();
+    this.fetchTopSalesItem();
   },
 });

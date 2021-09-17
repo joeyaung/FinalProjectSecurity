@@ -39,7 +39,6 @@ public class Utils {
 		boolean useLetters = true;
 		boolean useNumbers = true;
 		String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
-		System.out.println("Generated Password: " + generatedString);
 
 		return generatedString;
 	}

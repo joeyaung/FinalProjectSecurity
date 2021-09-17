@@ -77,6 +77,19 @@ public class EventFormRestController {
 	public List<Integer> findEventWomanCount(){
 		return eventFormService.findNumberOfWoman();
 	}
+	@PostMapping("/findByStatus")
+	public List<EventForm> findEventFormByStatus(@RequestParam String status){
+		List<EventForm> list = null;
+		if(status!="") {
+			list = eventFormService.findByStatus(status);
+		}else {
+			
+			System.out.println("狀態為空白");
+		}
+		
+		return list;
+	
+	}
 
 
 

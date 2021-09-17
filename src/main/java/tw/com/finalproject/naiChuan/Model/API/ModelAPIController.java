@@ -42,7 +42,8 @@ public class ModelAPIController {
 	// 修改
 	@PostMapping(path = "/updateModel", produces = "text/plain;charset=UTF-8")
 	public String updateModel(Model model) throws Exception {
-		modelService.updateModel(model);
+		boolean flag = modelService.updateModel(model);
+		System.out.println(flag);
 		return "success";
 	}
 

@@ -39,7 +39,11 @@ let loginVM = new Vue({
       window.location = "http://localhost:8080/FinalProject/register";
     },
     autocomplete() {
-      this.member.username = "joe120106@gmail.com";
+      this.member.username = "eeit2905@gmail.com";
+      this.member.password = "password";
+    },
+    autocompleteMember() {
+      this.member.username = "member@demo.com";
       this.member.password = "password";
     },
   },
@@ -49,4 +53,7 @@ let loginVM = new Vue({
     }),
       { deep: true };
   },
+
+
 });
+

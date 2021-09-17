@@ -9,6 +9,8 @@
     <meta name="author" content="" />
     <title>展示中心</title>
 
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -16,7 +18,7 @@
     <script src="../js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
     <!-- Bootstrap 4 message board js-->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -38,7 +40,7 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <style>
-      .news_li {
+      .center_li {
         list-style-type: none;
         text-align: left;
       }
@@ -73,10 +75,10 @@
 
       /* Set the size of the div element that contains the map */
       #map {
+        margin: 40px auto;
         height: 500px;
         width: 500px;
       }
-    </style>
 
     </style>
   </head>
@@ -122,26 +124,19 @@
     <!-- 以上不要動 -->
     <!-- 這裡開始加你們的東西 -->
     <!-- About -->
-    <section class="about-section text-center bg-gray-custom">
+    <section class="text-center bg-gray-custom">
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-lg-8">
             <!-- <h1 class="text-black mb-4">展示中心</h1> -->
-            <p class="text-white-50">
-
+            <!-- <p class="text-white-50"> -->
             <div id="container">
-
-              </br> </br>
-
               <ul id="centerdata">
-                <li class='news_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="沒圖片"></li>
-                </br></br></br></br></br></br>
+                <li class='center_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="展示中心"></li>
               </ul>
-
               <a href="http://localhost:8080/FinalProject/TestDrive" class="btn btn-primary btn-lg active" role="button"
-                aria-pressed="true">預約試駕</a>
+                aria-pressed="true" style="font-size: 20px;margin: 20px auto 0 auto;">預約試駕</a>
 
-              </br></br></br>
               <!--The div element for the map -->
               <div id="map">
 
@@ -149,12 +144,8 @@
 
               <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
               <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg&callback=initMap&libraries=&v=weekly"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfh8-A26ni-AEF58RvN30Xg1B1_wx3kg&callback=initMap&libraries=&v=weekly&language=zh-TW"
                 async></script>
-
-              </br>
-              </br>
-              </br>
             </div>
           </div>
         </div>
@@ -186,30 +177,31 @@
           var list = "";
           var latitude = parseFloat(data.centerLatitude)
           var longitude = parseFloat(data.centerLongitude)
+          var centername = data.centerName
+          var centeraddress = data.centerAddress
+          var centerphone = data.centerPhone
 
-          list += "<li class='news_li'><h2>" + data.centerName + "</h2></li><li class='news_li'>連絡電話:"
-            + data.centerPhone + "</li><li class='news_li'中心地址:>"
-            + data.centerAddress + "</li><li class='news_li'>E-mail:"
-            + data.centerEmail + "</li><li class='news_li'>營業時間:"
-            + data.centerOpentime + "</li><li class='news_li'><img src='data:image/png;base64,"
+          list += "<li class='center_li'><h2>" + data.centerName + "</h2></li><li class='center_li'>連絡電話:"
+            + data.centerPhone + "</li><li class='center_li'>中心地址:"
+            + data.centerAddress + "</li><li class='center_li'>E-mail:"
+            + data.centerEmail + "</li><li class='center_li'>營業時間:"
+            + data.centerOpentime + "</li><li class='center_li'><img src='data:image/png;base64,"
             + data.centerImage + "'width='800px' height='600px' alt='展示中心圖片'></li>"
 
           $("#centerdata").html(list)
 
           //執行地圖function
-          initMap(latitude, longitude);
+          initMap(latitude, longitude, centername, centeraddress, centerphone);
         },
         error: function (err) {
           console.log("沒抓到id")
           alert(err)
-          console.log(err)
         }
       });
-
     });
     // Initialize and add the map
 
-    function initMap(latitude, longitude) {
+    function initMap(latitude, longitude, centername, centeraddress, centerphone) {
 
       // 展示中心的座標
       const location = {
@@ -232,6 +224,18 @@
         icon: 'https://i.imgur.com/Z1H7jQI.jpg',
         animation: google.maps.Animation.BOUNCE
       });
+
+      var cont = "<h4><a href='https://www.google.com/maps/place/"
+        + centeraddress + "' target = '_blank' rel = 'noreferrer noopener'><i class='fas fa-map-marker-alt'></i>路線規劃</h4>"
+        + "<h4><a href=\"tel:" + centerphone + "\"><i class=\"fas fa-phone-square\"></i>撥打電話</a></h4>"
+
+      var infowindow = new google.maps.InfoWindow({
+        content: cont,
+        position: location,
+        maxWidth: 200,
+        // pixelOffset: new google.maps.Size(100, -20) 
+      });
+      infowindow.open(map, marker);
     }
 
   </script>

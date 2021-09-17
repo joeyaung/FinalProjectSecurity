@@ -92,7 +92,7 @@
               <ul>
                 <li><a href="/FinalProject/logout">登出</a></li>
                 <li><a href="/FinalProject/account/setting">設定</a></li>
-                <li><a href="/FinalProject/account/order">訂單管理</a></li>
+                <li><a href="/FinalProject/account/BookEvent">活動管理</a></li>
                 <li><a href="/FinalProject/account">首頁</a></li>
               </ul>
             </div>

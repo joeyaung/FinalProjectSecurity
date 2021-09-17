@@ -3,6 +3,7 @@ let orderPageVM = new Vue({
   data: {
     backend_order_info: {},
     shipping_info: {},
+    isSendingCancel: false,
   },
   computed: {
     shippingFullAddress() {
@@ -54,9 +55,13 @@ let orderPageVM = new Vue({
                 self.backend_order_info.stage = oldValue;
                 return;
               }
-              let updateStatus = self.updateStageAJAX(newValue);
-              if (!updateStatus) {
-                return;
+              if (newValue == "訂單已取消") {
+                self.cancelOrderAJAX();
+              } else {
+                let updateStatus = self.updateStageAJAX(newValue);
+                if (!updateStatus) {
+                  return;
+                }
               }
               self.backend_order_info.stage = newValue;
             },
@@ -123,6 +128,27 @@ let orderPageVM = new Vue({
       });
 
       return updateStatus;
+    },
+    cancelOrderAJAX() {
+      let order_id = this.backend_order_info.id;
+      let self = this;
+      this.isSendingCancel = true;
+      $.ajax({
+        url: `/FinalProject/api/v1/order/cancel/${order_id}`,
+        method: "POST",
+        dataType: "json",
+        success: function (response) {
+          if (response.status == "ok") {
+            self.isSendingCancel = false;
+          }
+          if (response.status == "fail") {
+            console.log("ERROR: Refund Fail.");
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
     },
   },
   beforeMount: function () {

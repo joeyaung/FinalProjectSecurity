@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.paypal.orders.AddressPortable;
 import com.paypal.orders.Name;
@@ -19,6 +22,7 @@ import com.paypal.orders.Order;
 import com.paypal.orders.PurchaseUnit;
 import com.paypal.orders.ShippingDetail;
 
+import tw.com.finalproject.Mail.MailService;
 import tw.com.finalproject.yumyu.Enums.OrderStages;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
 import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
@@ -35,6 +39,8 @@ public class MemberOrderAPIController {
 	private ApplicationUserService applicationUserService;
 	@Autowired
 	private PaypalService paypalService;
+	@Autowired
+	private MailService mailService;
 
 	@GetMapping(path = "/account/api/v1/order", produces = "application/json;charset=UTF-8")
 	public List<MemberOrder> queryMemberOrdersAll(Principal principal) {
@@ -96,13 +102,14 @@ public class MemberOrderAPIController {
 		}
 		return resultMap;
 	}
-	
+
 	@PutMapping(path = "/inner/admin/api/v1/order/{id}", produces = "application/json; charset=UTF-8")
-	public Map<String, Object> updateOrderStage(@PathVariable("id") String idString, @RequestBody Map<String, String> data){
+	public Map<String, Object> updateOrderStage(@PathVariable("id") String idString,
+			@RequestBody Map<String, String> data) {
 		Map<String, Object> resultMap = new HashMap<>();
 		String newStage = data.get("stage");
 		String stageFinal = null;
-		for (OrderStages curStage: OrderStages.values()) {
+		for (OrderStages curStage : OrderStages.values()) {
 			if (curStage.value().equals(newStage)) {
 				stageFinal = curStage.value();
 			}
@@ -126,12 +133,89 @@ public class MemberOrderAPIController {
 		order.setStage(stageFinal);
 		boolean result = memberOrderService.save(order);
 		if (result) {
-			resultMap.put("status", "ok");
+			if (order.isSub()) {
+				boolean sendResult = sendEmailWhenOrderStatusChange(order.getMember().getUsername(), order);
+				if (sendResult) {
+					resultMap.put("status", "ok");
+				}
+			} else {
+				resultMap.put("status", "ok");
+			}
 		} else {
 			resultMap.put("status", "fail");
 		}
 
 		return resultMap;
 	}
-	
+
+	@PostMapping(path = "/api/v1/order/cancel/{id}", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> cancelOrder(Principal principal, @PathVariable(name = "id") String idString)
+			throws IOException {
+		Map<String, Object> resultMap = new HashMap<>();
+
+		long id = -1;
+		try {
+			id = Long.parseLong(idString);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "訂單編號錯誤");
+		}
+		MemberOrder order = memberOrderService.findById(id);
+		Order response = paypalService.getOrder(order.getPaypalOrderId());
+		String capId = response.purchaseUnits().get(0).payments().captures().get(0).id();
+		boolean refundResult = paypalService.refundOrder(capId, order.getTotalAmount(), true);
+
+		if (refundResult) {
+			order.setStage(OrderStages.CANCEL.value());
+			memberOrderService.save(order);
+			if (order.isSub()) {
+				boolean sendResult = sendEmailWhenOrderStatusChange(order.getMember().getUsername(), order);
+				if (sendResult) {
+					resultMap.put("status", "ok");
+					return resultMap;
+				}
+			}
+			resultMap.put("status", "ok");
+			return resultMap;
+		}
+		resultMap.put("status", "fail");
+		return resultMap;
+	}
+
+	@PostMapping(path = "/api/v1/order/sub/{id}", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> updateOrderSubStatus(@PathVariable(name = "id") String idString,
+			@RequestBody Map<String, String> data) {
+		Map<String, Object> resultMap = new HashMap<>();
+
+		String newStatus = data.get("newStatus");
+		boolean newStatusBoolean = false;
+		if (newStatus.equals("true")) {
+			newStatusBoolean = true;
+		} else {
+			newStatusBoolean = false;
+		}
+
+		long id = -1;
+		try {
+			id = Long.parseLong(idString);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "訂單編號錯誤");
+		}
+		MemberOrder order = memberOrderService.findById(id);
+		order.setSub(newStatusBoolean);
+		boolean result = memberOrderService.save(order);
+		if (result) {
+			resultMap.put("status", "ok");
+		} else {
+			resultMap.put("status", "fail");
+		}
+		return resultMap;
+	}
+
+	private boolean sendEmailWhenOrderStatusChange(String email, MemberOrder order) {
+		boolean result = mailService.sendOrderStatusChangeMail(email, order);
+		return result;
+	}
+
 }

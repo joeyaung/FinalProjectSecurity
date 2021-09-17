@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>最新消息</title>
+    <title>Audi - 最新消息內容</title>
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png" /> 
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- Bootstrap core JS-->
@@ -15,8 +16,6 @@
     <!-- Core theme JS-->
     <script src="../js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
 
     <!-- Bootstrap 4 message board js-->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -90,23 +89,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+              <li class="nav-item">
               <a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/News">最新消息</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">了解車型</a>
+              <a class="nav-link" href="/FinalProject/Model">了解車型</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">精品商城</a>
+              <a class="nav-link" href="/FinalProject/products">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
