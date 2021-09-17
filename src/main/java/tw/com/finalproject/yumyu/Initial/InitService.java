@@ -132,15 +132,30 @@ public class InitService {
 //		Create default Test Drive Apointment
 
 		TestDriveApointment defaulTestdrive1 = TestDriveApointment.builder().formId("Xx111111111").driveDate("2021-10-07")
-				.driveTime("10").carMod("A6").driveLoc("臺北市").driveLocSit("內湖").sales("Alex").formTime("2021/08/22 14:16:35")
-				.nameCli("王大大").gendCli("先生").timCli("早").mailCli("aaa@gmail.com").telCli("0912345678").remark("")
-				.build();
+				.driveTime("10").carMod("A3").driveLoc("臺北市").driveLocSit("內湖").sales("Alex").formTime("2021/08/22 14:16:35")
+				.nameCli("王大大").gendCli("先生").timCli("早").mailCli("aaa@gmail.com").telCli("0912345678").remark("").build();
 		TestDriveApointment defaulTestdrive2 = TestDriveApointment.builder().formId("Xx222222222").driveDate("2021-10-07")
-				.driveTime("16").carMod("A7").driveLoc("臺北市").driveLocSit("大安").sales("Beth").formTime("2021/07/21 10:22:53")
-				.nameCli("陳美美").gendCli("小姐").timCli("早午").mailCli("bbbb@gmail.com").telCli("0923456789").remark("")
-				.build();
+				.driveTime("16").carMod("A4").driveLoc("臺北市").driveLocSit("大安").sales("Beth").formTime("2021/07/21 10:22:53")
+				.nameCli("陳美美").gendCli("小姐").timCli("早午").mailCli("bbbb@gmail.com").telCli("0923456789").remark("").build();
+		TestDriveApointment defaulTestdrive3 = TestDriveApointment.builder().formId("PxAfyu22222").driveDate("2021-10-11")
+				.driveTime("12").carMod("A3").driveLoc("臺中市").driveLocSit("北屯").sales("Andy Chen").formTime("2021/08/28 10:24:23")
+				.nameCli("陳國政").gendCli("先生").timCli("午").mailCli("cccc@gmail.com").telCli("0923456789").remark("").build();
+		TestDriveApointment defaulTestdrive4 = TestDriveApointment.builder().formId("Yufhg252872").driveDate("2021-09-25")
+				.driveTime("16").carMod("A5").driveLoc("臺北市").driveLocSit("大安").sales("Cath Liu").formTime("2021/09/01 10:32:51")
+				.nameCli("林梅芳").gendCli("小姐").timCli("早午").mailCli("jbjb@gmail.com").telCli("0923456789").remark("").build();
+		TestDriveApointment defaulTestdrive5 = TestDriveApointment.builder().formId("Hugq2182625").driveDate("2021-10-18")
+				.driveTime("10").carMod("Q3").driveLoc("高雄市").driveLocSit("左營").sales("Eric Yu").formTime("2021/09/09 11:22:50")
+				.nameCli("陳雅芳").gendCli("小姐").timCli("早午晚").mailCli("bqbq@gmail.com").telCli("0923456789").remark("").build();
+		TestDriveApointment defaulTestdrive6 = TestDriveApointment.builder().formId("RWgq2G82695").driveDate("2021-09-28")
+				.driveTime("13").carMod("A3").driveLoc("高雄市").driveLocSit("左營").sales("Eric Yu").formTime("2021/09/14 11:12:42")
+				.nameCli("林婉柔").gendCli("小姐").timCli("晚").mailCli("jjwwo@gmail.com").telCli("0923456987").remark("").build();
+		
 		testdriveApointmentService.createTestdrive(defaulTestdrive1);
 		testdriveApointmentService.createTestdrive(defaulTestdrive2);
+		testdriveApointmentService.createTestdrive(defaulTestdrive3);
+		testdriveApointmentService.createTestdrive(defaulTestdrive4);
+		testdriveApointmentService.createTestdrive(defaulTestdrive5);
+		testdriveApointmentService.createTestdrive(defaulTestdrive6);
 
 //		Create default Model
 		File a3_1jpg = new File("src/main/resources/static/images/model/A3_1.jpg"); FileInputStream a3_1fis = new FileInputStream(a3_1jpg);
@@ -164,10 +179,10 @@ public class InitService {
 		File a3_an19jpg = new File("src/main/resources/static/images/model/A3_angle19.png"); FileInputStream a3_an19fis = new FileInputStream(a3_an19jpg);
 		byte[] byteA3an19 = IOUtils.toByteArray(a3_an19fis);		
 		
-		Model defaultModel1 = Model.builder().modelType("A3").price(1410000).engineType("汽油").engineDisplacement("999").power("110").torque("200").consumption("20.1").seat("4")
-				.description("Audi A3 Sportback 以搶眼外型玩轉風潮，新世代運動美學，兼容優雅、動感於一身。Audi 新世代蜂巢型水箱護罩，綻放十足運動氣息！配備 Audi drive select 可程式車身動態系統，可依路況選擇最適合的駕馭模式，恣性縱橫每個所到之處。")
+		Model defaultModel1 = Model.builder().modelType("A3").price(1410000).engineType("L3 缸內直噴渦輪增壓引擎").engineDisplacement("999").power("110").torque("200").consumption("20.1").seat("4").subtitle("Audi A3 搶眼外型玩轉風潮，新世代運動美學，兼容優雅、動感於一身")
+				.description("Audi A3 各項前衛智能，每處細節，只為給您難以忘懷的駕馭體驗！內裝鋪陳專為豐富多采的生活形態所設計，搭配 Audi 新世代蜂巢型水箱護罩，綻放十足運動氣息！配備 Audi drive select 可程式車身動態系統，可依路況選擇最適合的駕馭模式，恣性縱橫每個所到之處")
 				.exterior(byteA3outer).interior(byteA3inner).background(byteA3bg).angle1(byteA3an1).angle4(byteA3an4).angle7(byteA3an7).angle10(byteA3an10).angle13(byteA3an13).angle16(byteA3an16).angle19(byteA3an19).build();
-		
+				
 		
 		File a4_1jpg = new File("src/main/resources/static/images/model/A4_1.jpg");	FileInputStream a4_1fis = new FileInputStream(a4_1jpg);
 		byte[] byteA4outer = IOUtils.toByteArray(a4_1fis);		
@@ -190,14 +205,68 @@ public class InitService {
 		File a4_an19jpg = new File("src/main/resources/static/images/model/A4_angle19.png"); FileInputStream a4_an19fis = new FileInputStream(a4_an19jpg);
 		byte[] byteA4an19 = IOUtils.toByteArray(a4_an19fis);
 		
-		Model defaultModel2 = Model.builder().modelType("A4").price(1240000).engineType("汽油").engineDisplacement("999").power("110").torque("200").consumption("17.6").seat("4")
+		Model defaultModel2 = Model.builder().modelType("A4").price(1240000).engineType("L4 汽油渦輪增壓引擎").engineDisplacement("999").power("110").torque("200").consumption("17.6").seat("4").subtitle("Audi A4 截然不同的車身設計，外觀彰顯動感，強勁且優美。")
 				.description("The Audi A4 Sportback 兼具動感美學與前衛科技。全車系搭載 ACC 主動式定速巡航控制系統，完美體態與聰明才智，如你一般！新世代 Audi A4 恢弘氣勢的經典盾型水箱護罩，搭配極富設計感的側邊進氣孔，一入眼，就過目不忘！搭載 S line 外觀套件，更顯動感活力，讓街頭成為你攫取眾人目光的伸展舞台！")
 				.exterior(byteA4outer).interior(byteA4inner).background(byteA4bg).angle1(byteA4an1).angle4(byteA4an4).angle7(byteA4an7).angle10(byteA4an10).angle13(byteA4an13).angle16(byteA4an16).angle19(byteA4an19).build();
 		
 		
+		File a5_1jpg = new File("src/main/resources/static/images/model/A5_1.jpg");	FileInputStream a5_1fis = new FileInputStream(a5_1jpg);
+		byte[] byteA5outer = IOUtils.toByteArray(a5_1fis);		
+		File a5_2jpg = new File("src/main/resources/static/images/model/A5_2.jpg");	FileInputStream a5_2fis = new FileInputStream(a5_2jpg);
+		byte[] byteA5inner = IOUtils.toByteArray(a5_2fis);		
+		File a5_bgjpg = new File("src/main/resources/static/images/model/A5_bg.jpg"); FileInputStream a5_bgfis = new FileInputStream(a5_bgjpg);
+		byte[] byteA5bg = IOUtils.toByteArray(a5_bgfis);		
+		File a5_an1jpg = new File("src/main/resources/static/images/model/A5_angle1.png"); FileInputStream a5_an1fis = new FileInputStream(a5_an1jpg);
+		byte[] byteA5an1 = IOUtils.toByteArray(a5_an1fis);		
+		File a5_an4jpg = new File("src/main/resources/static/images/model/A5_angle4.png"); FileInputStream a5_an4fis = new FileInputStream(a5_an4jpg);
+		byte[] byteA5an4 = IOUtils.toByteArray(a5_an4fis);		
+		File a5_an7jpg = new File("src/main/resources/static/images/model/A5_angle7.png"); FileInputStream a5_an7fis = new FileInputStream(a5_an7jpg);
+		byte[] byteA5an7 = IOUtils.toByteArray(a5_an7fis);		
+		File a5_an10jpg = new File("src/main/resources/static/images/model/A5_angle10.png"); FileInputStream a5_an10fis = new FileInputStream(a5_an10jpg);
+		byte[] byteA5an10 = IOUtils.toByteArray(a5_an10fis);		
+		File a5_an13jpg = new File("src/main/resources/static/images/model/A5_angle13.png"); FileInputStream a5_an13fis = new FileInputStream(a5_an13jpg);
+		byte[] byteA5an13 = IOUtils.toByteArray(a5_an13fis);	
+		File a5_an16jpg = new File("src/main/resources/static/images/model/A5_angle16.png"); FileInputStream a5_an16fis = new FileInputStream(a5_an16jpg);
+		byte[] byteA5an16 = IOUtils.toByteArray(a5_an16fis);		
+		File a5_an19jpg = new File("src/main/resources/static/images/model/A5_angle19.png"); FileInputStream a5_an19fis = new FileInputStream(a5_an19jpg);
+		byte[] byteA5an19 = IOUtils.toByteArray(a5_an19fis);
+		
+		Model defaultModel3 = Model.builder().modelType("A5").price(1680000).engineType("L4 汽油渦輪增壓引擎").engineDisplacement("999").power("140").torque("200").consumption("21.22").seat("4").subtitle("Audi A5 以全新元素融入設計語彙，為車頭、車側與車尾造型增添更多深度和氣度，開啟全新美學境界")
+				.description("The Audi A5 全新設計語彙，勾勒出這款動感 5 門車型出眾卓越的外型，無論從何種角度欣賞，您皆能充分感受到令人印象深刻的運動性格。全數位虛擬座艙的 3 種顯示界面之一，內裝呈現毫不妥協的前衛豪華氛圍！")
+				.exterior(byteA5outer).interior(byteA5inner).background(byteA5bg).angle1(byteA5an1).angle4(byteA5an4).angle7(byteA5an7).angle10(byteA5an10).angle13(byteA5an13).angle16(byteA5an16).angle19(byteA5an19).build();
+
+		File q3_1jpg = new File("src/main/resources/static/images/model/Q3_1.jpg");	FileInputStream q3_1fis = new FileInputStream(q3_1jpg);
+		byte[] byteQ3outer = IOUtils.toByteArray(q3_1fis);		
+		File q3_2jpg = new File("src/main/resources/static/images/model/Q3_2.jpg");	FileInputStream q3_2fis = new FileInputStream(q3_2jpg);
+		byte[] byteQ3inner = IOUtils.toByteArray(q3_2fis);		
+		File q3_bgjpg = new File("src/main/resources/static/images/model/Q3_bg.jpg"); FileInputStream q3_bgfis = new FileInputStream(q3_bgjpg);
+		byte[] byteQ3bg = IOUtils.toByteArray(q3_bgfis);		
+		File q3_an1jpg = new File("src/main/resources/static/images/model/Q3_angle1.png"); FileInputStream q3_an1fis = new FileInputStream(q3_an1jpg);
+		byte[] byteQ3an1 = IOUtils.toByteArray(q3_an1fis);		
+		File q3_an4jpg = new File("src/main/resources/static/images/model/Q3_angle4.png"); FileInputStream q3_an4fis = new FileInputStream(q3_an4jpg);
+		byte[] byteQ3an4 = IOUtils.toByteArray(q3_an4fis);		
+		File q3_an7jpg = new File("src/main/resources/static/images/model/Q3_angle7.png"); FileInputStream q3_an7fis = new FileInputStream(q3_an7jpg);
+		byte[] byteQ3an7 = IOUtils.toByteArray(q3_an7fis);		
+		File q3_an10jpg = new File("src/main/resources/static/images/model/Q3_angle10.png"); FileInputStream q3_an10fis = new FileInputStream(q3_an10jpg);
+		byte[] byteQ3an10 = IOUtils.toByteArray(q3_an10fis);		
+		File q3_an13jpg = new File("src/main/resources/static/images/model/Q3_angle13.png"); FileInputStream q3_an13fis = new FileInputStream(q3_an13jpg);
+		byte[] byteQ3an13 = IOUtils.toByteArray(q3_an13fis);	
+		File q3_an16jpg = new File("src/main/resources/static/images/model/Q3_angle16.png"); FileInputStream q3_an16fis = new FileInputStream(q3_an16jpg);
+		byte[] byteQ3an16 = IOUtils.toByteArray(q3_an16fis);		
+		File q3_an19jpg = new File("src/main/resources/static/images/model/Q3_angle19.png"); FileInputStream q3_an19fis = new FileInputStream(q3_an19jpg);
+		byte[] byteQ3an19 = IOUtils.toByteArray(q3_an19fis);
+		
+		Model defaultModel4 = Model.builder().modelType("Q3").price(1820000).engineType("L4 汽油渦輪增壓引擎").engineDisplacement("1498").power("150").torque("200").consumption("21.22").seat("5").subtitle("生活是場即興演出，你既是觀眾，也創作故事，跟著全新 Audi Q3，隨性啟動屬於你的精彩生活")
+				.description("全新 Audi Q3 的多項特質，突顯其更加越野動感的性格。霸氣車頭與獨特的單體式盾形水箱護罩，展現難以忽視的侵略氣息。頭燈與尾燈的整體設計，在肌理鮮明的肩線襯托下，展現一氣呵成的流暢度，搭配對比強烈的大器輪圈，更添運動化跑格魅力！")
+				.exterior(byteQ3outer).interior(byteQ3inner).background(byteQ3bg).angle1(byteQ3an1).angle4(byteQ3an4).angle7(byteQ3an7).angle10(byteQ3an10).angle13(byteQ3an13).angle16(byteQ3an16).angle19(byteQ3an19).build();
+
+
+		
 		
 		modelService.createModel(defaultModel1);
 		modelService.createModel(defaultModel2);
+		modelService.createModel(defaultModel3);
+		modelService.createModel(defaultModel4);
 
 		//		Create default Center
 		File Neihujpg = new File("src\\main\\resources\\static\\images\\center\\taipei.jpg");
