@@ -68,7 +68,7 @@ let registerVM = new Vue({
     },
     autoComplete() {
       this.fullName = "游聿民";
-      this.username = "joe120106@gmail.com";
+      this.username = "eeit2905@gmail.com";
       this.password = "password";
       this.phone = "0917922177";
       this.city = "桃園市";
