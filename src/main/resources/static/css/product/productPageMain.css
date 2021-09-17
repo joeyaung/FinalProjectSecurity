@@ -1,0 +1,110 @@
+.tag-label-container {
+  display: flex;
+}
+
+.tags {
+  display: flex;
+  background-color: rgba(30, 144, 255, 0.5);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 600;
+  margin: 0.5rem 0.2rem;
+  padding: 2px 5px;
+}
+
+.tags:hover {
+  cursor: pointer;
+}
+
+.text-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-container > label {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.search-container > input {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid gray;
+  text-indent: 3px;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+}
+
+.tag-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sort-container > select {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.tag-selected {
+  background-color: rgba(255, 99, 72, 0.5);
+  color: rgba(255, 255, 255, 1);
+}
+
+.ps-relative {
+  position: relative;
+}
+
+.ps-absolute {
+  position: absolute;
+}
+
+.cart-div {
+  width: 350px;
+  right: 0%;
+  background-color: rgba(223, 228, 234, 1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.ds-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fs-2-custom {
+  font-size: 15px;
+}
+
+.mg-r-1 {
+  margin-right: 8px;
+}
+
+.mg-l-1 {
+  margin-left: 8px;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.fs-3-custom {
+  font-size: 25px;
+}
+
+.fs-1-custome {
+  font-size: 13px;
+}

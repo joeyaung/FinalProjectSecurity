@@ -72,5 +72,10 @@ public class ApplicationUserService implements UserDetailsService {
 		}
 		return result.get();
 	}
+	
+	public List<ApplicationUser> findAll(){
+		List<ApplicationUser> result = applicationUserRepository.findAll();
+		return result;
+	}
 
 }

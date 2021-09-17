@@ -29,7 +29,7 @@
 
 }
 
-.object-fit-out {
+.object-fit-out{
 	height: 550px;
 	overflow: hidden; 
 	object-fit: none;
@@ -76,9 +76,6 @@ lia-custom:hover {
 .form-inline{
 	display: inline-block;
 }
-
-
-
 
 /*360 animation 360漸變圖 Start */
 header {
@@ -213,4 +210,3 @@ header.moving .an10{
 	font-size: 20px;
 	line-height: .7;
 }
-

@@ -1,0 +1,28 @@
+.ps-absolute {
+  position: absolute;
+  margin-top: 37px;
+  background-color: #f1f2f6;
+  z-index: 10;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.pd-t-1-custom {
+  padding-top: 5px;
+  width: 100%;
+}
+
+.col-12 > a {
+  text-decoration: none;
+  color: #2f3542;
+}
+
+.col-12 > a:link {
+  text-decoration: none;
+  color: #2f3542;
+}
+
+.col-12 > a:visited {
+  text-decoration: none;
+  color: #2f3542;
+}

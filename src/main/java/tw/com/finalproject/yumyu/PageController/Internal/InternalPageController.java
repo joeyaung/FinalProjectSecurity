@@ -68,16 +68,7 @@ public class InternalPageController {
 		Employee employee = employeeService.findbyUsername(username);
 		String empName = employee.getFullName();
 		request.setAttribute("empName", empName);
-		List<Employee> adminEmployees = employeeService.findbyRole(ApplicationRoles.ADMIN.name());
-		request.setAttribute("admins", adminEmployees);
-		List<String> locations = List.of(
-					OfficeLocations.TAIPEI.name(),
-					OfficeLocations.TAOYUAN.name(),
-					OfficeLocations.TAICHUNG.name(),
-					OfficeLocations.TAINAN.name(),
-					OfficeLocations.KAOSHIUNG.name()
-				);
-		request.setAttribute("locations", locations);
+		
 		return "inner/admin";
 	}
 
@@ -87,6 +78,7 @@ public class InternalPageController {
 		Employee employee = employeeService.findbyUsername(username);
 		String empName = employee.getFullName();
 		request.setAttribute("empName", empName);
+		request.setAttribute("empId", employee.getId());
 		request.setAttribute("stage", "All");
 		return "inner/SalesAllClientTemplate";
 	}
@@ -145,6 +137,16 @@ public class InternalPageController {
 		String name = principal.getName();
 		Employee emp = employeeService.findbyUsername(name);
 		request.setAttribute("empName", emp.getFullName());
+		List<Employee> adminEmployees = employeeService.findbyRole(ApplicationRoles.ADMIN.name());
+		request.setAttribute("admins", adminEmployees);
+		List<String> locations = List.of(
+					OfficeLocations.TAIPEI.name(),
+					OfficeLocations.TAOYUAN.name(),
+					OfficeLocations.TAICHUNG.name(),
+					OfficeLocations.TAINAN.name(),
+					OfficeLocations.KAOSHIUNG.name()
+				);
+		request.setAttribute("locations", locations);
 		return "inner/AddEmployeePage";
 	}
 	
@@ -188,6 +190,22 @@ public class InternalPageController {
 		}
 		
 		return "inner/admin/adminOrderEditPage";
+	}
+	
+	@GetMapping(path = "inner/profile/{id}")
+	public String employeeProfileEditPageController(Principal principal, HttpServletRequest request, @PathVariable(name = "id") String idString) {
+		String name = principal.getName();
+		Employee emp = employeeService.findbyUsername(name);
+		request.setAttribute("empName", emp.getFullName());
+		List<String> locations = List.of(
+				OfficeLocations.TAIPEI.name(),
+				OfficeLocations.TAOYUAN.name(),
+				OfficeLocations.TAICHUNG.name(),
+				OfficeLocations.TAINAN.name(),
+				OfficeLocations.KAOSHIUNG.name()
+			);
+	request.setAttribute("locations", locations);
+		return "inner/sales/employeeEditProfile";
 	}
 
 }

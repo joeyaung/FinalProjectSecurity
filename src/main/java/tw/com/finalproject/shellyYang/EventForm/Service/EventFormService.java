@@ -223,7 +223,7 @@ public class EventFormService {
 		String event_title = eventForm.getEvent().getEvent_title();
 		String event_date = eventForm.getEvent().getEvent_date();
 		String event_loc = eventForm.getEvent().getLocation();
-		String email = eventForm.getApplicationUser().getUsername();
+		String email = "eeit2905@gmail.com";
 		
 		try {
 			String textString = "<h2>親愛的貴賓 " + fullName + "  " + gender + "您好:</h2>"
@@ -310,6 +310,11 @@ public class EventFormService {
 		return eventWomanCount;
 		
 		
+	}
+	
+	public List<EventForm> findByStatus(String status){
+		List<EventForm> list = new ArrayList<EventForm>();
+		return eFormRepository.findByStatus(status);
 	}
 	
 }

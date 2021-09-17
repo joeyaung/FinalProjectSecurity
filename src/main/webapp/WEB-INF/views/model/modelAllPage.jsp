@@ -140,6 +140,7 @@
     			<span class="carousel-control-next-icon" aria-hidden="true"></span>
     			<span class="sr-only">Next</span>
   			</a>
+
 		</div><br/><br/>
           
         
@@ -147,6 +148,7 @@
       	<div id="container" style=" overflow:auto ; width:100%">
             <div class="main main3"><a href="/FinalProject/Model/model?modelType=A3">A3</a></div>
             <div class="main main4"><a href="/FinalProject/Model/model?modelType=A4">A4</a></div>
+
         </div>
       </div>
     </section>
@@ -165,12 +167,16 @@
     <!--  -->
     
 
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
     <script>
     $('.carousel').carousel({
     	  interval: 3000
     })
     </script>
+
+
 	<!--  Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<!--  Core theme JS -->
@@ -179,7 +185,7 @@
     
     <script>
 	$(document).ready(function () {
-		
+
 		function showdetails(){
 			console.log('Hello');
 		}
@@ -199,9 +205,11 @@
 // 						href += `<li class="li-custom"><form class="form-inline" action="/FinalProject/Model/model?modelType=` + item.modelType + 
 // 								`"><input type="button" id="secondHalfYear" class="" value="` + item.modelType + `" style="width: 150px; height: 50px;">`
                  		
+
 						href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
 								
 								
+
 						if(index==0){
 							divCarou += `<div class="carousel-item active">`
 						} else {
@@ -235,6 +243,7 @@
 
 
 		});
+
 	
         let index = 2;
         let modellist=['A3','A4','A5','Q3',"etron"]
@@ -296,6 +305,7 @@
 		
 		
 	})
+
   </script>
   </body>
 </html>

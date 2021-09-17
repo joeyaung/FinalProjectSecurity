@@ -50,7 +50,7 @@
             <a class="nav-link" href="/FinalProject/Events">活動</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">精品商城</a>
+            <a class="nav-link" href="/FinalProject/products">精品商城</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/FinalProject/center">展示中心</a>
@@ -70,9 +70,8 @@
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-lg-10 po-re">
 
-          <!-- <jsp:useBean id="newTestdrive" class="tw.com.finalproject.naiChuan.TestDrive.TestDriveApointment" scope="session" /> -->
           <h2 class="h_bookd">預約資料如下請確認</h2>
-          <table class="table_bookd mgl-0">
+          <table class="table_bookd mgl-0" style="table-layout: fixed">
 
             <tr>
               <td>賞車日期時間:</td>

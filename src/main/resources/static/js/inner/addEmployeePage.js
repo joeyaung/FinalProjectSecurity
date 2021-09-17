@@ -11,11 +11,14 @@ let addEmpVM = new Vue({
       location: "",
       salary: "",
     },
+    isSending: false,
   },
   methods: {
     submitAddEmployee(e) {
+      this.isSending = true;
       e.preventDefault();
       let self = this.employeeInput;
+      let _this = this;
       let formData = {
         fullName: self.fullName,
         username: self.email,
@@ -36,15 +39,36 @@ let addEmpVM = new Vue({
         contentType: "application/json; charset=UTF-8",
         dataType: "json",
         success: function (response) {
-          console.log(response.id);
-          let redirectPath = `/FinalProject/inner/emp?q=${response.id}`;
-          confirm("新增員工成功! 將為你導向員工資訊");
-          window.location = redirectPath;
+          _this.isSending = false;
+          _this.employeeInput = {
+            department: "",
+            email: "",
+            fullName: "",
+            location: "",
+            manager: "",
+            phone: "",
+            salary: "",
+            title: "",
+          };
+          alert("新增員工成功! 請員工至信箱收取密碼信");
         },
         error: function (error) {
           console.log(error);
         },
       });
+    },
+    autocomplete() {
+      let newData = {
+        department: "SALES",
+        email: "joe120106@gmail.com",
+        fullName: "羅大佑",
+        location: "TAIPEI",
+        manager: "1",
+        phone: "0917922177",
+        salary: "45000",
+        title: "CES",
+      };
+      this.employeeInput = newData;
     },
   },
 });

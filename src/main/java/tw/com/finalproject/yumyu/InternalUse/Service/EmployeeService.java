@@ -88,4 +88,10 @@ public class EmployeeService implements UserDetailsService {
 		}
 	}
 
+	public List<Employee> findAll() {
+		List<Employee> result = employeeRepository.findAll();
+		return result;
+
+	}
+
 }

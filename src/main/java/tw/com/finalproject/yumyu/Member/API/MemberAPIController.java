@@ -182,8 +182,8 @@ public class MemberAPIController {
 
 		boolean result = applicationUserService.save(newUser);
 		if (result) {
-			Employee employee = employeeService.findbyUsername("sales@demo.com");
-			Client client = Client.builder().fullName(fullName).city(city).town(town).fullAddress(fullAddress).zipCode(zipCode).email(username).phone(phone).inchargedEmployee(employee)
+			
+			Client client = Client.builder().fullName(fullName).city(city).town(town).fullAddress(fullAddress).zipCode(zipCode).email(username).phone(phone)
 					.salesStage(SalesStages.NEW.name())
 					.build();
 			clientService.save(client);

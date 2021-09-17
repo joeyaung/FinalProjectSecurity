@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/FinalProject/css/modelAllPage.css" />
 <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
+
     <style>
       .news_li {
         color: black;
@@ -248,7 +249,7 @@
   <script>
     //search by id
     $(document).ready(function () {
-		
+
       
 	  $.ajax({
 		url: "/FinalProject/getAllModel",
@@ -273,7 +274,6 @@
     	
     	
     	
-    	
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const modelType = urlParams.get('modelType');
@@ -282,16 +282,6 @@
         method: "GET",
         dataType: "json",
         success: function (data) {
-//           let str = "";
-//           str += "<li class='news_li'><h2>" + data.modelType + 
-//           	"</h2></li><li class='news_li'>建議售價:" + data.price + 
-//           	"</li><li class='news_li'>引擎類型:" + data.engineType + 
-//           	"</li><li class='news_li'>排氣量:" + data.engineDisplacement + 
-//           	"</li><li class='news_li'>馬力:" + data.power + 
-//           	"</li><li class='news_li'>扭力:" + data.torque + 
-//           	"</li><li class='news_li'>油耗:" + data.consumption + 
-//           	"</li><li class='news_li'>乘坐人數:" + data.seat;
-//           $("#modeldata").html(str)
 		
           let innerOuter="";
           innerOuter += "<img id='imgInn' src='data:image/png;base64," + data.interior + "'width='800px' height='600px' alt='車型圖片'></li>" + 
@@ -325,7 +315,6 @@
           $("#an16").prop("src","/FinalProject/images/model/"+data.modelType+"_angle16.png")
           $("#an19").prop("src","/FinalProject/images/model/"+data.modelType+"_angle19.png")
           		
-          		
         },
         error: function (err) {
           console.log("沒抓到id")
@@ -333,7 +322,6 @@
           console.log(err)
         }
       });
-      
     });
 	
     $('input:radio[name="IO"]').change(

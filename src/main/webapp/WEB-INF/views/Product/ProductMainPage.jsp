@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
@@ -44,6 +44,10 @@
       crossorigin="anonymous"
     ></script>
     <!-- Page Level css stylesheet -->
+    <link
+      rel="stylesheet"
+      href="/FinalProject/css/product/productPageMain.css"
+    />
   </head>
 
   <body id="page-top">
@@ -69,7 +73,10 @@
             Menu
             <i class="fas fa-bars"></i>
           </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
+          <div
+            class="collapse navbar-collapse"
+            id="navbarResponsive ps-relative"
+          >
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a>
@@ -92,11 +99,44 @@
               <li class="nav-item">
                 <a class="nav-link" href="/FinalProject/account">會員專區</a>
               </li>
-              <li class="nav-item">
+              <li
+                class="nav-item ps-relative"
+                @mouseover="hoverToggleShowCartItem('show')"
+                @mouseleave="hoverToggleShowCartItem('hide')"
+              >
                 <a class="nav-link" href="/FinalProject/product/cart"
                   >購物車<i class="fas fa-shopping-cart"></i>
-                  <span v-if="cart_item_total_quantity != 0">{{ cart_item_total_quantity }}</span>
+                  <span v-if="cart_item_total_quantity != 0">{{
+                    cart_item_total_quantity
+                  }}</span>
                 </a>
+                <div
+                  class="contaienr ps-absolute cart-div"
+                  v-show="showCartItem && cartItem.length>0"
+                >
+                  <div class="row" v-for="(item, index) in cartItem">
+                    <div class="col-3">
+                      <img :src="item.product.imgPath" width="100px" alt="" />
+                    </div>
+                    <div class="col-5 fs-1-custome ds-flex">
+                      <span> {{ item.product.name }} </span>
+                    </div>
+                    <div class="col-3 ds-flex fs-2-custom">
+                      <span
+                        class="mg-r-1 clickable"
+                        @click="removeFromCart(index)"
+                        ><i class="fas fa-minus-circle"></i
+                      ></span>
+                      <span class="fs-3-custom">{{ item.quantityInCart }}</span>
+                      <span class="mg-l-1 clickable" @click="addToCart(index)"
+                        ><i class="fas fa-plus-circle"></i
+                      ></span>
+                    </div>
+                    <div class="col-12">
+                      <hr class="dividor" />
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -120,6 +160,40 @@
 
       <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
+          <div class="row mb-3">
+            <div class="col-6">
+              <div class="row">
+                <div class="col-8 tag-container">
+                  <span>熱門標籤: </span>
+                  <div class="tag-label-container">
+                    <div
+                      class="tags"
+                      v-for="(tag, index) in popularTags"
+                      @click="selectTag(index)"
+                      :class="tag.selected ? 'tag-selected': ''"
+                    >
+                      <span>{{ tag.tagName }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4 sort-container">
+                  <span>排序:</span>
+                  <select v-model="sortMethod">
+                    <option value="greater">依價格低到高</option>
+                    <option value="less">依價格高到低</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 search-main-container">
+              <div class="row">
+                <div class="col-12 text-right search-container">
+                  <label for="search">搜尋</label>
+                  <input type="text" v-model="queryString" />
+                </div>
+              </div>
+            </div>
+          </div>
           <div
             class="
               row
@@ -128,7 +202,7 @@
               justify-content-center
             "
           >
-            <div class="col mb-5" v-for="(item, index) in products">
+            <div class="col mb-5" v-for="(item, index) in displayCartItem">
               <div class="card h-100">
                 <!-- Sale badge-->
                 <div
@@ -143,6 +217,7 @@
                   class="card-img-top"
                   :src="item.imgPath"
                   :alt="item.name"
+                  loading="lazy"
                 />
                 <!-- Product details-->
                 <div class="card-body p-4">
@@ -169,9 +244,9 @@
                     <span
                       class="text-muted text-decoration-line-through"
                       v-if="item.isOnSale"
-                      >{{dollorFormated(item.originPrice)}}</span
+                      >{{ dollorFormated(item.originPrice) }}</span
                     >
-                    {{dollorFormated(item.curPrice)}}
+                    {{ dollorFormated(item.curPrice) }}
                   </div>
                 </div>
                 <!-- Product actions-->
@@ -180,7 +255,7 @@
                     <a
                       class="btn btn-outline-dark mt-auto"
                       href="#"
-                      @click="addToCart(index, $event)"
+                      @click="addToCartBottom(index, $event)"
                       >Add to cart</a
                     >
                   </div>

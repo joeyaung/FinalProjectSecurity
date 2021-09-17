@@ -108,5 +108,10 @@ public class ProductService {
 		List<Product> result = productRepositoy.findAll();
 		return result;
 	}
+	
+	public Product saveReturnProduct(Product product) {
+		Product productResult = productRepositoy.save(product);
+		return productResult;
+	}
 
 }

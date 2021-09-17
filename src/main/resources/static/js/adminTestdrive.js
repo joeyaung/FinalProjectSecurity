@@ -369,6 +369,7 @@ function toLocsit1(){
 
 	$("#1locsitdef").nextAll().css('display','none');
 	$("#1locsit").val($("#1locsitdef").val()) ;
+
 	if( $("#1loc").val() == $("#1opt1").val() ){
         $("#1opt11").css('display','block');
         $("#1opt12").css('display','block');
@@ -801,6 +802,7 @@ function toLocsit2(){
 
 	$("#2locsitdef").nextAll().css('display','none');
 	$("#2locsit").val($("#2locsitdef").val()) ;
+  
 	if( $("#2loc").val() == $("#2opt1").val() ){
         $("#2opt11").css('display','block');
         $("#2opt12").css('display','block');
