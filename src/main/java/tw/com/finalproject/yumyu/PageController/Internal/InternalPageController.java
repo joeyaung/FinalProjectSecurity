@@ -76,9 +76,7 @@ public class InternalPageController {
 	public String salesViewController(HttpServletRequest request, Principal principal) {
 		String username = principal.getName();
 		Employee employee = employeeService.findbyUsername(username);
-		String empName = employee.getFullName();
-		request.setAttribute("empName", empName);
-		request.setAttribute("empId", employee.getId());
+		request.setAttribute("empName", employee.getFullName());
 		request.setAttribute("stage", "All");
 		return "inner/SalesAllClientTemplate";
 	}
@@ -192,8 +190,8 @@ public class InternalPageController {
 		return "inner/admin/adminOrderEditPage";
 	}
 	
-	@GetMapping(path = "inner/profile/{id}")
-	public String employeeProfileEditPageController(Principal principal, HttpServletRequest request, @PathVariable(name = "id") String idString) {
+	@GetMapping(path = "inner/profile")
+	public String employeeProfileEditPageController(Principal principal, HttpServletRequest request) {
 		String name = principal.getName();
 		Employee emp = employeeService.findbyUsername(name);
 		request.setAttribute("empName", emp.getFullName());

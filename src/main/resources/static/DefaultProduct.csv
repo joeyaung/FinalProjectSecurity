@@ -1,31 +1,30 @@
 index,imgPath,name,quantity,originalPrice,isOnSale,curPrice,tags
-1,src/main/resources/static/images/products/1.png,男仕白色 T 恤,44,350,FALSE,350,男x白色x服飾
-2,src/main/resources/static/images/products/2.png,男仕藍色 T 恤,35,350,TRUE,280,男x藍色x服飾
-3,src/main/resources/static/images/products/3.png,男仕海軍藍色 Polo 衫,34,350,FALSE,350,男x藍色x服飾xpolo衫
-4,src/main/resources/static/images/products/4.png,男仕刷毛夾克,41,1750,TRUE,1400,男x黑色x外套x夾克x服飾x黑色
-5,src/main/resources/static/images/products/5.png,Audi rings x LAMY 限定版聯名銀灰色鋼筆,46,890,TRUE,712,文具x筆x精品
-6,src/main/resources/static/images/products/6.png,Audi quattro x Mizu 真空保溫瓶,27,500,FALSE,500,保溫瓶x精品
-7,src/main/resources/static/images/products/7.png,Audi Sport 賽車熊玩偶 20cm,36,350,TRUE,280,小孩x玩偶x精品
-8,src/main/resources/static/images/products/8.png,Audi rings 公事包,32,2350,TRUE,1880,包包
-9,src/main/resources/static/images/products/9.png,Audi x Kambukka 兒童水壺,38,800,TRUE,640,保溫瓶x精品
-10,src/main/resources/static/images/products/10.png,Audi 兒童棒球帽,32,150,FALSE,150,小孩x服飾
-11,src/main/resources/static/images/products/11.png,Audi heritage郵差包,26,4250,TRUE,3400,包包
-12,src/main/resources/static/images/products/12.png,Audi Sport x Deuter 盥洗包,29,2500,FALSE,2500,包包
-13,src/main/resources/static/images/products/13.png,Audi Sport x Deuter 旅行運動包,38,3500,FALSE,3500,包包
-14,src/main/resources/static/images/products/14.png,Audi rings 經典四環筆電保護套,45,2250,FALSE,2250,包包x精品
-15,src/main/resources/static/images/products/15.png,Audi Sport X NICI 賽車熊玩偶巾,25,350,TRUE,280,小孩x玩偶
-16,src/main/resources/static/images/products/16.png,Audi Junior quattro 兒童學步車 (紅色),43,5800,FALSE,5800,精品x小孩
-17,src/main/resources/static/images/products/17.png,Audi quattro x EASTPAK 腰包,28,3200,TRUE,2560,包包
-18,src/main/resources/static/images/products/18.png,Audi quattro x EASTPAK 多功能背包,26,4500,TRUE,3600,包包
-19,src/main/resources/static/images/products/19.png,Audi quattro x flipflop 夾腳拖鞋,26,550,TRUE,440,服飾
-20,src/main/resources/static/images/products/20.png,Audi rings 旅行休閒包,36,3250,FALSE,3250,包包
-21,src/main/resources/static/images/products/21.png,Audi rings 男士T-shirt-灰色,39,350,TRUE,280,男x灰色x服飾
-22,src/main/resources/static/images/products/22.png,Audi Sport 賽車熊玩偶 40cm,43,350,TRUE,280,小孩x玩偶x精品
-23,src/main/resources/static/images/products/23.png,Audi rings x Knirps 摺疊傘,50,750,TRUE,600,精品
-24,src/main/resources/static/images/products/24.png,Audi quattro x Mizu 不鏽鋼餐具吸管組,40,200,FALSE,200,包包
-25,src/main/resources/static/images/products/25.png,Audi quattro x VAUDE 雙肩後背包,49,5250,TRUE,4200,包包
-26,src/main/resources/static/images/products/26.png,Audi Sport x O-range 背包,44,5250,TRUE,4200,包包
-27,src/main/resources/static/images/products/27.png,Audi rings x 犀牛盾 iPhone 12系列手機殼,39,350,TRUE,280,精品x手機殼
-28,src/main/resources/static/images/products/28.png,Audi rings 男士T-shirt-黑色,27,350,FALSE,350,男x服飾x黑色
-29,src/main/resources/static/images/products/29.png,Audi heritage棕色棒球帽,43,250,FALSE,250,服飾
-30,src/main/resources/static/images/products/30.png,Audi heritage Junior quattro 兒童學步車 (白色),28,5800,TRUE,4640,精品x小孩
+1,src/main/resources/static/images/products/1.png,男仕白色 T 恤,39,350,FALSE,350,男x白色x服飾
+2,src/main/resources/static/images/products/2.png,男仕藍色 T 恤,26,350,FALSE,350,男x藍色x服飾
+3,src/main/resources/static/images/products/3.png,男仕海軍藍色 Polo 衫,30,350,FALSE,350,男x藍色x服飾xpolo衫
+4,src/main/resources/static/images/products/4.png,男仕刷毛夾克,50,1750,FALSE,1750,男x黑色x外套x夾克x服飾x黑色
+5,src/main/resources/static/images/products/5.png,Audi rings x LAMY 限定版聯名銀灰色鋼筆,44,890,TRUE,712,文具x筆x精品
+6,src/main/resources/static/images/products/6.png,Audi quattro x Mizu 真空保溫瓶,30,500,FALSE,500,保溫瓶x精品
+7,src/main/resources/static/images/products/7.png,Audi Sport 賽車熊玩偶 20cm,28,350,TRUE,280,小孩x玩偶x精品
+8,src/main/resources/static/images/products/8.png,Audi rings 公事包,48,2350,FALSE,2350,包包
+9,src/main/resources/static/images/products/9.png,Audi x Kambukka 兒童水壺,43,800,FALSE,800,保溫瓶x精品
+10,src/main/resources/static/images/products/10.png,Audi 兒童棒球帽,30,150,TRUE,120,小孩x服飾
+11,src/main/resources/static/images/products/11.png,Audi heritage郵差包,42,4250,TRUE,3400,包包
+12,src/main/resources/static/images/products/12.png,Audi Sport x Deuter 盥洗包,41,2500,TRUE,2000,包包
+13,src/main/resources/static/images/products/13.png,Audi Sport x Deuter 旅行運動包,26,3500,TRUE,2800,包包
+14,src/main/resources/static/images/products/14.png,Audi rings 經典四環筆電保護套,33,2250,FALSE,2250,包包x精品
+15,src/main/resources/static/images/products/15.png,Audi Sport X NICI 賽車熊玩偶巾,39,350,TRUE,280,小孩x玩偶
+16,src/main/resources/static/images/products/16.png,Audi Junior quattro 兒童學步車 (紅色),33,5800,TRUE,4640,精品x小孩
+17,src/main/resources/static/images/products/17.png,Audi quattro x EASTPAK 腰包,45,3200,TRUE,2560,包包
+18,src/main/resources/static/images/products/18.png,Audi quattro x EASTPAK 多功能背包,38,4500,FALSE,4500,包包
+19,src/main/resources/static/images/products/19.png,Audi quattro x flipflop 夾腳拖鞋,43,550,TRUE,440,服飾
+20,src/main/resources/static/images/products/20.png,Audi rings 旅行休閒包,28,3250,FALSE,3250,包包
+21,src/main/resources/static/images/products/21.png,Audi rings 男士T-shirt-灰色,35,350,TRUE,280,男x灰色x服飾
+22,src/main/resources/static/images/products/22.png,Audi Sport 賽車熊玩偶 40cm,43,350,FALSE,350,小孩x玩偶x精品
+23,src/main/resources/static/images/products/23.png,Audi rings x Knirps 摺疊傘,42,750,TRUE,600,精品
+24,src/main/resources/static/images/products/24.png,Audi quattro x Mizu 不鏽鋼餐具吸管組,48,200,TRUE,160,包包
+25,src/main/resources/static/images/products/25.png,Audi quattro x VAUDE 雙肩後背包,41,5250,FALSE,5250,包包
+26,src/main/resources/static/images/products/26.png,Audi Sport x O-range 背包,39,5250,TRUE,4200,包包
+27,src/main/resources/static/images/products/27.png,Audi rings x 犀牛盾 iPhone 12系列手機殼,32,350,FALSE,350,精品x手機殼
+28,src/main/resources/static/images/products/28.png,Audi rings 男士T-shirt-黑色,28,350,TRUE,280,男x服飾x黑色
+29,src/main/resources/static/images/products/29.png,Audi heritage棕色棒球帽,31,250,FALSE,250,服飾

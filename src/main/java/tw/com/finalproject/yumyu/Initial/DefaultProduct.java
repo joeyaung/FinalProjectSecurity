@@ -29,7 +29,7 @@ public class DefaultProduct {
 	@Autowired
 	private ProductImageService productImageService;
 
-	public boolean create() throws FileNotFoundException, IOException {
+	public int create() throws FileNotFoundException, IOException {
 		List<List<String>> records = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(new File("src/main/resources/static/DefaultProduct.csv")))) {
 			String line;
@@ -38,6 +38,7 @@ public class DefaultProduct {
 				records.add(Arrays.asList(values));
 			}
 		}
+		
 
 		for (List<String> row : records) {
 			if (row.get(0).equals("index")) {
@@ -77,6 +78,6 @@ public class DefaultProduct {
 
 		}
 
-		return true;
+		return records.size();
 	}
 }

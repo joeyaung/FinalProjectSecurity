@@ -85,16 +85,16 @@ pageEncoding="UTF-8"%>
                 <a class="nav-link" href="/FinalProject/News">最新消息</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#signup">了解車型</a>
+                <a class="nav-link" href="/FinalProject/Model">了解車型</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/FinalProject/Events">活動</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#signup">精品商城</a>
+                <a class="nav-link" href="/FinalProject/products">精品商城</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#signup">展示中心</a>
+                <a class="nav-link" href="/FinalProject/center">展示中心</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/FinalProject/account">會員專區</a>

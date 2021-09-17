@@ -90,12 +90,12 @@ public class InitService {
 		}
     
 //		Create default Products
-		boolean resultProduct = defaultProduct.create();
-		int productCount = 30;
-		if (resultProduct) {
-			System.out.printf("-- Created %d default Products ---\r\n", productCount);
+		int resultProduct = defaultProduct.create();
+		
+		if (resultProduct > 0) {
+			System.out.printf("-- Created %d default Products ---\r\n", resultProduct);
 		} else {
-			System.out.printf("-- ERROR: Failed to created %d Products ---\r\n", productCount);
+			System.out.printf("-- ERROR: Failed to created %d Products ---\r\n", resultProduct);
 		}
 		
 //		Create default Order

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
@@ -11,7 +11,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>首頁</title>
-    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/FinalProject/images/favicon.ico"
+    />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
@@ -62,16 +66,16 @@
               <a class="nav-link" href="/FinalProject/News">最新消息</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">了解車型</a>
+              <a class="nav-link" href="/FinalProject/Model">了解車型</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">活動</a>
+              <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/products">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
@@ -92,7 +96,7 @@
               <ul>
                 <li><a href="/FinalProject/logout">登出</a></li>
                 <li><a href="/FinalProject/account/setting">設定</a></li>
-                <li><a href="/FinalProject/account/BookEvent">活動管理</a></li>
+                <li><a href="/FinalProject/account/event">活動管理</a></li>
                 <li><a href="/FinalProject/account">首頁</a></li>
               </ul>
             </div>
@@ -138,7 +142,12 @@
                   <label for="clientemail">電子郵件地址: </label>
                 </div>
                 <div class="input-container">
-                  <input type="email" name="clientemail" class="input-field" disabled />
+                  <input
+                    type="email"
+                    name="clientemail"
+                    class="input-field"
+                    disabled
+                  />
                 </div>
               </div>
               <div class="lab-input-container">
