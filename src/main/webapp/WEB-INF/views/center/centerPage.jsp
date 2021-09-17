@@ -227,6 +227,7 @@
               content: contentinfo,
               title: this.locations[i][0],
             });
+            
 
             // 監聽 marker click 事件
             marker1.addListener('click', function (e) {  //每個都要監聽,按下click產生事件,事件內容為在這個map點到marker就打開資訊視窗
@@ -235,6 +236,7 @@
             });
             this.markers.push(marker1);
             this.infoWindows.push(infowindow);
+            
           };
         },
 
@@ -247,6 +249,9 @@
               resultMarker = this.markers[i];
             }
           }
+
+          this.map.setZoom(11);
+          this.map.panTo(resultMarker.position);
 
           for (let j = 0; j < this.infoWindows.length; j++) {
             if (this.infoWindows[j].title == centerTitle) {
@@ -275,6 +280,8 @@
                 animation: google.maps.Animation.BOUNCE,
                 zIndex: 1, //重疊狀況下排在第x順位
               });
+              _this.map.setZoom(11);  //放大到11
+              _this.map.panTo(marker2.position);
 
               // 把要計算的點存成陣列
               let destinations = [];
