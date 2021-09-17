@@ -89,7 +89,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+              <li class="nav-item">
               <a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a>
             </li>
             <li class="nav-item">
@@ -102,10 +102,10 @@
               <a class="nav-link" href="/FinalProject/Events">活動</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">精品商城</a>
+              <a class="nav-link" href="/FinalProject/products">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#signup">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center">展示中心</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/FinalProject/account">會員專區</a>
