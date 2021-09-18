@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
     <meta name="author" content="" />
 
     <title>Audi - 內部</title>
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
     <!-- Custom fonts for this template-->
     <link
@@ -91,7 +92,7 @@ pageEncoding="UTF-8"%>
                 <!-- Nav Item - 商品管理 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
                 <!-- Nav Item - 訂單管理 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
+                <li class="nav-item active"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
                 <!-- Nav Item - 編輯展示中心 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/center"> <i class="fas fa-landmark"></i> <span>編輯展示中心</span></a></li>
 

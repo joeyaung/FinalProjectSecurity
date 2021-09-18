@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Audi - 預約試駕</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
@@ -498,23 +498,23 @@ $("#locsit").on('change',function(){
 $("#maptr").css('display','contents');
 
 if($("#locsit").val() == "內湖"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.038804349811!2d121.58029721500692!3d25.066673883957154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ac80629b002b%3A0x7d52e35df8c6135e!2zMTE05Y-w5YyX5biC5YWn5rmW5Y2A5paw5rmW5LiJ6LevMjg46Jmf!5e0!3m2!1szh-TW!2stw!4v1631841378426!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.038804349811!2d121.58029721500692!3d25.066673883957154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ac80629b002b%3A0x7d52e35df8c6135e!2zMTE05Y-w5YyX5biC5YWn5rmW5Y2A5paw5rmW5LiJ6LevMjg46Jmf!5e0!3m2!1szh-TW!2stw!4v1631841378426!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "大安"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.231423882283!2d121.54521835073966!3d25.026219183897393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa2dec7cccbf%3A0x4817ddfdf8bce9eb!2zMTA25Y-w5YyX5biC5aSn5a6J5Y2A5Zub57at6LevMjA45be3MTAtMuiZnw!5e0!3m2!1szh-TW!2stw!4v1631841519404!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.231423882283!2d121.54521835073966!3d25.026219183897393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa2dec7cccbf%3A0x4817ddfdf8bce9eb!2zMTA25Y-w5YyX5biC5aSn5a6J5Y2A5Zub57at6LevMjA45be3MTAtMuiZnw!5e0!3m2!1szh-TW!2stw!4v1631841519404!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "平鎮"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.9310598196157!2d121.20795015082189!3d24.900333083956745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468232c6c3fc6ab%3A0x750d21a65e8c94bc!2zMzI05qGD5ZyS5biC5bmz6Y6u5Y2A5Y2X6LGQ6LevMuiZnw!5e0!3m2!1szh-TW!2stw!4v1631842088533!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.9310598196157!2d121.20795015082189!3d24.900333083956745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468232c6c3fc6ab%3A0x750d21a65e8c94bc!2zMzI05qGD5ZyS5biC5bmz6Y6u5Y2A5Y2X6LGQ6LevMuiZnw!5e0!3m2!1szh-TW!2stw!4v1631842088533!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "桃園"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.7414748606507!2d121.32045385082321!3d24.974908983921473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681ec2fbe4424f%3A0x86a6a26f278e38eb!2zMzMw5qGD5ZyS5biC5qGD5ZyS5Y2A5qi55LuB5LiJ6KGXMjjomZ8!5e0!3m2!1szh-TW!2stw!4v1631842179251!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.7414748606507!2d121.32045385082321!3d24.974908983921473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681ec2fbe4424f%3A0x86a6a26f278e38eb!2zMzMw5qGD5ZyS5biC5qGD5ZyS5Y2A5qi55LuB5LiJ6KGXMjjomZ8!5e0!3m2!1szh-TW!2stw!4v1631842179251!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "北屯"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.0717313548475!2d120.67332895080897!3d24.16921698430801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917d730553f8d%3A0x5d1a96f7fa803736!2zNDA05Y-w5Lit5biC5YyX5Y2A5bGx6KW_6Lev5LqM5q61MjnomZ8!5e0!3m2!1szh-TW!2stw!4v1631842314779!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.0717313548475!2d120.67332895080897!3d24.16921698430801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917d730553f8d%3A0x5d1a96f7fa803736!2zNDA05Y-w5Lit5biC5YyX5Y2A5bGx6KW_6Lev5LqM5q61MjnomZ8!5e0!3m2!1szh-TW!2stw!4v1631842314779!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "南屯"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.6435681591197!2d120.59544335080867!3d24.149152484317746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e67f1bb7b5f%3A0xe02c3cd9d7b393db!2zNDA45Y-w5Lit5biC5Y2X5bGv5Y2A57K-56eR5Lit6LevMTjomZ8!5e0!3m2!1szh-TW!2stw!4v1631842373302!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.6435681591197!2d120.59544335080867!3d24.149152484317746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e67f1bb7b5f%3A0xe02c3cd9d7b393db!2zNDA45Y-w5Lit5biC5Y2X5bGv5Y2A57K-56eR5Lit6LevMTjomZ8!5e0!3m2!1szh-TW!2stw!4v1631842373302!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "左營"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.542557190806!2d120.2986379507838!3d22.670837985059425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e05088c4b8091%3A0xe552cce8f4b4a8b0!2zODEz6auY6ZuE5biC5bem54ef5Y2A5paw6I6K5LiA6LevMzA26Jmf!5e0!3m2!1szh-TW!2stw!4v1631842456043!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.542557190806!2d120.2986379507838!3d22.670837985059425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e05088c4b8091%3A0xe552cce8f4b4a8b0!2zODEz6auY6ZuE5biC5bem54ef5Y2A5paw6I6K5LiA6LevMzA26Jmf!5e0!3m2!1szh-TW!2stw!4v1631842456043!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "鼓山"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.1349522558858!2d120.28107655078333!3d22.648756485070678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e0444fa6067d1%3A0x2ca84555c115ed4c!2zODA06auY6ZuE5biC6byT5bGx5Y2A6b6N5rC05LiA6KGXMjHomZ8!5e0!3m2!1szh-TW!2stw!4v1631842554405!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.1349522558858!2d120.28107655078333!3d22.648756485070678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e0444fa6067d1%3A0x2ca84555c115ed4c!2zODA06auY6ZuE5biC6byT5bGx5Y2A6b6N5rC05LiA6KGXMjHomZ8!5e0!3m2!1szh-TW!2stw!4v1631842554405!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "五結"){
-$("#map").prop('src', 'http://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.5437209360193!2d121.78934595081842!3d24.7082070840481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e599d60a8dcd%3A0x3a4da8f1736f0c9a!2zMjY45a6c6Jit57ij5LqU57WQ6YSJ5LiJ5ZCJ5Lit6LevMzTomZ8!5e0!3m2!1szh-TW!2stw!4v1631842668327!5m2!1szh-TW!2stw')
+$("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.5437209360193!2d121.78934595081842!3d24.7082070840481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e599d60a8dcd%3A0x3a4da8f1736f0c9a!2zMjY45a6c6Jit57ij5LqU57WQ6YSJ5LiJ5ZCJ5Lit6LevMzTomZ8!5e0!3m2!1szh-TW!2stw!4v1631842668327!5m2!1szh-TW!2stw')
 } else if($("#locsit").val() == "羅東"){
 $("#map").prop('src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3625.389346320668!2d121.76615375081798!3d24.67913918406187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e67f01608451%3A0x56327841408f1664!2zMjY15a6c6Jit57ij576F5p2x6Y6u5YWs5q2j6LevMTg46Jmf!5e0!3m2!1szh-TW!2stw!4v1631842730515!5m2!1szh-TW!2stw')
 }

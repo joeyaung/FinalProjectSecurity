@@ -198,7 +198,7 @@ public class InitService {
 		byte[] byteA4an19 = IOUtils.toByteArray(a4_an19fis);
 		
 
-		Model defaultModel2 = Model.builder().modelType("A4").price(1240000).engineType("汽油").engineDisplacement("999").power("110").torque("200").consumption("17.6").seat("4").subtitle("Audi A4 截然不同的車身設計，外觀彰顯動感，強勁且優美。")
+		Model defaultModel2 = Model.builder().modelType("A4").price(1240000).engineType("L4 汽油渦輪增壓引擎").engineDisplacement("999").power("110").torque("200").consumption("17.6").seat("4").subtitle("Audi A4 截然不同的車身設計，外觀彰顯動感，強勁且優美。")
 				.description("The Audi A4 Sportback 兼具動感美學與前衛科技。全車系搭載 ACC 主動式定速巡航控制系統，完美體態與聰明才智，如你一般！新世代 Audi A4 恢弘氣勢的經典盾型水箱護罩，搭配極富設計感的側邊進氣孔，一入眼，就過目不忘！搭載 S line 外觀套件，更顯動感活力，讓街頭成為你攫取眾人目光的伸展舞台！")
 				.exterior(byteA4outer).interior(byteA4inner).background(byteA4bg).angle1(byteA4an1).angle4(byteA4an4).angle7(byteA4an7).angle10(byteA4an10).angle13(byteA4an13).angle16(byteA4an16).angle19(byteA4an19).build();
 		
@@ -224,7 +224,7 @@ public class InitService {
 		File a5_an19jpg = new File("src/main/resources/static/images/model/A5_angle19.png"); FileInputStream a5_an19fis = new FileInputStream(a5_an19jpg);
 		byte[] byteA5an19 = IOUtils.toByteArray(a5_an19fis);
 
-		Model defaultModel3 = Model.builder().modelType("A5").price(1680000).engineType("汽油").engineDisplacement("999").power("140").torque("200").consumption("21.22").seat("4").subtitle("Audi A5 以全新元素融入設計語彙，為車頭、車側與車尾造型增添更多深度和氣度，開啟全新美學境界")
+		Model defaultModel3 = Model.builder().modelType("A5").price(1680000).engineType("L4 汽油渦輪增壓引擎").engineDisplacement("999").power("140").torque("200").consumption("21.22").seat("4").subtitle("Audi A5 以全新元素融入設計語彙，為車頭、車側與車尾造型增添更多深度和氣度，開啟全新美學境界")
 				.description("The Audi A5 全新設計語彙，勾勒出這款動感 5 門車型出眾卓越的外型，無論從何種角度欣賞，您皆能充分感受到令人印象深刻的運動性格。全數位虛擬座艙的 3 種顯示界面之一，內裝呈現毫不妥協的前衛豪華氛圍！")
 				.exterior(byteA5outer).interior(byteA5inner).background(byteA5bg).angle1(byteA5an1).angle4(byteA5an4).angle7(byteA5an7).angle10(byteA5an10).angle13(byteA5an13).angle16(byteA5an16).angle19(byteA5an19).build();
 

@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
     <meta name="author" content="" />
 
     <title>Audi - 內部</title>
-
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
     <!-- Custom fonts for this template-->
     <link
       href="/FinalProject/vendor/fontawesome-free/css/all.min.css"

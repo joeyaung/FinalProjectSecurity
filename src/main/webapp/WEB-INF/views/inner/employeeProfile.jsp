@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="/FinalProject/css/employeeProfile.css">
     <script src="/FinalProject/js/jquery-3.6.0.js"></script>
     <title>Employee Profile</title>
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
     <script src="/FinalProject/js/employeeProfile.js"></script>
 </head>
 

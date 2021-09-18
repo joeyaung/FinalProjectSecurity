@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>展示中心</title>
 
-    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- Bootstrap core JS-->

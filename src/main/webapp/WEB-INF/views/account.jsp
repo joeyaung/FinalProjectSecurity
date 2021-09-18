@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>首頁</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
@@ -40,6 +40,7 @@ pageEncoding="UTF-8"%>
       integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
       crossorigin="anonymous"
     ></script>
+    
   </head>
 
   <body id="page-top">

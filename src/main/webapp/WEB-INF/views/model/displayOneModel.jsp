@@ -30,16 +30,8 @@
     <link rel="stylesheet" href="/FinalProject/css/modelAllPage.css" />
 <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     <style>
-      .news_li {
-        color: black;
-        list-style-type: none;
-        text-align: left;
-      }
+
 
       #title_li {
         font-size: 20px;
@@ -120,27 +112,13 @@
       <div class="container px-4 px-lg-5">
       
       	<nav style="margin-top: -3%">
-           <ul class="ul-custom" id="model-href">
+           <ul style="padding-left:0" id="model-href">
            </ul>
         </nav><br/>
       
         <div class="row gx-4 gx-lg-5 justify-content-center">
         
         
-<!--               <nav style="margin-top: -3%"> -->
-              	
-<!--               	<form class="form-inline" action="https://google.com"> -->
-<!--               		<input type="button" id="secondHalfYear" class="" -->
-<!--                   value="A3" style="width: 150px; height: 50px;">  -->
-<!-- 				</form> -->
-              	
-<!--               	<form class="form-inline" action="https://google.com"> -->
-<!--               		<input type="button" id="secondHalfYear" class="" -->
-<!--                   value="A3" style="width: 150px; height: 50px;">  -->
-<!-- 				</form> -->
-              
-<!--               </nav> -->
-<!--           <div class="col-lg-8"> -->
           <div class="col-lg-12">
             <h2 class="mb-4" style="margin-top:50px; font-size: 4em">The Audi <span id="title"></span> 耀眼登場</h2>
             
@@ -155,56 +133,42 @@
 			
             <div>
 			
-      			<div class="container">
+<!--       			<div class="container"> -->
 				  <div class="row" style="margin-top:60px; font-size: 2.2em">
-				    <div style="border-right:3px #cccccc solid"" class="col">排氣量 (cc)<br><span id="displacement"></span></div>
+				    <div style="border-right:3px #cccccc solid" class="col">排氣量 (cc)<br><span id="displacement"></span></div>
 				    <div class="col">最大馬力 (hp/rpm)<br><span id="power"></span></div>
-				    <div style="border-left:3px #cccccc solid"" class="col">最大扭力 (Nm/rpm)<br><span id="torque"></span></div>
+				    <div style="border-left:3px #cccccc solid;" class="col">最大扭力(Nm/rpm)<br><span id="torque"></span></div>
 				  </div>
-				</div>
+<!-- 				</div> -->
       			
               <br/>
 			  <div id="divimage"><img id="" src='' width="70%" height="auto" alt=""></div>
-              <br/><br/>
+              <br/><br/><br/>
 			
 			
 			
 			<div class="container">
 				  <h4 id="description"></h4>
-			</div><br/>
+			</div><br/><br/>
 			
 			
 
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-<<<<<<< Updated upstream
-    			<label class="btn btn-light"><input type="radio" name="IO" id="showOuter" value="outer" checked> 外觀 </label>
-				<label class="btn btn-dark"><input type="radio" name="IO" id="showInner" value="inner"> 內裝 </label>
-			</div>
-			<div id="divInnerOuter" style="display: flex; justify-content: center;"><img id="" src='' width="70%" height="auto" alt=""></div>
-			
-<!-- 			<ul id="modeldata"> -->
-<!--                <li class='news_li'><img src='data:image/png;base64,' width="800px" height="600px" alt="沒圖片"></li> -->
-<!--             </ul> -->
-=======
     			<label class="btn btn-light" style="font-size: 25px"><input type="radio" name="IO" id="showOuter" value="outer" checked> 外觀 </label>
 				<label class="btn btn-dark" style="font-size: 25px"><input type="radio" name="IO" id="showInner" value="inner"> 內裝 </label>
 			</div>
 			<div id="divInnerOuter" style="display: flex; justify-content: center;"><img id="" src='' width="70%" height="auto" alt=""></div>
 			
->>>>>>> Stashed changes
             <br/>
 						
 						
 			
-			<div class="container">
 				  <div class="row" style="margin:70px 0; font-size: 2em">
-				    <div style="border-right:3px #cccccc solid"" class="col">引擎動力類型<br><span style="font-size: .8em" id="engineType"></span></div>
-				    <div style="border-right:3px #cccccc solid"" class="col">油耗 (km/L)<br><span id="consumption"></span></div>
+				    <div style="border-right:3px #cccccc solid" class="col">引擎動力類型<br><span style="font-size: .8em" id="engineType"></span></div>
+				    <div style="border-right:3px #cccccc solid" class="col">油耗 (km/L)<br><span id="consumption"></span></div>
 				    <div class="col">乘座人數 (cc)<br><span id="seat"></span></div>
-				    <div style="border-left:3px #cccccc solid"" class="col">參考售價 (NT)<br><span id="price"></span></div>
+				    <div style="border-left:3px #cccccc solid" class="col">參考售價<br><span id="price"></span></div>
 				  </div>
-			</div>
-			
 			
 						
 
@@ -229,13 +193,10 @@
               </div>
             </header>
 
-<!--           </div> -->
-
-			
 
 
 
-            <br/><a href="/FinalProject/TestDrive" class="btn btn-primary btn-lg" role="button"
+            <br/><a href="/FinalProject/TestDrive" class="btn btn-primary btn-lg" style="font-size: 20px" role="button"
                 aria-pressed="true">預約試駕</a>
 
 			  </div>
@@ -260,11 +221,7 @@
   <script>
     //search by id
     $(document).ready(function () {
-<<<<<<< Updated upstream
-
-=======
 		
->>>>>>> Stashed changes
       
 	  $.ajax({
 		url: "/FinalProject/getAllModel",
@@ -289,10 +246,7 @@
     	
     	
     	
-<<<<<<< Updated upstream
-=======
     	
->>>>>>> Stashed changes
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const modelType = urlParams.get('modelType');
@@ -301,33 +255,23 @@
         method: "GET",
         dataType: "json",
         success: function (data) {
-<<<<<<< Updated upstream
-=======
-//           let str = "";
-//           str += "<li class='news_li'><h2>" + data.modelType + 
-//           	"</h2></li><li class='news_li'>建議售價:" + data.price + 
-//           	"</li><li class='news_li'>引擎類型:" + data.engineType + 
-//           	"</li><li class='news_li'>排氣量:" + data.engineDisplacement + 
-//           	"</li><li class='news_li'>馬力:" + data.power + 
-//           	"</li><li class='news_li'>扭力:" + data.torque + 
-//           	"</li><li class='news_li'>油耗:" + data.consumption + 
-//           	"</li><li class='news_li'>乘坐人數:" + data.seat;
-//           $("#modeldata").html(str)
->>>>>>> Stashed changes
 		
           let innerOuter="";
-          innerOuter += "<img id='imgInn' src='data:image/png;base64," + data.interior + "'width='800px' height='600px' alt='車型圖片'></li>" + 
-          		"<img id='imgExt' src='data:image/png;base64," + data.exterior + "'width='800px' height='600px' alt='車型圖片'></li>"
+          innerOuter += "<img id='imgInn' src='data:image/png;base64," + data.interior + "' height='600px' alt='車型圖片'></li>" + 
+          		"<img id='imgExt' src='data:image/png;base64," + data.exterior + "' height='600px' alt='車型圖片'></li>"
           
           $("#divInnerOuter").html(innerOuter)
           
           $("#imgInn").css('display','none');
           		
           		
-          $("#divimage").html("<img src='data:image/png;base64," + data.background + "'width='800px' height='600px' alt='車型圖片'>")
+          $("#divimage").html("<img src='data:image/png;base64," + data.background + "'width='100%' alt='車型圖片'>")
           		
           $("#title").html(data.modelType);
           $("#subtitle").html(data.subtitle);
+          
+          $("#description").html(data.description);
+          
 		  $("#displacement").html(data.engineDisplacement);  
 		  $("#power").html(data.power);  
 		  $("#torque").html(data.torque); 
@@ -335,9 +279,6 @@
 		  $("#engineType").html(data.engineType);
 		  $("#consumption").html(data.consumption);
 		  $("#seat").html(data.seat);
-<<<<<<< Updated upstream
-		  $("#price").html(data.price);
-=======
 		  
 		   function dollorFormated(price) {
 		        let formatter = new Intl.NumberFormat("en-US", {
@@ -350,7 +291,6 @@
 		      
 		  
 		  $("#price").html(dollorFormated(data.price));
->>>>>>> Stashed changes
 		  
 		  
 		  
@@ -362,10 +302,7 @@
           $("#an16").prop("src","/FinalProject/images/model/"+data.modelType+"_angle16.png")
           $("#an19").prop("src","/FinalProject/images/model/"+data.modelType+"_angle19.png")
           		
-<<<<<<< Updated upstream
-=======
           		
->>>>>>> Stashed changes
         },
         error: function (err) {
           console.log("沒抓到id")
@@ -373,10 +310,7 @@
           console.log(err)
         }
       });
-<<<<<<< Updated upstream
-=======
       
->>>>>>> Stashed changes
     });
 	
     $('input:radio[name="IO"]').change(
@@ -419,8 +353,4 @@ header.addEventListener('mousemove',(e) => {
 
 
 </script>
-<<<<<<< Updated upstream
 </html>
-=======
-</html>
->>>>>>> Stashed changes

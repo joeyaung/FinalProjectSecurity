@@ -11,11 +11,7 @@ pageEncoding="UTF-8"%>
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>首頁</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/FinalProject/images/favicon.ico"
-    />
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"

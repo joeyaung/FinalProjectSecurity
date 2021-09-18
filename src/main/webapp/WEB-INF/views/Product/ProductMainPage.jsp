@@ -18,7 +18,7 @@ pageEncoding="UTF-8"%>
     <!-- Core theme JS-->
     <script src="/FinalProject/js/template.js"></script>
 
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
     <!-- Font Awesome icons (free version)-->
     <script

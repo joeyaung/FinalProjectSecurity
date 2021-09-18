@@ -18,6 +18,7 @@
 	crossorigin="anonymous" />
 <!-- <script src="../js/jquery-3.6.0.js"></script> -->
 <title>Sales Management Tool</title>
+<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 <script src="../js/salesMain.js"></script>
 <link rel="shortcut icon" href="#" />
 </head>

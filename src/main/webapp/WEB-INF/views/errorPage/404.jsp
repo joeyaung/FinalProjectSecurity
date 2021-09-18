@@ -13,6 +13,7 @@
     <meta name="author" content="" />
 
     <title>404 error</title>
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
     <!-- Custom fonts for this template-->
     <link

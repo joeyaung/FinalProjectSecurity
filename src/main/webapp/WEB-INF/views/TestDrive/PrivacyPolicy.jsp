@@ -8,7 +8,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>Audi - 個人資料使用聲明</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->

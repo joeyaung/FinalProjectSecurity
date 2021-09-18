@@ -10,7 +10,7 @@
   <meta name="author" content="" />
 
   <title>Audi - 試駕表單總覽</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
   		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
 		<script src="/FinalProject/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -102,87 +102,31 @@
 				</div>
 			</a>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0" />
 
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link"
-				href="/FinalProject/inner"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider" />
-
-			<!-- Heading -->
-			<div class="sidebar-heading">Analytics</div>
-
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-users"></i> <span>Client</span>
-			</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Clients:</h6>
-						<a class="collapse-item" href="buttons.html">Overview</a> <a
-							class="collapse-item" href="cards.html">Curent Stage</a>
-					</div>
-				</div></li>
-
-			<!-- Nav Item - Utilities Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseUtilities"
-				aria-expanded="true" aria-controls="collapseUtilities">
-					<i class="fas fa-id-card-alt"></i> <span>Employee</span>
-			</a>
-				<div id="collapseUtilities" class="collapse"
-					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Employee:</h6>
-						<a class="collapse-item" href="utilities-color.html">Overview</a>
-						<a class="collapse-item" href="utilities-border.html">Sales</a>
-					</div>
-				</div></li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider" />
 
 			<!-- Heading -->
 			<div class="sidebar-heading">FUNCTIONS</div>
 
-			<!-- Nav Item - 新增員工 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/addEmployee"> <i
-				class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
-
-			<!-- Nav Item - 試駕總覽 -->
-			<li class="nav-item active"><a class="nav-link" href="/FinalProject/admin/edit/testdrive"> <i 
-				class="fas fa-car"></i> <span>試駕總覽</span></a></li>
-				
-			<!-- Nav Item - 車型總覽 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/model"> <i
-				class="fas fa-car-side"></i> <span>車型總覽</span></a></li>		
-
-			<!-- Nav Item - 編輯消息 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i
-				class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
-
-			<!-- Nav Item - 活動表單 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i
-				class="fas fa-rss-square"></i> <span>活動報名表單</span></a></li>
-
-			<!-- Nav Item - 活動報名統計-->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i
-				class="fas fa-rss-square"></i> <span>活動報名統計</span></a></li>
-
-			<!-- Nav Item - 編輯商品 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i
-				class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
-
-			<!-- Nav Item - 訂單管理 -->
-			<li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i
-				class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
+                <!-- Nav Item - 新增員工 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/addEmployee"> <i class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
+                <!-- Nav Item - 試駕總覽 -->
+                <li class="nav-item active"><a class="nav-link" href="/FinalProject/inner/admin/edit/testdrive"> <i class="fas fa-car"></i> <span>試駕總覽</span></a></li>
+                <!-- Nav Item - 車型總覽 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/model"> <i class="fas fa-car-side"></i> <span>車型總覽</span></a></li>
+                <!-- Nav Item - 編輯消息 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
+                <!-- Nav Item - 編輯活動 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i class="fas fa-snowboarding"></i></i> <span>編輯活動</span></a></li>
+                <!-- Nav Item - 活動報名表單 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i class="fas fa-file-signature"></i> <span>活動報名表單</span></a></li>
+                <!-- Nav Item - 活動報名統計 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i class="fas fa-signal"></i> <span>活動報名統計</span></a></li>
+                <!-- Nav Item - 商品管理 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
+                <!-- Nav Item - 訂單管理 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
+                <!-- Nav Item - 編輯展示中心 -->
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/center"> <i class="fas fa-landmark"></i> <span>編輯展示中心</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block" />
@@ -266,19 +210,19 @@
 
               <!-- Nav Item - Alerts -->
               <li class="nav-item dropdown no-arrow mx-1">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="alertsDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="fas fa-bell fa-fw"></i>
-                  <!-- Counter - Alerts -->
-                  <span class="badge badge-danger badge-counter">3+</span>
-                </a>
+<!--                 <a -->
+<!--                   class="nav-link dropdown-toggle" -->
+<!--                   href="#" -->
+<!--                   id="alertsDropdown" -->
+<!--                   role="button" -->
+<!--                   data-toggle="dropdown" -->
+<!--                   aria-haspopup="true" -->
+<!--                   aria-expanded="false" -->
+<!--                 > -->
+<!--                   <i class="fas fa-bell fa-fw"></i> -->
+<!--                   Counter - Alerts -->
+<!--                   <span class="badge badge-danger badge-counter">3+</span> -->
+<!--                 </a> -->
                 <!-- Dropdown - Alerts -->
                 <div
                   class="
@@ -336,65 +280,37 @@
               
               </li>
 
-              <div class="topbar-divider d-none d-sm-block"></div>
+<!--               <div class="topbar-divider d-none d-sm-block"></div> -->
 
-              <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="userDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                    >${ empName }</span
-                  >
-                  <img
-                    class="img-profile rounded-circle"
-                    src="/FinalProject/images/svg/undraw_profile.svg"
-                  />
-                </a>
-                <!-- Dropdown - User Information -->
-                <div
-                  class="
+							<!-- Nav Item - User Information -->
+							<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#"
+									id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">${
+										empName }</span>
+									<img class="img-profile rounded-circle"
+										src="/FinalProject/images/svg/undraw_profile.svg" />
+								</a> <!-- Dropdown - User Information -->
+								<div
+								class="
                     dropdown-menu dropdown-menu-right
                     shadow
                     animated--grow-in
                   "
-                  aria-labelledby="userDropdown"
-                >
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#logoutModal"
-                  >
-                    <i
-                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
-                    ></i>
-                    Logout
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </nav>
-          <!-- End of Topbar -->
+								aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="/FinalProject/inner/profile/${empId}"> <i
+									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#" data-toggle="modal"
+									data-target="#logoutModal"> <i
+									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Logout
+								</a>
+							</div>
+							</li>
+						</ul>
+					</nav>
+					<!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid" id="vueAll">
