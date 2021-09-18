@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
     <meta name="author" content="" />
 
     <title>Audi - 內部</title>
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
     <!-- Custom Page level JS lib -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"

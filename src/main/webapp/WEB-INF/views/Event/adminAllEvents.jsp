@@ -10,6 +10,7 @@
 		<meta name="author" content="" />
 
 		<title>編輯活動列表</title>
+		<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
@@ -108,7 +109,7 @@ margin-left: 0rem;
                 <!-- Nav Item - 編輯消息 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
                 <!-- Nav Item - 編輯活動 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i class="fas fa-snowboarding"></i></i> <span>編輯活動</span></a></li>
+                <li class="nav-item active"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i class="fas fa-snowboarding"></i></i> <span>編輯活動</span></a></li>
                 <!-- Nav Item - 活動報名表單 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i class="fas fa-file-signature"></i> <span>活動報名表單</span></a></li>
                 <!-- Nav Item - 活動報名統計 -->
@@ -176,7 +177,7 @@ margin-left: 0rem;
 									</form>
 								</div>
 							</li>
-							<div class="topbar-divider d-none d-sm-block"></div>
+<!-- 							<div class="topbar-divider d-none d-sm-block"></div> -->
 
 							<!-- Nav Item - User Information -->
 							<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#"
@@ -219,7 +220,7 @@ margin-left: 0rem;
 							<!-- 以下開始替換成你們的內容
                         可放表格, 圖表, 要填的 form 之類的~ -->
 							<!-- this is button -->
-							<button id="addEventBtn" type="submit" class="btn btn-primary">新增活動</button>
+							<button id="addEventBtn" type="submit" class="btn btn-primary" style="margin-left: 15px;">新增活動</button>
 							<!-- this is datables -->
 							<table id="eventlist" class="table table-striped table-bordered nowrap" style="width: 100%">
 								<thead>

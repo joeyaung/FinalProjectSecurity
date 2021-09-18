@@ -63,25 +63,25 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/FinalProject/TestDrive">試駕體驗</a>
+              <a class="nav-link" href="/FinalProject/TestDrive" style="padding: 1.5rem .8rem 1.25rem;">試駕體驗</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/FinalProject/News">最新消息</a>
+              <a class="nav-link" href="/FinalProject/News" style="padding: 1.5rem .8rem 1.25rem;">最新消息</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/FinalProject/Model">了解車型</a>
+              <a class="nav-link" href="/FinalProject/Model" style="padding: 1.5rem .8rem 1.25rem;">了解車型</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/FinalProject/Events">活動</a>
+              <a class="nav-link" href="/FinalProject/Events" style="padding: 1.5rem .8rem 1.25rem;">活動</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/FinalProject/products">精品商城</a>
+              <a class="nav-link" href="/FinalProject/products" style="padding: 1.5rem .8rem 1.25rem;">精品商城</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/FinalProject/center">展示中心</a>
+              <a class="nav-link" href="/FinalProject/center" style="padding: 1.5rem .8rem 1.25rem;">展示中心</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/FinalProject/account">會員專區</a>
+              <a class="nav-link" href="/FinalProject/account" style="padding: 1.5rem .8rem 1.25rem;">會員專區</a>
             </li>
           </ul>
         </div>
@@ -93,7 +93,7 @@
     <section class="about-section text-center bg-gray-custom pd-2rem">
 		<div class="container px-4 px-lg-5">
         	<nav style="margin-top: -3%">
-                <ul class="ul-custom" id="model-href">
+                <ul style="padding-left:0" id="model-href">
             	</ul>
             </nav><br/>
     
@@ -109,8 +109,8 @@
 			    <div class="carousel-item active">
       				<img class="d-block w-100" src="/FinalProject/images/model/A3_bg.jpg" alt="First slide">
     				<div class="carousel-caption d-none d-md-block">
-  					  <h5>A3尊爵</h5>
-  					  <p>...</p>
+  					  <h5>Audi A3</h5>
+  					  <p>Audi A3 搶眼外型玩轉風潮，新世代運動美學，兼容優雅、動感於一身</p>
   					</div>
     			</div>
     			
@@ -118,7 +118,7 @@
       				<img class="d-block w-100" src="/FinalProject/images/model/A4_bg.jpg" alt="Second slide">
     				<div class="carousel-caption d-none d-md-block">
   					  <h5>A4豪華</h5>
-  					  <p>...</p>
+  					  <p>Audi A4 截然不同的車身設計，外觀彰顯動感，強勁且優美</p>
   					</div>
     			</div>
     			
@@ -126,7 +126,7 @@
       				<img class="d-block w-100" src="/FinalProject/images/model/A5_bg.jpg" alt="Third slide">
     				<div class="carousel-caption d-none d-md-block">
   					  <h5>A5不凡</h5>
-  					  <p>...</p>
+  					  <p>Audi A5 以全新元素融入設計語彙，為車頭、車側與車尾造型增添更多深度和氣度，開啟全新美學境界</p>
   					</div>
     			</div>
   			</div>
@@ -138,10 +138,6 @@
     			<span class="carousel-control-next-icon" aria-hidden="true"></span>
     			<span class="sr-only">Next</span>
   			</a>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 		</div><br/><br/>
           
         
@@ -149,10 +145,6 @@
       	<div id="container" style=" overflow:auto ; width:100%">
             <div class="main main3"><a href="/FinalProject/Model/model?modelType=A3">A3</a></div>
             <div class="main main4"><a href="/FinalProject/Model/model?modelType=A4">A4</a></div>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         </div>
       </div>
     </section>
@@ -171,23 +163,12 @@
     <!--  -->
     
 
-<<<<<<< Updated upstream
-
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-=======
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
->>>>>>> Stashed changes
     <script>
-    $('.carousel').carousel({
-    	  interval: 3000
-    })
+//     $('.carousel').carousel({
+//     	  interval: 3000
+//     })
     </script>
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 	<!--  Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<!--  Core theme JS -->
@@ -196,11 +177,7 @@
     
     <script>
 	$(document).ready(function () {
-<<<<<<< Updated upstream
-
-=======
 		
->>>>>>> Stashed changes
 		function showdetails(){
 			console.log('Hello');
 		}
@@ -220,17 +197,9 @@
 // 						href += `<li class="li-custom"><form class="form-inline" action="/FinalProject/Model/model?modelType=` + item.modelType + 
 // 								`"><input type="button" id="secondHalfYear" class="" value="` + item.modelType + `" style="width: 150px; height: 50px;">`
                  		
-<<<<<<< Updated upstream
-
 						href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
 								
 								
-
-=======
-						href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
-								
-								
->>>>>>> Stashed changes
 						if(index==0){
 							divCarou += `<div class="carousel-item active">`
 						} else {
@@ -264,10 +233,6 @@
 
 
 		});
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 	
         let index = 2;
         let modellist=['A3','A4','A5','Q3',"etron"]
@@ -285,45 +250,27 @@
         let winTop=$(this).scrollTop();
         let scrollPercent = (winTop/(pageH-winH));
         if( scrollPercent > 0.98){
-<<<<<<< Updated upstream
-        	
-        	console.log(index+"**"+modellist[index])
-=======
 //         	console.log(index+"**"+modellist[index])
 
-          if(index <5){
->>>>>>> Stashed changes
+          if(index < 5){
+        	  console.log("5?"+index)
             $.ajax({
                 url: "/FinalProject/findByIdModelAPI/" + modellist[index],
                 method: "GET",
                 dataType: "json",
                 success: function (data) {
-<<<<<<< Updated upstream
-                	
-                	console.log("data.modelType="+data.modelType +"***modellist="+modellist[index])
-                	
-		        	$("#container").append(`<div class="main main5" id="`+modellist[index]+`" style="background-image:'/FinalProject/images/model/` +modellist[index]+ 
-		        	`_bg.jpg; background-position:` + pageY*.3 +`px -300px;")><a href="/FinalProject/Model/model?modelType=`+ modellist[index]+`">`+ modellist[index]+`</a></div>`)
-		        	$("#"+modellist[index]).css('background-image', `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`);
-        			
-        			
-       			 	console.log(data.modelType +"=data.modelType"+"***"+modellist[index])
-       			 	var elem = document.getElementById(modellist[index]);
-		        	console.log(elem)
-=======
 //                 	console.log("data.modelType="+data.modelType +"***modellist="+modellist[index])
                 	
-		        	$("#container").append(`<div class="main main5" id="`+modellist[index]+`" style="background-image:'/FinalProject/images/model/` +modellist[index]+ 
-		        	`_bg.jpg; background-position:` + pageY*.3 +`px -300px")><a href="/FinalProject/Model/model?modelType=`+ modellist[index]+`">`+ modellist[index]+`</a></div>`)
+		        	$("#container").append(`<div class="main main5" id="`+modellist[index]+`" style="")><a href="/FinalProject/Model/model?modelType=`+ modellist[index]+`">`+ modellist[index]+`</a></div>`)
 		        	$("#"+modellist[index]).css('background-image', `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`);
+		        	$("#"+modellist[index]).css('background-position', '-150px -500px');
         			
         			
 //        			 	console.log(data.modelType +"=data.modelType"+"***"+modellist[index])
        			 	var elem = document.getElementById(modellist[index]);
 // 		        	console.log(elem)
->>>>>>> Stashed changes
 		        	
-       			 	elem.style.backgroundPosition = `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`;
+//        			 	elem.style.backgroundPosition = `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`;
 //        			 	elem.css('background-image', `url('/FinalProject/images/model/` + data.modelType + `_bg.jpg')`);
        			 			
 //        			 	$('myObject').css('background-image', 'url(' + imageUrl + ')');
@@ -331,41 +278,25 @@
        			 	
 		        	index++;
 //         			console.log(index)
-<<<<<<< Updated upstream
-       			 	console.log("modellist[index]:"+modellist[index])
-       			 	console.log("---------------------------")
-=======
 //        			 	console.log("modellist[index]:"+modellist[index])
 //        			 	console.log("---------------------------")
->>>>>>> Stashed changes
 		        	setTimeout(function(){;}, 1000);
                   
                 },
                 error: function (err) {
-<<<<<<< Updated upstream
-                	
                 }
+//         			$("#"+modellist[index]).css('background-position', (pageY*.3)+'px '+'-800px');	
               });
-        $("#"+modellist[index]).css('background-position', +pageY*.3+'px '+'-300px');	
-        	
-
-=======
-                }
-              });
-        	$("#"+modellist[index]).css('background-position', +pageY*.3+'px '+'-800px');	
-          } else if(index >5){
+//         	$("#A5").css('background-position', +pageY*.3+'px '+'-800px');	
+//         	$("#Q3").css('background-position', +pageY*.3+'px '+'-800px');	
+          } else if(index >= 5){
         	  console.log("--------"+index)
           }
->>>>>>> Stashed changes
         }    
 		
 		
 		
 	})
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   </script>
   </body>
 </html>

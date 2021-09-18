@@ -10,6 +10,7 @@
 		<meta name="author" content="" />
 
 		<title>Audi - 內部</title>
+		<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
 		<!-- Custom fonts for this template-->
 		<link href="/FinalProject/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
@@ -64,7 +65,7 @@ margin-left: 0rem;
                 <!-- Nav Item - 活動報名表單 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i class="fas fa-file-signature"></i> <span>活動報名表單</span></a></li>
                 <!-- Nav Item - 活動報名統計 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i class="fas fa-signal"></i> <span>活動報名統計</span></a></li>
+                <li class="nav-item active"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i class="fas fa-signal"></i> <span>活動報名統計</span></a></li>
                 <!-- Nav Item - 商品管理 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/products"> <i class="fas fa-store-alt"></i> <span>商品管理</span></a></li>
                 <!-- Nav Item - 訂單管理 -->
@@ -129,7 +130,7 @@ margin-left: 0rem;
 								</div>
 							</li>
 
-							<div class="topbar-divider d-none d-sm-block"></div>
+<!-- 							<div class="topbar-divider d-none d-sm-block"></div> -->
 
 							<!-- Nav Item - User Information -->
 							<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#"

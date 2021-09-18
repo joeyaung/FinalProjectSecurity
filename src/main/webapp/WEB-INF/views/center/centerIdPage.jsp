@@ -8,6 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>展示中心</title>
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
     <!-- jquery安裝 -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -19,7 +20,7 @@
     <script src="/FinalProject/js/template.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
-    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.ico" />
+    
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->

@@ -10,6 +10,7 @@
 		<meta name="author" content="" />
 
 		<title>活動報名列表</title>
+		<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="/FinalProject/vendor/jquery/jquery.min.js"></script>
@@ -194,7 +195,7 @@ margin-left: 0rem;
                 <!-- Nav Item - 編輯活動 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventsPage"> <i class="fas fa-snowboarding"></i></i> <span>編輯活動</span></a></li>
                 <!-- Nav Item - 活動報名表單 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i class="fas fa-file-signature"></i> <span>活動報名表單</span></a></li>
+                <li class="nav-item active"><a class="nav-link" href="/FinalProject/inner/admin/AllEventForm"> <i class="fas fa-file-signature"></i> <span>活動報名表單</span></a></li>
                 <!-- Nav Item - 活動報名統計 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/EventDashboard"> <i class="fas fa-signal"></i> <span>活動報名統計</span></a></li>
                 <!-- Nav Item - 商品管理 -->
@@ -260,7 +261,7 @@ margin-left: 0rem;
 									</form>
 								</div>
 							</li>
-							<div class="topbar-divider d-none d-sm-block"></div>
+<!-- 							<div class="topbar-divider d-none d-sm-block"></div> -->
 
 							<!-- Nav Item - User Information -->
 							<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#"
@@ -299,7 +300,7 @@ margin-left: 0rem;
 						<div class="row" id='rowdiv'>
 							<!-- 以下開始替換成你們的內容
                         可放表格, 圖表, 要填的 form 之類的~ -->
-							<select id="status">
+							<select id="status" style="margin-left: 15px;">
 								<option value="全部">全部</option>
 								<option value="成功">成功</option>
 								<option value="待審核">待審核</option>

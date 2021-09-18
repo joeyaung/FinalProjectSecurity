@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Audi - 活動內容</title>
-<link rel="icon" type="image/x-icon"
-	href="/FinalProject/images/favicon.png" />
+<link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- Bootstrap core JS-->
 <script

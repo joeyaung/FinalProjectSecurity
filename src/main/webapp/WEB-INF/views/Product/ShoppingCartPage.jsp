@@ -19,11 +19,7 @@ pageEncoding="UTF-8"%>
     <script src="/FinalProject/js/template.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/FinalProject/images/favicon.ico"
-    />
+    <link rel="icon" type="image/x-icon" href="/FinalProject/images/favicon.png?v=2" />
 
     <!-- Font Awesome icons (free version)-->
     <script

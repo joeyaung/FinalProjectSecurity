@@ -29,11 +29,7 @@
 
 }
 
-<<<<<<< Updated upstream
-.object-fit-out{
-=======
 .object-fit-out {
->>>>>>> Stashed changes
 	height: 550px;
 	overflow: hidden; 
 	object-fit: none;
@@ -81,12 +77,9 @@ lia-custom:hover {
 	display: inline-block;
 }
 
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
 /*360 animation 360漸變圖 Start */
 header {
   height: 506px;
@@ -183,10 +176,7 @@ header.moving .an10{
 
 #container a:hover {
 	color: lightblue;
-<<<<<<< Updated upstream
-=======
 	text-decoration: none;
->>>>>>> Stashed changes
 }
 
 .main3{
@@ -216,15 +206,15 @@ header.moving .an10{
 
 .lf-10{
 	margin-left: 15px;
-    height: 50px;
-    width: 10em;
+    height: 55px;
+    width: 5.6em;
 }
 
 .btn-custom{
 	font-size: 20px;
 	line-height: .7;
+	width: 7em;
+	padding-left:1em;
+	padding-right:1em;
 }
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes

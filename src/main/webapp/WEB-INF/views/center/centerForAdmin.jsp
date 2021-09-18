@@ -119,54 +119,7 @@
 				<!-- Divider -->
 				<hr class="sidebar-divider my-0" />
 
-				<!-- Nav Item - Dashboard -->
-				<li class="nav-item active">
-					<a class="nav-link" href="/FinalProject/inner">
-						<i class="fas fa-fw fa-tachometer-alt"></i>
-						<span>Dashboard</span></a>
-				</li>
 
-				<!-- Divider -->
-				<hr class="sidebar-divider" />
-
-				<!-- Heading -->
-				<div class="sidebar-heading">Analytics</div>
-
-				<!-- Nav Item - Pages Collapse Menu -->
-				<li class="nav-item">
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-						aria-expanded="true" aria-controls="collapseTwo">
-						<i class="fas fa-users"></i>
-						<span>Client</span>
-					</a>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Clients:</h6>
-							<a class="collapse-item" href="buttons.html">Overview</a>
-							<a class="collapse-item" href="cards.html">Curent Stage</a>
-						</div>
-					</div>
-				</li>
-
-				<!-- Nav Item - Utilities Collapse Menu -->
-				<li class="nav-item">
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-						aria-expanded="true" aria-controls="collapseUtilities">
-						<i class="fas fa-id-card-alt"></i>
-						<span>Employee</span>
-					</a>
-					<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-						data-parent="#accordionSidebar">
-						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Employee:</h6>
-							<a class="collapse-item" href="utilities-color.html">Overview</a>
-							<a class="collapse-item" href="utilities-border.html">Sales</a>
-						</div>
-					</div>
-				</li>
-
-				<!-- Divider -->
-				<hr class="sidebar-divider" />
 
 				<!-- Heading -->
 				<div class="sidebar-heading">FUNCTIONS</div>
@@ -174,9 +127,9 @@
                 <!-- Nav Item - 新增員工 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/addEmployee"> <i class="fas fa-user-plus"></i> <span>新增員工</span></a></li>
                 <!-- Nav Item - 試駕總覽 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/testdrive"> <i class="fas fa-car"></i> <span>試駕總覽</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/testdrive"> <i class="fas fa-car"></i> <span>試駕總覽</span></a></li>
                 <!-- Nav Item - 車型總覽 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/admin/edit/model"> <i class="fas fa-car-side"></i> <span>車型總覽</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/model"> <i class="fas fa-car-side"></i> <span>車型總覽</span></a></li>
                 <!-- Nav Item - 編輯消息 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/AllNewsPage"> <i class="fas fa-rss-square"></i> <span>編輯消息</span></a></li>
                 <!-- Nav Item - 編輯活動 -->
@@ -190,176 +143,68 @@
                 <!-- Nav Item - 訂單管理 -->
                 <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/orders"> <i class="fas fa-shopping-cart"></i> <span>訂單管理</span></a></li>
                 <!-- Nav Item - 編輯展示中心 -->
-                <li class="nav-item"><a class="nav-link" href="/FinalProject/inner/admin/edit/center"> <i class="fas fa-landmark"></i> <span>編輯展示中心</span></a></li>
+                <li class="nav-item active"><a class="nav-link" href="/FinalProject/inner/admin/edit/center"> <i class="fas fa-landmark"></i> <span>編輯展示中心</span></a></li>
 
-				<!-- Divider -->
-				<hr class="sidebar-divider d-none d-md-block" />
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block" />
 
-				<!-- Sidebar Toggler (Sidebar) -->
-				<div class="text-center d-none d-md-inline">
-					<button class="rounded-circle border-0" id="sidebarToggle"></button>
-				</div>
-			</ul>
-			<!-- End of Sidebar -->
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
 
-			<!-- Content Wrapper -->
-			<div id="content-wrapper" class="d-flex flex-column">
-				<!-- Main Content -->
-				<div id="content">
-					<!-- Topbar -->
-					<nav class="
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="
               navbar navbar-expand navbar-light
               bg-white
               topbar
               mb-4
               static-top
               shadow
-            ">
-						<!-- Sidebar Toggle (Topbar) -->
-						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-							<i class="fa fa-bars"></i>
-						</button>
+            "
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
 
-						<!-- Topbar Search -->
-						<form class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              ">
-							<div class="input-group">
-								<input type="text" class="form-control bg-light border-0 small"
-									placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-								<div class="input-group-append">
-									<button class="btn btn-primary" type="button">
-										<i class="fas fa-search fa-sm"></i>
-									</button>
-								</div>
-							</div>
-						</form>
-
-						<!-- Topbar Navbar -->
-						<ul class="navbar-nav ml-auto">
-							<!-- Nav Item - Search Dropdown (Visible Only XS) -->
-							<li class="nav-item dropdown no-arrow d-sm-none">
-								<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-search fa-fw"></i>
-								</a>
-								<!-- Dropdown - Messages -->
-								<div class="
-                    dropdown-menu dropdown-menu-right
-                    p-3
-                    shadow
-                    animated--grow-in
-                  " aria-labelledby="searchDropdown">
-									<form class="form-inline mr-auto w-100 navbar-search">
-										<div class="input-group">
-											<input type="text" class="form-control bg-light border-0 small"
-												placeholder="Search for..." aria-label="Search"
-												aria-describedby="basic-addon2" />
-											<div class="input-group-append">
-												<button class="btn btn-primary" type="button">
-													<i class="fas fa-search fa-sm"></i>
-												</button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</li>
-
-							<!-- Nav Item - Alerts -->
-							<li class="nav-item dropdown no-arrow mx-1">
-								<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-bell fa-fw"></i>
-									<!-- Counter - Alerts -->
-									<span class="badge badge-danger badge-counter">3+</span>
-								</a>
-								<!-- Dropdown - Alerts -->
-								<div class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  " aria-labelledby="alertsDropdown">
-									<h6 class="dropdown-header">Alerts Center</h6>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="mr-3">
-											<div class="icon-circle bg-primary">
-												<i class="fas fa-file-alt text-white"></i>
-											</div>
-										</div>
-										<div>
-											<div class="small text-gray-500">December 12, 2019</div>
-											<span class="font-weight-bold">A new monthly report is ready to
-												download!</span>
-										</div>
-									</a>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="mr-3">
-											<div class="icon-circle bg-success">
-												<i class="fas fa-donate text-white"></i>
-											</div>
-										</div>
-										<div>
-											<div class="small text-gray-500">December 7, 2019</div>
-											$290.29 has been deposited into your account!
-										</div>
-									</a>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="mr-3">
-											<div class="icon-circle bg-warning">
-												<i class="fas fa-exclamation-triangle text-white"></i>
-											</div>
-										</div>
-										<div>
-											<div class="small text-gray-500">December 2, 2019</div>
-											Spending Alert: We've noticed unusually high spending for
-											your account.
-										</div>
-									</a>
-									<a class="dropdown-item text-center small text-gray-500" href="#">Show All
-										Alerts</a>
-								</div>
-							</li>
-
-							<div class="topbar-divider d-none d-sm-block"></div>
-
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
 							<!-- Nav Item - User Information -->
-							<li class="nav-item dropdown no-arrow">
-								<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="mr-2 d-none d-lg-inline text-gray-600 small">${ empName }</span>
+							<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#"
+									id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">${
+										empName }</span>
 									<img class="img-profile rounded-circle"
 										src="/FinalProject/images/svg/undraw_profile.svg" />
-								</a>
-								<!-- Dropdown - User Information -->
-								<div class="
+								</a> <!-- Dropdown - User Information -->
+								<div
+								class="
                     dropdown-menu dropdown-menu-right
                     shadow
                     animated--grow-in
-                  " aria-labelledby="userDropdown">
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-										Profile
-									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-										Settings
-									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-										Activity Log
-									</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-										<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-										Logout
-									</a>
-								</div>
+                  "
+								aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="/FinalProject/inner/profile/${empId}"> <i
+									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#" data-toggle="modal"
+									data-target="#logoutModal"> <i
+									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Logout
+								</a>
+							</div>
 							</li>
 						</ul>
 					</nav>
@@ -379,7 +224,7 @@
 
 
 							<!-- this is button -->
-							<button id="addCenterButton" type="submit" class="btn btn-primary">增加展示中心</button>
+							<button id="addCenterButton" type="submit" class="btn btn-primary" style="margin-left: 15px;">增加展示中心</button>
 
 
 							<!-- this is datables -->
@@ -1037,7 +882,7 @@
 					$('#editsp1').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerName != "") {
 					$("#editsp1").html("");
-					$("#editsp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp1").next().attr("src", "/FinalProject/images/check.png");
 				}
 
 				if (edit_centerPhone == '') {
@@ -1045,7 +890,7 @@
 					$('#editsp2').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerPhone != "") {
 					$("#editsp2").html("");
-					$("#editsp2").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp2").next().attr("src", "/FinalProject/images/check.png");
 				}
 
 				if (edit_centerEmail == '') {
@@ -1053,49 +898,49 @@
 					$('#editsp3').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerEmail != "") {
 					$("#editsp3").html("");
-					$("#editsp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp3").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (edit_centerLoc == '') {
 					$('#editsp4').html('請輸入中心縣市').css('color', 'red');
 					$('#editsp4').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerLoc != "") {
 					$("#editsp4").html("");
-					$("#editsp4").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp4").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (edit_centerLocSit == '') {
 					$('#editsp5').html('請輸入中心地區').css('color', 'red');
 					$('#editsp5').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerLocSit != "") {
 					$("#editsp5").html("");
-					$("#editsp5").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp5").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (edit_centerAddress == '') {
 					$('#editsp6').html('請輸入中心地址').css('color', 'red');
 					$('#editsp6').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerAddress != "") {
 					$("#editsp6").html("");
-					$("#editsp6").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp6").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (edit_centerLatitude == '') {
 					$('#editsp7').html('請輸入中心緯度').css('color', 'red');
 					$('#editsp7').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerLatitude != "") {
 					$("#editsp7").html("");
-					$("#editsp7").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp7").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (edit_centerLongitude == '') {
 					$('#editsp8').html('請輸入中心經度').css('color', 'red');
 					$('#editsp8').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerLongitude != "") {
 					$("#editsp8").html("");
-					$("#editsp8").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp8").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (edit_centerOpentime == '') {
 					$('#editsp9').html('請輸入中心營業時間').css('color', 'red');
 					$('#editsp9').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerOpentime != "") {
 					$("#editsp9").html("");
-					$("#editsp9").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#editsp9").next().attr("src", "/FinalProject/images/check.png");
 				}
 
 				if (edit_centerFile == '') {
@@ -1103,7 +948,7 @@
 					$('#editsp10').next().attr('src', '/FinalProject/images/error.png');
 				} else if (edit_centerFile != '') {
 					$('#editsp10').html();
-					$('#editsp10').next().attr('src', '/FinalProject/images/greencheck.jpg')
+					$('#editsp10').next().attr('src', '/FinalProject/images/check.png')
 				}
 
 				return false;
@@ -1255,63 +1100,63 @@
 					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerName != "") {
 					$("#sp1").html("");
-					$("#sp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp1").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (centerPhone == "") {
 					$("#sp2").html('請新增中心電話').css('color', 'red');
 					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerPhone != "") {
 					$("#sp2").html("");
-					$("#sp2").next().attr("src", "/FinalProject/images/greencheck.jpg")
+					$("#sp2").next().attr("src", "/FinalProject/images/check.png")
 				}
 				if (centerEmail == "") {
 					$("#sp3").html('請新增中心電子信箱').css('color', 'red');
 					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerEmail != "") {
 					$("#sp3").html("");
-					$("#sp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp3").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (centerLoc == "") {
 					$("#sp4").html('請新增中心縣市').css('color', 'red');
 					$("#sp4").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLoc != "") {
 					$("#sp4").html("");
-					$("#sp4").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp4").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (centerLocSit == "") {
 					$("#sp5").html('請新增中心區域').css('color', 'red');
 					$("#sp5").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLocSit != "") {
 					$("#sp5").html("");
-					$("#sp5").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp5").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (centerAddress == "") {
 					$("#sp6").html('請新增中心地址').css('color', 'red');
 					$("#sp6").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerAddress != "") {
 					$("#sp6").html("");
-					$("#sp6").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp6").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (centerLatitude == "") {
 					$("#sp7").html('請新增中心緯度').css('color', 'red');
 					$("#sp7").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLatitude != "") {
 					$("#sp7").html("");
-					$("#sp7").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp7").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (centerLongitude == "") {
 					$("#sp8").html('請新增中心經度').css('color', 'red');
 					$("#sp8").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLongitude != "") {
 					$("#sp8").html("");
-					$("#sp8").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp8").next().attr("src", "/FinalProject/images/check.png");
 				}
 				if (centerOpentime == "") {
 					$("#sp9").html('請新增中心營業時間').css('color', 'red');
 					$("#sp9").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerOpentime != "") {
 					$("#sp9").html("");
-					$("#sp9").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp9").next().attr("src", "/FinalProject/images/check.png");
 				}
 
 				if (centerFile == "") {
@@ -1319,7 +1164,7 @@
 					$("#sp10").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerFile != '') {
 					$('#sp10').html('');
-					$('#sp10').next().attr('src', '/FinalProject/images/greencheck.jpg');
+					$('#sp10').next().attr('src', '/FinalProject/images/check.png');
 				}
 				return false;
 
@@ -1341,7 +1186,7 @@
 					$("#sp1").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerName != "") {
 					$("#sp1").html("");
-					$("#sp1").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp1").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 			$("#centerPhone").blur(function () {
@@ -1352,7 +1197,7 @@
 					$("#sp2").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerPhone != "") {
 					$("#sp2").html("");
-					$("#sp2").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp2").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
@@ -1366,7 +1211,7 @@
 					$("#sp3").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerEmail != "") {
 					$("#sp3").html("");
-					$("#sp3").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp3").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
@@ -1378,7 +1223,7 @@
 					$("#sp4").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLoc != "") {
 					$("#sp4").html("");
-					$("#sp4").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp4").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
@@ -1391,7 +1236,7 @@
 					$("#sp5").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLocSit != "") {
 					$("#sp5").html("");
-					$("#sp5").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp5").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
@@ -1404,7 +1249,7 @@
 					$("#sp6").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerAddress != "") {
 					$("#sp6").html("");
-					$("#sp6").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp6").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
@@ -1416,7 +1261,7 @@
 					$("#sp7").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLatitude != "") {
 					$("#sp7").html("");
-					$("#sp7").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp7").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
@@ -1429,7 +1274,7 @@
 					$("#sp8").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerLongitude != "") {
 					$("#sp8").html("");
-					$("#sp8").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp8").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
@@ -1442,7 +1287,7 @@
 					$("#sp9").next().attr("src", "/FinalProject/images/error.png");
 				} else if (centerOpentime != "") {
 					$("#sp9").html("");
-					$("#sp9").next().attr("src", "/FinalProject/images/greencheck.jpg");
+					$("#sp9").next().attr("src", "/FinalProject/images/check.png");
 				}
 			})
 
