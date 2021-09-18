@@ -27,6 +27,10 @@ public class Http403UnauthorizedEntryPoint implements AuthenticationEntryPoint {
 			response.sendRedirect(request.getContextPath() + "/login_inner");
 			return;
 		}
+		if(path.startsWith("/product/cart")) {
+			response.sendRedirect(request.getContextPath() + "/login");
+			return;
+		}
 		
 		
 	}
