@@ -59,7 +59,7 @@ let forgetPasswordVM = new Vue({
       });
     },
     autoComplete() {
-      this.email = "joe120106@gmail.com";
+      this.email = "eeit2905@gmail.com";
     },
   },
 });

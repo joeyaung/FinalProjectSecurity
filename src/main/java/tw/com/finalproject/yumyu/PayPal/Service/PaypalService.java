@@ -9,7 +9,6 @@ import com.paypal.http.HttpResponse;
 import com.paypal.http.serializer.Json;
 import com.paypal.orders.Order;
 import com.paypal.orders.OrderRequest;
-import com.paypal.orders.OrdersAuthorizeRequest;
 import com.paypal.orders.OrdersGetRequest;
 import com.paypal.payments.AuthorizationsCaptureRequest;
 import com.paypal.payments.Capture;
