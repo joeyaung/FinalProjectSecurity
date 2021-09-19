@@ -36,6 +36,7 @@ pageEncoding="UTF-8"%>
     <!-- Custom styles for this template-->
     <link href="/FinalProject/css/sb-admin-2.min.css" rel="stylesheet" />
 
+	<link rel="stylesheet" href="/FinalProject/css/loading.css" />
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
@@ -158,7 +159,7 @@ pageEncoding="UTF-8"%>
 					<!-- End of Topbar -->
 
           <!-- Begin Page Content -->
-          <div class="container-fluid" id="app">
+          <div class="container-fluid" id="app" v-cloak>
             <!-- Page Heading -->
             <div class="container">
               <div class="row">

@@ -29,6 +29,7 @@ pageEncoding="UTF-8"%>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/FinalProject/css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="/FinalProject/css/account.css" />
+    <link rel="stylesheet" href="/FinalProject/css/loading.css" />
     <!-- Page Level js lib -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
@@ -95,7 +96,7 @@ pageEncoding="UTF-8"%>
     <!-- 以上不要動 -->
     <!-- 這裡開始加你們的東西 -->
     <!-- About -->
-    <section class="account-section text-center pd-bottom-2rem" id="app">
+    <section class="account-section text-center pd-bottom-2rem" id="app" v-cloak>
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="user-title-container">

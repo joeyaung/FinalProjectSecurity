@@ -339,7 +339,7 @@ $("#1submit").click(function (e) {
 
 //一鍵輸入
 $('#1oneKey').on('click', function(){
-    $('#1modelType').val('e-tron');
+    $('#1modelType').val('etron');
     $('#1price').val('3050000');
     $('#1engineType').val('非同步式雙電動馬達');
     $('#1displacement').val('0');

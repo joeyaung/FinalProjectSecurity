@@ -20,13 +20,14 @@ pageEncoding="UTF-8"%>
       integrity="sha512-y/+zR8ZRJXvRWVRuhPbjSpGNIv2yG9hePHeWYEb5RPcciLwlyG0ZGd6JsiT9+sFtTON9FrDs+07ZzepwatYX1Q=="
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="/FinalProject/css/loading.css" />
   </head>
 
   <body>
     <a href="./"
       ><img class="img-logo" src="./images/audi-logo.png" alt="logo"
     /></a>
-    <div class="form-container" id="app">
+    <div class="form-container" id="app" v-cloak>
       <h1 @click="autocomplete">登入</h1>
       <form action="login" method="POST" id="login-form">
         <input

@@ -1,0 +1,12 @@
+[v-cloak] > * { display: none};
+[v-cloak]::before {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 80px;
+	height: 80px;
+	background-image: url(/FinalProject/images/loading.gif);
+	background-size: cover;
+	left: 50%;
+	right: 50%;
+}
