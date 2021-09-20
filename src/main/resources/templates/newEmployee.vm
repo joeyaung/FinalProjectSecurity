@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.css"
+      integrity="sha512-HHWO9L7oLHex/9VCN9kyGaYp96jiJUwadh87k24XzAe7eLmCdsdaEOfeZTaFmdZ0y4SDdq0eLh81OMJQ50g=="
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=NotoSansTC&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-12 header">
+            <img src="cid:logo" style="width: 120px" />
+
+            <!-- Body -->
+            <div class="container body">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <h2 class="h2">歡迎加入 Audi !</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-left">
+                  <p>$empName 您好：</p>
+                  <p class="mg-l-1">
+                    歡迎您加入本公司，期待未來您在 Sales 部門可以大展身手。
+                  </p>
+                  <p class="mg-l-1">
+                    您首次登入的帳號資訊為： $empUsername
+                  </p>
+                  <p class="mg-l-1">您首次登入的密碼資訊為： $rawPassword </p>
+                  <p class="mg-l-1">
+                    <a href="http://localhost:8080/FinalProject/inner"
+                      >點此進行登入</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Footer-->
+            <footer class="footer bg-black small text-center text-white-50">
+              <div class="container px-4 px-lg-5">
+                Copyright &copy; 資策會第五組專題報告 2021
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
