@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.Map.Entry;
+import java.util.UUID;
 
 import javax.annotation.security.RolesAllowed;
 
@@ -26,9 +26,7 @@ import tw.com.finalproject.Mail.MailService;
 import tw.com.finalproject.yumyu.Enums.ApplicationRoles;
 import tw.com.finalproject.yumyu.Enums.SalesStages;
 import tw.com.finalproject.yumyu.InternalUse.Client;
-import tw.com.finalproject.yumyu.InternalUse.Employee;
 import tw.com.finalproject.yumyu.InternalUse.Service.ClientService;
-import tw.com.finalproject.yumyu.InternalUse.Service.EmployeeService;
 import tw.com.finalproject.yumyu.Member.ApplicationUser;
 import tw.com.finalproject.yumyu.Member.PasswordResetToken;
 import tw.com.finalproject.yumyu.Member.Service.ApplicationUserService;
@@ -47,9 +45,6 @@ public class MemberAPIController {
 	
 	@Autowired
 	private ClientService clientService;
-	
-	@Autowired
-	private EmployeeService employeeService;
 	
 	@Autowired
 	private MailService mailService;
