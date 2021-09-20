@@ -6,7 +6,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -131,6 +130,7 @@ public class ProductAPIController {
 		return image;
 	}
 
+	@SuppressWarnings("unchecked")
 	@PutMapping(path = "/inner/admin/api/v1/product/{id}", produces = "application/json;charset=UTF-8")
 	public Product updateProductInfo(@PathVariable(name = "id") String productId, Principal principal,
 			@RequestBody Map<String, Object> data) {
