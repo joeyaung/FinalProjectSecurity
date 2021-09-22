@@ -43,7 +43,7 @@ Front-End:
 * [活動系統](https://github.com/joeyaung/FinalProjectSercurity/tree/master/src/main/java/tw/com/finalproject/shellyYang)
 * [消息系統](https://github.com/joeyaung/FinalProjectSercurity/tree/master/src/main/java/tw/com/finalproject/shellyYang)
 
-組員：賴柏鈞 [@KrooCiso](https://github.com/KrooCiso)
+組員：賴柏均 [@KrooCiso](https://github.com/KrooCiso)
 
 負責功能：
 * [展示中心](https://github.com/joeyaung/FinalProjectSercurity/tree/master/src/main/java/tw/com/finalproject/kevinLai/Center)
