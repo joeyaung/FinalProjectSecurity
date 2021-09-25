@@ -176,12 +176,13 @@
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     
     <script>
+	// list為所有車型的array
+	let list =[]		
 	$(document).ready(function () {
 		
 		function showdetails(){
 			console.log('Hello');
 		}
-		
 			$.ajax({
 				url: "/FinalProject/getAllModel",
 				method: "GET",
@@ -189,7 +190,7 @@
 				success: function (data) {
 					
 					let href = "";
-					
+
 					// 處理 carousel-inner
 					let divCarou = "";
 					$.each(data, function (index, item) {
@@ -198,7 +199,7 @@
 // 								`"><input type="button" id="secondHalfYear" class="" value="` + item.modelType + `" style="width: 150px; height: 50px;">`
                  		
 						href += `<li class="li-custom"><a class="btn btn-dark btn-lg lf-10" role="button" aria-pressed="true" href="/FinalProject/Model/model?modelType=` + item.modelType + `">` + item.modelType + "</a></li>"
-								
+						list.push(item.modelType)	
 								
 						if(index==0){
 							divCarou += `<div class="carousel-item active">`
@@ -234,13 +235,11 @@
 
 		});
 	
-        let index = 2;
-        let modellist=['A3','A4','A5','Q3',"etron"]
+    let index = 2;
         
 	window.addEventListener("scroll", function(){
 		let pageY = window.pageYOffset;
 		let main2 = document.querySelector(".main2");
-// 		console.log(pageY+"**"+  +"**");
 		$('.main3').css('background-position', -pageY*.3+'px '+'-300px');
 // 		main2.style.backgroundPosition = -(pageY * .25)+`px -600px`
 		$('.main4').css('background-position', (pageY*.3-700)+'px '+'-300px');
@@ -250,50 +249,33 @@
         let winTop=$(this).scrollTop();
         let scrollPercent = (winTop/(pageH-winH));
         if( scrollPercent > 0.98){
-//         	console.log(index+"**"+modellist[index])
 
-          if(index < 5){
-        	  console.log("5?"+index)
+          if(index < list.length){
             $.ajax({
-                url: "/FinalProject/findByIdModelAPI/" + modellist[index],
+                url: "/FinalProject/findByIdModelAPI/" + list[index],
                 method: "GET",
                 dataType: "json",
                 success: function (data) {
-//                 	console.log("data.modelType="+data.modelType +"***modellist="+modellist[index])
-                	
-		        	$("#container").append(`<div class="main main5" id="`+modellist[index]+`" style="")><a href="/FinalProject/Model/model?modelType=`+ modellist[index]+`">`+ modellist[index]+`</a></div>`)
-		        	$("#"+modellist[index]).css('background-image', `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`);
-		        	$("#"+modellist[index]).css('background-position', '-150px -500px');
-        			
+                	console.log("list[index]  "+data.modelType)
+// 		        	$("#container").append(`<div class="main main5" id="`+data.modelType+`" style="")><a href="/FinalProject/Model/model?modelType=`+ data.modelType+`">`+ data.modelType+`</a></div>`)
+// 		        	$("#"+data.modelType).css('background-image', `url('/FinalProject/images/model/` + data.modelType + `_bg.jpg')`);
+// 		        	$("#"+data.modelType).css('background-position', '-150px -500px');
+		        	$("#container").append(`<div class="main main5" id="`+data.modelType+`" style="")><a href="/FinalProject/Model/model?modelType=`+ data.modelType+`">`+ data.modelType+`</a></div>`)
+		        	$("#"+data.modelType).css('background-image', `url("data:image/png;base64,` + data.background + `")`);
+		        	$("#"+data.modelType).css('background-position', '-150px -500px');
         			
 //        			 	console.log(data.modelType +"=data.modelType"+"***"+modellist[index])
-       			 	var elem = document.getElementById(modellist[index]);
-// 		        	console.log(elem)
 		        	
-//        			 	elem.style.backgroundPosition = `url('/FinalProject/images/model/` + modellist[index] + `_bg.jpg')`;
-//        			 	elem.css('background-image', `url('/FinalProject/images/model/` + data.modelType + `_bg.jpg')`);
-       			 			
-//        			 	$('myObject').css('background-image', 'url(' + imageUrl + ')');
-
-       			 	
-		        	index++;
-//         			console.log(index)
-//        			 	console.log("modellist[index]:"+modellist[index])
-//        			 	console.log("---------------------------")
 		        	setTimeout(function(){;}, 1000);
-                  
                 },
                 error: function (err) {
+                	console.log(err)
                 }
-//         			$("#"+modellist[index]).css('background-position', (pageY*.3)+'px '+'-800px');	
               });
-//         	$("#A5").css('background-position', +pageY*.3+'px '+'-800px');	
-//         	$("#Q3").css('background-position', +pageY*.3+'px '+'-800px');	
-          } else if(index >= 5){
-        	  console.log("--------"+index)
+		        	index++;
+          } else if(index >= list.length){
           }
         }    
-		
 		
 		
 	})
