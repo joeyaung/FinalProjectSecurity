@@ -292,15 +292,13 @@
 		  
 		  $("#price").html(dollorFormated(data.price));
 		  
-		  
-		  
-          $("#an1").prop("src","/FinalProject/images/model/"+data.modelType+"_angle1.png")
-          $("#an4").prop("src","/FinalProject/images/model/"+data.modelType+"_angle4.png")
-          $("#an7").prop("src","/FinalProject/images/model/"+data.modelType+"_angle7.png")
-          $("#an10").prop("src","/FinalProject/images/model/"+data.modelType+"_angle10.png")
-          $("#an13").prop("src","/FinalProject/images/model/"+data.modelType+"_angle13.png")
-          $("#an16").prop("src","/FinalProject/images/model/"+data.modelType+"_angle16.png")
-          $("#an19").prop("src","/FinalProject/images/model/"+data.modelType+"_angle19.png")
+          $("#an1").prop("src","data:image/png;base64,"+data.angle1)
+          $("#an4").prop("src","data:image/png;base64,"+data.angle4)
+          $("#an7").prop("src","data:image/png;base64,"+data.angle7)
+          $("#an10").prop("src","data:image/png;base64,"+data.angle10)
+          $("#an13").prop("src","data:image/png;base64,"+data.angle13)
+          $("#an16").prop("src","data:image/png;base64,"+data.angle16)
+          $("#an19").prop("src","data:image/png;base64,"+data.angle19)
           		
           		
         },
