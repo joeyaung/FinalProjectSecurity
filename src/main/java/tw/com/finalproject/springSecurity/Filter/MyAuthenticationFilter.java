@@ -36,10 +36,4 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 		super.setAuthenticationManager(authenticationManager);
 	}
 	
-
-//	@Override
-//	@Autowired
-//	public void setAuthenticationManager(AuthenticationManager authenticationManager) {
-//	    super.setAuthenticationManager(authenticationManager);
-//	}
 }

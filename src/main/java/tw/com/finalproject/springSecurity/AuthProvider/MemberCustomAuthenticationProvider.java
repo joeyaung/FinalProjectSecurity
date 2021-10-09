@@ -28,19 +28,15 @@ public class MemberCustomAuthenticationProvider implements AuthenticationProvide
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String username = authentication.getName();
-		System.out.println(username);
 		String rawPassword = authentication.getCredentials().toString();
-		System.out.println(rawPassword);
 		
 		ApplicationUser user = applicationUserService.findByUsername(username);
-		System.out.println(user);
 		if (user != null) {
 			String encodedPassword = user.getPassword();
 			if (passwordEncoder.matches(rawPassword, encodedPassword)) {
 				List<GrantedAuthority> authorityList = new ArrayList<>();
 				GrantedAuthority authority = new SimpleGrantedAuthority(user.getRoles());
 				authorityList.add(authority);
-				System.out.println(user.getRoles());
 
 				return new MemberUsernamePasswordAuthenticationToken(username, rawPassword, authorityList);
 			}

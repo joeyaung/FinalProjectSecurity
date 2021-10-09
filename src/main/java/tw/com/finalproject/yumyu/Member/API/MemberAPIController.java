@@ -218,7 +218,6 @@ public class MemberAPIController {
 		boolean result = passwordResetTokenService.save(passwordResetToken);
 		
 		if (result) {
-//			TODO
 			String receipt = member.getUsername();
 			String memberName = member.getFullName();
 			mailService.sendResetPasswordEmail(receipt, token, memberName);
